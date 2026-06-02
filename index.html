@@ -380,10 +380,36 @@
     .feat-grid .feat-card:last-child { border-bottom: none; }
     .stat-bar .cell { border-right: none; border-bottom: 1px solid rgba(107,176,64,.22); }
     .stat-bar .cell:last-child { border-bottom: none; }
-    .ctable-wrap { overflow-x: auto; }
-    table.ctable { min-width: 560px; }
     .foot-grid { grid-template-columns: 1fr; }
     .legal-banner { flex-direction: column; align-items: flex-start; }
+
+    /* Comparison table -> stacked cards (keeps the Sum-IT column visible) */
+    .ctable-wrap { overflow: visible; border: none; border-radius: 0; box-shadow: none; background: transparent; }
+    table.ctable, table.ctable tbody, table.ctable tr, table.ctable td { display: block; width: 100%; }
+    table.ctable thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    table.ctable tr { margin-bottom: 16px; border: 1px solid var(--fog); border-radius: 14px; overflow: hidden; box-shadow: var(--shadow-card); background: var(--snow); }
+    table.ctable td { padding: 13px 18px; font-size: 15px; border-bottom: 1px solid var(--fog); }
+    table.ctable tr td:last-child { border-bottom: none; }
+    table.ctable td.cap { background: var(--navy); color: #fff; font-size: 16px; font-weight: 800; padding: 14px 18px; border-bottom: none; }
+    table.ctable td[data-label]::before { content: attr(data-label); display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--mist); margin-bottom: 4px; }
+    table.ctable td.sumit { background: var(--accent-tint); color: var(--navy); }
+    table.ctable td.sumit[data-label]::before { color: var(--green); }
+  }
+
+  @media (max-width: 480px) {
+    .container { padding: 0 20px; }
+    .section { padding: 56px 0; }
+    .hero h1 { font-size: 32px; margin: 16px 0; }
+    .hero .sub { font-size: 16.5px; }
+    .hero-grid { padding: 40px 0 64px; gap: 36px; }
+    .section-head h2 { font-size: 26px; }
+    .section-head .sub { font-size: 16.5px; margin-top: 14px; }
+    .hero-ctas { margin: 28px 0 22px; }
+    .hero-ctas .btn { width: 100%; justify-content: center; }
+    .stat-bar { margin-top: 40px; }
+    .stat-bar .cell { padding: 24px 22px; }
+    .stat-bar .num { font-size: 28px; }
+    .btn { padding: 13px 20px; }
   }
 </style>
 </head>
@@ -746,14 +772,14 @@
           <tr><th data-i18n="compare.h.cap">Capability</th><th data-i18n="compare.h.inc">Incumbents</th><th class="sumit">Sum-IT</th></tr>
         </thead>
         <tbody>
-          <tr><td class="cap" data-i18n="cmp.1.c">OCR scanning</td><td data-i18n="cmp.1.i">Add-on or separate app</td><td class="sumit" data-i18n="cmp.1.s">Built in from day one</td></tr>
-          <tr><td class="cap" data-i18n="cmp.2.c">Tax (BTW) reserve</td><td data-i18n="cmp.2.i">Manual calculation</td><td class="sumit" data-i18n="cmp.2.s">Auto-reserved with every invoice</td></tr>
-          <tr><td class="cap" data-i18n="cmp.3.c">iDEAL</td><td data-i18n="cmp.3.i">Afterthought integration</td><td class="sumit" data-i18n="cmp.3.s">Native pay-link on every invoice</td></tr>
-          <tr><td class="cap" data-i18n="cmp.4.c">Project + vendor P&amp;L</td><td data-i18n="cmp.4.i">Enterprise-tier only</td><td class="sumit" data-i18n="cmp.4.s">Included in every paid plan</td></tr>
-          <tr><td class="cap" data-i18n="cmp.5.c">Community marketplace</td><td data-i18n="cmp.5.i">None</td><td class="sumit" data-i18n="cmp.5.s">Discover, refer, collaborate</td></tr>
-          <tr><td class="cap" data-i18n="cmp.6.c">B2B transaction layer</td><td data-i18n="cmp.6.i">None</td><td class="sumit" data-i18n="cmp.6.s">Small fee funds sustainable growth</td></tr>
-          <tr><td class="cap" data-i18n="cmp.7.c">Mobile-native</td><td data-i18n="cmp.7.i">Desktop-first</td><td class="sumit" data-i18n="cmp.7.s">Phone-first, offline-capable</td></tr>
-          <tr><td class="cap" data-i18n="cmp.8.c">Entry pricing</td><td data-i18n="cmp.8.i">€25–60 / month</td><td class="sumit" data-i18n="cmp.8.s">Free, then €9 / month</td></tr>
+          <tr><td class="cap" data-i18n="cmp.1.c">OCR scanning</td><td data-label="Incumbents" data-i18n="cmp.1.i">Add-on or separate app</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.1.s">Built in from day one</td></tr>
+          <tr><td class="cap" data-i18n="cmp.2.c">Tax (BTW) reserve</td><td data-label="Incumbents" data-i18n="cmp.2.i">Manual calculation</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.2.s">Auto-reserved with every invoice</td></tr>
+          <tr><td class="cap" data-i18n="cmp.3.c">iDEAL</td><td data-label="Incumbents" data-i18n="cmp.3.i">Afterthought integration</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.3.s">Native pay-link on every invoice</td></tr>
+          <tr><td class="cap" data-i18n="cmp.4.c">Project + vendor P&amp;L</td><td data-label="Incumbents" data-i18n="cmp.4.i">Enterprise-tier only</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.4.s">Included in every paid plan</td></tr>
+          <tr><td class="cap" data-i18n="cmp.5.c">Community marketplace</td><td data-label="Incumbents" data-i18n="cmp.5.i">None</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.5.s">Discover, refer, collaborate</td></tr>
+          <tr><td class="cap" data-i18n="cmp.6.c">B2B transaction layer</td><td data-label="Incumbents" data-i18n="cmp.6.i">None</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.6.s">Small fee funds sustainable growth</td></tr>
+          <tr><td class="cap" data-i18n="cmp.7.c">Mobile-native</td><td data-label="Incumbents" data-i18n="cmp.7.i">Desktop-first</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.7.s">Phone-first, offline-capable</td></tr>
+          <tr><td class="cap" data-i18n="cmp.8.c">Entry pricing</td><td data-label="Incumbents" data-i18n="cmp.8.i">€25–60 / month</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.8.s">Free, then €9 / month</td></tr>
         </tbody>
       </table>
     </div>
@@ -1153,6 +1179,9 @@
       const v = (lang === 'en') ? EN[k] : (dict[k] != null ? dict[k] : EN[k]);
       if (v != null) n.innerHTML = v;
     });
+    // keep mobile comparison-card labels in sync with the translated header
+    const incLbl = (lang === 'en') ? EN['compare.h.inc'] : (dict['compare.h.inc'] != null ? dict['compare.h.inc'] : EN['compare.h.inc']);
+    if (incLbl != null) document.querySelectorAll('table.ctable td[data-label]:not(.sumit)').forEach(td => td.setAttribute('data-label', incLbl));
     document.documentElement.lang = lang;
     document.getElementById('langCur').textContent = LABEL[lang];
     document.querySelectorAll('.lang-menu button').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === lang));
