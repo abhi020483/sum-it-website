@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sum-IT — Together to the top</title>
+<title>Sum-IT — Accounting for Europe</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -200,10 +200,10 @@
 
   /* ---------- Features ---------- */
   .features { background: var(--snow); }
-  .feat-grid { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--fog); border-radius: var(--radius); overflow: hidden; }
+  .feat-grid { margin-top: 52px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; border: 1px solid var(--fog); border-radius: var(--radius); overflow: hidden; }
   .feat-card { padding: 34px 30px; border-right: 1px solid var(--fog); border-bottom: 1px solid var(--fog); background: var(--snow); }
-  .feat-grid .feat-card:nth-child(3n) { border-right: none; }
-  .feat-grid .feat-card:nth-child(n+4) { border-bottom: none; }
+  .feat-grid .feat-card:nth-child(2n) { border-right: none; }
+  .feat-grid .feat-card:nth-child(n+3) { border-bottom: none; }
   .feat-card.tint { background: var(--accent-tint); }
   .icon-lg { width: 50px; height: 50px; border-radius: 12px; border: 1.5px solid var(--green); display: flex; align-items: center; justify-content: center; color: var(--green); margin-bottom: 20px; }
   .icon-lg svg { width: 26px; height: 26px; }
@@ -250,7 +250,7 @@
 
   /* ---------- How ---------- */
   .how { background: var(--paper); }
-  .how-grid { margin-top: 52px; display: grid; grid-template-columns: 1fr 1.06fr 1fr; gap: 26px; align-items: stretch; }
+  .how-grid { margin-top: 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 26px; align-items: stretch; max-width: 760px; margin-left: auto; margin-right: auto; }
   .how-col { background: var(--snow); border: 1px solid var(--fog); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow-card); display: flex; flex-direction: column; }
   .how-label { font-size: 11.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 20px; }
   .how-col .cap { font-size: 14.5px; color: var(--mist); line-height: 1.5; margin-top: auto; }
@@ -316,6 +316,14 @@
   .expansion-strip .epill { font-size: 13.5px; font-weight: 700; color: var(--green); }
   .expansion-strip .sep { color: var(--fog); font-weight: 700; }
 
+  /* ---------- Security ---------- */
+  .security { background: var(--snow); }
+  .sec-grid { margin-top: 44px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+
+  /* ---------- Single price ---------- */
+  .price-single { margin: 50px auto 0; max-width: 440px; }
+  .pricing-note { margin-top: 22px; font-size: 14.5px; color: var(--mist); text-align: center; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+
   /* ---------- Team ---------- */
   .team { background: var(--snow); }
   .team-grid { margin-top: 50px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -344,6 +352,7 @@
   .final-stat { background: rgba(107,176,64,.12); border: 1px solid rgba(107,176,64,.3); border-radius: 14px; padding: 26px 18px; }
   .final-stat .n { font-size: 34px; font-weight: 900; color: var(--lime); letter-spacing: -0.03em; }
   .final-stat .l { font-size: 14px; color: #B9BCD8; margin-top: 8px; font-weight: 500; }
+  .final-lede { color: #B9BCD8; font-size: 18.5px; max-width: 680px; margin: 32px auto 40px; line-height: 1.6; }
   .final-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
   /* ---------- Footer ---------- */
@@ -375,7 +384,7 @@
   }
   @media (max-width: 768px) {
     .section { padding: 72px 0; }
-    .grid-3, .feat-grid, .team-grid, .market-grid, .final-stats, .stat-bar, .price-grid { grid-template-columns: 1fr; }
+    .grid-3, .feat-grid, .team-grid, .market-grid, .final-stats, .stat-bar, .price-grid, .sec-grid { grid-template-columns: 1fr; }
     .feat-grid .feat-card { border-right: none; border-bottom: 1px solid var(--fog); }
     .feat-grid .feat-card:last-child { border-bottom: none; }
     .stat-bar .cell { border-right: none; border-bottom: 1px solid rgba(107,176,64,.22); }
@@ -425,6 +434,7 @@
     <div class="nav-links">
       <a href="#features" class="link" data-i18n="nav.features">Features</a>
       <a href="#community" class="link" data-i18n="nav.community">Community</a>
+      <a href="#pricing" class="link" data-i18n="nav.pricing">Pricing</a>
       <a href="#team" class="link" data-i18n="nav.team">Team</a>
       <div class="lang" id="lang">
         <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
@@ -444,6 +454,7 @@
   <div class="mobile-menu" id="mobileMenu">
     <a href="#features" data-i18n="nav.features">Features</a>
     <a href="#community" data-i18n="nav.community">Community</a>
+    <a href="#pricing" data-i18n="nav.pricing">Pricing</a>
     <a href="#team" data-i18n="nav.team">Team</a>
     <div class="m-lang">
       <button data-lang="en">🇬🇧 EN</button>
@@ -457,16 +468,16 @@
 <header class="hero" id="top">
   <div class="container hero-grid">
     <div class="reveal">
-      <p class="overline" data-i18n="hero.overline">The business OS for Dutch &amp; European SMEs</p>
-      <h1 data-i18n="hero.h1">Your receipts, invoices, and taxes — sorted.</h1>
-      <p class="sub" data-i18n="hero.sub">Sum-IT is the integrated business suite for ZZP'ers and small businesses in the Netherlands and Germany. Scan receipts, send invoices, track projects, and grow your local network — in one app.</p>
+      <p class="overline" data-i18n="hero.overline">Less time on admin. More time on the work you actually do.</p>
+      <h1 data-i18n="hero.h1">Snap the receipt. It's sorted.</h1>
+      <p class="sub" data-i18n="hero.sub">Sum-IT turns a photo of a receipt into a clean, tax-ready record in seconds. Scan receipts, send invoices, track what each job earns, and always know what you owe the tax office — built for freelancers and small businesses in the Netherlands and Germany, no bookkeeping knowledge required.</p>
       <div class="hero-ctas">
         <a href="#features" class="btn btn-green" data-i18n="hero.cta2">See how it works</a>
       </div>
       <div class="trust-row">
-        <span><span class="chk">✓</span> <span data-i18n="trust.gdpr">GDPR compliant</span></span>
-        <span><span class="chk">✓</span> <span data-i18n="trust.ideal">iDEAL native</span></span>
-        <span><span class="chk">✓</span> <span data-i18n="trust.btw">BTW auto-reserve</span></span>
+        <span><span class="chk">✓</span> <span data-i18n="trust.gdpr">GDPR compliant · EU data only</span></span>
+        <span><span class="chk">✓</span> <span data-i18n="trust.ideal">NL BTW + DE DATEV ready</span></span>
+        <span><span class="chk">✓</span> <span data-i18n="trust.btw">Tax reserve, always up to date</span></span>
       </div>
     </div>
 
@@ -501,42 +512,42 @@
   <div class="container">
     <div class="section-head reveal">
       <p class="overline" data-i18n="problem.overline">The gap</p>
-      <h2 data-i18n="problem.h2">Small businesses are stuck between spreadsheets and over-engineered software.</h2>
+      <h2 data-i18n="problem.h2">Small businesses are stuck between spreadsheets and software built for accountants.</h2>
     </div>
     <div class="blockquote reveal">
       <p class="q" data-i18n="problem.quote">"I just want to scan my receipts, send an invoice, and know what I owe the tax office — without learning bookkeeping."</p>
-      <span class="cite" data-i18n="problem.cite">— The ZZP'er, every month</span>
+      <span class="cite" data-i18n="problem.cite">— every freelancer, every quarter</span>
     </div>
     <div class="grid-3 problem-grid">
       <div class="card reveal">
         <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6v6H9z"/></svg></div>
-        <h3 data-i18n="p.limitedOcr.t">Limited OCR</h3>
-        <p class="ctxt" data-i18n="p.limitedOcr.d">Receipts still live in shoeboxes and email inboxes.</p>
+        <h3 data-i18n="p.limitedOcr.t">Receipt chaos</h3>
+        <p class="ctxt" data-i18n="p.limitedOcr.d">Receipts still live in shoeboxes, glove compartments, and email inboxes.</p>
       </div>
       <div class="card reveal">
         <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-        <h3 data-i18n="p.toolSprawl.t">Tool sprawl</h3>
-        <p class="ctxt" data-i18n="p.toolSprawl.d">One app for invoices, another for time, another for taxes.</p>
+        <h3 data-i18n="p.toolSprawl.t">Manual VAT entry</h3>
+        <p class="ctxt" data-i18n="p.toolSprawl.d">Typing in dates and VAT amounts by hand is slow and easy to get wrong.</p>
       </div>
       <div class="card reveal">
         <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h3 data-i18n="p.noCollab.t">No collaboration layer</h3>
-        <p class="ctxt" data-i18n="p.noCollab.d">Working with an accountant still means emailing PDFs.</p>
+        <h3 data-i18n="p.noCollab.t">No idea what each job earns</h3>
+        <p class="ctxt" data-i18n="p.noCollab.d">Project profitability is invisible until the work is already done.</p>
       </div>
       <div class="card reveal">
         <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-        <h3 data-i18n="p.pricingGap.t">Pricing gap</h3>
-        <p class="ctxt" data-i18n="p.pricingGap.d">Entry tools are toys; pro tools cost €30–60 per month.</p>
+        <h3 data-i18n="p.pricingGap.t">Tax reserve uncertainty</h3>
+        <p class="ctxt" data-i18n="p.pricingGap.d">The big question — "how much will I owe?" — goes unanswered until the deadline.</p>
       </div>
       <div class="card reveal">
         <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
-        <h3 data-i18n="p.localRails.t">Local payment rails</h3>
-        <p class="ctxt" data-i18n="p.localRails.d">iDEAL and SEPA are afterthoughts in most incumbents.</p>
+        <h3 data-i18n="p.localRails.t">Tools built for the wrong person</h3>
+        <p class="ctxt" data-i18n="p.localRails.d">Pro accounting tools assume you speak accounting. Most small operators don't, and don't want to.</p>
       </div>
       <div class="card reveal">
         <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h3 data-i18n="p.noCommunity.t">No community</h3>
-        <p class="ctxt" data-i18n="p.noCommunity.d">No way to find and pay trusted local business partners in-app.</p>
+        <h3 data-i18n="p.noCommunity.t">Handoff headaches</h3>
+        <p class="ctxt" data-i18n="p.noCommunity.d">Getting clean data to a bookkeeper or Steuerberater still means emailing PDFs back and forth.</p>
       </div>
     </div>
   </div>
@@ -547,73 +558,57 @@
   <div class="container">
     <div class="section-head reveal">
       <p class="overline" data-i18n="features.overline">The product</p>
-      <h2 data-i18n="features.h2">One suite. Everything a Dutch freelancer actually needs.</h2>
-      <p class="sub" data-i18n="features.sub">Built for operators, not accountants. Six core modules, all in one app.</p>
+      <h2 data-i18n="features.h2">Everything a small business needs to stay on top of the money.</h2>
+      <p class="sub" data-i18n="features.sub">Built for the person doing the work, not for accountants. Four modules, one app — receipt in, tax-ready out.</p>
     </div>
 
     <div class="feat-grid reveal">
       <div class="feat-card">
-        <div class="icon-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
-        <h3 data-i18n="f.dashboard.t">Dashboard</h3>
+        <div class="icon-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></div>
+        <h3 data-i18n="f.ocr.t">OCR Upload — the heart of Sum-IT</h3>
         <ul class="feat-list">
-          <li data-i18n="f.dashboard.b1">Customisable draggable widgets</li>
-          <li data-i18n="f.dashboard.b2">Live income vs. expense graph</li>
-          <li data-i18n="f.dashboard.b3">AI companion next-step nudges</li>
+          <li data-i18n="f.ocr.b1">Photograph a receipt or upload a PDF — JPG, PDF, HEIC</li>
+          <li data-i18n="f.ocr.b2">Reads vendor, date, net, VAT, totals &amp; invoice number automatically</li>
+          <li data-i18n="f.ocr.b3">Detects NL, EN and DE documents on the fly</li>
+          <li data-i18n="f.ocr.b4">Suggests the right tax code — you confirm before anything is saved</li>
         </ul>
       </div>
       <div class="feat-card tint">
-        <div class="icon-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2"/><line x1="7" y1="12" x2="17" y2="12"/></svg></div>
-        <h3 data-i18n="f.ocr.t">OCR Upload</h3>
-        <ul class="feat-list">
-          <li data-i18n="f.ocr.b1">Camera scan or PDF upload</li>
-          <li data-i18n="f.ocr.b2">Vision LLM extracts vendor, date, amount, VAT</li>
-          <li data-i18n="f.ocr.b3">Editable before saving — 95% accuracy</li>
-        </ul>
-      </div>
-      <div class="feat-card">
         <div class="icon-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
         <h3 data-i18n="f.finances.t">Finances</h3>
         <ul class="feat-list">
-          <li data-i18n="f.finances.b1">Expense tracking, auto-sorted by category</li>
-          <li data-i18n="f.finances.b2">Invoice management with status (open / paid)</li>
-          <li data-i18n="f.finances.b3">BTW (VAT) auto-reserve — never miss a tax quarter</li>
+          <li data-i18n="f.finances.b1">Expenses, invoices and tax reserve in one place</li>
+          <li data-i18n="f.finances.b2">Invoices pre-filled with your details and logo; status tracked</li>
+          <li data-i18n="f.finances.b3">Overdue reminders sent automatically</li>
+          <li data-i18n="f.finances.b4">BTW (NL) and USt (DE) handled correctly, incl. German §14 rules</li>
         </ul>
       </div>
       <div class="feat-card tint">
-        <div class="icon-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
-        <h3 data-i18n="f.projects.t">Projects</h3>
+        <div class="icon-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
+        <h3 data-i18n="f.dashboard.t">Dashboard &amp; KPIs</h3>
         <ul class="feat-list">
-          <li data-i18n="f.projects.b1">Project P&amp;L: billing vs. costs vs. markup</li>
-          <li data-i18n="f.projects.b2">Link receipts and invoices to projects</li>
-          <li data-i18n="f.projects.b3">To-do list and calendar integration per project</li>
+          <li data-i18n="f.dashboard.b1">Three clear cards — money in, money out, tax reserve</li>
+          <li data-i18n="f.dashboard.b2">Income-vs-expense chart and the week ahead</li>
+          <li data-i18n="f.dashboard.b3">Drag-and-drop widgets on desktop; a clean donut on mobile</li>
         </ul>
       </div>
       <div class="feat-card">
-        <div class="icon-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h3 data-i18n="f.network.t">Business Network</h3>
+        <div class="icon-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></div>
+        <h3 data-i18n="f.projects.t">Projects</h3>
         <ul class="feat-list">
-          <li data-i18n="f.network.b1">Interactive Netherlands + Germany business map</li>
-          <li data-i18n="f.network.b2">Filter by trade, distance, availability, rating</li>
-          <li data-i18n="f.network.b3">One-click message and collaboration request</li>
-        </ul>
-      </div>
-      <div class="feat-card tint">
-        <div class="icon-lg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-        <h3 data-i18n="f.calendar.t">Calendar</h3>
-        <ul class="feat-list">
-          <li data-i18n="f.calendar.b1">Weekly, bi-weekly, and monthly view</li>
-          <li data-i18n="f.calendar.b2">Appointments linked to projects and invoices</li>
-          <li data-i18n="f.calendar.b3">Reminders for VAT dates and invoice follow-ups</li>
+          <li data-i18n="f.projects.b1">A profit &amp; loss view per job — invoices in, costs out</li>
+          <li data-i18n="f.projects.b2">Link receipts and invoices to a project in one tap</li>
+          <li data-i18n="f.projects.b3">See which engagements actually make money, in real time</li>
         </ul>
       </div>
     </div>
 
     <div class="phase-strip reveal">
-      <span class="ptxt" data-i18n="phase.label">Phase 2 (months 13–24) adds →</span>
-      <span class="pill" data-i18n="phase.p1">AI Business Chatbot</span>
-      <span class="pill" data-i18n="phase.p2">Collaboration Contracts</span>
-      <span class="pill" data-i18n="phase.p3">iDEAL Open Banking</span>
-      <span class="pill" data-i18n="phase.p4">Marketplace</span>
+      <span class="ptxt" data-i18n="phase.label">Coming later (Phase 2):</span>
+      <span class="pill" data-i18n="phase.p1">Local community</span>
+      <span class="pill" data-i18n="phase.p2">Collaboration contracts</span>
+      <span class="pill" data-i18n="phase.p3">Native apps · iDEAL · Open Banking</span>
+      <span class="pill" data-i18n="phase.p4">AI assistant</span>
     </div>
   </div>
 </section>
@@ -623,33 +618,33 @@
   <div class="container">
     <div class="comm-grid">
       <div class="reveal">
-        <p class="overline" data-i18n="community.overline">Local community activation</p>
-        <h2 data-i18n="community.h2">Your network earns you money. Ours does too.</h2>
-        <p class="comm-body" data-i18n="community.body">Sum-IT isn't just bookkeeping software — it's the payment layer for your local business community. When you pay a subcontractor, hire a local electrician, or settle a job with a partner you found on our Business Map, that transaction runs through Sum-IT's community rails.</p>
+        <p class="overline" data-i18n="community.overline">Local community · Phase 2</p>
+        <h2 data-i18n="community.h2">A network of local businesses — coming to Sum-IT.</h2>
+        <p class="comm-body" data-i18n="community.body">Your work depends on the people around you: subcontractors, suppliers, partners. We're building a simple way to find and connect with trusted local businesses right inside Sum-IT, so your next collaborator is a search away — not a stack of business cards. This is on the way as part of Phase 2.</p>
 
         <div class="feature-row">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
           <div class="ftxt">
-            <div class="l" data-i18n="community.r1.l">Find &amp; Pay in one flow</div>
-            <div class="d" data-i18n="community.r1.d">Discover a local business on the map, agree the job, and pay directly inside Sum-IT — no bank app switching.</div>
+            <div class="l" data-i18n="community.r1.l">Find trusted local businesses</div>
+            <div class="d" data-i18n="community.r1.d">Search subcontractors, suppliers and partners near you, right inside Sum-IT.</div>
           </div>
         </div>
         <div class="feature-row">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
           <div class="ftxt">
-            <div class="l" data-i18n="community.r2.l">A small fee funds the platform</div>
-            <div class="d" data-i18n="community.r2.d">Every business-to-business payment between Sum-IT members carries a small platform transaction fee. This is how Sum-IT scales sustainably — not by charging you more per month.</div>
+            <div class="l" data-i18n="community.r2.l">Your next collaborator, a search away</div>
+            <div class="d" data-i18n="community.r2.d">No more stacks of business cards — discover a business and reach out in a tap.</div>
           </div>
         </div>
         <div class="feature-row">
-          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
           <div class="ftxt">
-            <div class="l" data-i18n="community.r3.l">Free months for referrals</div>
-            <div class="d" data-i18n="community.r3.d">Bring an annual member into the community and earn one month free. The more your network grows, the more everyone saves.</div>
+            <div class="l" data-i18n="community.r3.l">Core first, community next</div>
+            <div class="d" data-i18n="community.r3.d">We ship the financial tools first, then open up the community. No dates promised.</div>
           </div>
         </div>
 
-        <a href="#" class="btn btn-ghost-light" data-i18n="community.cta">See how community payments work →</a>
+        <a href="#features" class="btn btn-ghost-light" data-i18n="community.cta">Part of the Phase 2 roadmap →</a>
       </div>
 
       <div class="reveal">
@@ -669,7 +664,7 @@
               <div class="pc-t">Amsterdam Craft Network</div>
               <div class="pc-s" data-i18n="paycard.sub">Construction · ★ 4.8</div>
             </div>
-            <a href="#" class="pc-btn" data-i18n="paycard.btn">Pay now</a>
+            <a href="#" class="pc-btn" data-i18n="paycard.btn">Connect</a>
           </div>
         </div>
       </div>
@@ -682,11 +677,11 @@
   <div class="container">
     <div class="section-head reveal">
       <p class="overline" data-i18n="how.overline">Experience</p>
-      <h2 data-i18n="how.h2">Built for the way small businesses actually work.</h2>
+      <h2 data-i18n="how.h2">Built to be as easy as possible.</h2>
     </div>
     <div class="how-grid">
       <div class="how-col reveal">
-        <div class="how-label" data-i18n="how.web.label">Web · Deep work</div>
+        <div class="how-label" data-i18n="how.web.label">Web · the heavy work</div>
         <div class="browser-mini">
           <div class="bm-chrome"><span class="d"></span><span class="d"></span><span class="d"></span></div>
           <div class="bm-body">
@@ -695,11 +690,11 @@
             <div class="row s3"></div>
           </div>
         </div>
-        <p class="cap" data-i18n="how.web.cap">Desktop for reconciliation, reports, projects, and accountant exports.</p>
+        <p class="cap" data-i18n="how.web.cap">Reviewing OCR, reconciling the quarter, project P&amp;L, and bookkeeper exports.</p>
       </div>
 
       <div class="how-col reveal">
-        <div class="how-label" data-i18n="how.mobile.label">Mobile · iOS &amp; Android</div>
+        <div class="how-label" data-i18n="how.mobile.label">Mobile · the moment it happens</div>
         <div class="phone">
           <div class="phone-screen">
             <div class="ph-logo">
@@ -716,27 +711,39 @@
             </div>
           </div>
         </div>
-        <p class="cap" data-i18n="how.mobile.cap">Phone for the moment — scan, quote, send, get paid.</p>
+        <p class="cap" data-i18n="how.mobile.cap">Scan, quote, send, check your tax reserve. In seconds, from your pocket. PWA today; native iOS &amp; Android in Phase 2.</p>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="how-col reveal">
-        <div class="how-label" data-i18n="how.hood.label">Under the hood</div>
-        <div class="hood-item">
-          <div class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
-          <div><div class="ht" data-i18n="how.stack.t">Stack</div><div class="hd">Next.js · Postgres · Cloudflare edge</div></div>
-        </div>
-        <div class="hood-item">
-          <div class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v6m0 6v6M4.2 4.2l4.3 4.3m7 7l4.3 4.3M1 12h6m6 0h6"/></svg></div>
-          <div><div class="ht" data-i18n="how.ocr.t">OCR engine</div><div class="hd" data-i18n="how.ocr.d">Vision LLM + rule-based fallback, 95% F1</div></div>
-        </div>
-        <div class="hood-item">
-          <div class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
-          <div><div class="ht" data-i18n="how.integrations.t">Integrations</div><div class="hd" data-i18n="how.integrations.d">iDEAL · PSD2 banks · e-Boekhouden export</div></div>
-        </div>
-        <div class="hood-item">
-          <div class="hi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          <div><div class="ht" data-i18n="how.compliance.t">Compliance</div><div class="hd" data-i18n="how.compliance.d">GDPR, EU data residency, SOC 2 on path</div></div>
-        </div>
+<!-- ===== SECURITY ===== -->
+<section class="section security" id="security">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="overline" data-i18n="security.overline">Trust &amp; security</p>
+      <h2 data-i18n="security.h2">Sum-IT handles your financial life, so it's built to be safe with it.</h2>
+    </div>
+    <div class="sec-grid">
+      <div class="card reveal">
+        <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15 15 0 0 1 0 20M12 2a15 15 0 0 0 0 20"/></svg></div>
+        <h3 data-i18n="sec.1.t">Your data stays in the EU</h3>
+        <p class="ctxt" data-i18n="sec.1.d">All data is stored and processed exclusively in AWS EU regions — a hard GDPR requirement, never an afterthought.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg></div>
+        <h3 data-i18n="sec.2.t">GDPR by design</h3>
+        <p class="ctxt" data-i18n="sec.2.d">Full compliance across collection, storage and processing. You can request deletion of your personal data at any time.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="15" x2="15" y2="15"/></svg></div>
+        <h3 data-i18n="sec.3.t">Audit-safe records</h3>
+        <p class="ctxt" data-i18n="sec.3.d">Records can't be silently changed; every correction is timestamped against the original, and source documents are kept — meeting NL retention rules and German GoBD.</p>
+      </div>
+      <div class="card reveal">
+        <div class="icon-chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+        <h3 data-i18n="sec.4.t">Encrypted end to end</h3>
+        <p class="ctxt" data-i18n="sec.4.d">Data is encrypted in transit (HTTPS/TLS) and at rest, with access controls enforced at every layer.</p>
       </div>
     </div>
   </div>
@@ -747,26 +754,56 @@
   <div class="container">
     <div class="section-head reveal">
       <p class="overline" data-i18n="compare.overline">Why Sum-IT wins</p>
-      <h2 data-i18n="compare.h2">We fill the gap the Dutch market hasn't closed.</h2>
+      <h2 data-i18n="compare.h2">We close the gap the market left open for small operators.</h2>
     </div>
     <div class="ctable-wrap reveal">
       <table class="ctable">
         <thead>
-          <tr><th data-i18n="compare.h.cap">Capability</th><th data-i18n="compare.h.inc">Incumbents</th><th class="sumit">Sum-IT</th></tr>
+          <tr><th data-i18n="compare.h.cap">Capability</th><th data-i18n="compare.h.inc">Tools built for accountants</th><th class="sumit">Sum-IT</th></tr>
         </thead>
         <tbody>
-          <tr><td class="cap" data-i18n="cmp.1.c">OCR scanning</td><td data-label="Incumbents" data-i18n="cmp.1.i">Add-on or separate app</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.1.s">Built in from day one</td></tr>
-          <tr><td class="cap" data-i18n="cmp.2.c">Tax (BTW) reserve</td><td data-label="Incumbents" data-i18n="cmp.2.i">Manual calculation</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.2.s">Auto-reserved with every invoice</td></tr>
-          <tr><td class="cap" data-i18n="cmp.3.c">iDEAL</td><td data-label="Incumbents" data-i18n="cmp.3.i">Afterthought integration</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.3.s">Native pay-link on every invoice</td></tr>
-          <tr><td class="cap" data-i18n="cmp.4.c">Project + vendor P&amp;L</td><td data-label="Incumbents" data-i18n="cmp.4.i">Enterprise-tier only</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.4.s">Included in every paid plan</td></tr>
-          <tr><td class="cap" data-i18n="cmp.5.c">Community marketplace</td><td data-label="Incumbents" data-i18n="cmp.5.i">None</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.5.s">Discover, refer, collaborate</td></tr>
-          <tr><td class="cap" data-i18n="cmp.6.c">B2B transaction layer</td><td data-label="Incumbents" data-i18n="cmp.6.i">None</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.6.s">Small fee funds sustainable growth</td></tr>
-          <tr><td class="cap" data-i18n="cmp.7.c">Mobile-native</td><td data-label="Incumbents" data-i18n="cmp.7.i">Desktop-first</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.7.s">Phone-first, offline-capable</td></tr>
-          <tr><td class="cap" data-i18n="cmp.8.c">Entry pricing</td><td data-label="Incumbents" data-i18n="cmp.8.i">€25–60 / month</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.8.s">Free, then €9 / month</td></tr>
+          <tr><td class="cap" data-i18n="cmp.1.c">Receipt capture</td><td data-label="Tools built for accountants" data-i18n="cmp.1.i">Add-on or separate app</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.1.s">Built in — the core of the app</td></tr>
+          <tr><td class="cap" data-i18n="cmp.2.c">Tax (BTW/USt) reserve</td><td data-label="Tools built for accountants" data-i18n="cmp.2.i">Manual calculation</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.2.s">Tracked and forecast for you</td></tr>
+          <tr><td class="cap" data-i18n="cmp.3.c">Bookkeeper handoff</td><td data-label="Tools built for accountants" data-i18n="cmp.3.i">Manual reconciliation</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.3.s">Clean CSV and DATEV export</td></tr>
+          <tr><td class="cap" data-i18n="cmp.4.c">Pricing</td><td data-label="Tools built for accountants" data-i18n="cmp.4.i">€25–60 / month, tiered</td><td class="sumit" data-label="Sum-IT" data-i18n="cmp.4.s">One plan, €11 / month, no tiers</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="compare-note reveal" data-i18n="compare.note">Incumbents built for accountants; we build for the freelancer who doesn't want to learn accounting.</p>
+    <p class="compare-note reveal" data-i18n="compare.note">Incumbents built for accountants; we build for the person who doesn't want to learn accounting.</p>
+  </div>
+</section>
+
+<!-- ===== PRICING ===== -->
+<section class="section pricing" id="pricing">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="overline" data-i18n="pricing.overline">Pricing</p>
+      <h2 data-i18n="pricing.h2">One plan. Everything included. €11 a month.</h2>
+      <p class="sub" data-i18n="pricing.sub">No tiers, no upsells, no "that feature costs extra." Everyone gets the same Sum-IT — every module, every update — for one fair price.</p>
+    </div>
+    <div class="price-single reveal">
+      <div class="price-card">
+        <div class="popular-badge" data-i18n="price.badge">One plan</div>
+        <div class="price-head navy">
+          <div class="ttl" data-i18n="price.single.t">Sum-IT</div>
+          <div class="amt">€11<small data-i18n="price.mo">/mo</small></div>
+        </div>
+        <div class="price-body">
+          <ul class="price-feats">
+            <li data-i18n="price.f1">Unlimited receipt scanning (OCR)</li>
+            <li data-i18n="price.f2">Invoicing with NL + DE legal compliance</li>
+            <li data-i18n="price.f3">Automatic BTW / USt tax reserve &amp; forecast</li>
+            <li data-i18n="price.f4">CSV and DATEV-compatible bookkeeper export</li>
+            <li data-i18n="price.f5">Project profit &amp; loss tracking</li>
+            <li data-i18n="price.f6">Dashboard, KPIs &amp; in-app reminders</li>
+            <li data-i18n="price.f7">EU data residency &amp; GDPR included</li>
+            <li data-i18n="price.f8">All future updates included</li>
+          </ul>
+          <a href="#" class="btn btn-green" data-i18n="price.cta">Get started →</a>
+        </div>
+      </div>
+    </div>
+    <p class="pricing-note reveal" data-i18n="pricing.note">Why one price? Because you shouldn't have to figure out which "tier" you are. Everyone gets the whole product. That's the point.</p>
   </div>
 </section>
 
@@ -780,21 +817,21 @@
     <div class="team-grid">
       <div class="team-card reveal">
         <div class="role" data-i18n="team.role1">Product &amp; Operations</div>
-        <div class="name">Abhishek <span>· Mumbai</span></div>
+        <div class="name">Abhishek</div>
         <div class="underline"></div>
-        <p class="bio" data-i18n="team.bio1">Ten-year entrepreneur with funded ventures across technology, pharma, and healthcare. Leads product development, technology architecture, and engineering execution for Sum-IT.</p>
+        <p class="bio" data-i18n="team.bio1">Long-time entrepreneur with funded ventures across technology, pharma, and healthcare. Leads product development, technical direction, and engineering execution for Sum-IT.</p>
       </div>
       <div class="team-card reveal">
-        <div class="role" data-i18n="team.role2">Business Development</div>
+        <div class="role" data-i18n="team.role2">Market &amp; Customers</div>
         <div class="name">Ian <span>· Netherlands</span></div>
         <div class="underline"></div>
-        <p class="bio" data-i18n="team.bio2">SME owner running a €100K business near Amsterdam, with deep roots in the Dutch small-business community. Brings first-hand understanding of local SME needs and leads network building, sales, and client acquisition for Sum-IT.</p>
+        <p class="bio" data-i18n="team.bio2">Small-business owner with deep roots in the Dutch independent-business community. Brings first-hand understanding of how freelancers and small operators actually work, and leads market entry, customer acquisition, and local network building.</p>
       </div>
       <div class="team-card reveal">
-        <div class="role" data-i18n="team.role3">Community &amp; Partnerships</div>
+        <div class="role" data-i18n="team.role3">Finance &amp; DACH</div>
         <div class="name">Sebastian <span>· Germany</span></div>
         <div class="underline"></div>
-        <p class="bio" data-i18n="team.bio3">CFO at a European construction group with deep fluency in the finance and accounting landscape across the EU. Brings first-hand CFO-buyer perspective to Sum-IT and anchors the DACH market expansion.</p>
+        <p class="bio" data-i18n="team.bio3">CFO at a European group with deep fluency in EU finance, accounting, and the realities of the German tax-advisor (Steuerberater) workflow. Anchors Sum-IT's DACH expansion and the DATEV-ready approach.</p>
       </div>
     </div>
   </div>
@@ -815,9 +852,9 @@
         <div class="desc" data-i18n="market.2.d">Fewer than 10 employees — our core customer.</div>
       </div>
       <div class="market-cell reveal">
-        <div class="num">25–35%</div>
-        <div class="lbl" data-i18n="market.3.l">Cloud accounting adoption</div>
-        <div class="desc" data-i18n="market.3.d">Two thirds still on paper and spreadsheets.</div>
+        <div class="num">Most</div>
+        <div class="lbl" data-i18n="market.3.l">Still on paper &amp; spreadsheets</div>
+        <div class="desc" data-i18n="market.3.d">The shift to simple cloud tools is just beginning.</div>
       </div>
     </div>
   </div>
@@ -826,13 +863,8 @@
 <!-- ===== FINAL ===== -->
 <section class="section final">
   <div class="container">
-    <h2 class="reveal" data-i18n="final.h2">Let's build the accounting suite Europe's small businesses actually deserve.</h2>
-    <div class="final-stats">
-      <div class="final-stat reveal"><div class="n">200</div><div class="l" data-i18n="final.s1">paying customers (Year 2)</div></div>
-      <div class="final-stat reveal"><div class="n">500+</div><div class="l" data-i18n="final.s2">community members</div></div>
-      <div class="final-stat reveal"><div class="n">€36K</div><div class="l" data-i18n="final.s3">ARR run-rate</div></div>
-      <div class="final-stat reveal"><div class="n">3</div><div class="l" data-i18n="final.s4">markets live</div></div>
-    </div>
+    <h2 class="reveal" data-i18n="final.h2">Let's build the financial tool Europe's small businesses actually deserve.</h2>
+    <p class="final-lede reveal" data-i18n="final.lede">Starting in the Netherlands and Germany, growing from there — receipt capture, invoicing, tax clarity, and a community to come.</p>
     <div class="final-ctas reveal">
       <a href="#" class="btn btn-green" data-i18n="final.cta2">Read the pitch deck</a>
     </div>
@@ -848,17 +880,18 @@
           <img class="mark" src="Sum-IT Logo Mark.svg" alt="Sum-IT" />
           <span>SUM-IT</span>
         </div>
-        <div class="foot-summit" data-i18n="brand.tagline">Together to the top</div>
-        <p class="foot-tag" data-i18n="foot.tag">The business management suite for Dutch &amp; European freelancers and small businesses.</p>
+        <div class="foot-summit" data-i18n="brand.tagline">Accounting for Europe</div>
+        <p class="foot-tag" data-i18n="foot.tag">The simple financial tool for freelancers and small businesses in the Netherlands and Germany.</p>
       </div>
       <div class="foot-col">
         <h4 data-i18n="foot.product">Product</h4>
         <ul>
           <li><a href="#features" data-i18n="nav.features">Features</a></li>
+          <li><a href="#pricing" data-i18n="nav.pricing">Pricing</a></li>
           <li><a href="#" data-i18n="foot.roadmap">Roadmap</a></li>
-          <li><a href="#" data-i18n="foot.ocr">OCR Upload</a></li>
-          <li><a href="#community" data-i18n="foot.map">Business Map</a></li>
+          <li><a href="#features" data-i18n="foot.ocr">OCR Upload</a></li>
           <li><a href="#community" data-i18n="nav.community">Community</a></li>
+          <li><a href="#security" data-i18n="foot.security">Security</a></li>
         </ul>
       </div>
       <div class="foot-col">
@@ -873,7 +906,7 @@
         </ul>
       </div>
     </div>
-    <div class="foot-bottom" data-i18n="foot.bottom">© 2026 Sum-IT BV · Registered in the Netherlands · GDPR compliant · Built by Abhishek, Ian &amp; Sebastian</div>
+    <div class="foot-bottom" data-i18n="foot.bottom">© 2026 Sum-IT BV · Registered in the Netherlands · GDPR compliant · EU data residency</div>
   </div>
 </footer>
 
@@ -914,147 +947,131 @@
   const I18N = {
     nl: {
       'nav.features':'Functies','nav.community':'Community','nav.pricing':'Prijzen','nav.team':'Team',
-      'cta.startFree':'Gratis starten →',
-      'hero.overline':"Het bedrijfs-OS voor Nederlandse & Europese mkb'ers",
-      'hero.h1':'Je bonnen, facturen en belastingen — geregeld.',
-      'hero.sub':"Sum-IT is de geïntegreerde bedrijfssuite voor zzp'ers en kleine bedrijven in Nederland en Duitsland. Scan bonnen, verstuur facturen, volg projecten en laat je lokale netwerk groeien — in één app.",
-      'hero.cta1':'Gratis starten — voor €0','hero.cta2':'Bekijk hoe het werkt',
-      'trust.gdpr':'AVG-proof','trust.ideal':'iDEAL native','trust.btw':'Btw automatisch gereserveerd',
+      'hero.overline':'Minder tijd aan administratie. Meer tijd voor je echte werk.',
+      'hero.h1':'Scan de bon. Geregeld.','hero.cta2':'Bekijk hoe het werkt',
+      'hero.sub':"Sum-IT maakt van een foto van een bon in seconden een nette, belastingklare boeking. Scan bonnen, verstuur facturen, zie wat elke klus oplevert en weet altijd wat je aan de Belastingdienst moet afdragen — gemaakt voor zzp'ers en kleine ondernemers in Nederland en Duitsland, zonder dat je verstand van boekhouden nodig hebt.",
+      'trust.gdpr':'AVG-proof · alleen EU-data','trust.ideal':'NL btw + DE DATEV klaar','trust.btw':'Belastingreserve, altijd actueel',
       'app.incoming':'Inkomsten deze maand','app.scanned':'Gescand','app.receiptMeta':'Btw 9% · automatisch herkend · 23 mei',
-      'problem.overline':'De kloof','problem.h2':'Kleine bedrijven zitten klem tussen spreadsheets en te ingewikkelde software.',
+      'problem.overline':'De kloof','problem.h2':'Kleine bedrijven zitten klem tussen spreadsheets en software gemaakt voor boekhouders.',
       'problem.quote':'"Ik wil gewoon mijn bonnen scannen, een factuur sturen en weten wat ik de Belastingdienst schuldig ben — zonder boekhouden te leren."',
-      'problem.cite':'— De zzp\u2019er, elke maand',
-      'p.limitedOcr.t':'Beperkte OCR','p.limitedOcr.d':'Bonnen leven nog in schoenendozen en mailboxen.',
-      'p.toolSprawl.t':'Wildgroei aan tools','p.toolSprawl.d':'Eén app voor facturen, een andere voor tijd, weer een andere voor belastingen.',
-      'p.noCollab.t':'Geen samenwerklaag','p.noCollab.d':"Samenwerken met een accountant betekent nog steeds pdf's mailen.",
-      'p.pricingGap.t':'Prijskloof','p.pricingGap.d':'Instaptools zijn speelgoed; pro-tools kosten €30–60 per maand.',
-      'p.localRails.t':'Lokale betaalrails','p.localRails.d':'iDEAL en SEPA zijn bijzaak bij de meeste bestaande spelers.',
-      'p.noCommunity.t':'Geen community','p.noCommunity.d':'Geen manier om lokale, betrouwbare partners in de app te vinden en te betalen.',
-      'features.overline':'Het product','features.h2':"Eén suite. Alles wat een Nederlandse zzp'er écht nodig heeft.",
-      'features.sub':'Gebouwd voor ondernemers, niet voor accountants. Zes kernmodules, allemaal in één app.',
-      'f.dashboard.t':'Dashboard','f.dashboard.b1':'Aanpasbare, versleepbare widgets','f.dashboard.b2':'Live grafiek van inkomsten vs. uitgaven','f.dashboard.b3':'AI-assistent met tips voor je volgende stap',
-      'f.ocr.t':'OCR-upload','f.ocr.b1':'Camerascan of pdf-upload','f.ocr.b2':'Vision-LLM haalt leverancier, datum, bedrag en btw eruit','f.ocr.b3':'Bewerkbaar vóór opslaan — 95% nauwkeurig',
-      'f.finances.t':'Financiën','f.finances.b1':'Uitgaven bijhouden, automatisch gecategoriseerd','f.finances.b2':'Factuurbeheer met status (open / betaald)','f.finances.b3':'Btw automatisch reserveren — nooit meer een kwartaal missen',
-      'f.projects.t':'Projecten','f.projects.b1':'Project-W&V: facturatie vs. kosten vs. marge','f.projects.b2':'Koppel bonnen en facturen aan projecten','f.projects.b3':'To-dolijst en agenda-integratie per project',
-      'f.network.t':'Zakelijk netwerk','f.network.b1':'Interactieve bedrijvenkaart van Nederland + Duitsland','f.network.b2':'Filter op vak, afstand, beschikbaarheid en beoordeling','f.network.b3':'Bericht en samenwerkingsverzoek met één klik',
-      'f.calendar.t':'Agenda','f.calendar.b1':'Week-, tweewekelijkse en maandweergave','f.calendar.b2':'Afspraken gekoppeld aan projecten en facturen','f.calendar.b3':'Herinneringen voor btw-data en factuuropvolging',
-      'phase.label':'Fase 2 (maand 13–24) voegt toe →','phase.p1':'AI-bedrijfschatbot','phase.p2':'Samenwerkingscontracten','phase.p3':'iDEAL Open Banking','phase.p4':'Marktplaats',
-      'community.overline':'Lokale community-activatie','community.h2':'Je netwerk levert je geld op. Het onze ook.',
-      'community.body':'Sum-IT is niet zomaar boekhoudsoftware — het is de betaallaag voor je lokale ondernemersgemeenschap. Wanneer je een onderaannemer betaalt, een lokale elektricien inhuurt of een klus afrekent met een partner van onze Bedrijvenkaart, loopt die transactie via de community-rails van Sum-IT.',
-      'community.r1.l':'Vinden & betalen in één flow','community.r1.d':'Ontdek een lokaal bedrijf op de kaart, spreek de klus af en betaal direct in Sum-IT — geen geschakel met bank-apps.',
-      'community.r2.l':'Een kleine fee financiert het platform','community.r2.d':'Elke zakelijke betaling tussen Sum-IT-leden draagt een kleine platformtransactiefee. Zo groeit Sum-IT duurzaam — niet door jou meer per maand te laten betalen.',
-      'community.r3.l':'Gratis maanden voor doorverwijzingen','community.r3.d':'Breng een jaarlid naar de community en verdien een maand gratis. Hoe meer je netwerk groeit, hoe meer iedereen bespaart.',
-      'community.cta':'Bekijk hoe community-betalingen werken →',
+      'problem.cite':"— elke zzp'er, elk kwartaal",
+      'p.limitedOcr.t':'Bonnenchaos','p.limitedOcr.d':'Bonnen liggen nog in schoenendozen, dashboardkastjes en mailboxen.',
+      'p.toolSprawl.t':'Handmatige btw-invoer','p.toolSprawl.d':'Datums en btw-bedragen met de hand intypen is traag en foutgevoelig.',
+      'p.noCollab.t':'Geen zicht op wat een klus oplevert','p.noCollab.d':'Projectrendement is pas zichtbaar als het werk al gedaan is.',
+      'p.pricingGap.t':'Onzekere belastingreserve','p.pricingGap.d':"De grote vraag — 'hoeveel moet ik afdragen?' — blijft tot de deadline onbeantwoord.",
+      'p.localRails.t':'Tools voor de verkeerde persoon','p.localRails.d':'Pro-boekhoudtools gaan ervan uit dat je boekhoudtaal spreekt. De meeste ondernemers niet — en willen dat ook niet.',
+      'p.noCommunity.t':'Gedoe bij de overdracht','p.noCommunity.d':"Schone data naar een boekhouder of Steuerberater krijgen betekent nog steeds pdf's heen en weer mailen.",
+      'features.overline':'Het product','features.h2':'Alles wat een kleine onderneming nodig heeft om grip op de cijfers te houden.',
+      'features.sub':'Gemaakt voor de ondernemer die het werk doet, niet voor boekhouders. Vier modules, één app — bon erin, belastingklaar eruit.',
+      'f.ocr.t':'OCR-upload — het hart van Sum-IT','f.ocr.b1':'Fotografeer een bon of upload een pdf — JPG, PDF, HEIC','f.ocr.b2':'Leest leverancier, datum, netto, btw, totalen & factuurnummer automatisch','f.ocr.b3':'Herkent NL-, EN- en DE-documenten direct','f.ocr.b4':'Stelt de juiste btw-code voor — jij bevestigt vóór opslaan',
+      'f.finances.t':'Financiën','f.finances.b1':'Uitgaven, facturen en belastingreserve op één plek','f.finances.b2':'Facturen vooraf ingevuld met je gegevens en logo; status bijgehouden','f.finances.b3':'Herinneringen voor te late betalingen automatisch verstuurd','f.finances.b4':'Btw (NL) en USt (DE) correct verwerkt, incl. Duitse §14-regels',
+      'f.dashboard.t':"Dashboard & KPI's",'f.dashboard.b1':'Drie heldere kaarten — geld erin, geld eruit, belastingreserve','f.dashboard.b2':'Grafiek inkomsten vs. uitgaven en de week vooruit','f.dashboard.b3':'Versleepbare widgets op desktop; een heldere donut op mobiel',
+      'f.projects.t':'Projecten','f.projects.b1':'Een winst-en-verliesoverzicht per klus — facturen erin, kosten eruit','f.projects.b2':'Koppel bonnen en facturen met één tik aan een project','f.projects.b3':'Zie in realtime welke klussen écht geld opleveren',
+      'phase.label':'Komt later (Fase 2):','phase.p1':'Lokale community','phase.p2':'Samenwerkingscontracten','phase.p3':'Native apps · iDEAL · Open Banking','phase.p4':'AI-assistent',
+      'community.overline':'Lokale community · Fase 2','community.h2':'Een netwerk van lokale ondernemers — binnenkort in Sum-IT.',
+      'community.body':'Je werk draait om de mensen om je heen: onderaannemers, leveranciers, partners. We bouwen aan een eenvoudige manier om betrouwbare lokale ondernemers te vinden en te benaderen, direct in Sum-IT — zodat je volgende samenwerkingspartner één zoekopdracht verderop zit in plaats van in een stapel visitekaartjes. Dit komt eraan als onderdeel van Fase 2.',
+      'community.r1.l':'Vind betrouwbare lokale ondernemers','community.r1.d':'Zoek onderaannemers, leveranciers en partners bij jou in de buurt, direct in Sum-IT.',
+      'community.r2.l':'Je volgende partner, één zoekopdracht verderop','community.r2.d':'Geen stapels visitekaartjes meer — ontdek een bedrijf en neem met één tik contact op.',
+      'community.r3.l':'Eerst de kern, dan de community','community.r3.d':'We leveren eerst de financiële tools, daarna openen we de community. Geen data beloofd.',
+      'community.cta':'Onderdeel van de Fase 2-roadmap →',
       'trade.construction':'Bouw','trade.electrician':'Elektricien','trade.plumbing':'Loodgieter','trade.solar':'Zonnepanelen','trade.carpentry':'Timmerwerk',
-      'paycard.sub':'Bouw · ★ 4.8','paycard.btn':'Nu betalen',
-      'cstat.1':'Maandabonnement voor toegang tot de community-kaart','cstat.2n':'Klein %','cstat.2':'Platformfee per B2B-transactie (financiert onze groei)','cstat.3n':'1 maand gratis','cstat.3':'Verdiend voor elk jaarlid dat je aanbrengt',
-      'how.overline':'Ervaring','how.h2':'Gebouwd voor hoe kleine bedrijven écht werken.',
-      'how.web.label':'Web · Diepe focus','how.web.cap':'Desktop voor afletteren, rapporten, projecten en accountant-exports.',
-      'how.mobile.label':'Mobiel · iOS & Android','how.scanBtn':'BON SCANNEN','how.sendBtn':'FACTUUR STUREN','how.mobile.cap':'Telefoon voor het moment — scannen, offreren, versturen, betaald worden.',
-      'how.hood.label':'Onder de motorkap','how.stack.t':'Stack','how.ocr.t':'OCR-engine','how.ocr.d':'Vision-LLM + regelgebaseerde fallback, 95% F1','how.integrations.t':'Integraties','how.integrations.d':'iDEAL · PSD2-banken · e-Boekhouden-export','how.compliance.t':'Compliance','how.compliance.d':'AVG, EU-dataopslag, SOC 2 in aantocht',
-      'compare.overline':'Waarom Sum-IT wint','compare.h2':'Wij vullen het gat dat de Nederlandse markt niet heeft gedicht.',
-      'compare.h.cap':'Mogelijkheid','compare.h.inc':'Bestaande spelers',
-      'cmp.1.c':'OCR-scannen','cmp.1.i':'Add-on of aparte app','cmp.1.s':'Vanaf dag één ingebouwd',
-      'cmp.2.c':'Btw-reservering','cmp.2.i':'Handmatig berekenen','cmp.2.s':'Automatisch bij elke factuur',
-      'cmp.3.c':'iDEAL','cmp.3.i':'Integratie als bijzaak','cmp.3.s':'Native betaallink op elke factuur',
-      'cmp.4.c':'Project- + leveranciers-W&V','cmp.4.i':'Alleen in enterprise-niveau','cmp.4.s':'Inbegrepen in elk betaald plan',
-      'cmp.5.c':'Community-marktplaats','cmp.5.i':'Geen','cmp.5.s':'Ontdekken, doorverwijzen, samenwerken',
-      'cmp.6.c':'B2B-transactielaag','cmp.6.i':'Geen','cmp.6.s':'Kleine fee financiert duurzame groei',
-      'cmp.7.c':'Mobile-native','cmp.7.i':'Desktop-first','cmp.7.s':'Phone-first, offline-klaar',
-      'cmp.8.c':'Instapprijs','cmp.8.i':'€25–60 / maand','cmp.8.s':'Gratis, daarna €9 / maand',
-      'compare.note':'Bestaande spelers bouwen voor accountants; wij bouwen voor de zzp\u2019er die geen boekhouden wil leren.',
-      'pricing.overline':'Prijzen','pricing.h2':'Gratis om te beginnen. Eerlijk om te groeien.','price.mo':'/mnd','price.popular':'Populair','price.cta':'Aan de slag →',
-      'price.free.t':'Community Gratis','price.free.f1':'Scan tot 20 bonnen/maand','price.free.f2':'Basisdashboard','price.free.f3':'Vermelding in community-gids',
-      'price.starter.t':'Starter','price.starter.f1':'Onbeperkt OCR + facturatie','price.starter.f2':'Btw automatisch reserveren','price.starter.f3':'iDEAL-betaallinks','price.starter.f4':'e-Boekhouden-export',
-      'price.growth.t':'Groei','price.growth.f1':'Alles uit Starter','price.growth.f2':'Projecten + leveranciers-W&V','price.growth.f3':'Samenwerking met accountant','price.growth.f4':'Open Banking-synchronisatie',
-      'price.pro.t':'Community Pro','price.pro.f1':'Alles uit Groei','price.pro.f2':'Marktplaats-etalage','price.pro.f3':'Samenwerkingscontracten','price.pro.f4':'Prioriteitssupport',
-      'expansion.label':'Uitbreidingsomzet (na MVP)','expansion.p1':'Marktplaats','expansion.p2':'Transacties','expansion.p3':'Betalingen','expansion.p4':'AI-niveau',
+      'paycard.sub':'Bouw · ★ 4.8','paycard.btn':'Verbinden',
+      'how.overline':'Ervaring','how.h2':'Gemaakt om zo makkelijk mogelijk te zijn.',
+      'how.web.label':'Web · het zware werk','how.web.cap':'OCR nakijken, het kwartaal afletteren, project-W&V en boekhouder-exports.',
+      'how.mobile.label':'Mobiel · op het moment zelf','how.scanBtn':'BON SCANNEN','how.sendBtn':'FACTUUR STUREN','how.mobile.cap':'Scannen, offreren, versturen, je belastingreserve checken. In seconden, vanuit je broekzak. PWA nu; native iOS & Android in Fase 2.',
+      'security.overline':'Vertrouwen & beveiliging','security.h2':'Sum-IT beheert je financiële leven, dus het is gebouwd om daar veilig mee om te gaan.',
+      'sec.1.t':'Je data blijft in de EU','sec.1.d':"Alle data wordt uitsluitend in AWS EU-regio's opgeslagen en verwerkt — een harde AVG-eis, nooit bijzaak.",
+      'sec.2.t':'AVG by design','sec.2.d':'Volledige naleving bij verzamelen, opslaan en verwerken. Je kunt je persoonsgegevens op elk moment laten verwijderen.',
+      'sec.3.t':'Audit-veilige administratie','sec.3.d':'Boekingen kunnen niet stilletjes worden gewijzigd; elke correctie krijgt een tijdstempel ten opzichte van het origineel en brondocumenten worden bewaard — conform NL-bewaarregels en Duitse GoBD.',
+      'sec.4.t':'End-to-end versleuteld','sec.4.d':'Data is versleuteld tijdens transport (HTTPS/TLS) en in rust, met toegangscontrole op elke laag.',
+      'compare.overline':'Waarom Sum-IT wint','compare.h2':'Wij dichten het gat dat de markt openliet voor kleine ondernemers.',
+      'compare.h.cap':'Mogelijkheid','compare.h.inc':'Tools voor boekhouders',
+      'cmp.1.c':'Bonnen vastleggen','cmp.1.i':'Add-on of aparte app','cmp.1.s':'Ingebouwd — de kern van de app',
+      'cmp.2.c':'Belastingreserve (btw/USt)','cmp.2.i':'Handmatig berekenen','cmp.2.s':'Voor je bijgehouden en voorspeld',
+      'cmp.3.c':'Overdracht aan boekhouder','cmp.3.i':'Handmatig afletteren','cmp.3.s':'Schone CSV- en DATEV-export',
+      'cmp.4.c':'Prijs','cmp.4.i':'€25–60 / maand, in niveaus','cmp.4.s':'Eén plan, €11 / maand, geen niveaus',
+      'compare.note':'Bestaande spelers bouwen voor boekhouders; wij bouwen voor de ondernemer die geen boekhouden wil leren.',
+      'pricing.overline':'Prijzen','pricing.h2':'Eén abonnement. Alles inbegrepen. €11 per maand.','pricing.sub':"Geen niveaus, geen upsells, geen 'die functie kost extra.' Iedereen krijgt dezelfde Sum-IT — alle modules, alle updates — voor één eerlijke prijs.",
+      'price.badge':'Eén plan','price.single.t':'Sum-IT','price.mo':'/mnd','price.cta':'Aan de slag →',
+      'price.f1':'Onbeperkt bonnen scannen (OCR)','price.f2':'Facturatie met NL- + DE-compliance','price.f3':'Automatische btw-/USt-reserve & prognose','price.f4':'CSV- en DATEV-compatibele boekhouder-export','price.f5':'Winst-en-verlies per project','price.f6':"Dashboard, KPI's & herinneringen in de app",'price.f7':'EU-dataopslag & AVG inbegrepen','price.f8':'Alle toekomstige updates inbegrepen',
+      'pricing.note':"Waarom één prijs? Omdat je niet hoeft uit te zoeken welk 'niveau' je bent. Iedereen krijgt het hele product. Dat is het idee.",
       'team.overline':'De mensen','team.h2':'Een oprichtersteam rond product, markt en community.',
-      'team.role1':'Product & Operatie','team.role2':'Business Development','team.role3':'Community & Partnerschappen',
-      'team.bio1':'Tienjarig ondernemer met gefinancierde ventures in technologie, farma en zorg. Leidt productontwikkeling, technologie-architectuur en engineering bij Sum-IT.',
-      'team.bio2':'Mkb-ondernemer met een bedrijf van €100K bij Amsterdam en diepe wortels in de Nederlandse mkb-community. Brengt eerstehands kennis van lokale mkb-behoeften en leidt netwerkopbouw, sales en klantenwerving bij Sum-IT.',
-      'team.bio3':'CFO bij een Europese bouwgroep met grondige kennis van het finance- en accountinglandschap in de EU. Brengt het perspectief van de CFO-koper naar Sum-IT en verankert de expansie in de DACH-markt.',
-      'team.legal.k':'Structuur:','team.legal.v':'Nederlandse bv met Ian als lokale directeur — borgt EU-subsidiabiliteit, AVG-dataopslag en een aanspreekbare juridische aanwezigheid.',
+      'team.role1':'Product & Operatie','team.role2':'Markt & Klanten','team.role3':'Finance & DACH',
+      'team.bio1':'Ervaren ondernemer met gefinancierde ventures in technologie, farma en zorg. Leidt productontwikkeling, technische richting en engineering bij Sum-IT.',
+      'team.bio2':"Mkb-ondernemer met diepe wortels in de Nederlandse zelfstandigen-community. Begrijpt uit eerste hand hoe zzp'ers en kleine ondernemers echt werken, en leidt marktintroductie, klantenwerving en lokale netwerkopbouw.",
+      'team.bio3':'CFO bij een Europese groep met grondige kennis van EU-finance, accounting en de praktijk van de Duitse Steuerberater-workflow. Verankert de DACH-expansie van Sum-IT en de DATEV-klare aanpak.',
       'market.1.l':"Mkb'ers in Europa",'market.1.d':'De grootste werkgeversklasse van het continent.',
       'market.2.l':'Zijn micro-ondernemingen','market.2.d':'Minder dan 10 medewerkers — onze kernklant.',
-      'market.3.l':'Gebruik cloudboekhouden','market.3.d':'Twee derde werkt nog op papier en in spreadsheets.',
-      'final.h2':'Laten we de boekhoudsuite bouwen die het Europese mkb echt verdient.',
-      'final.s1':'betalende klanten (jaar 2)','final.s2':'communityleden','final.s3':'ARR run-rate','final.s4':'actieve markten','final.cta2':'Lees het pitch deck',
-      'brand.tagline':'Samen naar de top','foot.tag':"De suite voor bedrijfsbeheer voor Nederlandse & Europese zzp'ers en kleine bedrijven.",
-      'foot.product':'Product','foot.roadmap':'Roadmap','foot.ocr':'OCR-upload','foot.map':'Bedrijvenkaart','foot.company':'Bedrijf','foot.about':'Over ons','foot.investors':'Investeerders','foot.gdpr':'AVG / Privacy','foot.terms':'Voorwaarden','foot.contact':'Contact',
-      'foot.bottom':'© 2026 Sum-IT BV · Gevestigd in Nederland · AVG-conform · Gebouwd door Abhishek, Ian & Sebastian'
+      'market.3.l':'Nog op papier & spreadsheets','market.3.d':'De overstap naar eenvoudige cloudtools begint nu pas.',
+      'final.h2':'Laten we het financiële hulpmiddel bouwen dat het Europese mkb echt verdient.',
+      'final.lede':'We beginnen in Nederland en Duitsland en groeien van daaruit — bonnen vastleggen, factureren, fiscale duidelijkheid en een community die eraan komt.','final.cta2':'Lees het pitch deck',
+      'brand.tagline':'Boekhouden voor Europa','foot.tag':"Het eenvoudige financiële hulpmiddel voor zzp'ers en kleine ondernemers in Nederland en Duitsland.",
+      'foot.product':'Product','foot.roadmap':'Roadmap','foot.ocr':'OCR-upload','foot.security':'Beveiliging','foot.company':'Bedrijf','foot.about':'Over ons','foot.investors':'Investeerders','foot.gdpr':'AVG / Privacy','foot.terms':'Voorwaarden','foot.contact':'Contact',
+      'foot.bottom':'© 2026 Sum-IT BV · Gevestigd in Nederland · AVG-conform · EU-dataopslag'
     },
     de: {
       'nav.features':'Funktionen','nav.community':'Community','nav.pricing':'Preise','nav.team':'Team',
-      'cta.startFree':'Kostenlos starten →',
-      'hero.overline':'Das Business-OS für niederländische & europäische KMU',
-      'hero.h1':'Deine Belege, Rechnungen und Steuern — erledigt.',
-      'hero.sub':'Sum-IT ist die integrierte Business-Suite für Freelancer und kleine Unternehmen in den Niederlanden und Deutschland. Belege scannen, Rechnungen senden, Projekte verfolgen und dein lokales Netzwerk ausbauen — in einer App.',
-      'hero.cta1':'Kostenlos starten — für €0','hero.cta2':"So funktioniert's",
-      'trust.gdpr':'DSGVO-konform','trust.ideal':'iDEAL nativ','trust.btw':'USt. automatisch zurückgelegt',
+      'hero.overline':'Weniger Zeit für Papierkram. Mehr Zeit für deine eigentliche Arbeit.',
+      'hero.h1':'Beleg knipsen. Erledigt.','hero.cta2':"So funktioniert's",
+      'hero.sub':'Sum-IT macht aus dem Foto eines Belegs in Sekunden einen sauberen, steuerfertigen Eintrag. Belege scannen, Rechnungen senden, sehen, was jeder Auftrag einbringt, und immer wissen, was du dem Finanzamt schuldest — gemacht für Selbstständige und Kleinunternehmen in den Niederlanden und Deutschland, ganz ohne Buchhaltungswissen.',
+      'trust.gdpr':'DSGVO-konform · nur EU-Daten','trust.ideal':'NL BTW + DE DATEV bereit','trust.btw':'Steuerrücklage, immer aktuell',
       'app.incoming':'Einnahmen diesen Monat','app.scanned':'Gescannt','app.receiptMeta':'USt. 9% · automatisch erkannt · 23. Mai',
-      'problem.overline':'Die Lücke','problem.h2':'Kleine Unternehmen stecken zwischen Tabellen und überfrachteter Software fest.',
+      'problem.overline':'Die Lücke','problem.h2':'Kleine Unternehmen stecken zwischen Tabellen und Software fest, die für Buchhalter gebaut ist.',
       'problem.quote':'"Ich will einfach meine Belege scannen, eine Rechnung schicken und wissen, was ich dem Finanzamt schulde — ohne Buchhaltung zu lernen."',
-      'problem.cite':'— Der Freelancer, jeden Monat',
-      'p.limitedOcr.t':'Begrenzte OCR','p.limitedOcr.d':'Belege liegen noch in Schuhkartons und E-Mail-Postfächern.',
-      'p.toolSprawl.t':'Tool-Wildwuchs','p.toolSprawl.d':'Eine App für Rechnungen, eine für Zeit, eine für Steuern.',
-      'p.noCollab.t':'Keine Zusammenarbeit','p.noCollab.d':'Mit dem Steuerberater zu arbeiten heißt noch immer PDFs mailen.',
-      'p.pricingGap.t':'Preislücke','p.pricingGap.d':'Einsteiger-Tools sind Spielzeug; Profi-Tools kosten €30–60 pro Monat.',
-      'p.localRails.t':'Lokale Zahlungswege','p.localRails.d':'iDEAL und SEPA sind bei den meisten Anbietern nur Nebensache.',
-      'p.noCommunity.t':'Keine Community','p.noCommunity.d':'Keine Möglichkeit, lokale, vertrauenswürdige Partner in der App zu finden und zu bezahlen.',
-      'features.overline':'Das Produkt','features.h2':'Eine Suite. Alles, was ein Freelancer wirklich braucht.',
-      'features.sub':'Gebaut für Macher, nicht für Buchhalter. Sechs Kernmodule, alle in einer App.',
-      'f.dashboard.t':'Dashboard','f.dashboard.b1':'Anpassbare, ziehbare Widgets','f.dashboard.b2':'Live-Grafik Einnahmen vs. Ausgaben','f.dashboard.b3':'KI-Begleiter mit Tipps für den nächsten Schritt',
-      'f.ocr.t':'OCR-Upload','f.ocr.b1':'Kamera-Scan oder PDF-Upload','f.ocr.b2':'Vision-LLM erkennt Lieferant, Datum, Betrag und USt.','f.ocr.b3':'Bearbeitbar vor dem Speichern — 95% Genauigkeit',
-      'f.finances.t':'Finanzen','f.finances.b1':'Ausgaben erfassen, automatisch kategorisiert','f.finances.b2':'Rechnungsverwaltung mit Status (offen / bezahlt)','f.finances.b3':'USt. automatisch zurücklegen — kein Steuerquartal mehr verpassen',
-      'f.projects.t':'Projekte','f.projects.b1':'Projekt-GuV: Umsatz vs. Kosten vs. Marge','f.projects.b2':'Belege und Rechnungen mit Projekten verknüpfen','f.projects.b3':'To-do-Liste und Kalender pro Projekt',
-      'f.network.t':'Geschäftsnetzwerk','f.network.b1':'Interaktive Unternehmenskarte für die Niederlande + Deutschland','f.network.b2':'Filtern nach Gewerk, Entfernung, Verfügbarkeit, Bewertung','f.network.b3':'Nachricht und Kooperationsanfrage mit einem Klick',
-      'f.calendar.t':'Kalender','f.calendar.b1':'Wochen-, Zweiwochen- und Monatsansicht','f.calendar.b2':'Termine mit Projekten und Rechnungen verknüpft','f.calendar.b3':'Erinnerungen für USt.-Termine und Rechnungs-Follow-ups',
-      'phase.label':'Phase 2 (Monate 13–24) ergänzt →','phase.p1':'KI-Business-Chatbot','phase.p2':'Kooperationsverträge','phase.p3':'iDEAL Open Banking','phase.p4':'Marktplatz',
-      'community.overline':'Lokale Community-Aktivierung','community.h2':'Dein Netzwerk bringt dir Geld. Unseres auch.',
-      'community.body':'Sum-IT ist nicht einfach nur Buchhaltungssoftware — es ist die Zahlungsebene für deine lokale Unternehmensgemeinschaft. Wenn du einen Subunternehmer bezahlst, einen lokalen Elektriker beauftragst oder einen Auftrag mit einem Partner von unserer Unternehmenskarte abrechnest, läuft diese Transaktion über die Community-Rails von Sum-IT.',
-      'community.r1.l':'Finden & bezahlen in einem Fluss','community.r1.d':'Entdecke ein lokales Unternehmen auf der Karte, vereinbare den Auftrag und zahle direkt in Sum-IT — ohne App-Wechsel zur Bank.',
-      'community.r2.l':'Eine kleine Gebühr finanziert die Plattform','community.r2.d':'Jede Geschäftszahlung zwischen Sum-IT-Mitgliedern enthält eine kleine Plattform-Transaktionsgebühr. So wächst Sum-IT nachhaltig — nicht indem wir dir mehr pro Monat berechnen.',
-      'community.r3.l':'Gratis-Monate für Empfehlungen','community.r3.d':'Bring ein Jahresmitglied in die Community und erhalte einen Gratis-Monat. Je größer dein Netzwerk, desto mehr spart jeder.',
-      'community.cta':'So funktionieren Community-Zahlungen →',
+      'problem.cite':'— jeder Freelancer, jedes Quartal',
+      'p.limitedOcr.t':'Beleg-Chaos','p.limitedOcr.d':'Belege liegen noch in Schuhkartons, Handschuhfächern und E-Mail-Postfächern.',
+      'p.toolSprawl.t':'Manuelle USt-Eingabe','p.toolSprawl.d':'Datum und USt-Beträge von Hand einzutippen ist langsam und fehleranfällig.',
+      'p.noCollab.t':'Keine Ahnung, was ein Auftrag einbringt','p.noCollab.d':'Die Rentabilität eines Projekts ist erst sichtbar, wenn die Arbeit schon getan ist.',
+      'p.pricingGap.t':'Unsichere Steuerrücklage','p.pricingGap.d':"Die große Frage — 'wie viel schulde ich?' — bleibt bis zur Frist unbeantwortet.",
+      'p.localRails.t':'Tools für die falsche Person','p.localRails.d':'Profi-Buchhaltungstools setzen voraus, dass du Buchhaltung sprichst. Die meisten Kleinunternehmer nicht — und wollen es auch nicht.',
+      'p.noCommunity.t':'Übergabe-Kopfschmerzen','p.noCommunity.d':'Saubere Daten an einen Buchhalter oder Steuerberater zu bekommen heißt noch immer, PDFs hin und her zu mailen.',
+      'features.overline':'Das Produkt','features.h2':'Alles, was ein kleines Unternehmen braucht, um den Überblick übers Geld zu behalten.',
+      'features.sub':'Gemacht für die Person, die die Arbeit macht, nicht für Buchhalter. Vier Module, eine App — Beleg rein, steuerfertig raus.',
+      'f.ocr.t':'OCR-Upload — das Herz von Sum-IT','f.ocr.b1':'Beleg fotografieren oder PDF hochladen — JPG, PDF, HEIC','f.ocr.b2':'Liest Lieferant, Datum, Netto, USt, Summen & Rechnungsnummer automatisch','f.ocr.b3':'Erkennt NL-, EN- und DE-Dokumente im Handumdrehen','f.ocr.b4':'Schlägt den richtigen Steuercode vor — du bestätigst vor dem Speichern',
+      'f.finances.t':'Finanzen','f.finances.b1':'Ausgaben, Rechnungen und Steuerrücklage an einem Ort','f.finances.b2':'Rechnungen vorausgefüllt mit deinen Daten und Logo; Status verfolgt','f.finances.b3':'Mahnungen bei Überfälligkeit automatisch versendet','f.finances.b4':'BTW (NL) und USt (DE) korrekt behandelt, inkl. deutscher §14-Regeln',
+      'f.dashboard.t':'Dashboard & KPIs','f.dashboard.b1':'Drei klare Karten — Geld rein, Geld raus, Steuerrücklage','f.dashboard.b2':'Einnahmen-vs-Ausgaben-Grafik und die Woche voraus','f.dashboard.b3':'Ziehbare Widgets am Desktop; ein klarer Donut auf dem Handy',
+      'f.projects.t':'Projekte','f.projects.b1':'Eine GuV-Ansicht pro Auftrag — Rechnungen rein, Kosten raus','f.projects.b2':'Belege und Rechnungen mit einem Tipp einem Projekt zuordnen','f.projects.b3':'Sieh in Echtzeit, welche Aufträge wirklich Geld bringen',
+      'phase.label':'Kommt später (Phase 2):','phase.p1':'Lokale Community','phase.p2':'Kooperationsverträge','phase.p3':'Native Apps · iDEAL · Open Banking','phase.p4':'KI-Assistent',
+      'community.overline':'Lokale Community · Phase 2','community.h2':'Ein Netzwerk lokaler Betriebe — bald in Sum-IT.',
+      'community.body':'Deine Arbeit lebt von den Menschen um dich herum: Subunternehmer, Lieferanten, Partner. Wir bauen eine einfache Möglichkeit, vertrauenswürdige lokale Betriebe direkt in Sum-IT zu finden und zu kontaktieren — damit dein nächster Kooperationspartner nur eine Suche entfernt ist, statt in einem Stapel Visitenkarten. Das kommt im Rahmen von Phase 2.',
+      'community.r1.l':'Finde vertrauenswürdige lokale Betriebe','community.r1.d':'Suche Subunternehmer, Lieferanten und Partner in deiner Nähe, direkt in Sum-IT.',
+      'community.r2.l':'Dein nächster Partner, nur eine Suche entfernt','community.r2.d':'Keine Stapel Visitenkarten mehr — entdecke einen Betrieb und melde dich mit einem Tipp.',
+      'community.r3.l':'Erst die Basis, dann die Community','community.r3.d':'Wir liefern zuerst die Finanztools, dann öffnen wir die Community. Keine Termine versprochen.',
+      'community.cta':'Teil der Phase-2-Roadmap →',
       'trade.construction':'Bau','trade.electrician':'Elektriker','trade.plumbing':'Klempner','trade.solar':'Solar','trade.carpentry':'Tischlerei',
-      'paycard.sub':'Bau · ★ 4.8','paycard.btn':'Jetzt zahlen',
-      'cstat.1':'Monatsabo für den Zugang zur Community-Karte','cstat.2n':'Kleiner %','cstat.2':'Plattformgebühr pro B2B-Transaktion (finanziert unser Wachstum)','cstat.3n':'1 Monat gratis','cstat.3':'Für jedes geworbene Jahresmitglied',
-      'how.overline':'Erlebnis','how.h2':'Gebaut für die Art, wie kleine Unternehmen wirklich arbeiten.',
-      'how.web.label':'Web · Tiefe Arbeit','how.web.cap':'Desktop für Abstimmung, Berichte, Projekte und Steuerberater-Exporte.',
-      'how.mobile.label':'Mobil · iOS & Android','how.scanBtn':'BELEG SCANNEN','how.sendBtn':'RECHNUNG SENDEN','how.mobile.cap':'Handy für den Moment — scannen, anbieten, senden, bezahlt werden.',
-      'how.hood.label':'Unter der Haube','how.stack.t':'Stack','how.ocr.t':'OCR-Engine','how.ocr.d':'Vision-LLM + regelbasiertes Fallback, 95% F1','how.integrations.t':'Integrationen','how.integrations.d':'iDEAL · PSD2-Banken · e-Boekhouden-Export','how.compliance.t':'Compliance','how.compliance.d':'DSGVO, EU-Datenhaltung, SOC 2 in Arbeit',
-      'compare.overline':'Warum Sum-IT gewinnt','compare.h2':'Wir schließen die Lücke, die der Markt offen gelassen hat.',
-      'compare.h.cap':'Funktion','compare.h.inc':'Etablierte Anbieter',
-      'cmp.1.c':'OCR-Scannen','cmp.1.i':'Add-on oder separate App','cmp.1.s':'Von Tag eins integriert',
-      'cmp.2.c':'USt.-Rücklage','cmp.2.i':'Manuelle Berechnung','cmp.2.s':'Automatisch bei jeder Rechnung',
-      'cmp.3.c':'iDEAL','cmp.3.i':'Integration als Nebensache','cmp.3.s':'Nativer Zahlungslink auf jeder Rechnung',
-      'cmp.4.c':'Projekt- + Lieferanten-GuV','cmp.4.i':'Nur in Enterprise-Tarif','cmp.4.s':'In jedem bezahlten Plan enthalten',
-      'cmp.5.c':'Community-Marktplatz','cmp.5.i':'Keiner','cmp.5.s':'Entdecken, empfehlen, zusammenarbeiten',
-      'cmp.6.c':'B2B-Transaktionsebene','cmp.6.i':'Keine','cmp.6.s':'Kleine Gebühr finanziert nachhaltiges Wachstum',
-      'cmp.7.c':'Mobile-native','cmp.7.i':'Desktop-first','cmp.7.s':'Phone-first, offlinefähig',
-      'cmp.8.c':'Einstiegspreis','cmp.8.i':'€25–60 / Monat','cmp.8.s':'Gratis, dann €9 / Monat',
-      'compare.note':'Etablierte bauen für Buchhalter; wir bauen für den Freelancer, der keine Buchhaltung lernen will.',
-      'pricing.overline':'Preise','pricing.h2':'Kostenlos starten. Fair wachsen.','price.mo':'/Mon.','price.popular':'Beliebt','price.cta':'Loslegen →',
-      'price.free.t':'Community Gratis','price.free.f1':'Bis zu 20 Belege/Monat scannen','price.free.f2':'Basis-Dashboard','price.free.f3':'Eintrag im Community-Verzeichnis',
-      'price.starter.t':'Starter','price.starter.f1':'Unbegrenzt OCR + Rechnungen','price.starter.f2':'USt. automatisch zurücklegen','price.starter.f3':'iDEAL-Zahlungslinks','price.starter.f4':'e-Boekhouden-Export',
-      'price.growth.t':'Wachstum','price.growth.f1':'Alles aus Starter','price.growth.f2':'Projekte + Lieferanten-GuV','price.growth.f3':'Zusammenarbeit mit Steuerberater','price.growth.f4':'Open-Banking-Sync',
-      'price.pro.t':'Community Pro','price.pro.f1':'Alles aus Wachstum','price.pro.f2':'Marktplatz-Schaufenster','price.pro.f3':'Kooperationsverträge','price.pro.f4':'Priority-Support',
-      'expansion.label':'Erweiterungsumsatz (nach MVP)','expansion.p1':'Marktplatz','expansion.p2':'Transaktionen','expansion.p3':'Zahlungen','expansion.p4':'KI-Stufe',
+      'paycard.sub':'Bau · ★ 4.8','paycard.btn':'Verbinden',
+      'how.overline':'Erlebnis','how.h2':'Gebaut, um so einfach wie möglich zu sein.',
+      'how.web.label':'Web · die schwere Arbeit','how.web.cap':'OCR prüfen, das Quartal abstimmen, Projekt-GuV und Steuerberater-Exporte.',
+      'how.mobile.label':'Mobil · im richtigen Moment','how.scanBtn':'BELEG SCANNEN','how.sendBtn':'RECHNUNG SENDEN','how.mobile.cap':'Scannen, anbieten, senden, Steuerrücklage prüfen. In Sekunden, aus der Hosentasche. PWA heute; native iOS & Android in Phase 2.',
+      'security.overline':'Vertrauen & Sicherheit','security.h2':'Sum-IT verwaltet dein finanzielles Leben, also ist es gebaut, sicher damit umzugehen.',
+      'sec.1.t':'Deine Daten bleiben in der EU','sec.1.d':'Alle Daten werden ausschließlich in AWS-EU-Regionen gespeichert und verarbeitet — eine harte DSGVO-Anforderung, nie ein nachträglicher Gedanke.',
+      'sec.2.t':'DSGVO by design','sec.2.d':'Volle Konformität bei Erhebung, Speicherung und Verarbeitung. Du kannst die Löschung deiner personenbezogenen Daten jederzeit verlangen.',
+      'sec.3.t':'Audit-sichere Aufzeichnungen','sec.3.d':'Datensätze können nicht stillschweigend geändert werden; jede Korrektur wird gegenüber dem Original mit Zeitstempel versehen und Quelldokumente werden aufbewahrt — gemäß NL-Aufbewahrungsregeln und deutscher GoBD.',
+      'sec.4.t':'Ende-zu-Ende verschlüsselt','sec.4.d':'Daten sind bei der Übertragung (HTTPS/TLS) und im Ruhezustand verschlüsselt, mit Zugriffskontrollen auf jeder Ebene.',
+      'compare.overline':'Warum Sum-IT gewinnt','compare.h2':'Wir schließen die Lücke, die der Markt für kleine Betriebe offen ließ.',
+      'compare.h.cap':'Funktion','compare.h.inc':'Tools für Buchhalter',
+      'cmp.1.c':'Belegerfassung','cmp.1.i':'Add-on oder separate App','cmp.1.s':'Eingebaut — der Kern der App',
+      'cmp.2.c':'Steuerrücklage (BTW/USt)','cmp.2.i':'Manuelle Berechnung','cmp.2.s':'Für dich verfolgt und prognostiziert',
+      'cmp.3.c':'Übergabe an Buchhalter','cmp.3.i':'Manueller Abgleich','cmp.3.s':'Saubere CSV- und DATEV-Exporte',
+      'cmp.4.c':'Preis','cmp.4.i':'€25–60 / Monat, gestaffelt','cmp.4.s':'Ein Tarif, 11 € / Monat, keine Stufen',
+      'compare.note':'Etablierte bauen für Buchhalter; wir bauen für die Person, die keine Buchhaltung lernen will.',
+      'pricing.overline':'Preise','pricing.h2':'Ein Tarif. Alles inklusive. 11 € im Monat.','pricing.sub':"Keine Stufen, keine Upsells, kein 'diese Funktion kostet extra.' Alle bekommen dasselbe Sum-IT — jedes Modul, jedes Update — zu einem fairen Preis.",
+      'price.badge':'Ein Tarif','price.single.t':'Sum-IT','price.mo':'/Mon.','price.cta':'Loslegen →',
+      'price.f1':'Unbegrenztes Belegscannen (OCR)','price.f2':'Rechnungen mit NL- + DE-Rechtskonformität','price.f3':'Automatische BTW-/USt-Rücklage & Prognose','price.f4':'CSV- und DATEV-kompatibler Buchhalter-Export','price.f5':'Projekt-Gewinn-und-Verlust-Tracking','price.f6':'Dashboard, KPIs & In-App-Erinnerungen','price.f7':'EU-Datenhaltung & DSGVO inklusive','price.f8':'Alle künftigen Updates inklusive',
+      'pricing.note':"Warum ein Preis? Weil du nicht herausfinden solltest, welche 'Stufe' du bist. Alle bekommen das ganze Produkt. Das ist der Punkt.",
       'team.overline':'Die Menschen','team.h2':'Ein Gründerteam rund um Produkt, Markt und Community.',
-      'team.role1':'Produkt & Betrieb','team.role2':'Geschäftsentwicklung','team.role3':'Community & Partnerschaften',
-      'team.bio1':'Unternehmer mit zehn Jahren Erfahrung und finanzierten Ventures in Technologie, Pharma und Gesundheit. Leitet Produktentwicklung, Technologie-Architektur und Engineering bei Sum-IT.',
-      'team.bio2':'KMU-Inhaber mit einem €100K-Unternehmen bei Amsterdam und tiefen Wurzeln in der niederländischen KMU-Community. Bringt Wissen aus erster Hand über lokale KMU-Bedürfnisse und leitet Netzwerkaufbau, Vertrieb und Kundengewinnung bei Sum-IT.',
-      'team.bio3':'CFO einer europäischen Baugruppe mit fundierter Kenntnis der Finanz- und Buchhaltungslandschaft in der EU. Bringt die CFO-Käuferperspektive zu Sum-IT und verankert die Expansion im DACH-Markt.',
-      'team.legal.k':'Struktur:','team.legal.v':'Niederländische BV mit Ian als lokalem Direktor — sichert EU-Förderfähigkeit, DSGVO-Datenhaltung und eine verantwortliche rechtliche Präsenz.',
+      'team.role1':'Produkt & Betrieb','team.role2':'Markt & Kunden','team.role3':'Finanzen & DACH',
+      'team.bio1':'Langjähriger Unternehmer mit finanzierten Ventures in Technologie, Pharma und Gesundheit. Leitet Produktentwicklung, technische Ausrichtung und Engineering bei Sum-IT.',
+      'team.bio2':'Kleinunternehmer mit tiefen Wurzeln in der niederländischen Selbstständigen-Community. Versteht aus erster Hand, wie Freelancer und kleine Betriebe wirklich arbeiten, und leitet Markteintritt, Kundengewinnung und lokalen Netzwerkaufbau.',
+      'team.bio3':'CFO einer europäischen Gruppe mit fundierter Kenntnis von EU-Finanzen, Buchhaltung und der Realität des deutschen Steuerberater-Workflows. Verankert die DACH-Expansion von Sum-IT und den DATEV-fähigen Ansatz.',
       'market.1.l':'KMU in Europa','market.1.d':'Die größte Arbeitgeberklasse des Kontinents.',
       'market.2.l':'Sind Kleinstunternehmen','market.2.d':'Weniger als 10 Mitarbeitende — unser Kernkunde.',
-      'market.3.l':'Cloud-Buchhaltung-Nutzung','market.3.d':'Zwei Drittel arbeiten noch mit Papier und Tabellen.',
-      'final.h2':'Lass uns die Buchhaltungs-Suite bauen, die Europas kleine Unternehmen wirklich verdienen.',
-      'final.s1':'zahlende Kunden (Jahr 2)','final.s2':'Community-Mitglieder','final.s3':'ARR run-rate','final.s4':'aktive Märkte','final.cta2':'Pitch-Deck lesen',
-      'brand.tagline':'Gemeinsam an die Spitze','foot.tag':'Die Suite für Unternehmensführung für niederländische & europäische Freelancer und kleine Unternehmen.',
-      'foot.product':'Produkt','foot.roadmap':'Roadmap','foot.ocr':'OCR-Upload','foot.map':'Unternehmenskarte','foot.company':'Unternehmen','foot.about':'Über uns','foot.investors':'Investoren','foot.gdpr':'DSGVO / Datenschutz','foot.terms':'AGB','foot.contact':'Kontakt',
-      'foot.bottom':'© 2026 Sum-IT BV · Eingetragen in den Niederlanden · DSGVO-konform · Gebaut von Abhishek, Ian & Sebastian'
+      'market.3.l':'Noch auf Papier & Tabellen','market.3.d':'Der Wechsel zu einfachen Cloud-Tools beginnt gerade erst.',
+      'final.h2':'Lass uns das Finanztool bauen, das Europas kleine Unternehmen wirklich verdienen.',
+      'final.lede':'Wir starten in den Niederlanden und Deutschland und wachsen von dort — Belegerfassung, Rechnungsstellung, Steuerklarheit und eine Community, die kommt.','final.cta2':'Pitch-Deck lesen',
+      'brand.tagline':'Buchhaltung für Europa','foot.tag':'Das einfache Finanztool für Freelancer und kleine Unternehmen in den Niederlanden und Deutschland.',
+      'foot.product':'Produkt','foot.roadmap':'Roadmap','foot.ocr':'OCR-Upload','foot.security':'Sicherheit','foot.company':'Unternehmen','foot.about':'Über uns','foot.investors':'Investoren','foot.gdpr':'DSGVO / Datenschutz','foot.terms':'AGB','foot.contact':'Kontakt',
+      'foot.bottom':'© 2026 Sum-IT BV · Eingetragen in den Niederlanden · DSGVO-konform · EU-Datenhaltung'
     }
   };
 
