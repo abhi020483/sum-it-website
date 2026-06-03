@@ -902,6 +902,7 @@
   </div>
 </footer>
 
+<script src="sb-config.js"></script>
 <script>
   // Navbar scroll
   const nav = document.getElementById('nav');
@@ -1112,6 +1113,27 @@
   let saved = 'en';
   try { saved = localStorage.getItem('sumit_lang') || 'en'; } catch (e) {}
   setLang(saved);
+
+  // ---- Live content overrides (edited in admin.html, stored in Supabase) ----
+  // Built-in text above is the fallback; any saved overrides win. If the
+  // backend is unconfigured or unreachable, the site simply shows defaults.
+  if (window.SB_URL && String(window.SB_URL).indexOf('http') === 0) {
+    fetch(window.SB_URL + '/rest/v1/content_overrides?select=lang,key,value', {
+      headers: { apikey: window.SB_ANON, Authorization: 'Bearer ' + window.SB_ANON }
+    })
+    .then(function (r) { return r.ok ? r.json() : []; })
+    .then(function (rows) {
+      if (!Array.isArray(rows) || !rows.length) return;
+      rows.forEach(function (row) {
+        if (row.value == null) return;
+        if (row.lang === 'en') EN[row.key] = row.value;
+        else if (I18N[row.lang]) I18N[row.lang][row.key] = row.value;
+      });
+      var cur = document.documentElement.lang || saved || 'en';
+      setLang(cur);
+    })
+    .catch(function () { /* offline / not set up — keep defaults */ });
+  }
 </script>
 </body>
 </html>
