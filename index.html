@@ -144,12 +144,12 @@
   .nav.scrolled .logo { color: var(--navy); }
   .logo .mark { height: 30px; width: auto; flex-shrink: 0; display: block; }
   .logo.brand { gap: 0; }
-  .logo .lockup { height: 56px; width: auto; display: block; }
+  .logo .lockup { height: 48px; width: auto; display: block; }
   .logo .lockup-dark { display: none; }
   .nav.scrolled .logo .lockup-light { display: none; }
   .nav.scrolled .logo .lockup-dark { display: block; }
   .foot-grid .logo.brand { margin-bottom: 10px; }
-  .foot-grid .logo.brand .lockup { height: 92px; }
+  .foot-grid .logo.brand .lockup { height: 62px; }
 
   /* ---------- Buttons ---------- */
   .btn {
@@ -509,8 +509,8 @@
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="#top" class="logo brand">
-      <img class="lockup lockup-light" src="sum-it-logo-white.png" alt="Sum-IT" />
-      <img class="lockup lockup-dark" src="sum-it-logo-navy.png" alt="" aria-hidden="true" />
+      <img class="lockup lockup-light" src="sum-it-logo-h-white.png" alt="Sum-IT" />
+      <img class="lockup lockup-dark" src="sum-it-logo-h-navy.png" alt="" aria-hidden="true" />
     </a>
     <div class="nav-links">
       <a href="#features" class="link" data-i18n="nav.features">Features</a>
@@ -950,7 +950,7 @@
     <div class="foot-grid">
       <div>
         <div class="logo brand foot-brand">
-          <img class="lockup lockup-light" src="sum-it-logo-white.png" alt="Sum-IT" />
+          <img class="lockup lockup-light" src="sum-it-logo-h-white.png" alt="Sum-IT" />
         </div>
         <div class="foot-summit" data-i18n="brand.tagline">Accounting for Europe</div>
         <p class="foot-tag" data-i18n="foot.tag">The simple financial tool for freelancers and small businesses in the Netherlands and Germany.</p>
@@ -1165,8 +1165,8 @@
     const incLbl = (lang === 'en') ? EN['compare.h.inc'] : (dict['compare.h.inc'] != null ? dict['compare.h.inc'] : EN['compare.h.inc']);
     if (incLbl != null) document.querySelectorAll('table.ctable td[data-label]:not(.sumit)').forEach(td => td.setAttribute('data-label', incLbl));
     document.documentElement.lang = lang;
-    var lkLight = (lang === 'nl') ? 'sum-it-logo-white-nl.png' : 'sum-it-logo-white.png';
-    var lkDark  = (lang === 'nl') ? 'sum-it-logo-navy-nl.png'  : 'sum-it-logo-navy.png';
+    var lkLight = (lang === 'nl') ? 'sum-it-logo-h-white-nl.png' : 'sum-it-logo-h-white.png';
+    var lkDark  = (lang === 'nl') ? 'sum-it-logo-h-navy-nl.png'  : 'sum-it-logo-h-navy.png';
     document.querySelectorAll('.lockup-light').forEach(function (i) { i.setAttribute('src', lkLight); });
     document.querySelectorAll('.lockup-dark').forEach(function (i) { i.setAttribute('src', lkDark); });
     document.getElementById('langCur').textContent = LABEL[lang];
