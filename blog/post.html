@@ -3,18 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sum-IT Blog · Administratie, btw en ondernemen voor vakmensen</title>
-<meta name="description" content="Praktische artikelen over bonnetjes, btw, winst per klus en boekhouding voor vakmensen en zzp'ers. Door het team achter Sum-IT.">
-<link rel="canonical" href="https://sum-it.eu/blog/">
+<title>Sum-IT Blog</title>
+<meta name="description" content="Artikel op het Sum-IT blog.">
 <link rel="icon" href="/sum-it-favicon.png">
-<meta property="og:title" content="Blog: administratie, btw en ondernemen voor vakmensen">
-<meta property="og:description" content="Praktische artikelen over bonnetjes, btw, winst per klus en boekhouding voor vakmensen en zzp'ers. Door het team achter Sum-IT.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://sum-it.eu/blog/">
-<meta property="og:image" content="https://sum-it.eu/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"Sum-IT Blog","url":"https://sum-it.eu/blog/","description":"Praktische artikelen over administratie, btw en ondernemen voor vakmensen en zzp'ers."}</script>
+<script src="/sb-config.js"></script>
 <style>
 :root{--indigo:#2D2D6B;--indigo-d:#232358;--green:#00BC7D;--green-d:#009966;--bg:#F1F5F9;--line:#E2E8F0;--slate:#475569;--mut:#64748B}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -57,34 +51,29 @@ footer a{color:var(--green-d)}
   <nav class="topnav"><a href="/blog/">Blog</a><a href="/#capture">Features</a><a href="/#pricing">Prijzen</a><a class="cta" href="/#signup">Founding 500</a></nav>
 </div></div>
 <main>
-
-<h1>Sum-IT Blog</h1>
-<div class="meta">Praktische artikelen over administratie, btw en ondernemen voor vakmensen en zzp'ers.</div>
-<div class="cards">
-<a class="card" href="/blog/bonnetjes-administratie-zzp.html"><h2>Bonnetjes bijhouden als zzp'er: 7 praktische tips tegen de schoenendoos</h2><p>Bonnetjes kwijt, avonden sorteren? Met deze 7 tips houd je als zzp'er of vakman je bonnetjes en administratie simpel, digitaal en klaar voor de btw-aangifte.</p><p class="rm">Lees verder →</p></a>
-<a class="card" href="/blog/btw-voor-vakmensen.html"><h2>BTW voor vakmensen: 9% of 21%, en hoe houd je het bij?</h2><p>Wanneer geldt het 9%-tarief en wanneer 21% voor klussen aan woningen? Een praktische uitleg voor schilders, stukadoors en andere vakmensen, plus tips om je btw-administratie simpel te houden.</p><p class="rm">Lees verder →</p></a>
-<a class="card" href="/blog/winst-per-klus-berekenen.html"><h2>Welke klus verdient écht? Zo bereken je winst per project</h2><p>Omzet zegt niets, marge alles. Leer in 4 stappen hoe je als vakman de echte winst per klus berekent: materiaal, uren, kilometers en indirecte kosten, en waarom projectadministratie je offertes beter maakt.</p><p class="rm">Lees verder →</p></a>
-<a class="card" href="/blog/boekhouder-of-zelf-doen.html"><h2>Boekhouder inhuren of zelf je boekhouding doen? Zo kies je</h2><p>Zelf boekhouden of uitbesteden aan een boekhouder? De voor- en nadelen op een rij voor zzp'ers en vakmensen, wat een boekhouder kost, en waarom de combinatie vaak het beste werkt.</p><p class="rm">Lees verder →</p></a>
-</div>
-
+<div class="crumb"><a href="/blog/">← Alle artikelen</a></div>
+<div id="art"><p style="color:var(--mut)">Artikel laden…</p></div>
+<div class="ctabox"><h3>Minder administratie, meer ondernemen?</h3>
+Sum-IT leest je bonnetjes, zet je btw apart en laat per klus zien wat je verdient. We lanceren binnenkort in Nederland, de eerste 500 leden krijgen 3 maanden voor €3.
+<br><a href="/#signup">Claim je Founding 500-plek →</a></div>
+<p class="disc">Dit artikel is algemene informatie, geen belasting- of financieel advies. Overleg voor jouw situatie met een boekhouder of de Belastingdienst.</p>
 </main>
 <footer>Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU · <a href="/blog/">Blog</a> · <a href="/">sum-it.eu</a></footer>
-<script src="/sb-config.js"></script>
 <script>
 (function(){
-  if(!window.SB_URL||window.SB_URL.indexOf('http')!==0)return;
-  fetch(window.SB_URL+'/rest/v1/blog_posts?select=slug,title,description,created_at&published=eq.true&order=created_at.desc',{
+  var slug=new URLSearchParams(location.search).get('slug')||'';
+  var el=document.getElementById('art');
+  if(!/^[a-z0-9-]{3,80}$/.test(slug)||!window.SB_URL){el.innerHTML='<h1>Artikel niet gevonden</h1><p><a href="/blog/">Terug naar het blogoverzicht</a></p>';return;}
+  fetch(window.SB_URL+'/rest/v1/blog_posts?slug=eq.'+encodeURIComponent(slug)+'&select=title,description,body_html,created_at',{
     headers:{apikey:window.SB_ANON,Authorization:'Bearer '+window.SB_ANON}})
   .then(function(r){return r.json();}).then(function(rows){
-    if(!rows||!rows.length)return;
-    var wrap=document.querySelector('.cards');if(!wrap)return;
-    var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
-    rows.forEach(function(p){
-      var a=document.createElement('a');a.className='card';a.href='/blog/post.html?slug='+encodeURIComponent(p.slug);
-      a.innerHTML='<h2>'+esc(p.title)+'</h2><p>'+esc(p.description||'')+'</p><p class="rm">Lees verder →</p>';
-      wrap.insertBefore(a,wrap.firstChild);
-    });
-  }).catch(function(){});
+    var p=rows&&rows[0];
+    if(!p){el.innerHTML='<h1>Artikel niet gevonden</h1><p><a href="/blog/">Terug naar het blogoverzicht</a></p>';return;}
+    document.title=p.title+' · Sum-IT Blog';
+    var m=document.querySelector('meta[name=description]');if(m)m.content=p.description||'';
+    var esc=function(s){return String(s).replace(/[&<>]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;'}[c];});};
+    el.innerHTML='<h1>'+esc(p.title)+'</h1><div class="meta">Sum-IT · '+String(p.created_at).slice(0,10)+'</div><article>'+p.body_html+'</article>';
+  }).catch(function(){el.innerHTML='<h1>Er ging iets mis</h1><p><a href="/blog/">Terug naar het blogoverzicht</a></p>';});
 })();
 </script>
 </body>
