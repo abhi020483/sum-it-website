@@ -11,5 +11,6 @@ window.SITE_CFG = {
     instagram: '',
     x: ''
   },
-  fallbackClaimed: 143
+  fallbackClaimed: 143,
+  QUEUE_OFFSET: 143   // displayed position = real position + this (matches DISPLAY_OFFSET)
 };

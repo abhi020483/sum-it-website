@@ -205,7 +205,8 @@ async function openDash(user){
     if(!ME){document.getElementById('d-none').classList.remove('hide');return;}
     if(ME.status!=='confirmed'){document.getElementById('d-pending').classList.remove('hide');return;}
     document.getElementById('d-main').classList.remove('hide');
-    document.getElementById('d-pos').textContent='#'+ME.queue_pos;
+    var qoff=(window.SITE_CFG&&SITE_CFG.QUEUE_OFFSET)||0;
+    document.getElementById('d-pos').textContent='#'+(ME.queue_pos?ME.queue_pos+qoff:'—');
     var link='https://sum-it.eu/?ref='+ME.ref_code;
     document.getElementById('d-link').value=link;
     document.getElementById('d-refs').textContent=ME.referred_confirmed||0;

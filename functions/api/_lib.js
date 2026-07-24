@@ -39,8 +39,9 @@ export async function markWelcomed(env, email) {
 /* Sends the welcome mail via Brevo (no-op without key). */
 export async function sendWelcome(env, email, pos, refCode, taal) {
   if (!env.BREVO_API_KEY || !pos) return;
+  const offset = Number(env.DISPLAY_OFFSET ?? 143);
   const link = 'https://sum-it.eu/?ref=' + refCode;
-  const m = (MAILS[taal] || MAILS.nl)(pos, link);
+  const m = (MAILS[taal] || MAILS.nl)(pos + offset, link);
   const from = env.MAIL_FROM || 'Sum-IT <hallo@sum-it.eu>';
   const fm = from.match(/^(.*)<(.+)>$/) || [null, 'Sum-IT', from];
   await fetch('https://api.brevo.com/v3/smtp/email', {
