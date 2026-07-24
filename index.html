@@ -96,7 +96,7 @@ body{font-family:'Poppins',ui-sans-serif,system-ui,sans-serif;background:var(--b
 .hero .wrap{max-width:1140px;margin:0 auto;padding:24px 24px 66px;display:grid;grid-template-columns:1.02fr .98fr;gap:44px;align-items:center;color:#fff}
 @media(max-width:920px){.hero .wrap{grid-template-columns:1fr;padding-bottom:44px}}
 .nav{grid-column:1/-1;display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;gap:14px}
-.logo{display:flex;align-items:center;gap:9px;color:#fff;text-decoration:none;font-weight:800;font-size:19px;letter-spacing:.01em}
+.logo{display:flex;align-items:center;gap:9px;color:#fff;text-decoration:none;font-weight:800;font-size:19px;letter-spacing:.01em;flex-shrink:0;white-space:nowrap}
 .logo .mark{width:40px;height:34px;display:flex;align-items:center;justify-content:center}
 .logo .mark img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,.25))}
 .menu{display:flex;gap:20px;flex:1;justify-content:center}
@@ -107,6 +107,16 @@ body{font-family:'Poppins',ui-sans-serif,system-ui,sans-serif;background:var(--b
 .langs{display:flex;border:1px solid var(--line-d);border-radius:999px;overflow:hidden}
 .langs button{background:transparent;color:var(--mut-d);border:0;font-size:12.5px;font-weight:700;padding:7px 13px;cursor:pointer;font-family:inherit}
 .langs button.on{background:#fff;color:var(--indigo)}
+.navlogin{border:1px solid var(--line-d);color:#fff;border-radius:999px;font-size:12.5px;font-weight:700;padding:8px 16px;text-decoration:none;white-space:nowrap}
+.navlogin:hover{background:rgba(255,255,255,.1)}
+@media(max-width:620px){
+  .nav{flex-wrap:wrap}
+  .logo{font-size:17px}.logo .mark{width:34px;height:29px}
+  .nav .right{width:100%;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+  .nav .right .btn.small{font-size:12px;padding:10px 14px}
+  .langs button{padding:6px 10px;font-size:12px}
+  .navlogin{font-size:12px;padding:7px 13px}
+}
 .btn{display:inline-block;background:var(--green);color:#fff;font-weight:700;font-size:15.5px;padding:14px 26px;border-radius:999px;border:0;cursor:pointer;text-decoration:none;box-shadow:0 10px 26px rgba(0,188,125,.38);transition:transform .15s,box-shadow .15s;font-family:inherit}
 .btn:hover{transform:translateY(-2px);box-shadow:0 14px 32px rgba(0,188,125,.48)}
 .btn.small{padding:10px 18px;font-size:13.5px}
@@ -715,7 +725,9 @@ footer .fsoc svg{width:15px;height:15px;fill:var(--mut-d)}
 label{display:block;font-size:13px;font-weight:600;margin:12px 0 5px}
 input[type=text],input[type=email],select{width:100%;padding:12px 14px;font-size:14.5px;border:1px solid var(--line);border-radius:12px;background:var(--bg);font-family:inherit;color:var(--ink)}
 input:focus,select:focus{outline:2px solid var(--green)}
-.radio-row{display:flex;gap:10px}
+.radio-row{display:flex;gap:10px;flex-wrap:wrap}
+.radio-row label{min-width:120px}
+@media(max-width:480px){.radio-row{flex-direction:column}.radio-row label{min-width:0}}
 .radio-row label{flex:1;font-weight:500;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg);cursor:pointer;display:flex;gap:8px;align-items:center;margin:0}
 .radio-row input{accent-color:var(--green-d)}
 .fineprint{font-size:11.5px;color:var(--slate);margin-top:12px}
@@ -751,6 +763,7 @@ footer .flinks a:hover{color:#fff}
     </nav>
     <div class="right">
       <div class="langs"><button id="lang-en" class="on" onclick="setLang('en')">EN</button><button id="lang-nl" onclick="setLang('nl')">NL</button></div>
+      <a class="navlogin" href="/login.html" data-i18n="nav_login">Log in</a>
       <a class="btn small" href="#signup" data-i18n="nav_cta">Join the Founding 500</a>
     </div>
   </div>
@@ -1228,8 +1241,7 @@ footer .flinks a:hover{color:#fff}
         <div class="bcerr" id="bcerr"></div>
         <div class="bcbtns">
           <button class="bcbtn gr" onclick="bcDownload()" data-i18n="bc11">Download as image</button>
-          <button class="bcbtn" onclick="bcShare('wa')" data-i18n="bc12">Share on WhatsApp</button>
-          <button class="bcbtn" onclick="bcShare('li')" data-i18n="bc13">Share on LinkedIn</button>
+          <button class="bcbtn" id="bcsharebtn" onclick="bcShare()" data-i18n="bc12">Share your card</button>
         </div>
         <div class="ranks">
           <div class="rlbl2"><span data-i18n="rk0">Rise through the ranks as your reputation grows</span> <span class="demotag" data-i18n="rk0s">SOON</span></div>
@@ -1465,7 +1477,7 @@ footer .flinks a:hover{color:#fff}
 <script>
 const I18N = {
 en:{topbar:"Founding 500: your first 3 months for €3! Refer your friends and earn exclusive benefits.",
-nav_cta:"Join the Founding 500",
+nav_cta:"Join the Founding 500",nav_login:"Log in",
 m_feat:"Features",m_proj:"Projects",m_comm:"Community",m_price:"Pricing",m_team:"Team",m_join:"Join the Founding 500",
 hero_kicker:"Launching in the Netherlands, founding members get early access",foot_login:"Log in",
 hero_h1:"Less faff.<br><em>More business.</em>",
@@ -1551,7 +1563,7 @@ cw1:"Build your crew already",cw2:"Invite the subcontractors you already trust. 
 vt1:"What should go live first? <span class='demotag'>DEMO</span>",vt2:"Chat",vt3:"Offers",vt4:"Payments",vt5:"✓ Noted! Your vote steers the roadmap.",
 bc1:"Your business card is almost ready",bc2:"This is how you'll appear in the network. Make it yours and share it, every friend who joins through it counts.",
 bc3:"Your name",bc4:"Your trade",bc5:"Painter",bc6:"Plumber",bc7:"Electrician",bc8:"Carpenter",bc9:"Contractor",bc10:"Other",
-bc11:"Download as image",bc15:"Your own logo (PNG, transparent background)",bc20:"Type your trade",bc16:"This logo has no transparent background. Export it as PNG with transparency and try again.",bc17:"Card style",bc18:"Dark",bc19:"Light",rk0:"Rise through the ranks as your reputation grows",rk0s:"SOON",rk1:"Founding Member",rk2:"Trusted Pro",rk3:"Summit Elite",bc12:"Share on WhatsApp",bc13:"Share on LinkedIn",bc14:"FOUNDING MEMBER",
+bc11:"Download as image",bc12:"Share your card",bc21:"Downloaded, link copied!",bc15:"Your own logo (PNG, transparent background)",bc20:"Type your trade",bc16:"This logo has no transparent background. Export it as PNG with transparency and try again.",bc17:"Card style",bc18:"Dark",bc19:"Light",rk0:"Rise through the ranks as your reputation grows",rk0s:"SOON",rk1:"Founding Member",rk2:"Trusted Pro",rk3:"Summit Elite",bc14:"FOUNDING MEMBER",
 rf_k:"Founding perks",rf_h2:"Climb to the summit.",
 rf_lead:"Invite your friends to Sum-IT, founding members who bring their crew unlock exclusive extras.",
 rf_p2:"Early access",rf_p3:"Special offers & prices",rf_p4:"Earn founding badges",
@@ -1595,7 +1607,7 @@ t_body:"Check your inbox for our confirmation email, then share your personal li
 foot:"Sum-IT is a product of Alpha Nova B.V., founded in the Netherlands · All data in the EU",
 ftag:"TOGETHER TO THE TOP"},
 nl:{topbar:"Founding 500: je eerste 3 maanden voor €3! Nodig je vrienden uit en verdien exclusieve extra's.",
-nav_cta:"Doe mee met de Founding 500",
+nav_cta:"Doe mee met de Founding 500",nav_login:"Inloggen",
 m_feat:"Functies",m_proj:"Projecten",m_comm:"Community",m_price:"Prijs",m_team:"Team",m_join:"Doe mee met de Founding 500",
 hero_kicker:"Bijna live in Nederland, founding members krijgen eerder toegang",foot_login:"Inloggen",
 hero_h1:"Minder boekhouden.<br><em>Meer ondernemen.</em>",
@@ -1681,7 +1693,7 @@ cw1:"Bouw je crew alvast",cw2:"Nodig de onderaannemers uit die je al vertrouwt. 
 vt1:"Wat moet als eerste live? <span class='demotag'>DEMO</span>",vt2:"Chat",vt3:"Offertes",vt4:"Betalingen",vt5:"✓ Genoteerd! Jouw stem stuurt de roadmap.",
 bc1:"Je visitekaartje staat bijna klaar",bc2:"Zo sta jij straks in het netwerk. Maak 'm van jou en deel 'm, elke vriend die via jouw kaartje meedoet, telt.",
 bc3:"Je naam",bc4:"Je vak",bc5:"Schilder",bc6:"Loodgieter",bc7:"Elektricien",bc8:"Timmerman",bc9:"Aannemer",bc10:"Anders",
-bc11:"Download als afbeelding",bc15:"Je eigen logo (PNG, zonder achtergrond)",bc20:"Typ je vak",bc16:"Dit logo heeft geen transparante achtergrond. Exporteer als PNG met transparantie en probeer opnieuw.",bc17:"Kaartstijl",bc18:"Donker",bc19:"Licht",rk0:"Klim in rang terwijl je reputatie groeit",rk0s:"BINNENKORT",rk1:"Founding Member",rk2:"Vertrouwde vakman",rk3:"Summit Elite",bc12:"Deel op WhatsApp",bc13:"Deel op LinkedIn",bc14:"FOUNDING MEMBER",
+bc11:"Download als afbeelding",bc12:"Deel je kaart",bc21:"Gedownload, link gekopieerd!",bc15:"Je eigen logo (PNG, zonder achtergrond)",bc20:"Typ je vak",bc16:"Dit logo heeft geen transparante achtergrond. Exporteer als PNG met transparantie en probeer opnieuw.",bc17:"Kaartstijl",bc18:"Donker",bc19:"Licht",rk0:"Klim in rang terwijl je reputatie groeit",rk0s:"BINNENKORT",rk1:"Founding Member",rk2:"Vertrouwde vakman",rk3:"Summit Elite",bc14:"FOUNDING MEMBER",
 rf_k:"Founding extra's",rf_h2:"Klim naar de top.",
 rf_lead:"Nodig je vrienden uit voor Sum-IT, founding members die hun crew meenemen, verdienen exclusieve extra's.",
 rf_p2:"Eerder toegang",rf_p3:"Speciale deals & prijzen",rf_p4:"Verdien founding badges",
@@ -1910,7 +1922,7 @@ function bcCanvas(){
 function bcDownload(){
   var c=bcCanvas();
   var a=document.createElement('a');a.download='sumit-visitekaartje.png';a.href=c.toDataURL('image/png');a.click();}
-function bcShare(net){
+function bcShare(){
   var msgs={en:'My Sum-IT business card is ready. I\'m a founding member, join me: ',
             nl:'Mijn Sum-IT visitekaartje staat klaar. Ik ben founding member, doe ook mee: '};
   var link='https://sum-it.eu/?ref=DEMO42';
@@ -1919,12 +1931,15 @@ function bcShare(net){
   c.toBlob(function(blob){
     var file=blob?new File([blob],'sumit-visitekaartje.png',{type:'image/png'}):null;
     if(file&&navigator.canShare&&navigator.canShare({files:[file]})){
+      // native share sheet (phone or pc): user picks WhatsApp, LinkedIn, mail, ...
       navigator.share({files:[file],text:msg}).catch(function(){});
     }else{
-      // desktop fallback: download the card so it can be attached, then open the share window
+      // fallback: download the card + copy the message, so it can be pasted anywhere
       var a=document.createElement('a');a.download='sumit-visitekaartje.png';a.href=c.toDataURL('image/png');a.click();
-      if(net==='wa') window.open('https://wa.me/?text='+encodeURIComponent(msg));
-      else window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(link));
+      try{navigator.clipboard.writeText(msg);}catch(e){}
+      var b=document.getElementById('bcsharebtn');
+      if(b){var orig=I18N[LANG]['bc12'];b.textContent=I18N[LANG]['bc21']||'Downloaded, link copied!';
+        setTimeout(function(){b.textContent=orig;},2600);}
     }
   },'image/png');}
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.16});
