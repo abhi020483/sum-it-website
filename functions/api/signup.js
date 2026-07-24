@@ -90,8 +90,8 @@ export async function onRequestPost({ request, env }) {
         'custom_fields[naam]': naam, 'custom_fields[rol]': rol, 'custom_fields[taal]': taal,
         'custom_fields[bedrijfstype]': String(d.bedrijfstype || ''),
         'custom_fields[boekhouder]': String(d.boekhouder || ''),
-        'custom_fields[ref_code]': myCode, 'custom_fields[referred_by]': referredBy || '',
-        'custom_fields[ref_link]': 'https://sum-it.eu/?ref=' + myCode
+        'custom_fields[refcode]': myCode, 'custom_fields[referredby]': referredBy || '',
+        'custom_fields[reflink]': 'https://sum-it.eu/?ref=' + myCode
       });
       await fetch('https://api.laposta.nl/v2/member', {
         method: 'POST',

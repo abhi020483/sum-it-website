@@ -78,8 +78,8 @@ export async function onRequestPost({ request, env }) {
         if (env.LAPOSTA_API_KEY && env.LAPOSTA_LIST_ID) {
           const body = new URLSearchParams({
             list_id: env.LAPOSTA_LIST_ID,
-            'custom_fields[queue_pos]': String(row.queue_pos),
-            'custom_fields[ref_link]': link
+            'custom_fields[queuepos]': String(row.queue_pos),
+            'custom_fields[reflink]': link
           });
           await fetch('https://api.laposta.nl/v2/member/' + encodeURIComponent(email) + '?list_id=' + env.LAPOSTA_LIST_ID, {
             method: 'POST',
