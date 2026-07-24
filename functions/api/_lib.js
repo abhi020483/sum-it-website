@@ -38,11 +38,15 @@ export async function createPortalLink(env, email) {
     }).catch(() => {}); // 422 'already exists' is fine
     const r = await fetch(`${env.SUPABASE_URL}/auth/v1/admin/generate_link`, {
       method: 'POST', headers: sbHeaders(env),
-      body: JSON.stringify({ type: 'recovery', email, options: { redirect_to: 'https://sum-it.eu/wachtwoord.html' } })
+      body: JSON.stringify({ type: 'recovery', email })
     });
     if (!r.ok) return null;
     const j = await r.json();
-    return j.action_link || (j.properties && j.properties.action_link) || null;
+    const hashed = j.hashed_token || (j.properties && j.properties.hashed_token) || null;
+    if (!hashed) return null;
+    // Link straight to our own page; the token is only redeemed there by JavaScript,
+    // so inbox link-scanners cannot burn it and there is no Supabase redirect screen.
+    return 'https://sum-it.eu/wachtwoord.html?token_hash=' + encodeURIComponent(hashed) + '&type=recovery';
   } catch { return null; }
 }
 

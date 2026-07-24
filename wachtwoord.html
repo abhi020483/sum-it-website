@@ -94,8 +94,14 @@ function show(id){['st-wait','st-form','st-bad'].forEach(function(x){document.ge
 
 async function boot(){
   if(!SB){show('st-bad');return;}
-  // supabase-js picks the session out of the link automatically; give it a moment
-  for(var i=0;i<10;i++){
+  var qs=new URLSearchParams(location.search);
+  var th=qs.get('token_hash');
+  if(th){
+    var v=await SB.auth.verifyOtp({type:qs.get('type')||'recovery',token_hash:th});
+    if(!v.error&&v.data&&v.data.session){history.replaceState(null,'',location.pathname);show('st-form');return;}
+  }
+  // fallback: session in URL-hash (old links) or existing session
+  for(var i=0;i<8;i++){
     var s=await SB.auth.getSession();
     if(s.data&&s.data.session){show('st-form');return;}
     await new Promise(function(r){setTimeout(r,400);});
