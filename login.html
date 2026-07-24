@@ -52,6 +52,7 @@ input:focus{outline:2px solid var(--green)}
       <input id="pw" type="password" required autocomplete="current-password" minlength="12">
       <button class="btn" id="btn" type="submit" data-i18n="btn">Inloggen</button>
       <div class="err" id="err"></div>
+      <div class="alt" style="margin-top:10px"><a href="#" onclick="return forgot()" data-i18n="forgot">Wachtwoord vergeten?</a></div>
     </form>
     <div class="alt" data-i18n="alt">Nog geen account? <a href="/portal.html">Maak er een in het member-portal</a></div>
   </div>
@@ -63,12 +64,14 @@ var I18N={
      l_email:"E-mailadres",l_pw:"Wachtwoord",btn:"Inloggen",
      alt:'Nog geen account? <a href="/portal.html">Maak er een in het member-portal</a>',
      e_cfg:"Backend nog niet geconfigureerd.",e_conf:"Bevestig eerst je e-mailadres via de mail die je kreeg.",
-     e_fail:"Inloggen mislukt: controleer e-mail en wachtwoord."},
+     e_fail:"Inloggen mislukt: controleer e-mail en wachtwoord.",forgot:"Wachtwoord vergeten?",
+     f_mail:"Vul eerst je e-mailadres in, klik dan opnieuw.",f_sent:"Mail verstuurd! Klik de link om een nieuw wachtwoord te kiezen."},
  en:{h1:"Log in",sub:"For members and admins. Log in with the e-mail address of your Sum-IT account.",
      l_email:"E-mail address",l_pw:"Password",btn:"Log in",
      alt:'No account yet? <a href="/portal.html">Create one in the member portal</a>',
      e_cfg:"Backend not configured yet.",e_conf:"Please confirm your e-mail address first via the mail you received.",
-     e_fail:"Login failed: check your e-mail and password."}};
+     e_fail:"Login failed: check your e-mail and password.",forgot:"Forgot your password?",
+     f_mail:"Fill in your e-mail address first, then click again.",f_sent:"Mail sent! Click the link to choose a new password."}};
 var LANG='nl';
 function setLang(l){LANG=l;try{localStorage.setItem('sumit_lang',l);}catch(e){}
   document.documentElement.lang=l;
@@ -101,6 +104,14 @@ async function doLogin(ev){
     return false;
   }
   routeUser();
+  return false;
+}
+async function forgot(){
+  var err=document.getElementById('err');err.textContent='';
+  var em=(document.getElementById('email').value||'').trim().toLowerCase();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(em)){err.textContent=I18N[LANG].f_mail;return false;}
+  var r=await SB.auth.resetPasswordForEmail(em,{redirectTo:'https://sum-it.eu/wachtwoord.html'});
+  err.textContent=r.error?r.error.message:I18N[LANG].f_sent;
   return false;
 }
 // already logged in? route straight away
