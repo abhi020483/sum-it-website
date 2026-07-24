@@ -37,13 +37,16 @@ create policy "public can read content"
   for select
   using (true);
 
+-- Only ADMIN accounts may write (portal members are also 'authenticated'!):
 drop policy if exists "authenticated can write content" on public.content_overrides;
-create policy "authenticated can write content"
+drop policy if exists "admins can write content" on public.content_overrides;
+create policy "admins can write content"
   on public.content_overrides
   for all
   to authenticated
-  using (true)
-  with check (true);
+  using (lower(auth.jwt()->>'email') in ('ianbouman01@gmail.com','admin.alpha.nova@gmail.com'))
+  with check (lower(auth.jwt()->>'email') in ('ianbouman01@gmail.com','admin.alpha.nova@gmail.com'));
+-- (voeg hier extra admin-e-mails toe en run dit blok opnieuw)
 
 -- ============================================================
 -- 3) Create your admin login (do this in the dashboard, NOT here):
