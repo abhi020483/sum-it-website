@@ -337,8 +337,8 @@ h2{font-size:clamp(26px,3.5vw,38px);font-weight:800;line-height:1.14;letter-spac
 .in .resflash{display:inline-block;animation:flash 6.5s 1s infinite}
 @keyframes flash{0%,38%{transform:none}44%{transform:scale(1.22)}50%{color:var(--green-d)}58%{transform:none}}
 .hubsteps{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
-.hubstep{flex:1;min-width:150px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:12px;color:var(--slate)}
-.hubstep b{display:block;color:var(--indigo);font-size:12.5px}
+.hubstep{flex:1;min-width:210px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:13px;color:var(--slate)}
+.hubstep b{display:block;color:var(--indigo);font-size:13.5px;white-space:nowrap}
 .hubstep .num{color:var(--green-d);font-weight:800}
 /* pricing overhaul */
 .offer2{background:linear-gradient(155deg,var(--green-d) 0%,#006B48 55%,#0A4D38 100%);border-radius:30px;color:#fff;padding:60px 44px;margin-top:32px;text-align:center;position:relative;overflow:hidden;box-shadow:0 30px 70px rgba(0,120,80,.35)}
@@ -747,6 +747,7 @@ footer .flinks a:hover{color:#fff}
       <a href="#community" data-i18n="m_comm">Community</a>
       <a href="#pricing" data-i18n="m_price">Pricing</a>
       <a href="#team" data-i18n="m_team">Team</a>
+      <a href="/blog/">Blog</a>
     </nav>
     <div class="right">
       <div class="langs"><button id="lang-en" class="on" onclick="setLang('en')">EN</button><button id="lang-nl" onclick="setLang('nl')">NL</button></div>
@@ -754,7 +755,7 @@ footer .flinks a:hover{color:#fff}
     </div>
   </div>
   <div>
-    <span class="kicker"><span class="pulse"></span><span data-i18n="hero_kicker">Launching in the Netherlands, founding members get early access.</span></span>
+    <span class="kicker"><span class="pulse"></span><span data-i18n="hero_kicker">Launching in the Netherlands, founding members get early access</span></span>
     <h1 data-i18n="hero_h1">Less faff.<br><em>More business.</em></h1>
     <p class="sub" data-i18n="hero_sub">Snap a receipt, Sum-IT reads it and files it, so you don't have to. Tax funds set aside, profit and expenses calculated, and soon, a trusted network of pros to connect with.</p>
     <a class="btn" href="#signup" data-i18n="hero_cta">Claim your Founding 500 spot, €3 for 3 months</a>
@@ -909,7 +910,7 @@ footer .flinks a:hover{color:#fff}
 <!-- CAPTURE -->
 <section id="capture" style="padding-top:0"><div class="wrap2 reveal">
   <div class="k" data-i18n="p_k">The books, sorted!</div>
-  <h2 data-i18n="p_h2">Your financial back-office running itself</h2>
+  <h2 data-i18n="p_h2">Your financial back office running itself</h2>
   <p class="lead" data-i18n="p_lead">Sum-IT handles the paperwork so you can focus on growing your business.</p>
   <div class="cards">
     <div class="cardx">
@@ -1221,6 +1222,7 @@ footer .flinks a:hover{color:#fff}
           <option data-i18n="bc9">Contractor</option>
           <option data-i18n="bc10">Other</option>
         </select>
+        <input type="text" id="bctrade-custom" style="display:none" maxlength="28" oninput="bcUpdate()" placeholder="Type your trade" data-i18n-ph="bc20">
         <label data-i18n="bc15">Your own logo (PNG, transparent background)</label>
         <input type="file" accept="image/png,image/webp,image/svg+xml" onchange="bcLogo(this)" style="padding:8px;font-size:12px">
         <div class="bcerr" id="bcerr"></div>
@@ -1358,8 +1360,8 @@ footer .flinks a:hover{color:#fff}
   <div class="trustband">
     <div class="tshield"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/></svg></div>
     <div>
-      <h3 data-i18n="trh">Fully compliant with European data privacy rules.</h3>
-      <p data-i18n="trb">All data stored exclusively in the EU · GDPR by design · encrypted in transit and at rest · audit-safe records your bookkeeper and the Belastingdienst can trust.</p>
+      <h3 data-i18n="trh">Fully compliant with European data privacy rules</h3>
+      <p data-i18n="trb">All data stored exclusively in the EU · GDPR by design · encrypted in transit and at rest · audit-safe records your bookkeeper and the tax office can trust.</p>
     </div>
   </div>
 </div></section>
@@ -1430,7 +1432,7 @@ footer .flinks a:hover{color:#fff}
         <input type="hidden" name="source" value="site-founding500-v8">
         <input type="hidden" name="ref" id="reffield" value="">
         <button class="btn big" type="submit" id="submitbtn" style="margin-top:20px" data-i18n="f_btn">Claim my Founding 500 spot</button>
-        <p class="fineprint" data-i18n="f_priv">You'll first get a confirmation e-mail (double opt-in). Max one update per month, your data stays in the EU. <a href="/privacy">Privacy policy</a>.</p>
+        <p class="fineprint" data-i18n="f_priv">You'll get a welcome e-mail with your queue position and personal link. Max one update per month, your data stays in the EU. <a href="/privacy">Privacy policy</a>.</p>
       </form>
     </div>
     <div class="thanks" id="thanks-state">
@@ -1457,7 +1459,7 @@ footer .flinks a:hover{color:#fff}
     <a href="#" title="X" data-soc="x"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L1.5 2H8l4.4 5.8zm-1.1 18h1.7L7 3.7H5.2z"/></svg></a>
   </div>
   <div class="flinks"><a href="#capture" data-i18n="m_feat">Features</a> · <a href="#control" data-i18n="m_proj">Projects</a> · <a href="#community" data-i18n="m_comm">Community</a> · <a href="#pricing" data-i18n="m_price">Pricing</a> · <a href="#team" data-i18n="m_team">Team</a> · <a href="#signup" data-i18n="m_join">Join the Founding 500</a> · <a href="/portal.html" data-i18n="m_portal">Member portal</a></div>
-  <span data-i18n="foot">Sum-IT is a product of Alpha Nova B.V., founded in the Netherlands · All data in the EU</span> · <a href="/privacy">Privacy</a>
+  <span data-i18n="foot">Sum-IT is a product of Alpha Nova B.V., founded in the Netherlands · All data in the EU</span> · <a href="/blog/">Blog</a> · <a href="/privacy">Privacy</a>
 </footer>
 
 <script>
@@ -1465,7 +1467,7 @@ const I18N = {
 en:{topbar:"Founding 500: your first 3 months for €3! Refer your friends and earn exclusive benefits.",
 nav_cta:"Join the Founding 500",
 m_feat:"Features",m_proj:"Projects",m_comm:"Community",m_price:"Pricing",m_team:"Team",m_join:"Join the Founding 500",
-hero_kicker:"Launching in the Netherlands, founding members get early access.",
+hero_kicker:"Launching in the Netherlands, founding members get early access",
 hero_h1:"Less faff.<br><em>More business.</em>",
 hero_sub:"Snap a receipt, Sum-IT reads it and files it, so you don't have to. Tax funds set aside, profit and expenses calculated, and soon, a trusted network of pros to connect with.",
 hero_cta:"Claim your Founding 500 spot, €3 for 3 months",
@@ -1495,7 +1497,7 @@ o2tag:"Option 2",o2t:"Pay someone to retype your receipts",o2b:"Hundreds of euro
 o3tag:"The third option",o3t:"Sum-IT",
 o3b:"Snap a photo of a receipt, and Sum-IT reads it, files it, and remembers, so you don't have to. No accounting background required.",
 o3v:"Ready for capture",o3btn:"Scan receipt",
-p_k:"The books, sorted!",p_h2:"Your financial back-office running itself",
+p_k:"The books, sorted!",p_h2:"Your financial back office running itself",
 p_lead:"Sum-IT handles the paperwork so you can focus on growing your business.",
 d1a:"Ready for capture",d1b:"Point at your receipt, we read it for you.",d1c:"Scan document",d1d:"Today · VAT 21% detected",
 c1_t:"Snap & done",c1_b:"Take a photo of a receipt, and Sum-IT reads it, files it, and remembers, so you don't have to.",
@@ -1549,7 +1551,7 @@ cw1:"Build your crew already",cw2:"Invite the subcontractors you already trust. 
 vt1:"What should go live first? <span class='demotag'>DEMO</span>",vt2:"Chat",vt3:"Offers",vt4:"Payments",vt5:"✓ Noted! Your vote steers the roadmap.",
 bc1:"Your business card is almost ready",bc2:"This is how you'll appear in the network. Make it yours and share it, every friend who joins through it counts.",
 bc3:"Your name",bc4:"Your trade",bc5:"Painter",bc6:"Plumber",bc7:"Electrician",bc8:"Carpenter",bc9:"Contractor",bc10:"Other",
-bc11:"Download as image",bc15:"Your own logo (PNG, transparent background)",bc16:"This logo has no transparent background. Export it as PNG with transparency and try again.",bc17:"Card style",bc18:"Dark",bc19:"Light",rk0:"Rise through the ranks as your reputation grows",rk0s:"SOON",rk1:"Founding Member",rk2:"Trusted Pro",rk3:"Summit Elite",bc12:"Share on WhatsApp",bc13:"Share on LinkedIn",bc14:"FOUNDING MEMBER",
+bc11:"Download as image",bc15:"Your own logo (PNG, transparent background)",bc20:"Type your trade",bc16:"This logo has no transparent background. Export it as PNG with transparency and try again.",bc17:"Card style",bc18:"Dark",bc19:"Light",rk0:"Rise through the ranks as your reputation grows",rk0s:"SOON",rk1:"Founding Member",rk2:"Trusted Pro",rk3:"Summit Elite",bc12:"Share on WhatsApp",bc13:"Share on LinkedIn",bc14:"FOUNDING MEMBER",
 rf_k:"Founding perks",rf_h2:"Climb to the summit.",
 rf_lead:"Invite your friends to Sum-IT, founding members who bring their crew unlock exclusive extras.",
 rf_p2:"Early access",rf_p3:"Special offers & prices",rf_p4:"Earn founding badges",
@@ -1562,11 +1564,11 @@ of_per:"for your full first 3 months",of_cta:"Claim your Founding 500 spot →",
 of_sp:"Fair use for scanning, plenty for any one-person business.",
 bk_k:"For bookkeepers",bk_h2:"Attention bookkeepers! We've got an exciting proposition for you.",
 bk_lead:"Sum-IT is here to make your job easier. Everything your clients capture, exports straight into the tools you already use, so handoff at tax time is clean, not a shoebox of crumpled receipts.",
-bk_note:"<b>Earn with us:</b> our bookkeeper referral programme rewards you for every client you bring to Sum-IT. Be first in line, sign up below and we'll send you the details before anyone else!",
+bk_note:"<b style='color:#fff'>Earn with us:</b> our bookkeeper referral programme rewards you for every client you bring to Sum-IT. Be first in line, sign up below and we'll send you the details before anyone else!",
 bk_btn:"Sign up as a bookkeeper →",bkc1:"Rewards per referred client",bkc2:"Less retyping, more advising",bkc3:"Founding partner status",bk_ct:"Client export, Q2",bk_st:"READY",
 bk_r1:"Receipts captured & categorised",bk_r2:"VAT pre-sorted (9% / 21%)",bk_r3:"Shoeboxes of crumpled receipts",
-trh:"Fully compliant with European data privacy rules.",
-trb:"All data stored exclusively in the EU · GDPR by design · encrypted in transit and at rest · audit-safe records your bookkeeper and the Belastingdienst can trust.",
+trh:"Fully compliant with European data privacy rules",
+trb:"All data stored exclusively in the EU · GDPR by design · encrypted in transit and at rest · audit-safe records your bookkeeper and the tax office can trust.",
 tm_k:"The team",tm_h2:"Built by people who've lived it",
 tm_lead:"The late invoices, the VAT anxiety, the shoebox of receipts nobody wants to sort, we know this market from the inside. That's why we built the product we wished existed.",
 tm1r:"Product & NL Market",tm1b:"Knows Dutch small business from the inside, your voice in the roadmap.",
@@ -1577,7 +1579,7 @@ pr_h2:"What others say",pr_lead:"[Stays empty on the live page until real quotes
 pr_q1:"[Quote 1, e.g. the first bookkeeper who approves the export pack]<b>[Name, role]</b>",
 pr_q2:"[Quote 2, e.g. a founding-500 design partner]<b>[Name, company]</b>",
 pr_q3:"[Quote 3, e.g. press or LinkedIn]<b>[Source]</b>",
-f_k:"Founding 500",f_h2:"Join the queue",
+f_k:"Founding 500",f_h2:"Join the queue",fbk_lead:"Sign up as a bookkeeper and be first in line for our referral programme.",fbk1:"Rewards for every client you refer",fbk2:"Founding partner status & badge",fbk3:"Referral programme details before anyone else",fbk4:"Clean exports into the tools you already use",fbk5:"Direct line to the founders",
 f_lead:"Sign up to secure your spot and get your personal referral link.",
 fb1:"€3 for your first 3 months",fb2:"Early access, before the public launch",
 fb3:"Founding badge & exclusive founding offers",fb4:"Direct line to the founders, steer the roadmap",fb5:"Cancel any month, no strings attached",
@@ -1587,7 +1589,7 @@ f_name:"Name",f_mail:"E-mail",f_type:"What kind of business do you run?",f_pick:
 f_o1:"Construction / technical trades",f_o2:"Creative / media",f_o3:"Consulting / services",f_o4:"Webshop / retail",f_o5:"Other",
 f_bk:"Do you work with a bookkeeper?",f_yes:"Yes",f_no:"No, I do it all myself",
 f_btn:"Claim my Founding 500 spot",
-f_priv:"You'll first get a confirmation e-mail (double opt-in). Max one update per month, your data stays in the EU. <a href='/privacy'>Privacy policy</a>.",
+f_priv:"You'll get a welcome e-mail with your queue position and personal link. Max one update per month, your data stays in the EU. <a href='/privacy'>Privacy policy</a>.",
 t_pos:"you're in the queue (demo)",
 t_body:"Check your inbox for our confirmation email, then share your personal link with your crew:",t_copy:"Copy",t_portal:"Open your member portal →",m_portal:"Member portal",
 foot:"Sum-IT is a product of Alpha Nova B.V., founded in the Netherlands · All data in the EU",
@@ -1595,7 +1597,7 @@ ftag:"TOGETHER TO THE TOP"},
 nl:{topbar:"Founding 500: je eerste 3 maanden voor €3! Nodig je vrienden uit en verdien exclusieve extra's.",
 nav_cta:"Doe mee met de Founding 500",
 m_feat:"Functies",m_proj:"Projecten",m_comm:"Community",m_price:"Prijs",m_team:"Team",m_join:"Doe mee met de Founding 500",
-hero_kicker:"Bijna live in Nederland, founding members krijgen eerder toegang.",
+hero_kicker:"Bijna live in Nederland, founding members krijgen eerder toegang",
 hero_h1:"Minder boekhouden.<br><em>Meer ondernemen.</em>",
 hero_sub:"Foto van je bonnetje en Sum-IT leest en verwerkt 'm, zodat jij het niet hoeft te doen. Belastinggeld opzij, winst en kosten berekend, en binnenkort een vertrouwd netwerk van vakmensen om mee samen te werken.",
 hero_cta:"Claim je Founding 500-plek, €3 voor 3 maanden",
@@ -1625,7 +1627,7 @@ o2tag:"Optie 2",o2t:"Iemand betalen om je bonnetjes over te typen",o2b:"Honderde
 o3tag:"De derde optie",o3t:"Sum-IT",
 o3b:"Maak een foto van je bonnetje en Sum-IT leest, verwerkt en onthoudt 'm, zodat jij het niet hoeft te doen. Geen boekhoudkennis nodig.",
 o3v:"Klaar om te scannen",o3btn:"Scan bon",
-p_k:"De boeken, geregeld!",p_h2:"Je financiële back-office die zichzelf runt",
+p_k:"De boeken, geregeld!",p_h2:"Je financiële backoffice die zichzelf runt",
 p_lead:"Sum-IT regelt het papierwerk, zodat jij je kunt richten op de groei van je bedrijf.",
 d1a:"Klaar om te scannen",d1b:"Richt op je bon, wij lezen 'm uit.",d1c:"Scan document",d1d:"Vandaag · btw 21% herkend",
 c1_t:"Scan & klaar",c1_b:"Maak een foto van je bonnetje en Sum-IT leest, verwerkt en onthoudt 'm, zodat jij het niet hoeft te doen.",
@@ -1679,7 +1681,7 @@ cw1:"Bouw je crew alvast",cw2:"Nodig de onderaannemers uit die je al vertrouwt. 
 vt1:"Wat moet als eerste live? <span class='demotag'>DEMO</span>",vt2:"Chat",vt3:"Offertes",vt4:"Betalingen",vt5:"✓ Genoteerd! Jouw stem stuurt de roadmap.",
 bc1:"Je visitekaartje staat bijna klaar",bc2:"Zo sta jij straks in het netwerk. Maak 'm van jou en deel 'm, elke vriend die via jouw kaartje meedoet, telt.",
 bc3:"Je naam",bc4:"Je vak",bc5:"Schilder",bc6:"Loodgieter",bc7:"Elektricien",bc8:"Timmerman",bc9:"Aannemer",bc10:"Anders",
-bc11:"Download als afbeelding",bc15:"Je eigen logo (PNG, zonder achtergrond)",bc16:"Dit logo heeft geen transparante achtergrond. Exporteer als PNG met transparantie en probeer opnieuw.",bc17:"Kaartstijl",bc18:"Donker",bc19:"Licht",rk0:"Klim in rang terwijl je reputatie groeit",rk0s:"BINNENKORT",rk1:"Founding Member",rk2:"Vertrouwde vakman",rk3:"Summit Elite",bc12:"Deel op WhatsApp",bc13:"Deel op LinkedIn",bc14:"FOUNDING MEMBER",
+bc11:"Download als afbeelding",bc15:"Je eigen logo (PNG, zonder achtergrond)",bc20:"Typ je vak",bc16:"Dit logo heeft geen transparante achtergrond. Exporteer als PNG met transparantie en probeer opnieuw.",bc17:"Kaartstijl",bc18:"Donker",bc19:"Licht",rk0:"Klim in rang terwijl je reputatie groeit",rk0s:"BINNENKORT",rk1:"Founding Member",rk2:"Vertrouwde vakman",rk3:"Summit Elite",bc12:"Deel op WhatsApp",bc13:"Deel op LinkedIn",bc14:"FOUNDING MEMBER",
 rf_k:"Founding extra's",rf_h2:"Klim naar de top.",
 rf_lead:"Nodig je vrienden uit voor Sum-IT, founding members die hun crew meenemen, verdienen exclusieve extra's.",
 rf_p2:"Eerder toegang",rf_p3:"Speciale deals & prijzen",rf_p4:"Verdien founding badges",
@@ -1692,10 +1694,10 @@ of_per:"voor je volledige eerste 3 maanden",of_cta:"Claim je Founding 500-plek �
 of_sp:"Fair use voor scans, ruim genoeg voor elke eenmanszaak.",
 bk_k:"Voor boekhouders",bk_h2:"Boekhouders opgelet! We hebben een mooie propositie voor jullie.",
 bk_lead:"Sum-IT maakt jouw werk makkelijker. Alles wat je klanten vastleggen, exporteert rechtstreeks naar de tools die je al gebruikt, zodat de overdracht bij de aangifte schoon is. Geen schoenendoos vol verfrommelde bonnetjes.",
-bk_note:"<b>Verdien met ons mee:</b> ons referral-programma voor boekhouders beloont je voor elke klant die je naar Sum-IT brengt. Sta vooraan, meld je hieronder aan en ontvang de details als eerste!",
+bk_note:"<b style='color:#fff'>Verdien met ons mee:</b> ons referral-programma voor boekhouders beloont je voor elke klant die je naar Sum-IT brengt. Sta vooraan, meld je hieronder aan en ontvang de details als eerste!",
 bk_btn:"Aanmelden als boekhouder →",bkc1:"Beloning per aangebrachte klant",bkc2:"Minder overtypen, meer adviseren",bkc3:"Founding partner-status",bk_ct:"Klant-export, Q2",bk_st:"KLAAR",
 bk_r1:"Bonnetjes vastgelegd & gecategoriseerd",bk_r2:"Btw voorgesorteerd (9% / 21%)",bk_r3:"Schoenendozen vol bonnetjes",
-trh:"Volledig conform de Europese privacyregels.",
+trh:"Volledig conform de Europese privacyregels",
 trb:"Alle data uitsluitend in de EU · GDPR by design · versleuteld onderweg en in opslag · audit-veilige administratie waar je boekhouder en de Belastingdienst op kunnen vertrouwen.",
 tm_k:"Het team",tm_h2:"Gebouwd door mensen die het zelf geleefd hebben",
 tm_lead:"De late facturen, de btw-stress, de schoenendoos vol bonnetjes die niemand wil sorteren, wij kennen deze markt van binnenuit. Daarom bouwden we het product dat we zelf hadden willen hebben.",
@@ -1707,7 +1709,7 @@ pr_h2:"Wat anderen zeggen",pr_lead:"[Blijft leeg op de live pagina tot er échte
 pr_q1:"[Quote 1, bijv. de eerste boekhouder die het export-pakket goedkeurt]<b>[Naam, rol]</b>",
 pr_q2:"[Quote 2, bijv. een founding-500 design partner]<b>[Naam, bedrijf]</b>",
 pr_q3:"[Quote 3, bijv. pers of LinkedIn]<b>[Bron]</b>",
-f_k:"Founding 500",f_h2:"Sluit aan in de rij",
+f_k:"Founding 500",f_h2:"Sluit aan in de rij",fbk_lead:"Meld je aan als boekhouder en sta vooraan voor ons referral-programma.",fbk1:"Beloning voor elke klant die je aanbrengt",fbk2:"Founding partner-status & badge",fbk3:"Details van het referral-programma als eerste",fbk4:"Nette exports naar de tools die je al gebruikt",fbk5:"Directe lijn met de founders",
 f_lead:"Meld je aan om je plek veilig te stellen en je persoonlijke referral-link te ontvangen.",
 fb1:"€3 voor je eerste 3 maanden",fb2:"Eerder toegang, vóór de publieke launch",
 fb3:"Founding badge & exclusieve founding deals",fb4:"Directe lijn met de founders, stuur de roadmap",fb5:"Elke maand opzegbaar, je zit nergens aan vast",
@@ -1717,7 +1719,7 @@ f_name:"Naam",f_mail:"E-mailadres",f_type:"Wat voor bedrijf heb je?",f_pick:"Kie
 f_o1:"Bouw / technische diensten",f_o2:"Creatief / media",f_o3:"Advies / diensten",f_o4:"Webshop / retail",f_o5:"Anders",
 f_bk:"Werk je met een boekhouder?",f_yes:"Ja",f_no:"Nee, ik doe alles zelf",
 f_btn:"Claim mijn Founding 500-plek",
-f_priv:"Je krijgt eerst een bevestigingsmail (dubbele opt-in). Max één update per maand, je data blijft in de EU. <a href='/privacy'>Privacyverklaring</a>.",
+f_priv:"Je krijgt een welkomstmail met je plek in de rij en je persoonlijke link. Max één update per maand, je data blijft in de EU. <a href='/privacy'>Privacyverklaring</a>.",
 t_pos:"je staat in de rij (demo)",
 t_body:"Check je inbox voor onze bevestigingsmail en deel daarna je persoonlijke link met je crew:",t_copy:"Kopieer",t_portal:"Open je member-portal →",m_portal:"Member-portal",
 foot:"Sum-IT is een product van Alpha Nova B.V., opgericht in Nederland · Alle data in de EU",
@@ -1732,6 +1734,8 @@ function setLang(l){LANG=l;
   document.getElementById('taalfield').value=l;
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');
     if(I18N[l][k]!==undefined) el.innerHTML=I18N[l][k];});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.getAttribute('data-i18n-ph');
+    if(I18N[l][k]!==undefined) el.placeholder=I18N[l][k];});
   cap.innerHTML=I18N[LANG]['cap'+cur];
   applyRole();
   wireAllShares();
@@ -1741,7 +1745,11 @@ function applyRole(){var bk=document.getElementById('rol-bk').checked;
   document.getElementById('biz-fields').style.display=bk?'none':'';
   document.getElementById('type').required=!bk;
   document.querySelectorAll('input[name="boekhouder"]').forEach(function(r){r.required=!bk;});
-  document.getElementById('submitbtn').innerHTML=I18N[LANG][bk?'bk_fbtn':'f_btn'];}
+  document.getElementById('submitbtn').innerHTML=I18N[LANG][bk?'bk_fbtn':'f_btn'];
+  for(var i=1;i<=5;i++){var el=document.querySelector('[data-i18n="fb'+i+'"]');
+    if(el){var k=(bk?'fbk':'fb')+i; if(I18N[LANG][k]!==undefined) el.innerHTML=I18N[LANG][k];}}
+  var lead=document.querySelector('[data-i18n="f_lead"]');
+  if(lead){var lk=bk?'fbk_lead':'f_lead'; if(I18N[LANG][lk]!==undefined) lead.innerHTML=I18N[LANG][lk];}}
 let CLAIMED_DEMO=(window.SITE_CFG&&SITE_CFG.fallbackClaimed)||143; let shown=0;
 const claimedEl=document.getElementById('claimed'),fillEl=document.getElementById('spotfill');
 setTimeout(()=>{fillEl.style.width=(CLAIMED_DEMO/500*100)+'%';},400);
@@ -1825,8 +1833,12 @@ function pdBack(){pdShow('pd-list');}
 function bcUpdate(){
   var n=document.getElementById('bcname-in').value.trim()||'Joost Jansen';
   var t=document.getElementById('bctrade-in');
+  var cust=document.getElementById('bctrade-custom');
+  var isOther=t.selectedIndex===t.options.length-1;
+  cust.style.display=isOther?'block':'none';
+  var trade=isOther?(cust.value.trim()||cust.placeholder):t.options[t.selectedIndex].text;
   document.getElementById('bcname').textContent=n;
-  document.getElementById('bctrade').textContent=t.options[t.selectedIndex].text;}
+  document.getElementById('bctrade').textContent=trade;}
 (function(){var sv=document.getElementById('badgesvg');
   if(sv){var c=sv.cloneNode(true);var t=c.querySelector('text');if(t)t.remove();
     c.setAttribute('width','200');c.setAttribute('height','250');
@@ -1859,7 +1871,7 @@ function bcLogo(inp){var f=inp.files&&inp.files[0];if(!f)return;
   r.readAsDataURL(f);}
 window.__qrImg=new Image();window.__qrImg.src='data:image/png;base64,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';
 function bcRounded(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();}
-function bcDownload(){
+function bcCanvas(){
   var n=document.getElementById('bcname').textContent, t=document.getElementById('bctrade').textContent;
   var c=document.createElement('canvas');c.width=680;c.height=400;var x=c.getContext('2d');
   var dark=BCTHEME!=='light';
@@ -1894,15 +1906,27 @@ function bcDownload(){
   else{x.fillStyle='#2D2D6B';
     var Q=[1,0,1,1,0, 0,1,0,1,1, 1,0,1,0,1, 0,1,0,1,0, 1,1,0,1,1];
     for(var i=0;i<25;i++){if(Q[i]){var qx=574+(i%5)*12.5,qy=304+Math.floor(i/5)*12.5;x.fillRect(qx,qy,10,10);}}}
+  return c;}
+function bcDownload(){
+  var c=bcCanvas();
   var a=document.createElement('a');a.download='sumit-visitekaartje.png';a.href=c.toDataURL('image/png');a.click();}
 function bcShare(net){
-  var n=document.getElementById('bcname').textContent;
   var msgs={en:'My Sum-IT business card is ready. I\'m a founding member, join me: ',
             nl:'Mijn Sum-IT visitekaartje staat klaar. Ik ben founding member, doe ook mee: '};
   var link='https://sum-it.eu/?ref=DEMO42';
-  var t=encodeURIComponent(msgs[LANG]+link);
-  if(net==='wa') window.open('https://wa.me/?text='+t);
-  else window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(link));}
+  var msg=msgs[LANG]+link;
+  var c=bcCanvas();
+  c.toBlob(function(blob){
+    var file=blob?new File([blob],'sumit-visitekaartje.png',{type:'image/png'}):null;
+    if(file&&navigator.canShare&&navigator.canShare({files:[file]})){
+      navigator.share({files:[file],text:msg}).catch(function(){});
+    }else{
+      // desktop fallback: download the card so it can be attached, then open the share window
+      var a=document.createElement('a');a.download='sumit-visitekaartje.png';a.href=c.toDataURL('image/png');a.click();
+      if(net==='wa') window.open('https://wa.me/?text='+encodeURIComponent(msg));
+      else window.open('https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(link));
+    }
+  },'image/png');}
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),{threshold:.16});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 function wireShare(prefix){
