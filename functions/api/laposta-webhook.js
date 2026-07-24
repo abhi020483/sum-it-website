@@ -61,7 +61,7 @@ export async function onRequestPost({ request, env }) {
       const r = await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/confirm_signup`, {
         method: 'POST', headers: sbHeaders(env), body: JSON.stringify({ p_email: email.toLowerCase() })
       });
-      const row = r.ok ? await r.json().catch(() => null) : null; // {queue_pos, ref_code, taal}
+            const rows = r.ok ? await r.json().catch(() => null) : null; const row = Array.isArray(rows) ? rows[0] : rows; // queue_pos, ref_code, taal
       if (row && row.queue_pos) {
         const link = 'https://sum-it.eu/?ref=' + row.ref_code;
         // 2) welcome mail (Brevo)
