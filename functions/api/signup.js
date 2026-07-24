@@ -116,5 +116,15 @@ export async function onRequestPost({ request, env }) {
       });
     } catch { /* signup stays 'pending'; SETUP.md covers re-sync */ }
   }
+  // Single opt-in (Laposta double opt-in requires a paid plan): confirm immediately
+  // and assign the queue position. Set env DOUBLE_OPTIN=1 once the Laposta list
+  // uses double opt-in — the laposta-webhook then does the confirming instead.
+  if (env.DOUBLE_OPTIN !== '1') {
+    try {
+      await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/confirm_signup`, {
+        method: 'POST', headers: sbHeaders(env), body: JSON.stringify({ p_email: email })
+      });
+    } catch { /* webhook remains as fallback */ }
+  }
   return ok;
 }
