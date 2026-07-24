@@ -52,7 +52,8 @@ export async function onRequestPost({ request, env }) {
   const events = await parseEvents(request);
   for (const ev of events) {
     const type = ev.event || ev.type || '';
-    const email = (ev.member && ev.member.email) || ev.email || '';
+    const m = (ev.data && (ev.data.member || ev.data)) || ev.member || {};
+    const email = m.email || ev.email || '';
     if (!email) continue;
 
     if (type === 'subscribed') {
@@ -88,7 +89,7 @@ export async function onRequestPost({ request, env }) {
           }).catch(() => {});
         }
       }
-    } else if (type === 'unsubscribed') {
+    } else if (type === 'deactivated' || type === 'unsubscribed') {
       await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/unsubscribe_signup`, {
         method: 'POST', headers: sbHeaders(env), body: JSON.stringify({ p_email: email.toLowerCase() })
       }).catch(() => {});
