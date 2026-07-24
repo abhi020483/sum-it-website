@@ -7,6 +7,8 @@
    - creates the Laposta member (list double opt-in sends the confirm mail)
    Env: SUPABASE_URL, SUPABASE_SERVICE_KEY, IP_SALT, LAPOSTA_API_KEY, LAPOSTA_LIST_ID */
 
+import { markWelcomed, sendWelcome } from './_lib.js';
+
 const DISPOSABLE = ['mailinator.com','guerrillamail.com','10minutemail.com','yopmail.com','temp-mail.org','trashmail.com','sharklasers.com'];
 const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 
@@ -116,14 +118,19 @@ export async function onRequestPost({ request, env }) {
       });
     } catch { /* signup stays 'pending'; SETUP.md covers re-sync */ }
   }
-  // Single opt-in (Laposta double opt-in requires a paid plan): confirm immediately
-  // and assign the queue position. Set env DOUBLE_OPTIN=1 once the Laposta list
-  // uses double opt-in — the laposta-webhook then does the confirming instead.
+  // Single opt-in (Laposta double opt-in requires a paid plan): confirm immediately,
+  // assign the queue position and send the welcome mail. Set env DOUBLE_OPTIN=1 once
+  // the Laposta list uses double opt-in — the laposta-webhook then takes over.
   if (env.DOUBLE_OPTIN !== '1') {
     try {
-      await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/confirm_signup`, {
+      const cr = await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/confirm_signup`, {
         method: 'POST', headers: sbHeaders(env), body: JSON.stringify({ p_email: email })
       });
+      const rows = cr.ok ? await cr.json().catch(() => null) : null;
+      const row = Array.isArray(rows) ? rows[0] : rows;
+      if (row && row.queue_pos && await markWelcomed(env, email)) {
+        await sendWelcome(env, email, row.queue_pos, row.ref_code, row.taal);
+      }
     } catch { /* webhook remains as fallback */ }
   }
   return ok;

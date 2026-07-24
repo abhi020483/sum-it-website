@@ -132,3 +132,16 @@ begin
 end $$;
 grant execute on function public.admin_signup_stats() to authenticated;
 revoke all on function public.admin_signup_stats() from public, anon;
+
+-- 4) Welkomstmail éénmalig-garantie (v3.1) -------------------
+alter table public.signups add column if not exists welcomed_at timestamptz;
+create or replace function public.mark_welcomed(p_email text)
+returns boolean language plpgsql security definer set search_path = public as $$
+declare hit int;
+begin
+  update public.signups set welcomed_at = now()
+   where email = lower(p_email) and welcomed_at is null and status = 'confirmed';
+  get diagnostics hit = row_count;
+  return hit > 0;
+end $$;
+revoke all on function public.mark_welcomed(text) from public, anon, authenticated;
