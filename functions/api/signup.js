@@ -10,8 +10,22 @@
 const DISPOSABLE = ['mailinator.com','guerrillamail.com','10minutemail.com','yopmail.com','temp-mail.org','trashmail.com','sharklasers.com'];
 const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
 
-function json(data, status = 200) {
-  return new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json' } });
+const ORIGIN_OK = /^https:\/\/(www\.)?sum-it\.eu$|^https:\/\/([a-z0-9-]+\.)?sum-it-website\.pages\.dev$/;
+function corsHeaders(request) {
+  const o = request.headers.get('Origin') || '';
+  return ORIGIN_OK.test(o) ? {
+    'Access-Control-Allow-Origin': o,
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Max-Age': '86400',
+    Vary: 'Origin'
+  } : {};
+}
+export async function onRequestOptions({ request }) {
+  return new Response(null, { status: 204, headers: corsHeaders(request) });
+}
+function json(data, status = 200, cors = {}) {
+  return new Response(JSON.stringify(data), { status, headers: { 'Content-Type': 'application/json', ...cors } });
 }
 async function sha256(s) {
   const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s));
@@ -27,8 +41,10 @@ function sbHeaders(env, extra = {}) {
 }
 
 export async function onRequestPost({ request, env }) {
-  let d; try { d = await request.json(); } catch { return json({ ok: false }, 400); }
-  const ok = json({ ok: true }); // uniform response, no enumeration
+  const cors = corsHeaders(request);
+  const json2 = (data, status = 200) => json(data, status, cors);
+  let d; try { d = await request.json(); } catch { return json2({ ok: false }, 400); }
+  const ok = json2({ ok: true }); // uniform response, no enumeration
 
   // honeypot + basic validation
   if (d.website) return ok;
@@ -36,7 +52,7 @@ export async function onRequestPost({ request, env }) {
   const naam = String(d.naam || '').trim().slice(0, 120);
   const rol = d.rol === 'boekhouder' ? 'boekhouder' : 'ondernemer';
   const taal = d.taal === 'en' ? 'en' : 'nl';
-  if (!naam || !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) return json({ ok: false, error: 'invalid' }, 400);
+  if (!naam || !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) return json2({ ok: false, error: 'invalid' }, 400);
   if (DISPOSABLE.includes(email.split('@')[1])) return ok;
 
   // rate limit per IP (5/hour)
@@ -75,12 +91,12 @@ export async function onRequestPost({ request, env }) {
       })
     });
     if (res.status === 409) continue;           // ref_code collision -> retry
-    if (!res.ok) return json({ ok: false }, 500);
+    if (!res.ok) return json2({ ok: false }, 500);
     const rows = await res.json().catch(() => []);
     if (!rows.length) return ok;                // duplicate e-mail -> done, no Laposta re-add
     myCode = code;
   }
-  if (!myCode) return json({ ok: false }, 500);
+  if (!myCode) return json2({ ok: false }, 500);
 
   // Laposta member (double opt-in mail comes from the list settings)
   if (env.LAPOSTA_API_KEY && env.LAPOSTA_LIST_ID) {

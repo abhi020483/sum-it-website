@@ -4,7 +4,7 @@
    fallbackClaimed: shown when the stats API is not reachable yet.
    displayOffsetNote: the real offset lives server-side (env DISPLAY_OFFSET). */
 window.SITE_CFG = {
-  API_BASE: '',
+  API_BASE: 'https://sum-it-website.pages.dev',
   PORTAL_URL: '/portal.html',
   socials: {
     linkedin: '',
