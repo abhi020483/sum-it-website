@@ -91,7 +91,7 @@ input:focus,textarea:focus{outline:2px solid var(--green)}
         <button class="btn" onclick="exportCsv()">Export CSV</button>
       </div>
       <div class="tblwrap"><table>
-        <thead><tr><th>#</th><th>Naam</th><th>E-mail</th><th>Rol</th><th>Status</th><th>Plek</th><th>Via</th><th>Ref-code</th><th>Bron</th><th>Datum</th></tr></thead>
+        <thead><tr><th>#</th><th>Naam</th><th>E-mail</th><th>Rol</th><th>Status</th><th>Plek</th><th>Via</th><th>Ref-code</th><th>Bron</th><th>Datum</th><th></th></tr></thead>
         <tbody id="tbody"></tbody>
       </table></div>
       <div class="err" id="s-err"></div>
@@ -185,8 +185,15 @@ function renderSignups(){
     return [x.naam,x.email,x.source,x.ref_code,x.referred_by,x.bedrijfstype,x.city].join(' ').toLowerCase().indexOf(q)>=0;});
   var pil={confirmed:'<span class="pill ok">bevestigd</span>',pending:'<span class="pill pend">wacht</span>',unsubscribed:'<span class="pill unsub">uit</span>'};
   document.getElementById('tbody').innerHTML=rows.map(function(x){
-    return '<tr><td>'+x.id+'</td><td>'+esc(x.naam)+'</td><td>'+esc(x.email)+'</td><td>'+esc(x.rol)+'</td><td>'+(pil[x.status]||esc(x.status))+'</td><td>'+(x.queue_pos||'—')+'</td><td>'+esc(x.referred_by||'—')+'</td><td>'+esc(x.ref_code)+'</td><td>'+esc(x.source||'')+'</td><td>'+String(x.created_at).slice(0,16).replace('T',' ')+'</td></tr>';
+    return '<tr><td>'+x.id+'</td><td>'+esc(x.naam)+'</td><td>'+esc(x.email)+'</td><td>'+esc(x.rol)+'</td><td>'+(pil[x.status]||esc(x.status))+'</td><td>'+(x.queue_pos||'—')+'</td><td>'+esc(x.referred_by||'—')+'</td><td>'+esc(x.ref_code)+'</td><td>'+esc(x.source||'')+'</td><td>'+String(x.created_at).slice(0,16).replace('T',' ')+'</td><td><button class="mini" style="color:#B91C1C" onclick="delSignup('+x.id+',\''+esc(x.email).replace(/'/g,'')+'\')">Verwijder</button></td></tr>';
   }).join('')||'<tr><td colspan="10" style="color:var(--slate)">Geen resultaten.</td></tr>';
+}
+async function delSignup(id,email){
+  if(!confirm('Weet je zeker dat je '+email+' uit de wachtrij wilt verwijderen?\nDit verwijdert de aanmelding definitief (bestaande pleknummers van anderen schuiven niet op).'))return;
+  var r=await SB.rpc('admin_delete_signup',{p_id:id});
+  var errEl=document.getElementById('s-err');errEl.textContent='';
+  if(r.error){errEl.textContent='Verwijderen mislukt: '+r.error.message;return;}
+  loadSignups();
 }
 function exportCsv(){
   var cols=['id','naam','email','rol','bedrijfstype','boekhouder','taal','source','city','ref_code','referred_by','status','queue_pos','confirmed_at','created_at'];

@@ -145,3 +145,17 @@ begin
   return hit > 0;
 end $$;
 revoke all on function public.mark_welcomed(text) from public, anon, authenticated;
+
+-- 5) Admin: verwijderen uit de wachtrij (v3.2) ----------------
+create or replace function public.admin_delete_signup(p_id bigint)
+returns void language plpgsql security definer set search_path = public as $$
+declare v_code text;
+begin
+  if not public.is_admin() then raise exception 'not allowed'; end if;
+  select ref_code into v_code from public.signups where id = p_id;
+  if v_code is null then raise exception 'signup not found'; end if;
+  update public.signups set referred_by = null where referred_by = v_code;
+  delete from public.signups where id = p_id;
+end $$;
+grant execute on function public.admin_delete_signup(bigint) to authenticated;
+revoke all on function public.admin_delete_signup(bigint) from public, anon;
