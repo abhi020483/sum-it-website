@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Uurtarief-calculator zzp 2026 · Sum-IT</title>
+<meta name="description" content="Bereken je minimale uurtarief als zzp'er: vanaf gewenst netto inkomen, via de 2026-belastingregels, naar het tarief dat je écht moet vragen. Gratis tool.">
+<link rel="canonical" href="https://sum-it.eu/tools/uurtarief-calculator.html">
+<link rel="icon" href="/sum-it-favicon.png">
+<meta property="og:title" content="Uurtarief-calculator zzp 2026 · Sum-IT">
+<meta property="og:description" content="Bereken je minimale uurtarief als zzp'er: vanaf gewenst netto inkomen, via de 2026-belastingregels, naar het tarief dat je écht moet vragen. Gratis tool.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sum-it.eu/tools/uurtarief-calculator.html">
+<meta property="og:image" content="https://sum-it.eu/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Uurtarief-calculator zzp 2026", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "inLanguage": "nl", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "url": "https://sum-it.eu/tools/uurtarief-calculator.html"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Wat is een goed uurtarief voor een zzp'er?", "acceptedAnswer": {"@type": "Answer", "text": "Dat hangt af van wat je netto wilt overhouden, je declarabele uren en je kosten. Deze tool rekent terug vanaf je gewenste netto inkomen met de 2026-belastingregels — betrouwbaarder dan 'wat de buurman vraagt'."}}, {"@type": "Question", "name": "Waarom niet gewoon mijn oude uurloon?", "acceptedAnswer": {"@type": "Answer", "text": "In loondienst betaalde je werkgever vakantie, ziekte, pensioen en lege uren. Als zzp'er zit dat allemaal in je tarief — al snel 1,5 tot 2 keer een bruto uurloon in loondienst."}}, {"@type": "Question", "name": "Is dit tarief inclusief btw?", "acceptedAnswer": {"@type": "Answer", "text": "Nee, het is exclusief btw. Zakelijke klanten rekenen met bedragen ex btw; bij particulieren communiceer je de prijs inclusief."}}]}</script>
+<style>
+:root{--indigo:#2D2D6B;--indigo-d:#232358;--green:#00BC7D;--green-d:#009966;--bg:#F1F5F9;--line:#E2E8F0;--slate:#475569;--mut:#64748B}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Poppins,sans-serif;background:var(--bg);color:var(--slate);line-height:1.7;font-size:16px}
+.top{background:linear-gradient(140deg,#2D2D6B,#232358);padding:18px 22px}
+.topin{max-width:860px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:9px;color:#fff;font-weight:800;font-size:19px;text-decoration:none}
+.logo img{width:30px;height:30px}
+.topnav{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.topnav a{color:#C7CBEA;text-decoration:none;font-size:14px;font-weight:600}.topnav a:hover{color:#fff}
+.cta{background:var(--green);color:#fff!important;padding:9px 16px;border-radius:99px;font-weight:700}
+main{max-width:760px;margin:0 auto;padding:42px 22px 30px}
+.crumb{font-size:13px;margin-bottom:18px}.crumb a{color:var(--green-d);text-decoration:none;font-weight:600}
+h1{color:var(--indigo);font-size:clamp(28px,5vw,40px);line-height:1.18;margin-bottom:12px}
+.lead{color:var(--slate);margin-bottom:8px}
+h2{color:var(--indigo);font-size:22px;margin:34px 0 10px}
+p{margin:0 0 14px}a{color:var(--green-d)}b{color:var(--indigo)}
+.tool{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px;margin:24px 0}
+label{display:block;font-weight:600;font-size:14px;margin:14px 0 6px;color:var(--indigo)}
+input[type=number]{width:100%;padding:12px 14px;border:1px solid var(--line);border-radius:12px;font-family:inherit;font-size:16px}
+input[type=range]{width:100%;accent-color:var(--green)}
+.chk{display:flex;align-items:center;gap:8px;margin:10px 0;font-size:14.5px}.chk input{width:18px;height:18px;accent-color:var(--green)}
+.res{background:linear-gradient(140deg,#2D2D6B,#232358);color:#C7CBEA;border-radius:16px;padding:22px;margin-top:20px}
+.res .big{font-size:32px;font-weight:800;color:#fff}
+.res table{width:100%;border-collapse:collapse;margin-top:12px;font-size:14px}
+.res td{padding:6px 0;border-bottom:1px dashed rgba(255,255,255,.18)}.res td:last-child{text-align:right;font-weight:700;color:#fff}
+.note{font-size:12.5px;color:var(--mut);margin-top:14px}
+.ctabox{background:linear-gradient(140deg,#2D2D6B,#232358);border-radius:18px;padding:28px;margin:34px 0 8px;color:#C7CBEA}
+.ctabox h3{color:#fff;font-size:20px;margin-bottom:8px}
+.ctabox a{display:inline-block;margin-top:14px;background:var(--green);color:#fff;text-decoration:none;font-weight:700;padding:12px 22px;border-radius:99px}
+.disc{font-size:12.5px;color:var(--mut);margin-top:22px}
+footer{max-width:760px;margin:0 auto;padding:26px 22px 40px;font-size:13px;color:var(--mut)}footer a{color:var(--green-d)}
+</style>
+</head>
+<body>
+<div class="top"><div class="topin">
+  <a class="logo" href="/"><img src="/sum-it-logo-mark.svg" alt="Sum-IT">Sum-IT</a>
+  <nav class="topnav"><a href="/blog/">Blog</a><a href="/#capture">Features</a><a href="/#pricing">Prijzen</a><a class="cta" href="/#signup">Founding 500</a></nav>
+</div></div>
+<main>
+<div class="crumb"><a href="/">Home</a> · <a href="/blog/">Blog</a> · Uurtarief-calculator</div>
+<h1>Welk uurtarief moet jij minimaal vragen?</h1>
+<p class="lead">Reken terug vanaf wat je netto per maand wilt overhouden — via de belastingregels van 2026 en je échte declarabele uren — naar het uurtarief dat daarbij hoort.</p>
+<div class="tool">
+<label for="netto">Gewenst netto inkomen per maand</label><input type="number" id="netto" value="3000" min="0" step="100">
+<label for="kosten">Zakelijke kosten per jaar (software, verzekeringen, vervoer, spullen)</label><input type="number" id="kosten" value="6000" min="0" step="500">
+<label for="weken">Werkweken per jaar: <span id="wekenv">46</span></label><input type="range" id="weken" min="38" max="50" value="46">
+<label for="uurpw">Werkuren per week: <span id="uurpwv">40</span></label><input type="range" id="uurpw" min="16" max="60" value="40">
+<label for="decl">Percentage declarabel: <span id="declv">60%</span></label><input type="range" id="decl" min="30" max="90" value="60">
+<div class="chk"><input type="checkbox" id="uren2" checked><label for="uren2" style="margin:0;font-weight:500;color:var(--slate)">Ik haal het urencriterium → zelfstandigenaftrek</label></div>
+<div class="res"><div>Jouw minimale uurtarief (ex btw):</div><div class="big" id="tarief">—</div>
+<table><tr><td>Benodigde winst per jaar</td><td id="winstn">—</td></tr><tr><td>+ kosten → benodigde omzet</td><td id="omzet">—</td></tr><tr><td>Declarabele uren per jaar</td><td id="declu">—</td></tr></table>
+<div class="note" style="color:#AEB4DF">Vergeet je buffer voor lege maanden en pensioen niet — rond liever naar boven af.</div></div>
+</div>
+<h2>Hoe rekent deze tool?</h2>
+<p>Netto doel per jaar → welke winst daarvoor nodig is (met de 2026-tarieven, kortingen, <a href="/blog/urencriterium-zelfstandigenaftrek.html">zelfstandigenaftrek</a> en mkb-winstvrijstelling) → plus je kosten = benodigde omzet → gedeeld door je declarabele uren. Volledige uitleg: <a href="/blog/uurtarief-berekenen-zzp.html">uurtarief berekenen als zzp'er</a>. Check daarna of elke klus dat tarief oplevert via <a href="/blog/winst-per-klus-berekenen.html">winst per klus</a>.</p>
+<div class="ctabox"><h3>Wil je dat dit potje zichzelf vult?</h3>Sum-IT leest je bonnetjes, zet je btw apart en laat per klus zien wat je verdient. We lanceren binnenkort in Nederland, de eerste 500 leden krijgen 3 maanden voor €3.<br><a href="/#signup">Claim je Founding 500-plek →</a></div><p class="disc">Deze tool geeft een indicatie op basis van de 2026-regels (bron: Belastingdienst) en is geen persoonlijk belasting- of financieel advies.</p>
+</main>
+<footer>Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU · <a href="/blog/">Blog</a> · <a href="/">sum-it.eu</a></footer>
+<script>const P={"box1": [{"tot": 38883, "pct": 0.3575}, {"tot": 78426, "pct": 0.3756}, {"tot": null, "pct": 0.495}], "ahk": {"max": 3115, "afbouw_vanaf": 29736, "afbouw_pct": 0.06398}, "ak": [{"vanaf": 0, "tot": 11965, "basis": 0, "pct": 0.08324}, {"vanaf": 11965, "tot": 25845, "basis": 996, "pct": 0.31009}, {"vanaf": 25845, "tot": 45592, "basis": 5300, "pct": 0.0195}, {"vanaf": 45592, "tot": 132920, "basis": 5685, "pct": -0.0651}, {"vanaf": 132920, "tot": null, "basis": 0, "pct": 0}], "zvw": {"pct": 0.0485, "max": 79409}, "za": 1200, "sa": 2123, "mkb": 0.127};
+function box1(t){let x=0,pr=0;for(const s of P.box1){const top=s.tot===null?Infinity:s.tot;if(t>pr)x+=(Math.min(t,top)-pr)*s.pct;pr=top;}return Math.max(x,0);}
+function ahk(i){return i<=P.ahk.afbouw_vanaf?P.ahk.max:Math.max(0,P.ahk.max-P.ahk.afbouw_pct*(i-P.ahk.afbouw_vanaf));}
+function ak(i){for(const t of P.ak){const top=t.tot===null?Infinity:t.tot;if(i<=top)return Math.max(0,t.basis+t.pct*(i-t.vanaf));}return 0;}
+function calc(w,u,s){const a=(u?P.za:0)+(u&&s?P.sa:0);const b=Math.max(0,w-a)*(1-P.mkb);const ib=Math.max(0,box1(b)-ahk(b)-ak(b));const z=P.zvw.pct*Math.min(b,P.zvw.max);return{ib:ib,zvw:z,tot:ib+z};}
+function nettoVanWinst(w,u,s){return w-calc(w,u,s).tot;}
+function winstVoorNetto(d,u,s){let lo=d,hi=d*2.5+30000;for(let i=0;i<60;i++){const m=(lo+hi)/2;if(nettoVanWinst(m,u,s)<d)lo=m;else hi=m;}return(lo+hi)/2;}
+const F=n=>'€'+Math.round(n).toLocaleString('nl-NL');
+function u2(){const netto=(+document.getElementById('netto').value||0)*12,kosten=+document.getElementById('kosten').value||0,weken=+document.getElementById('weken').value,uurpw=+document.getElementById('uurpw').value,decl=+document.getElementById('decl').value/100,u=document.getElementById('uren2').checked;
+document.getElementById('wekenv').textContent=weken;document.getElementById('uurpwv').textContent=uurpw;document.getElementById('declv').textContent=Math.round(decl*100)+'%';
+const winst=winstVoorNetto(netto,u,false),omzet=winst+kosten,uren=weken*uurpw*decl;
+document.getElementById('winstn').textContent=F(winst);document.getElementById('omzet').textContent=F(omzet);document.getElementById('declu').textContent=Math.round(uren)+' uur';
+document.getElementById('tarief').textContent=uren>0?F(omzet/uren)+' /uur':'—';}
+for(const id of ['netto','kosten','weken','uurpw','decl','uren2'])document.getElementById(id).oninput=u2;u2();
+</script>
+</body></html>
