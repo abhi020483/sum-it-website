@@ -54,6 +54,11 @@ export async function onRequestPost({ request, env }) {
   const naam = String(d.naam || '').trim().slice(0, 120);
   const rol = d.rol === 'boekhouder' ? 'boekhouder' : 'ondernemer';
   const taal = d.taal === 'en' ? 'en' : 'nl';
+  // Counter-signup extras (Breda balie-actie). Stored so Ian can call back.
+  const telefoon  = String(d.telefoon || '').replace(/[^\d+\s()-]/g, '').trim().slice(0, 40) || null;
+  const plaats    = String(d.plaats || '').trim().slice(0, 80) || null;   // vakman's own town -> city
+  const stad      = String(d.stad || '').trim().slice(0, 80) || null;     // campaign city (e.g. breda)
+  const vestiging = String(d.vestiging || '').replace(/[^a-z0-9-]/gi, '').slice(0, 40) || null;
   if (!naam || !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) return json2({ ok: false, error: 'invalid' }, 400);
   if (DISPOSABLE.includes(email.split('@')[1])) return ok;
 
@@ -89,6 +94,7 @@ export async function onRequestPost({ request, env }) {
         bedrijfstype: rol === 'ondernemer' ? String(d.bedrijfstype || '').slice(0, 60) : null,
         boekhouder: rol === 'ondernemer' ? (d.boekhouder === 'ja' ? 'ja' : d.boekhouder === 'nee' ? 'nee' : null) : null,
         source: String(d.source || 'site').slice(0, 60),
+        telefoon, stad, vestiging, city: plaats,
         ref_code: code, referred_by: referredBy, ip_hash: ipHash
       })
     });
