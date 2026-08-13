@@ -94,12 +94,12 @@ input:focus,select:focus{outline:2px solid var(--green)}
   </div>
 
   <div class="card hide" id="dash">
-    <h1 data-i18n="d_h1">Your founding spot</h1>
+    <h1 data-i18n="d_h1">Sign up</h1>
     <p class="sub" id="d-hello"></p>
     <div id="d-pending" class="note hide" data-i18n="d_pending">Your signup is not confirmed yet. Click the link in the confirmation e-mail (check spam), then refresh this page.</div>
-    <div id="d-none" class="note hide" data-i18n="d_none">We couldn't find a signup with this e-mail. Join the queue on sum-it.eu first.</div>
+    <div id="d-none" class="note hide" data-i18n="d_none">We couldn't find a signup with this e-mail. Create your free profile on sum-it.eu first.</div>
     <div id="d-main" class="hide">
-      <div class="pos"><b id="d-pos">#—</b><span data-i18n="d_pos">your spot in the queue</span></div>
+      <div class="pos"><b id="d-pos">#—</b><span data-i18n="d_pos">your signup number</span></div>
       <div class="linkbox"><input readonly id="d-link" value=""><button onclick="copyLink()" data-i18n="d_copy">Copy</button></div>
       <div class="small" data-i18n="d_share">Share your personal link, every friend who joins counts:</div>
       <div class="socrow">
@@ -110,11 +110,11 @@ input:focus,select:focus{outline:2px solid var(--green)}
       </div>
       <div class="statrow">
         <div class="stat"><small data-i18n="d_fr">Friends joined (confirmed)</small><b id="d-refs">0</b></div>
-        <div class="stat"><small data-i18n="d_rank">Your rank</small><b style="font-size:14px">★ <span data-i18n="d_rank1">Founding Member</span></b></div>
+        <div class="stat"><small data-i18n="d_rank">Your rank</small><b style="font-size:14px">★ <span data-i18n="d_rank1">Member</span></b></div>
       </div>
       <div class="ranks">
         <div class="rlbl" data-i18n="d_ladder">Rise through the ranks as your reputation grows</div>
-        <span class="rank gold">★ <span data-i18n="rk1">Founding Member</span></span>
+        <span class="rank gold">★ <span data-i18n="rk1">Member</span></span>
         <span class="rank lock">Trusted Pro</span>
         <span class="rank lock">Summit Elite</span>
       </div>
@@ -138,10 +138,10 @@ const P18N = {
 en:{t_portal:"Member portal",t_out:"Log out",t_nocfg:"The portal backend is not configured yet (sb-config.js). Ask the team to finish the setup.",t_back:"Back to sum-it.eu",
 a_h1:"Welcome back",a_sub:"Log in, or create your account with the e-mail you signed up with.",a_in:"Log in",a_up:"Create account",a_mail:"E-mail",a_pw:"Password (min. 12 characters)",a_go:"Log in",a_go2:"Create account",
 a_verify:"Almost there! Check your inbox and click the verification link, then log in here.",
-d_h1:"Your founding spot",d_hello:"Logged in as",d_pending:"Your signup is not confirmed yet. Click the link in the confirmation e-mail (check spam), then refresh this page.",
-d_none:"We couldn't find a signup with this e-mail. Join the queue on sum-it.eu first.",
-d_pos:"your spot in the queue",d_copy:"Copy",d_share:"Share your personal link, every friend who joins counts:",
-d_fr:"Friends joined (confirmed)",d_rank:"Your rank",d_rank1:"Founding Member",rk1:"Founding Member",
+d_h1:"Sign up",d_hello:"Logged in as",d_pending:"Your signup is not confirmed yet. Click the link in the confirmation e-mail (check spam), then refresh this page.",
+d_none:"We couldn't find a signup with this e-mail. Create your free profile on sum-it.eu first.",
+d_pos:"your signup number",d_copy:"Copy",d_share:"Share your personal link, every friend who joins counts:",
+d_fr:"Friends joined (confirmed)",d_rank:"Your rank",d_rank1:"Member",rk1:"Member",
 d_ladder:"Rise through the ranks as your reputation grows",
 d_city:"Your city (lights up the map on sum-it.eu)",d_citysave:"Save city",d_saved:"Saved!",
 d_qr:"Your QR code — scanning it opens your personal link",d_qr2:"Tip: download your business card on sum-it.eu and share it with this QR.",
@@ -150,10 +150,10 @@ e_pw:"Password must be at least 12 characters.",e_generic:"Something went wrong,
 nl:{t_portal:"Member-portal",t_out:"Uitloggen",t_nocfg:"De portal-backend is nog niet geconfigureerd (sb-config.js). Vraag het team de setup af te ronden.",t_back:"Terug naar sum-it.eu",
 a_h1:"Welkom terug",a_sub:"Log in, of maak je account met het e-mailadres waarmee je je hebt aangemeld.",a_in:"Inloggen",a_up:"Account maken",a_mail:"E-mailadres",a_pw:"Wachtwoord (min. 12 tekens)",a_go:"Inloggen",a_go2:"Account maken",
 a_verify:"Bijna klaar! Check je inbox en klik op de verificatielink, log daarna hier in.",
-d_h1:"Jouw founding-plek",d_hello:"Ingelogd als",d_pending:"Je aanmelding is nog niet bevestigd. Klik op de link in de bevestigingsmail (check je spam) en ververs deze pagina.",
-d_none:"We vonden geen aanmelding met dit e-mailadres. Sluit eerst aan in de rij op sum-it.eu.",
-d_pos:"jouw plek in de rij",d_copy:"Kopieer",d_share:"Deel je persoonlijke link, elke vriend die meedoet telt:",
-d_fr:"Vrienden meegedaan (bevestigd)",d_rank:"Jouw rang",d_rank1:"Founding Member",rk1:"Founding Member",
+d_h1:"Aanmelden",d_hello:"Ingelogd als",d_pending:"Je aanmelding is nog niet bevestigd. Klik op de link in de bevestigingsmail (check je spam) en ververs deze pagina.",
+d_none:"We vonden geen aanmelding met dit e-mailadres. Maak eerst je gratis profiel aan op sum-it.eu.",
+d_pos:"jouw aanmeldnummer",d_copy:"Kopieer",d_share:"Deel je persoonlijke link, elke vriend die meedoet telt:",
+d_fr:"Vrienden meegedaan (bevestigd)",d_rank:"Jouw rang",d_rank1:"Lid",rk1:"Lid",
 d_ladder:"Klim in rang terwijl je reputatie groeit",
 d_city:"Jouw stad (licht op op de kaart op sum-it.eu)",d_citysave:"Stad opslaan",d_saved:"Opgeslagen!",
 d_qr:"Jouw QR-code — scannen opent jouw persoonlijke link",d_qr2:"Tip: download je visitekaartje op sum-it.eu en deel 'm met deze QR.",
@@ -211,7 +211,7 @@ async function openDash(user){
     document.getElementById('d-link').value=link;
     document.getElementById('d-refs').textContent=ME.referred_confirmed||0;
     if(ME.city) document.getElementById('d-city').value=ME.city;
-    var msg=encodeURIComponent((LANG==='nl'?'Ik sta in de rij voor Sum-IT, doe ook mee: ':'I am in the Sum-IT queue, join me: ')+link);
+    var msg=encodeURIComponent((LANG==='nl'?'Ik heb me aangemeld bij Sum-IT, doe ook mee: ':'I signed up for Sum-IT, join me: ')+link);
     document.getElementById('sh-wa').href='https://wa.me/?text='+msg;
     document.getElementById('sh-li').href='https://www.linkedin.com/sharing/share-offsite/?url='+encodeURIComponent(link);
     document.getElementById('sh-x').href='https://twitter.com/intent/tweet?text='+msg;

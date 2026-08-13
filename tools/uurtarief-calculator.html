@@ -72,24 +72,24 @@ footer{max-width:760px;margin:0 auto;padding:26px 22px 40px;font-size:13px;color
 <body>
 <div class="top"><div class="topin">
   <a class="logo" href="/"><img src="/sum-it-logo-mark.svg" alt="Sum-IT">Sum-IT</a>
-  <nav class="topnav"><a href="/blog/">Blog</a><a href="/#capture">Features</a><a href="/#pricing">Prijzen</a><a class="cta" href="/#signup">Founding 500</a></nav>
+  <nav class="topnav"><a href="/blog/" data-i18n="c_blog">Blog</a><a href="/#capture" data-i18n="c_feat">Functies</a><a href="/#pricing" data-i18n="c_price">Prijzen</a><a class="cta" href="/#signup" data-i18n="c_cta">Gratis profiel</a></nav>
 </div></div>
 <main>
-<div class="crumb"><a href="/">Home</a> · <a href="/blog/">Blog</a> · Uurtarief-calculator</div>
-<h1>Wat is een goed uurtarief voor jouw vak?</h1>
-<p class="lead">Beantwoord drie vragen — je beroep, waar je werkt en hoeveel ervaring je hebt — en zie meteen wat een reëel uurtarief is in 2026.</p>
+<div class="crumb"><a href="/" data-i18n="c_home">Home</a> · <a href="/blog/">Blog</a> · <span data-i18n="tt_crumb">Uurtarief-calculator</span></div>
+<h1 data-i18n="tu1">Wat is een goed uurtarief voor jouw vak?</h1>
+<p class="lead" data-i18n="tu2">Beantwoord drie vragen — je beroep, waar je werkt en hoeveel ervaring je hebt — en zie meteen wat een reëel uurtarief is in 2026.</p>
 
 <div class="tool">
   <div class="step" id="s1">
-    <div class="steptitle" data-n="1">Wat is je beroep?</div>
+    <div class="steptitle" data-n="1" data-i18n="tu30">Wat is je beroep?</div>
     <div class="opts" id="vakopts"></div>
   </div>
   <div class="step locked" id="s2">
-    <div class="steptitle" data-n="2">Waar werk je?</div>
+    <div class="steptitle" data-n="2" data-i18n="tu31">Waar werk je?</div>
     <div class="opts" id="regopts"></div>
   </div>
   <div class="step locked" id="s3">
-    <div class="steptitle" data-n="3">Hoeveel ervaring heb je?</div>
+    <div class="steptitle" data-n="3" data-i18n="tu32">Hoeveel ervaring heb je?</div>
     <div class="opts" id="ervopts"></div>
   </div>
   <div class="res" id="result" style="display:none">
@@ -97,34 +97,34 @@ footer{max-width:760px;margin:0 auto;padding:26px 22px 40px;font-size:13px;color
     <div class="big" id="bench">—</div>
     <div class="sub" id="benchmid">—</div>
     <table>
-      <tr><td>Gemiddeld voor dit beroep (landelijk)</td><td id="rowbase">—</td></tr>
-      <tr><td>Correctie voor je regio</td><td id="rowreg">—</td></tr>
-      <tr><td>Correctie voor je ervaring</td><td id="rowerv">—</td></tr>
+      <tr><td data-i18n="tu3">Gemiddeld voor dit beroep (landelijk)</td><td id="rowbase">—</td></tr>
+      <tr><td data-i18n="tu4">Correctie voor je regio</td><td id="rowreg">—</td></tr>
+      <tr><td data-i18n="tu5">Correctie voor je ervaring</td><td id="rowerv">—</td></tr>
     </table>
     <button class="reset" id="reset">↺ Opnieuw beginnen</button>
-    <div class="note" style="color:#AEB4DF">Indicatie op basis van marktcijfers 2026 (Knab, Verbouwstart, DigiBoox e.a.). Je specialisme, klanten en onderhandeling bepalen het uiteindelijke bedrag.</div>
+    <div class="note" style="color:#AEB4DF" data-i18n="tu21">Indicatie op basis van marktcijfers 2026 (Knab, Verbouwstart, DigiBoox e.a.). Je specialisme, klanten en onderhandeling bepalen het uiteindelijke bedrag.</div>
   </div>
 </div>
 
-<h2>En wat moet jíj minimaal vragen?</h2>
-<p>Het marktgemiddelde is een richtpunt, geen doel. Reken hieronder terug vanaf wat je netto wilt overhouden — via de belastingregels van 2026 en je échte declarabele uren.</p>
+<h2 data-i18n="tu6">En wat moet jíj minimaal vragen?</h2>
+<p data-i18n="tu7">Het marktgemiddelde is een richtpunt, geen doel. Reken hieronder terug vanaf wat je netto wilt overhouden — via de belastingregels van 2026 en je échte declarabele uren.</p>
 <div class="tool">
-<label for="netto">Gewenst netto inkomen per maand</label><input type="number" id="netto" value="3000" min="0" step="100">
-<label for="kosten">Zakelijke kosten per jaar (software, verzekeringen, vervoer, spullen)</label><input type="number" id="kosten" value="6000" min="0" step="500">
-<label for="weken">Werkweken per jaar: <span id="wekenv">46</span></label><input type="range" id="weken" min="38" max="50" value="46">
-<label for="uurpw">Werkuren per week: <span id="uurpwv">40</span></label><input type="range" id="uurpw" min="16" max="60" value="40">
-<label for="decl">Percentage declarabel: <span id="declv">60%</span></label><input type="range" id="decl" min="30" max="90" value="60">
-<div class="chk"><input type="checkbox" id="uren2" checked><label for="uren2" style="margin:0;font-weight:500;color:var(--slate)">Ik haal het urencriterium → zelfstandigenaftrek</label></div>
-<div class="res2"><div>Jouw minimale uurtarief (ex btw):</div><div class="big" id="tarief">—</div>
-<table><tr><td>Benodigde winst per jaar</td><td id="winstn">—</td></tr><tr><td>+ kosten → benodigde omzet</td><td id="omzet">—</td></tr><tr><td>Declarabele uren per jaar</td><td id="declu">—</td></tr></table>
-<div class="note" style="color:#AEB4DF">Vergeet je buffer voor lege maanden en pensioen niet — rond liever naar boven af.</div></div>
+<label for="netto" data-i18n="tu8">Gewenst netto inkomen per maand</label><input type="number" id="netto" value="3000" min="0" step="100">
+<label for="kosten" data-i18n="tu9">Zakelijke kosten per jaar (software, verzekeringen, vervoer, spullen)</label><input type="number" id="kosten" value="6000" min="0" step="500">
+<label for="weken"><span data-i18n="tu10">Werkweken per jaar:</span> <span id="wekenv">46</span></label><input type="range" id="weken" min="38" max="50" value="46">
+<label for="uurpw"><span data-i18n="tu11">Werkuren per week:</span> <span id="uurpwv">40</span></label><input type="range" id="uurpw" min="16" max="60" value="40">
+<label for="decl"><span data-i18n="tu12">Percentage declarabel:</span> <span id="declv">60%</span></label><input type="range" id="decl" min="30" max="90" value="60">
+<div class="chk"><input type="checkbox" id="uren2" checked><label for="uren2" style="margin:0;font-weight:500;color:var(--slate)" data-i18n="tu13">Ik haal het urencriterium → zelfstandigenaftrek</label></div>
+<div class="res2"><div data-i18n="tt_res">Jouw minimale uurtarief (ex btw):</div><div class="big" id="tarief">—</div>
+<table><tr><td data-i18n="tu14">Benodigde winst per jaar</td><td id="winstn">—</td></tr><tr><td data-i18n="tu15">+ kosten → benodigde omzet</td><td id="omzet">—</td></tr><tr><td data-i18n="tu16">Declarabele uren per jaar</td><td id="declu">—</td></tr></table>
+<div class="note" style="color:#AEB4DF" data-i18n="tu22">Vergeet je buffer voor lege maanden en pensioen niet — rond liever naar boven af.</div></div>
 </div>
 
-<h2>Hoe komt het marktgemiddelde tot stand?</h2>
-<p>Per beroep nemen we het landelijke mediane uurtarief van 2026 als basis, en corrigeren we voor regio (Randstad hoger, Noord-Nederland en het zuiden vaak lager) en voor ervaring (starter lager, specialist hoger). Het is een <b>indicatie</b>, geen vast tarief. Meer uitleg: <a href="/blog/uurtarief-berekenen-zzp.html">uurtarief berekenen als zzp'er</a>.</p>
-<div class="ctabox"><h3>Wil je dat dit potje zichzelf vult?</h3>Sum-IT leest je bonnetjes, zet je btw apart en laat per klus zien wat je verdient. We lanceren binnenkort in Nederland, de eerste 500 leden krijgen 3 maanden voor €1.<br><a href="/#signup">Claim je Founding 500-plek →</a></div><p class="disc">Deze tool geeft een indicatie: de netto-module op basis van de 2026-regels (bron: Belastingdienst), de markttarieven op basis van openbare branchecijfers 2026. Geen persoonlijk belasting- of financieel advies.</p>
+<h2 data-i18n="tu17">Hoe komt het marktgemiddelde tot stand?</h2>
+<p data-i18n="tu18">Per beroep nemen we het landelijke mediane uurtarief van 2026 als basis, en corrigeren we voor regio (Randstad hoger, Noord-Nederland en het zuiden vaak lager) en voor ervaring (starter lager, specialist hoger). Het is een <b>indicatie</b>, geen vast tarief. Meer uitleg: <a href="/blog/uurtarief-berekenen-zzp.html">uurtarief berekenen als zzp'er</a>.</p>
+<div class="ctabox"><h3 data-i18n="tu19">Wil je dat dit potje zichzelf vult?</h3><span data-i18n="tu_cta1">Sum-IT leest je bonnetjes, zet je btw apart en laat per klus zien wat je verdient. We lanceren binnenkort in Nederland. Je profiel in het netwerk is gratis.</span><br><a href="/#signup" data-i18n="tu_cta2">Maak je gratis profiel aan →</a></div><p class="disc" data-i18n="tu20">Deze tool geeft een indicatie: de netto-module op basis van de 2026-regels (bron: Belastingdienst), de markttarieven op basis van openbare branchecijfers 2026. Geen persoonlijk belasting- of financieel advies.</p>
 </main>
-<footer>Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU · <a href="/blog/">Blog</a> · <a href="/">sum-it.eu</a></footer>
+<footer><span data-i18n="c_foot">Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU</span> · <a href="/blog/">Blog</a> · <a href="/">sum-it.eu</a> · <a href="/privacy" data-i18n="c_priv">Privacyverklaring</a></footer>
 <script>
 const F=n=>'€'+Math.round(n).toLocaleString('nl-NL');
 /* ---------- Wizard-data ---------- */
@@ -150,12 +150,32 @@ const ERV=[
  ['specialist','Specialist','10+ jaar of specialisme',1.15]
 ];
 let selVak=null,selReg=null,selErv=null;
+function T(nl,en){return document.documentElement.lang==='en'?en:nl;}
+const ENL={
+ loodgieter:['Plumber'],elektricien:['Electrician'],installateur:['Installation engineer'],
+ timmerman:['Carpenter'],metselaar:['Bricklayer'],tegelzetter:['Tiler'],stukadoor:['Plasterer'],
+ schilder:['Painter'],dakdekker:['Roofer'],stratenmaker:['Paver'],glaszetter:['Glazier'],
+ monteur:['Mechanic / technician'],hovenier:['Landscape gardener'],klusjesman:['All-round handyman'],
+ aannemer:['Contractor / building'],
+ randstad:['Randstad','Amsterdam, Rotterdam, The Hague, Utrecht'],
+ nhu:['North Holland / Utrecht','outside the big cities'],
+ zh:['South Holland','outside the big cities'],
+ nb:['North Brabant',''],
+ goflevo:['Gelderland / Overijssel / Flevoland',''],
+ limzee:['Limburg / Zeeland',''],
+ noord:['Friesland / Groningen / Drenthe',''],
+ starter:['Starter','less than 3 years'],
+ ervaren:['Experienced','3 to 10 years'],
+ specialist:['Specialist','10+ years or a speciality']
+};
+function lbl(row){const e=ENL[row[0]];return (document.documentElement.lang==='en'&&e)?e[0]:row[1];}
+function sub(row){const e=ENL[row[0]];const s=(document.documentElement.lang==='en'&&e&&e.length>1)?e[1]:(row[2]&&isNaN(row[2])?row[2]:'');return s;}
 function build(list,box,cb){
   const el=document.getElementById(box);el.innerHTML='';
   list.forEach(row=>{
     const b=document.createElement('button');b.className='opt';b.type='button';
-    const sub=row[2]&&isNaN(row[2])?'<small>'+row[2]+'</small>':'';
-    b.innerHTML=row[1]+sub;b.dataset.key=row[0];
+    const sb=sub(row);
+    b.innerHTML=lbl(row)+(sb?'<small>'+sb+'</small>':'');b.dataset.key=row[0];
     b.onclick=()=>cb(row,b);el.appendChild(b);
   });
 }
@@ -169,9 +189,9 @@ function calcBench(showRes){
   if(!(selVak&&selReg&&selErv)) return;
   const base=selVak[2],rf=selReg[3],ef=selErv[3];
   const mid=base*rf*ef,lo=Math.round(mid*0.9),hi=Math.round(mid*1.1),m=Math.round(mid);
-  document.getElementById('bench').textContent=F(lo)+' – '+F(hi)+' /uur';
-  document.getElementById('benchmid').textContent='gemiddeld ~'+F(m)+' per uur ex btw · voor een '+selVak[1].toLowerCase();
-  document.getElementById('rowbase').textContent=F(base)+' /uur';
+  document.getElementById('bench').textContent=F(lo)+' – '+F(hi)+T(' /uur',' /hr');
+  document.getElementById('benchmid').textContent=T('gemiddeld ~'+F(m)+' per uur ex btw · voor een '+selVak[1].toLowerCase(),'average ~'+F(m)+' per hour excl. VAT · for a '+lbl(selVak).toLowerCase());
+  document.getElementById('rowbase').textContent=F(base)+T(' /uur',' /hr');
   const rp=Math.round((rf-1)*100);document.getElementById('rowreg').textContent=(rp>0?'+':'')+rp+'%';
   const ep=Math.round((ef-1)*100);document.getElementById('rowerv').textContent=(ep>0?'+':'')+ep+'%';
   if(showRes){const res=document.getElementById('result');res.style.display='block';res.scrollIntoView({behavior:'smooth',block:'center'});}
@@ -195,8 +215,22 @@ function winstVoorNetto(d,u,s){let lo=d,hi=d*2.5+30000;for(let i=0;i<60;i++){con
 function u2(){const netto=(+document.getElementById('netto').value||0)*12,kosten=+document.getElementById('kosten').value||0,weken=+document.getElementById('weken').value,uurpw=+document.getElementById('uurpw').value,decl=+document.getElementById('decl').value/100,u=document.getElementById('uren2').checked;
 document.getElementById('wekenv').textContent=weken;document.getElementById('uurpwv').textContent=uurpw;document.getElementById('declv').textContent=Math.round(decl*100)+'%';
 const winst=winstVoorNetto(netto,u,false),omzet=winst+kosten,uren=weken*uurpw*decl;
-document.getElementById('winstn').textContent=F(winst);document.getElementById('omzet').textContent=F(omzet);document.getElementById('declu').textContent=Math.round(uren)+' uur';
-document.getElementById('tarief').textContent=uren>0?F(omzet/uren)+' /uur':'—';}
+document.getElementById('winstn').textContent=F(winst);document.getElementById('omzet').textContent=F(omzet);document.getElementById('declu').textContent=Math.round(uren)+T(' uur',' hrs');
+document.getElementById('tarief').textContent=uren>0?F(omzet/uren)+T(' /uur',' /hr'):'—';}
 for(const id of ['netto','kosten','weken','uurpw','decl','uren2'])document.getElementById(id).oninput=u2;u2();
+document.addEventListener('langchange',function(){
+  const keep=[selVak,selReg,selErv];
+  document.querySelectorAll('.opt').forEach(function(o){
+    const row=o.dataset.key;
+    [VAK,REG,ERV].forEach(function(list){
+      const r=list.find(function(x){return x[0]===row;});
+      if(r){const sb=sub(r);o.innerHTML=lbl(r)+(sb?'<small>'+sb+'</small>':'');}
+    });
+  });
+  if(keep[0]&&keep[1]&&keep[2]) calcBench();
+  u2();
+});
 </script>
+<script>window.PAGE_I18N={"nl": {"tu1": "Wat is een goed uurtarief voor jouw vak?", "tu2": "Beantwoord drie vragen — je beroep, waar je werkt en hoeveel ervaring je hebt — en zie meteen wat een reëel uurtarief is in 2026.", "tu3": "Gemiddeld voor dit beroep (landelijk)", "tu4": "Correctie voor je regio", "tu5": "Correctie voor je ervaring", "tu6": "En wat moet jíj minimaal vragen?", "tu7": "Het marktgemiddelde is een richtpunt, geen doel. Reken hieronder terug vanaf wat je netto wilt overhouden — via de belastingregels van 2026 en je échte declarabele uren.", "tu8": "Gewenst netto inkomen per maand", "tu9": "Zakelijke kosten per jaar (software, verzekeringen, vervoer, spullen)", "tu10": "Werkweken per jaar:", "tu11": "Werkuren per week:", "tu12": "Percentage declarabel:", "tu13": "Ik haal het urencriterium → zelfstandigenaftrek", "tu14": "Benodigde winst per jaar", "tu15": "+ kosten → benodigde omzet", "tu16": "Declarabele uren per jaar", "tu17": "Hoe komt het marktgemiddelde tot stand?", "tu18": "Per beroep nemen we het landelijke mediane uurtarief van 2026 als basis, en corrigeren we voor regio (Randstad hoger, Noord-Nederland en het zuiden vaak lager) en voor ervaring (starter lager, specialist hoger). Het is een <b>indicatie</b>, geen vast tarief. Meer uitleg: <a href=\"/blog/uurtarief-berekenen-zzp.html\">uurtarief berekenen als zzp'er</a>.", "tu19": "Wil je dat dit potje zichzelf vult?", "tu20": "Deze tool geeft een indicatie: de netto-module op basis van de 2026-regels (bron: Belastingdienst), de markttarieven op basis van openbare branchecijfers 2026. Geen persoonlijk belasting- of financieel advies.", "tu_cta1": "Sum-IT leest je bonnetjes, zet je btw apart en laat per klus zien wat je verdient. We lanceren binnenkort in Nederland. Je profiel in het netwerk is gratis.", "tu_cta2": "Maak je gratis profiel aan →", "tu21": "Indicatie op basis van marktcijfers 2026 (Knab, Verbouwstart, DigiBoox e.a.). Je specialisme, klanten en onderhandeling bepalen het uiteindelijke bedrag.", "tu22": "Vergeet je buffer voor lege maanden en pensioen niet — rond liever naar boven af.", "tu30": "Wat is je beroep?", "tu31": "Waar werk je?", "tu32": "Hoeveel ervaring heb je?", "tt_res": "Jouw minimale uurtarief (ex btw):", "tt_crumb": "Uurtarief-calculator"}, "en": {"tu1": "What is a good hourly rate for your trade?", "tu2": "Answer three questions — your trade, where you work and how much experience you have — and see straight away what a realistic hourly rate is in 2026.", "tu3": "Average for this trade (nationwide)", "tu4": "Adjustment for your region", "tu5": "Adjustment for your experience", "tu6": "And what should <em>you</em> charge as a minimum?", "tu7": "The market average is a reference point, not a target. Work back below from what you want to keep net — via the 2026 tax rules and your real billable hours.", "tu8": "Desired net income per month", "tu9": "Business costs per year (software, insurance, transport, equipment)", "tu10": "Working weeks per year:", "tu11": "Working hours per week:", "tu12": "Percentage billable:", "tu13": "I meet the hours criterion → self-employed deduction", "tu14": "Profit needed per year", "tu15": "+ costs → revenue needed", "tu16": "Billable hours per year", "tu17": "How is the market average calculated?", "tu18": "For each trade we take the national median hourly rate for 2026 as the basis, then adjust for region (the Randstad higher, the north and south of the country often lower) and for experience (starter lower, specialist higher). It is an <b>indication</b>, not a fixed rate. More background: <a href=\"/blog/uurtarief-berekenen-zzp.html\">calculating your hourly rate when self-employed</a>.", "tu19": "Want this pot to fill itself?", "tu20": "This tool gives an indication: the net module is based on the 2026 rules (source: the Dutch tax authority), the market rates on public industry figures for 2026. Not personal tax or financial advice.", "tu_cta1": "Sum-IT reads your receipts, sets your VAT aside and shows what you earn on every job. We launch in the Netherlands soon. Your profile in the network is free.", "tu_cta2": "Create your free profile →", "tu21": "Indication based on 2026 market figures (Knab, Verbouwstart, DigiBoox and others). Your speciality, your clients and your negotiating determine the rest.", "tu22": "Do not forget a buffer for quiet months and your pension — round up rather than down.", "tu30": "What is your trade?", "tu31": "Where do you work?", "tu32": "How much experience do you have?", "tt_res": "Your minimum hourly rate (ex VAT):", "tt_crumb": "Hourly rate calculator"}};</script>
+<script src="/i18n.js" defer></script>
 </body></html>

@@ -3,19 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Word founding member · Sum-IT</title>
-<meta name="description" content="Meld je in één minuut aan als founding member van Sum-IT. We bellen je binnen een week en zetten je administratie samen met je op.">
+<title>Maak je gratis profiel aan · Sum-IT</title>
+<meta name="description" content="Maak in één minuut je gratis Sum-IT-profiel aan. We bellen je binnen een week en zetten je administratie samen met je op.">
 <link rel="canonical" href="https://sum-it.eu/aanmelden">
 <link rel="icon" href="/sum-it-favicon.png">
 <meta name="robots" content="noindex, follow">
-<meta property="og:title" content="Word founding member · Sum-IT">
+<meta property="og:title" content="Maak je gratis profiel aan · Sum-IT">
 <meta property="og:description" content="Meld je in één minuut aan. We bellen je binnen een week en zetten je administratie samen met je op.">
 <meta property="og:image" content="https://sum-it.eu/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
-<script src="/config.js"></script>
-<script defer data-domain="sum-it.eu" src="https://plausible.io/js/script.js"></script>
-<script>window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}</script>
+<script>/* Sum-IT site config — editable without touching the site code.
+   API_BASE: '' means same origin (Cloudflare Pages Functions under /api/*).
+   socials: leave a URL empty ('') to HIDE that icon on the site.
+   fallbackClaimed: shown when the stats API is not reachable yet.
+   displayOffsetNote: the real offset lives server-side (env DISPLAY_OFFSET). */
+window.SITE_CFG = {
+  API_BASE: 'https://sum-it-website.pages.dev',
+  PORTAL_URL: '/portal.html',
+  socials: {
+    linkedin: '',
+    instagram: '',
+    x: ''
+  },
+  fallbackClaimed: 143,
+  QUEUE_OFFSET: 143   // displayed position = real position + this (matches DISPLAY_OFFSET)
+};
+</script>
+
+<script>
+function T(nl,en){return document.documentElement.lang==='en'?en:nl;}
+window.plausible=window.plausible||function(){(window.plausible.q=window.plausible.q||[]).push(arguments)}</script>
 <style>
 :root{--indigo:#2D2D6B;--indigo-d:#232358;--green:#00BC7D;--green-d:#009966;--bg:#F1F5F9;--line:#E2E8F0;--slate:#475569;--mut:#64748B}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
@@ -43,33 +61,35 @@ button:disabled{opacity:.6}
 .fine a{color:var(--green-d)}
 .err{background:#FEF2F2;border:1px solid #FECACA;color:#B91C1C;border-radius:12px;padding:12px 14px;margin-top:14px;font-size:14px;display:none}
 </style>
+
+
 </head>
 <body>
 <div class="top">
   <a class="logo" href="/"><img src="/sum-it-logo-mark.svg" alt="Sum-IT">Sum-IT</a>
   <div class="hero">
-    <div class="kick">Founding 500 · Breda</div>
-    <h1>Boekhouden zonder gedoe — we zetten het samen met je op.</h1>
-    <p>Meld je aan, dan bellen we je binnen een week voor twintig minuten en zetten je administratie er samen in. De eerste 500 leden: 3 maanden voor €1.</p>
+    <div class="kick" data-i18n="a0">Gratis profiel · Breda</div>
+    <h1 data-i18n="a1">Boekhouden zonder gedoe — we zetten het samen met je op.</h1>
+    <p data-i18n="a2">Maak je gratis profiel aan, dan bellen we je binnen een week voor twintig minuten en zetten je administratie er samen in.</p>
   </div>
 </div>
 <main>
 <div class="card">
   <form id="f" novalidate>
-    <label for="naam">Naam</label>
+    <label for="naam" data-i18n="a3">Naam</label>
     <input type="text" id="naam" name="naam" autocomplete="name" required>
-    <label for="email">E-mailadres</label>
-    <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required placeholder="jij@bedrijf.nl">
-    <label for="telefoon">Telefoon <span class="opt">(optioneel — dan bellen we je)</span></label>
-    <input type="tel" id="telefoon" name="telefoon" autocomplete="tel" inputmode="tel" placeholder="06 ...">
-    <label for="plaats">Plaats</label>
+    <label for="email" data-i18n="a4">E-mailadres</label>
+    <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required placeholder="jij@bedrijf.nl" data-i18n-ph="a11">
+    <label for="telefoon" data-i18n="a5">Telefoon <span class="opt">(optioneel — dan bellen we je)</span></label>
+    <input type="tel" id="telefoon" name="telefoon" autocomplete="tel" inputmode="tel" placeholder="06 ..." data-i18n-ph="a12">
+    <label for="plaats" data-i18n="a6">Plaats</label>
     <input type="text" id="plaats" name="plaats" autocomplete="address-level2" value="Breda">
     <div class="hp"><label>Laat dit leeg<input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></label></div>
-    <label class="consent"><input type="checkbox" id="consent"> <span>Ja, zet me op de wachtlijst en houd me per e-mail op de hoogte. Zie de <a href="/privacy" target="_blank">privacyverklaring</a>.</span></label>
-    <div class="err" id="err">Vul je naam en een geldig e-mailadres in.</div>
-    <button type="submit" id="btn">Meld me aan →</button>
+    <label class="consent"><input type="checkbox" id="consent"> <span data-i18n="a8">Ja, houd me per e-mail op de hoogte. Zie de <a href="/privacy" target="_blank">privacyverklaring</a>.</span></label>
+    <div class="err" id="err"><span data-i18n="a13">Vul je naam en een geldig e-mailadres in.</span></div>
+    <button type="submit" id="btn" data-i18n="a10">Meld me aan →</button>
   </form>
-  <p class="fine">Geen creditcard. Je gegevens worden niet doorverkocht. Sum-IT is een product van Alpha&nbsp;Nova&nbsp;B.V.</p>
+  <p class="fine" data-i18n="a9">Geen creditcard. Je gegevens worden niet doorverkocht. Sum-IT is een product van Alpha&nbsp;Nova&nbsp;B.V.</p>
 </div>
 </main>
 <script>
@@ -85,9 +105,9 @@ button:disabled{opacity:.6}
     var naam=document.getElementById('naam').value.trim();
     var email=document.getElementById('email').value.trim();
     var consent=document.getElementById('consent').checked;
-    if(!naam||!emailOk(email)){err.textContent='Vul je naam en een geldig e-mailadres in.';err.style.display='block';return;}
-    if(!consent){err.textContent='Vink de toestemming aan om je aan te melden.';err.style.display='block';return;}
-    err.style.display='none';btn.disabled=true;btn.textContent='Bezig…';
+    if(!naam||!emailOk(email)){err.textContent=T('Vul je naam en een geldig e-mailadres in.','Please enter your name and a valid email address.');err.style.display='block';return;}
+    if(!consent){err.textContent=T('Vink de toestemming aan om je aan te melden.','Please tick the consent box to sign up.');err.style.display='block';return;}
+    err.style.display='none';btn.disabled=true;btn.textContent=T('Bezig…','Working…');
     var payload={
       naam:naam,email:email,
       telefoon:document.getElementById('telefoon').value.trim(),
@@ -109,5 +129,7 @@ button:disabled{opacity:.6}
   });
 })();
 </script>
+<script>window.PAGE_I18N={"nl": {"a1": "Boekhouden zonder gedoe — we zetten het samen met je op.", "a2": "Maak je gratis profiel aan, dan bellen we je binnen een week voor twintig minuten en zetten je administratie er samen in.", "a3": "Naam", "a4": "E-mailadres", "a5": "Telefoon <span class=\"opt\">(optioneel — dan bellen we je)</span>", "a6": "Plaats", "a8": "Ja, houd me per e-mail op de hoogte. Zie de <a href=\"/privacy\" target=\"_blank\">privacyverklaring</a>.", "a9": "Geen creditcard. Je gegevens worden niet doorverkocht. Sum-IT is een product van Alpha&nbsp;Nova&nbsp;B.V.", "a10": "Meld me aan →", "a11": "jij@bedrijf.nl", "a12": "06 ...", "a13": "Vul je naam en een geldig e-mailadres in.", "a0": "Gratis profiel · Breda"}, "en": {"a1": "Bookkeeping without the hassle — we set it up with you.", "a2": "Automate your bookkeeping and gain access to our directory of pros, where peers and clients find you, and bookkeeping that files itself. Invoice in 30 seconds, VAT set aside, profit per job live.", "a3": "Name", "a4": "Email address", "a5": "Phone <span class=\"opt\">(optional — so we can call you)</span>", "a6": "Town or city", "a8": "Yes, keep me posted by email. See the <a href=\"/privacy\" target=\"_blank\">privacy statement</a>.", "a9": "No credit card. Your details are never sold on. Sum-IT is a product of Alpha&nbsp;Nova&nbsp;B.V.", "a10": "Sign me up →", "a11": "you@business.nl", "a12": "06 ...", "a13": "Please enter your name and a valid email address.", "a0": "Free profile · Breda"}};</script>
+<script src="/i18n.js" defer></script>
 </body>
 </html>

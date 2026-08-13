@@ -53,28 +53,29 @@ footer{max-width:760px;margin:0 auto;padding:26px 22px 40px;font-size:13px;color
 <body>
 <div class="top"><div class="topin">
   <a class="logo" href="/"><img src="/sum-it-logo-mark.svg" alt="Sum-IT">Sum-IT</a>
-  <nav class="topnav"><a href="/blog/">Blog</a><a href="/#capture">Features</a><a href="/#pricing">Prijzen</a><a class="cta" href="/#signup">Founding 500</a></nav>
+  <nav class="topnav"><a href="/blog/" data-i18n="c_blog">Blog</a><a href="/#capture" data-i18n="c_feat">Functies</a><a href="/#pricing" data-i18n="c_price">Prijzen</a><a class="cta" href="/#signup" data-i18n="c_cta">Gratis profiel</a></nav>
 </div></div>
 <main>
-<div class="crumb"><a href="/">Home</a> · <a href="/blog/">Blog</a> · Belastingpotje-calculator</div>
-<h1>Hoeveel belasting moet jij opzij zetten?</h1>
-<p class="lead">Vul je verwachte winst in en zie direct hoeveel je in 2026 moet reserveren voor inkomstenbelasting en Zvw — met de officiële tarieven, heffingskortingen en ondernemersaftrekken.</p>
+<div class="crumb"><a href="/" data-i18n="c_home">Home</a> · <a href="/blog/">Blog</a> · <span data-i18n="tb_crumb">Belastingpotje-calculator</span></div>
+<h1 data-i18n="tb1">Hoeveel belasting moet jij opzij zetten?</h1>
+<p class="lead" data-i18n="tb2">Vul je verwachte winst in en zie direct hoeveel je in 2026 moet reserveren voor inkomstenbelasting en Zvw — met de officiële tarieven, heffingskortingen en ondernemersaftrekken.</p>
 <div class="tool">
-<label for="winst">Verwachte winst dit jaar (omzet min kosten)</label>
+<label for="winst" data-i18n="tb3">Verwachte winst dit jaar (omzet min kosten)</label>
 <input type="number" id="winst" value="45000" min="0" step="1000">
 <input type="range" id="winstr" min="0" max="150000" step="1000" value="45000">
-<div class="chk"><input type="checkbox" id="uren" checked><label for="uren" style="margin:0;font-weight:500;color:var(--slate)">Ik haal het urencriterium (1.225 uur) → zelfstandigenaftrek</label></div>
-<div class="chk"><input type="checkbox" id="starter"><label for="starter" style="margin:0;font-weight:500;color:var(--slate)">Ik heb recht op startersaftrek</label></div>
-<div class="res"><div>Zet dit jaar opzij (indicatie):</div><div class="big" id="totaal">—</div><div id="permaand" style="color:#7BE3BE;font-weight:700"></div>
-<table><tr><td>Inkomstenbelasting (na kortingen)</td><td id="ib">—</td></tr><tr><td>Bijdrage Zvw (4,85%)</td><td id="zvw">—</td></tr><tr><td>Effectief % van je winst</td><td id="pct">—</td></tr></table>
+<div class="chk"><input type="checkbox" id="uren" checked><label for="uren" style="margin:0;font-weight:500;color:var(--slate)" data-i18n="tb4">Ik haal het urencriterium (1.225 uur) → zelfstandigenaftrek</label></div>
+<div class="chk"><input type="checkbox" id="starter"><label for="starter" style="margin:0;font-weight:500;color:var(--slate)" data-i18n="tb5">Ik heb recht op startersaftrek</label></div>
+<div class="res"><div data-i18n="tb_res">Zet dit jaar opzij (indicatie):</div><div class="big" id="totaal">—</div><div id="permaand" style="color:#7BE3BE;font-weight:700"></div>
+<table><tr><td data-i18n="tb6">Inkomstenbelasting (na kortingen)</td><td id="ib">—</td></tr><tr><td data-i18n="tb7">Bijdrage Zvw (4,85%)</td><td id="zvw">—</td></tr><tr><td data-i18n="tb8">Effectief % van je winst</td><td id="pct">—</td></tr></table>
 <div class="note" style="color:#AEB4DF">Plus: zet de <b style="color:#fff">btw</b> op elke betaalde factuur (meestal 21%) altijd volledig apart — die staat hier los van.</div></div>
 </div>
-<h2>Hoe rekent deze tool?</h2>
-<p>Winst → min <a href="/blog/urencriterium-zelfstandigenaftrek.html">zelfstandigenaftrek</a> → min 12,7% <a href="/blog/mkb-winstvrijstelling-nettowinst.html">mkb-winstvrijstelling</a> → daarover de box 1-tarieven van 2026, min de algemene heffingskorting en arbeidskorting → plus 4,85% Zvw. Meer uitleg: <a href="/blog/belasting-opzij-zetten-zzp.html">hoeveel belasting opzij zetten als zzp'er</a>.</p>
-<div class="ctabox"><h3>Wil je dat dit potje zichzelf vult?</h3>Sum-IT leest je bonnetjes, zet je btw apart en laat per klus zien wat je verdient. We lanceren binnenkort in Nederland, de eerste 500 leden krijgen 3 maanden voor €1.<br><a href="/#signup">Claim je Founding 500-plek →</a></div><p class="disc">Deze tool geeft een indicatie op basis van de 2026-regels (bron: Belastingdienst) en is geen persoonlijk belasting- of financieel advies.</p>
+<h2 data-i18n="tb9">Hoe rekent deze tool?</h2>
+<p data-i18n="tb10">Winst → min <a href="/blog/urencriterium-zelfstandigenaftrek.html">zelfstandigenaftrek</a> → min 12,7% <a href="/blog/mkb-winstvrijstelling-nettowinst.html">mkb-winstvrijstelling</a> → daarover de box 1-tarieven van 2026, min de algemene heffingskorting en arbeidskorting → plus 4,85% Zvw. Meer uitleg: <a href="/blog/belasting-opzij-zetten-zzp.html">hoeveel belasting opzij zetten als zzp'er</a>.</p>
+<div class="ctabox"><h3 data-i18n="tb11">Wil je dat dit potje zichzelf vult?</h3><span data-i18n="tb_cta1">Sum-IT leest je bonnetjes, zet je btw apart en laat per klus zien wat je verdient. We lanceren binnenkort in Nederland. Je profiel in het netwerk is gratis.</span><br><a href="/#signup" data-i18n="tb_cta2">Maak je gratis profiel aan →</a></div><p class="disc" data-i18n="tb12">Deze tool geeft een indicatie op basis van de 2026-regels (bron: Belastingdienst) en is geen persoonlijk belasting- of financieel advies.</p>
 </main>
-<footer>Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU · <a href="/blog/">Blog</a> · <a href="/">sum-it.eu</a></footer>
+<footer><span data-i18n="c_foot">Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU</span> · <a href="/blog/">Blog</a> · <a href="/">sum-it.eu</a> · <a href="/privacy" data-i18n="c_priv">Privacyverklaring</a></footer>
 <script>const P={"box1": [{"tot": 38883, "pct": 0.3575}, {"tot": 78426, "pct": 0.3756}, {"tot": null, "pct": 0.495}], "ahk": {"max": 3115, "afbouw_vanaf": 29736, "afbouw_pct": 0.06398}, "ak": [{"vanaf": 0, "tot": 11965, "basis": 0, "pct": 0.08324}, {"vanaf": 11965, "tot": 25845, "basis": 996, "pct": 0.31009}, {"vanaf": 25845, "tot": 45592, "basis": 5300, "pct": 0.0195}, {"vanaf": 45592, "tot": 132920, "basis": 5685, "pct": -0.0651}, {"vanaf": 132920, "tot": null, "basis": 0, "pct": 0}], "zvw": {"pct": 0.0485, "max": 79409}, "za": 1200, "sa": 2123, "mkb": 0.127};
+function T(nl,en){return document.documentElement.lang==='en'?en:nl;}
 function box1(t){let x=0,pr=0;for(const s of P.box1){const top=s.tot===null?Infinity:s.tot;if(t>pr)x+=(Math.min(t,top)-pr)*s.pct;pr=top;}return Math.max(x,0);}
 function ahk(i){return i<=P.ahk.afbouw_vanaf?P.ahk.max:Math.max(0,P.ahk.max-P.ahk.afbouw_pct*(i-P.ahk.afbouw_vanaf));}
 function ak(i){for(const t of P.ak){const top=t.tot===null?Infinity:t.tot;if(i<=top)return Math.max(0,t.basis+t.pct*(i-t.vanaf));}return 0;}
@@ -84,9 +85,12 @@ function winstVoorNetto(d,u,s){let lo=d,hi=d*2.5+30000;for(let i=0;i<60;i++){con
 const F=n=>'€'+Math.round(n).toLocaleString('nl-NL');
 const w=document.getElementById('winst'),wr=document.getElementById('winstr');
 function upd(){const winst=+w.value||0,u=document.getElementById('uren').checked,s=document.getElementById('starter').checked,c=calc(winst,u,s);
-document.getElementById('totaal').textContent=F(c.tot);document.getElementById('permaand').textContent='≈ '+F(c.tot/12)+' per maand';
+document.getElementById('totaal').textContent=F(c.tot);document.getElementById('permaand').textContent='≈ '+F(c.tot/12)+T(' per maand',' per month');
 document.getElementById('ib').textContent=F(c.ib);document.getElementById('zvw').textContent=F(c.zvw);document.getElementById('pct').textContent=winst>0?Math.round(c.tot/winst*100)+'%':'—';}
+document.addEventListener('langchange',upd);
 w.oninput=()=>{wr.value=Math.min(w.value,150000);upd();};wr.oninput=()=>{w.value=wr.value;upd();};
 document.getElementById('uren').onchange=upd;document.getElementById('starter').onchange=upd;upd();
 </script>
+<script>window.PAGE_I18N={"nl": {"tb1": "Hoeveel belasting moet jij opzij zetten?", "tb2": "Vul je verwachte winst in en zie direct hoeveel je in 2026 moet reserveren voor inkomstenbelasting en Zvw — met de officiële tarieven, heffingskortingen en ondernemersaftrekken.", "tb3": "Verwachte winst dit jaar (omzet min kosten)", "tb4": "Ik haal het urencriterium (1.225 uur) → zelfstandigenaftrek", "tb5": "Ik heb recht op startersaftrek", "tb6": "Inkomstenbelasting (na kortingen)", "tb7": "Bijdrage Zvw (4,85%)", "tb8": "Effectief % van je winst", "tb9": "Hoe rekent deze tool?", "tb10": "Winst → min <a href=\"/blog/urencriterium-zelfstandigenaftrek.html\">zelfstandigenaftrek</a> → min 12,7% <a href=\"/blog/mkb-winstvrijstelling-nettowinst.html\">mkb-winstvrijstelling</a> → daarover de box 1-tarieven van 2026, min de algemene heffingskorting en arbeidskorting → plus 4,85% Zvw. Meer uitleg: <a href=\"/blog/belasting-opzij-zetten-zzp.html\">hoeveel belasting opzij zetten als zzp'er</a>.", "tb11": "Wil je dat dit potje zichzelf vult?", "tb12": "Deze tool geeft een indicatie op basis van de 2026-regels (bron: Belastingdienst) en is geen persoonlijk belasting- of financieel advies.", "tb_cta1": "Sum-IT leest je bonnetjes, zet je btw apart en laat per klus zien wat je verdient. We lanceren binnenkort in Nederland. Je profiel in het netwerk is gratis.", "tb_cta2": "Maak je gratis profiel aan →", "tb_res": "Zet dit jaar opzij (indicatie):", "tb_crumb": "Belastingpotje-calculator"}, "en": {"tb1": "How much tax should you set aside?", "tb2": "Enter your expected profit and see straight away how much to set aside in 2026 for income tax and the healthcare contribution — using the official rates, tax credits and self-employed deductions.", "tb3": "Expected profit this year (revenue minus costs)", "tb4": "I meet the hours criterion (1,225 hours) → self-employed deduction", "tb5": "I qualify for the starter’s deduction", "tb6": "Income tax (after credits)", "tb7": "Healthcare contribution (4.85%)", "tb8": "Effective % of your profit", "tb9": "How does this tool calculate?", "tb10": "Profit → minus the <a href=\"/blog/urencriterium-zelfstandigenaftrek.html\">self-employed deduction</a> → minus 12.7% <a href=\"/blog/mkb-winstvrijstelling-nettowinst.html\">SME profit exemption</a> → then the 2026 box 1 rates, minus the general tax credit and the labour credit → plus 4.85% healthcare contribution. More background: <a href=\"/blog/belasting-opzij-zetten-zzp.html\">how much tax to set aside when self-employed</a>.", "tb11": "Want this pot to fill itself?", "tb12": "This tool gives an indication based on the 2026 rules (source: the Dutch tax authority) and is not personal tax or financial advice.", "tb_cta1": "Sum-IT reads your receipts, sets your VAT aside and shows what you earn on every job. We launch in the Netherlands soon. Your profile in the network is free.", "tb_cta2": "Create your free profile →", "tb_res": "Set aside this year (indication):", "tb_crumb": "Tax pot calculator"}};</script>
+<script src="/i18n.js" defer></script>
 </body></html>

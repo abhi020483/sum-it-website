@@ -6,8 +6,15 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Sum-IT · Inloggen</title>
 <link rel="icon" type="image/png" href="sum-it-favicon.png">
-<script src="sb-config.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>/* Sum-IT backend config — Supabase.
+   Fill these in with YOUR Supabase project values.
+   The anon key is safe to expose publicly (it only allows what your
+   Row Level Security policies allow: read content, and write only when
+   logged in). Do NOT put the "service_role" key here. */
+window.SB_URL  = 'https://kncruytvvqyrwxhgostc.supabase.co';        // e.g. https://abcdxyz.supabase.co
+window.SB_ANON = 'sb_publishable_Okc2mW8gDttU9a6mjv56Fw_4k_mM7hN';   // the "anon / public" key
+</script>
+
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 :root{--indigo:#2D2D6B;--indigo-d:#232358;--ink:#0F172A;--green:#00BC7D;--green-d:#009966;--bg:#F1F5F9;--line:#E2E8F0;--slate:#64748B;--mut-d:rgba(255,255,255,.72);--line-d:rgba(255,255,255,.14)}
@@ -37,7 +44,7 @@ input:focus{outline:2px solid var(--green)}
 </head>
 <body>
 <div class="top">
-  <img src="sum-it-logo-mark.svg" alt=""><b>Sum-IT</b><span class="sp"></span>
+  <img src="/sum-it-logo-mark.svg" alt=""><b>Sum-IT</b><span class="sp"></span>
   <div class="langs"><button id="lang-en" onclick="setLang('en')">EN</button><button id="lang-nl" onclick="setLang('nl')">NL</button></div>
   <a href="/">← sum-it.eu</a>
 </div>
@@ -56,7 +63,7 @@ input:focus{outline:2px solid var(--green)}
     </form>
     <div class="alt" data-i18n="alt">Nog geen account? <a href="/portal.html">Maak er een in het member-portal</a></div>
   </div>
-  <div class="foot">Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU · <a href="/privacy">Privacy</a></div>
+  <div class="foot"><span data-i18n="foot">Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU</span> · <a href="/privacy">Privacy</a></div>
 </div>
 <script>
 var I18N={
@@ -65,13 +72,15 @@ var I18N={
      alt:'Nog geen account? <a href="/portal.html">Maak er een in het member-portal</a>',
      e_cfg:"Backend nog niet geconfigureerd.",e_conf:"Bevestig eerst je e-mailadres via de mail die je kreeg.",
      e_fail:"Inloggen mislukt: controleer e-mail en wachtwoord.",forgot:"Wachtwoord vergeten?",
-     f_mail:"Vul eerst je e-mailadres in, klik dan opnieuw.",f_sent:"Mail verstuurd! Klik de link om een nieuw wachtwoord te kiezen."},
+     f_mail:"Vul eerst je e-mailadres in, klik dan opnieuw.",f_sent:"Mail verstuurd! Klik de link om een nieuw wachtwoord te kiezen.",
+     foot:"Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU"},
  en:{h1:"Log in",sub:"For members and admins. Log in with the e-mail address of your Sum-IT account.",
      l_email:"E-mail address",l_pw:"Password",btn:"Log in",
      alt:'No account yet? <a href="/portal.html">Create one in the member portal</a>',
      e_cfg:"Backend not configured yet.",e_conf:"Please confirm your e-mail address first via the mail you received.",
      e_fail:"Login failed: check your e-mail and password.",forgot:"Forgot your password?",
-     f_mail:"Fill in your e-mail address first, then click again.",f_sent:"Mail sent! Click the link to choose a new password."}};
+     f_mail:"Fill in your e-mail address first, then click again.",f_sent:"Mail sent! Click the link to choose a new password.",
+     foot:"Sum-IT is a product of Alpha Nova B.V. · All data stays in the EU"}};
 var LANG='nl';
 function setLang(l){LANG=l;try{localStorage.setItem('sumit_lang',l);}catch(e){}
   document.documentElement.lang=l;
