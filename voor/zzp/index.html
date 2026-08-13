@@ -28,9 +28,6 @@ body{font-family:Poppins,sans-serif;background:var(--bg);color:var(--slate);line
 .topnav{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 .topnav a{color:#C7CBEA;text-decoration:none;font-size:14px;font-weight:600}
 .topnav a:hover{color:#fff}
-.langtog{display:flex;gap:5px;align-items:center;font-size:13px}
-.langtog a{color:#C7CBEA;text-decoration:none;font-weight:700}
-.langtog a.on{color:#fff;text-decoration:underline}
 .cta{background:var(--green);color:#fff!important;padding:9px 16px;border-radius:99px;font-weight:700}
 main{max-width:760px;margin:0 auto;padding:42px 22px 30px}
 .crumb{font-size:13px;margin-bottom:18px} .crumb a{color:var(--green-d);text-decoration:none;font-weight:600}
@@ -63,16 +60,15 @@ footer a{color:var(--green-d)}
 <div class="top"><div class="topin">
   <a class="logo" href="/"><img src="/sum-it-logo-mark.svg" alt="Sum-IT" width="30" height="30">Sum-IT</a>
   <nav class="topnav">
-    <a href="/blog/" data-i18n="vz_nav_blog">Blog</a>
-    <a href="/#capture" data-i18n="vz_nav_features">Functies</a>
-    <a href="/community/" data-i18n="vz_nav_community">Community</a>
-    <a href="/prijzen/" data-i18n="vz_nav_price">Prijzen</a>
-    <span class="langtog"><a href="#" data-lang="nl" class="langtog-a" onclick="window.setLang&amp;&amp;setLang('nl');return false">NL</a>&nbsp;/&nbsp;<a href="#" data-lang="en" class="langtog-a" onclick="window.setLang&amp;&amp;setLang('en');return false">EN</a></span>
-    <a class="cta" href="/#signup" data-i18n="vz_nav_cta">Maak je gratis profiel aan</a>
+    <a href="/blog/" data-i18n="c_blog">Blog</a>
+    <a href="/#capture" data-i18n="c_feat">Functies</a>
+    <a href="/community/" data-i18n="c_comm">Community</a>
+    <a href="/prijzen/" data-i18n="c_price">Prijzen</a>
+    <a class="cta" href="/#signup" data-i18n="c_cta">Gratis profiel</a>
   </nav>
 </div></div>
 <main>
-<div class="crumb"><a href="/" data-i18n="vz_crumb_home">Home</a> · <span data-i18n="vz_crumb">Voor zzp'ers</span></div>
+<div class="crumb"><a href="/" data-i18n="c_home">Home</a> · <span data-i18n="vz_crumb">Voor zzp'ers</span></div>
 <h1 data-i18n="vz_h1">Boekhouding app voor zzp'ers zonder boekhoudkennis</h1>
 <div class="meta" data-i18n="vz_meta">Sum-IT · Voor zzp'ers · 5 min leestijd</div>
 <article>
@@ -122,19 +118,13 @@ footer a{color:var(--green-d)}
 <p class="disc" data-i18n="vz_disc">Dit is algemene informatie, geen belasting- of financieel advies. Overleg voor jouw situatie met een boekhouder of de Belastingdienst.</p>
 </main>
 <footer>
-<span data-i18n="vz_foot">Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU</span> ·
-<a href="/blog/" data-i18n="vz_foot_blog">Blog</a> ·
-<a href="/privacy.html" data-i18n="vz_foot_privacy">Privacy</a> ·
-<a href="/" data-i18n="vz_foot_home">sum-it.eu</a>
+<span data-i18n="c_foot">Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU</span> ·
+<a href="/blog/" data-i18n="c_blog">Blog</a> ·
+<a href="/privacy.html" data-i18n="c_priv">Privacyverklaring</a> ·
+<a href="/">sum-it.eu</a>
 </footer>
 <script>
 window.PAGE_I18N={"nl":{
-"vz_nav_blog":"Blog",
-"vz_nav_features":"Functies",
-"vz_nav_community":"Community",
-"vz_nav_price":"Prijzen",
-"vz_nav_cta":"Maak je gratis profiel aan",
-"vz_crumb_home":"Home",
 "vz_crumb":"Voor zzp'ers",
 "vz_h1":"Boekhouding app voor zzp'ers zonder boekhoudkennis",
 "vz_meta":"Sum-IT · Voor zzp'ers · 5 min leestijd",
@@ -175,18 +165,8 @@ window.PAGE_I18N={"nl":{
 "vz_cta_h":"Begin met een gratis profiel",
 "vz_cta_p":"Sum-IT combineert simpele boekhouding met een netwerk van vakmensen. Een profiel aanmaken is gratis, voor altijd — de boekhouding voeg je toe wanneer jij dat wil.",
 "vz_cta_btn":"Maak je gratis profiel aan →",
-"vz_disc":"Dit is algemene informatie, geen belasting- of financieel advies. Overleg voor jouw situatie met een boekhouder of de Belastingdienst.",
-"vz_foot":"Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU",
-"vz_foot_blog":"Blog",
-"vz_foot_privacy":"Privacy",
-"vz_foot_home":"sum-it.eu"
+"vz_disc":"Dit is algemene informatie, geen belasting- of financieel advies. Overleg voor jouw situatie met een boekhouder of de Belastingdienst."
 },"en":{
-"vz_nav_blog":"Blog",
-"vz_nav_features":"Features",
-"vz_nav_community":"Community",
-"vz_nav_price":"Pricing",
-"vz_nav_cta":"Create your free profile",
-"vz_crumb_home":"Home",
 "vz_crumb":"For freelancers",
 "vz_h1":"Bookkeeping app for freelancers without accounting knowledge",
 "vz_meta":"Sum-IT · For freelancers · 5 min read",
@@ -227,14 +207,9 @@ window.PAGE_I18N={"nl":{
 "vz_cta_h":"Start with a free profile",
 "vz_cta_p":"Sum-IT combines simple bookkeeping with a network of tradespeople. Creating a profile is free, forever — add bookkeeping whenever you want.",
 "vz_cta_btn":"Create your free profile →",
-"vz_disc":"This is general information, not tax or financial advice. Consult a bookkeeper or the Dutch Tax Administration for your situation.",
-"vz_foot":"Sum-IT is a product of Alpha Nova B.V. · All data in the EU",
-"vz_foot_blog":"Blog",
-"vz_foot_privacy":"Privacy",
-"vz_foot_home":"sum-it.eu"
+"vz_disc":"This is general information, not tax or financial advice. Consult a bookkeeper or the Dutch Tax Administration for your situation."
 }};
 </script>
 <script src="/i18n.js" defer></script>
-<script>(function(){var KEY='sumit_lang';function apply(l){document.documentElement.lang=l;var links=document.querySelectorAll('.langtog-a');for(var i=0;i<links.length;i++){if(links[i].getAttribute('data-lang')===l){links[i].className='langtog-a on';}else{links[i].className='langtog-a';}}}apply(localStorage.getItem(KEY)||'nl');var toggleLinks=document.querySelectorAll('.langtog-a');for(var j=0;j<toggleLinks.length;j++){toggleLinks[j].addEventListener('click',function(e){apply(this.getAttribute('data-lang'));});}})();</script>
 </body>
 </html>

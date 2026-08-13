@@ -30,9 +30,6 @@ body{font-family:Poppins,sans-serif;background:var(--bg);color:var(--slate);line
 .topnav a{color:#C7CBEA;text-decoration:none;font-size:14px;font-weight:600}
 .topnav a:hover{color:#fff}
 .cta{background:var(--green);color:#fff!important;padding:9px 16px;border-radius:99px;font-weight:700}
-.langtog{display:flex;gap:5px;align-items:center;font-size:13px}
-.langtog a{color:#C7CBEA;text-decoration:none;font-weight:600}
-.langtog a.on{color:#fff;text-decoration:underline}
 main{max-width:760px;margin:0 auto;padding:42px 22px 30px}
 .crumb{font-size:13px;margin-bottom:18px} .crumb a{color:var(--green-d);text-decoration:none;font-weight:600}
 h1{color:var(--indigo);font-size:clamp(28px,5vw,40px);line-height:1.18;margin-bottom:14px}
@@ -66,15 +63,14 @@ footer a{color:var(--green-d)}
 <div class="top"><div class="topin">
   <a class="logo" href="/"><img src="/sum-it-logo-mark.svg" alt="Sum-IT" width="30" height="30">Sum-IT</a>
   <nav class="topnav">
-    <a href="/blog/" data-i18n="pr_nav_blog">Blog</a>
-    <a href="/#capture" data-i18n="pr_nav_features">Functies</a>
-    <a href="/community/" data-i18n="pr_nav_community">Community</a>
-    <span class="langtog"><a href="#" data-lang="nl" class="langtog-a" onclick="window.setLang&amp;&amp;setLang('nl');return false">NL</a>&nbsp;/&nbsp;<a href="#" data-lang="en" class="langtog-a" onclick="window.setLang&amp;&amp;setLang('en');return false">EN</a></span>
-    <a class="cta" href="/#signup" data-i18n="pr_nav_cta">Maak je gratis profiel aan</a>
+    <a href="/blog/" data-i18n="c_blog">Blog</a>
+    <a href="/#capture" data-i18n="c_feat">Functies</a>
+    <a href="/community/" data-i18n="c_comm">Community</a>
+    <a class="cta" href="/#signup" data-i18n="c_cta">Gratis profiel</a>
   </nav>
 </div></div>
 <main>
-<div class="crumb"><a href="/" data-i18n="pr_crumb_home">Home</a> · <span data-i18n="pr_crumb_current">Prijzen</span></div>
+<div class="crumb"><a href="/" data-i18n="c_home">Home</a> · <span data-i18n="pr_crumb_current">Prijzen</span></div>
 <h1 data-i18n="pr_h1">Wat kost Sum-IT?</h1>
 <div class="meta" data-i18n="pr_meta">Sum-IT · Prijzen · 3 min leestijd</div>
 <article>
@@ -141,17 +137,12 @@ footer a{color:var(--green-d)}
 <p class="disc" data-i18n="pr_disc">Dit artikel is algemene informatie, geen belasting- of financieel advies. Overleg voor jouw situatie met een boekhouder of de Belastingdienst.</p>
 </main>
 <footer>
-<span data-i18n="pr_foot">Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU</span> ·
-<a href="/blog/" data-i18n="pr_foot_blog">Blog</a> ·
-<a href="/privacy.html" data-i18n="pr_foot_privacy">Privacy</a> ·
-<a href="/" data-i18n="pr_foot_home">sum-it.eu</a>
+<span data-i18n="c_foot">Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU</span> ·
+<a href="/blog/" data-i18n="c_blog">Blog</a> ·
+<a href="/privacy.html" data-i18n="c_priv">Privacyverklaring</a> ·
+<a href="/">sum-it.eu</a>
 </footer>
 <script>window.PAGE_I18N={"nl":{
-"pr_nav_blog":"Blog",
-"pr_nav_features":"Functies",
-"pr_nav_community":"Community",
-"pr_nav_cta":"Maak je gratis profiel aan",
-"pr_crumb_home":"Home",
 "pr_crumb_current":"Prijzen",
 "pr_h1":"Wat kost Sum-IT?",
 "pr_meta":"Sum-IT · Prijzen · 3 min leestijd",
@@ -195,17 +186,8 @@ footer a{color:var(--green-d)}
 "pr_cta_h3":"Begin gratis, upgrade als je wil",
 "pr_cta_p":"Maak een gratis profiel aan in het netwerk. Wil je ook boekhouden met Sum-IT? Dat kan voor €11 per maand, wanneer jij zover bent.",
 "pr_cta_link":"Maak je gratis profiel aan →",
-"pr_disc":"Dit artikel is algemene informatie, geen belasting- of financieel advies. Overleg voor jouw situatie met een boekhouder of de Belastingdienst.",
-"pr_foot":"Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU",
-"pr_foot_blog":"Blog",
-"pr_foot_privacy":"Privacy",
-"pr_foot_home":"sum-it.eu"
+"pr_disc":"Dit artikel is algemene informatie, geen belasting- of financieel advies. Overleg voor jouw situatie met een boekhouder of de Belastingdienst."
 },"en":{
-"pr_nav_blog":"Blog",
-"pr_nav_features":"Features",
-"pr_nav_community":"Community",
-"pr_nav_cta":"Create your free profile",
-"pr_crumb_home":"Home",
 "pr_crumb_current":"Pricing",
 "pr_h1":"What does Sum-IT cost?",
 "pr_meta":"Sum-IT · Pricing · 3 min read",
@@ -249,13 +231,8 @@ footer a{color:var(--green-d)}
 "pr_cta_h3":"Start free, upgrade when you want",
 "pr_cta_p":"Create a free profile in the network. Want to also do your bookkeeping with Sum-IT? That's €11 a month, whenever you're ready.",
 "pr_cta_link":"Create your free profile →",
-"pr_disc":"This article is general information, not tax or financial advice. Discuss your situation with a bookkeeper or the Dutch Tax Administration.",
-"pr_foot":"Sum-IT is a product of Alpha Nova B.V. · All data in the EU",
-"pr_foot_blog":"Blog",
-"pr_foot_privacy":"Privacy",
-"pr_foot_home":"sum-it.eu"
+"pr_disc":"This article is general information, not tax or financial advice. Discuss your situation with a bookkeeper or the Dutch Tax Administration."
 }};</script>
 <script src="/i18n.js" defer></script>
-<script>(function(){var KEY='sumit_lang';function apply(l){document.documentElement.lang=l;var links=document.querySelectorAll('.langtog-a');for(var i=0;i<links.length;i++){if(links[i].getAttribute('data-lang')===l){links[i].className='langtog-a on';}else{links[i].className='langtog-a';}}}apply(localStorage.getItem(KEY)||'nl');var toggleLinks=document.querySelectorAll('.langtog-a');for(var j=0;j<toggleLinks.length;j++){toggleLinks[j].addEventListener('click',function(e){apply(this.getAttribute('data-lang'));});}})();</script>
 </body>
 </html>
