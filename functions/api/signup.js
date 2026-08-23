@@ -5,9 +5,11 @@
    - rate limit: max 5/hour/IP (checked in Supabase)
    - inserts signup (status 'pending') with a unique ref_code
    - creates the Laposta member (list double opt-in sends the confirm mail)
-   Env: SUPABASE_URL, SUPABASE_SERVICE_KEY, IP_SALT, LAPOSTA_API_KEY, LAPOSTA_LIST_ID */
+   - emails the internal team a new-signup notification (see notifyAdmin)
+   Env: SUPABASE_URL, SUPABASE_SERVICE_KEY, IP_SALT, LAPOSTA_API_KEY, LAPOSTA_LIST_ID
+   Optional: BREVO_API_KEY, MAIL_FROM, ADMIN_NOTIFY_EMAIL (for the admin notification) */
 
-import { markWelcomed, sendWelcome } from './_lib.js';
+import { markWelcomed, sendWelcome, notifyAdmin } from './_lib.js';
 
 const DISPOSABLE = ['mailinator.com','guerrillamail.com','10minutemail.com','yopmail.com','temp-mail.org','trashmail.com','sharklasers.com'];
 const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -105,6 +107,17 @@ export async function onRequestPost({ request, env }) {
     myCode = code;
   }
   if (!myCode) return json2({ ok: false }, 500);
+
+  // Notify the internal team of the new signup (fire-and-forget; never blocks).
+  try {
+    await notifyAdmin(env, {
+      email, naam, rol, taal,
+      bedrijfstype: rol === 'ondernemer' ? String(d.bedrijfstype || '') : '',
+      boekhouder: rol === 'ondernemer' ? String(d.boekhouder || '') : '',
+      telefoon, stad, city: plaats, source: String(d.source || 'site'),
+      ref_code: myCode, referred_by: referredBy
+    });
+  } catch { /* notification is best-effort; the signup already succeeded */ }
 
   // Laposta member (double opt-in mail comes from the list settings)
   if (env.LAPOSTA_API_KEY && env.LAPOSTA_LIST_ID) {

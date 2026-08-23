@@ -1,5 +1,41 @@
 /* Shared helpers for the Pages Functions: welcome mail + once-only guard.
-   Env: SUPABASE_URL, SUPABASE_SERVICE_KEY, BREVO_API_KEY, MAIL_FROM */
+   Env: SUPABASE_URL, SUPABASE_SERVICE_KEY, BREVO_API_KEY, MAIL_FROM
+   Optional: ADMIN_NOTIFY_EMAIL (comma-separated; default admin.alpha.nova@gmail.com) */
+
+/* Emails the internal team the moment a new signup is stored. Fire-and-forget:
+   any failure is swallowed so it can never block or fail the signup itself.
+   Reuses the same Brevo key/sender as the welcome mail. */
+export async function notifyAdmin(env, s) {
+  if (!env.BREVO_API_KEY) return;
+  const to = String(env.ADMIN_NOTIFY_EMAIL || 'admin.alpha.nova@gmail.com')
+    .split(',').map(e => ({ email: e.trim() })).filter(x => x.email);
+  if (!to.length) return;
+  const esc = v => String(v == null || v === '' ? '—' : v).replace(/[<>&]/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]));
+  const roleLabel = s.rol === 'boekhouder' ? 'Bookkeeper' : 'Entrepreneur';
+  const rows = [
+    ['Role', roleLabel], ['Name', s.naam], ['Email', s.email],
+    ['Company type', s.bedrijfstype], ['Works with bookkeeper', s.boekhouder],
+    ['Phone', s.telefoon], ['City', s.city || s.stad], ['Language', s.taal],
+    ['Source', s.source], ['Referral code', s.ref_code], ['Referred by', s.referred_by]
+  ].map(([k, v]) => `<tr><td style="padding:4px 14px 4px 0;color:#64748B">${k}</td><td style="padding:4px 0"><b>${esc(v)}</b></td></tr>`).join('');
+  const html = `<div style="font-family:sans-serif;max-width:540px">
+<h2 style="margin:0 0 6px">New Sum-IT signup — ${roleLabel}</h2>
+<p style="color:#64748B;margin:0 0 14px">A new profile was just created on sum-it.eu.</p>
+<table style="font-size:14px;border-collapse:collapse">${rows}</table>
+<p style="margin-top:16px"><a href="https://sum-it.eu/beheer.html">Open the admin dashboard →</a></p></div>`;
+  const from = env.MAIL_FROM || 'Sum-IT <hallo@sum-it.eu>';
+  const fm = from.match(/^(.*)<(.+)>$/) || [null, 'Sum-IT', from];
+  const body = {
+    sender: { name: fm[1].trim(), email: fm[2].trim() }, to,
+    subject: `New signup: ${s.naam || s.email} (${roleLabel})`, htmlContent: html
+  };
+  if (s.email) body.replyTo = { email: s.email, name: s.naam || undefined };
+  await fetch('https://api.brevo.com/v3/smtp/email', {
+    method: 'POST',
+    headers: { 'api-key': env.BREVO_API_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body)
+  }).catch(() => {});
+}
 
 export function sbHeaders(env, extra = {}) {
   return { apikey: env.SUPABASE_SERVICE_KEY, Authorization: 'Bearer ' + env.SUPABASE_SERVICE_KEY,
