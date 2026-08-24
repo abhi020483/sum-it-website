@@ -12,6 +12,7 @@ export async function notifyAdmin(env, s) {
   if (!to.length) return;
   const esc = v => String(v == null || v === '' ? '—' : v).replace(/[<>&]/g, c => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;' }[c]));
   const roleLabel = s.rol === 'boekhouder' ? 'Bookkeeper' : 'Entrepreneur';
+  const subjectLabel = s.rol === 'boekhouder' ? 'New Boekhouder' : 'New Ondernemer';
   const rows = [
     ['Role', roleLabel], ['Name', s.naam], ['Email', s.email],
     ['Company type', s.bedrijfstype], ['Works with bookkeeper', s.boekhouder],
@@ -27,7 +28,7 @@ export async function notifyAdmin(env, s) {
   const fm = from.match(/^(.*)<(.+)>$/) || [null, 'Sum-IT', from];
   const body = {
     sender: { name: fm[1].trim(), email: fm[2].trim() }, to,
-    subject: `New signup: ${s.naam || s.email} (${roleLabel})`, htmlContent: html
+    subject: subjectLabel, htmlContent: html
   };
   if (s.email) body.replyTo = { email: s.email, name: s.naam || undefined };
   await fetch('https://api.brevo.com/v3/smtp/email', {
