@@ -43,26 +43,82 @@ export function sbHeaders(env, extra = {}) {
            'Content-Type': 'application/json', ...extra };
 }
 
-const BTN = 'display:inline-block;background:#00BC7D;color:#fff;text-decoration:none;font-weight:bold;padding:12px 22px;border-radius:99px;margin:6px 0';
+// ---- Branded welcome email (email-safe: tables + inline styles) ----
+const MAIL_LOGO = 'https://sum-it.eu/sum-it-logo-h-white.png';
+const C = { green: '#00BC7D', navy: '#1b1b4a', ink: '#3a3a55', mute: '#8a8ca0',
+            mint: '#e9fbf3', mintB: '#bff0dc', card: '#f4f5f9' };
+
+function welcomeMail(t, pos, link, setup) {
+  const cta = setup
+    ? `<tr><td style="padding:2px 40px 0">
+         <a href="${setup}" style="display:inline-block;background:${C.green};color:#ffffff;text-decoration:none;font-weight:bold;font-size:16px;padding:15px 32px;border-radius:999px">${t.ctaLabel} &rarr;</a>
+         <p style="margin:14px 0 0;font-size:13px;line-height:1.55;color:${C.mute}">${t.ctaHint} <a href="https://sum-it.eu/login.html" style="color:${C.green};text-decoration:underline">${t.loginWord}</a>.</p>
+       </td></tr>`
+    : `<tr><td style="padding:2px 40px 0"><p style="margin:0;font-size:15px;line-height:1.55;color:${C.ink}">${t.portalFallback} <a href="https://sum-it.eu/portal.html" style="color:${C.green};font-weight:bold;text-decoration:none">${t.portalWord}</a>.</p></td></tr>`;
+  const html = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#eef0f5;margin:0;padding:24px 12px;font-family:Arial,Helvetica,sans-serif">
+<tr><td align="center">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden">
+  <tr><td style="background:${C.navy};padding:26px 32px;text-align:center">
+    <img src="${MAIL_LOGO}" alt="Sum-IT" width="168" style="display:block;margin:0 auto;height:auto;border:0;max-width:168px">
+  </td></tr>
+  <tr><td style="padding:36px 40px 0">
+    <h1 style="margin:0 0 10px;font-size:26px;line-height:1.2;color:${C.navy};font-weight:800">${t.welcome}</h1>
+    <p style="margin:0 0 22px;font-size:16px;line-height:1.55;color:${C.ink}">${t.intro}</p>
+  </td></tr>
+  <tr><td style="padding:0 40px 24px">
+    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+      <td style="background:${C.mint};border:1px solid ${C.mintB};border-radius:12px;padding:14px 26px;text-align:center">
+        <div style="font-size:12px;color:#0a8f5f;text-transform:uppercase;letter-spacing:.1em;font-weight:bold">${t.queueLabel}</div>
+        <div style="font-size:38px;color:${C.navy};font-weight:800;line-height:1.15">#${pos}</div>
+      </td></tr></table>
+  </td></tr>
+  ${cta}
+  <tr><td style="padding:26px 40px 0">
+    <p style="margin:0 0 10px;font-size:15px;line-height:1.5;color:${C.ink}">${t.refText}</p>
+    <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
+      <td style="background:${C.card};border-radius:10px;padding:14px 18px">
+        <a href="${link}" style="color:${C.green};text-decoration:none;font-weight:bold;font-size:15px;word-break:break-all">${link}</a>
+      </td></tr></table>
+  </td></tr>
+  <tr><td style="padding:28px 40px 34px">
+    <p style="margin:0;font-size:16px;line-height:1.5;color:${C.ink}">${t.signoff}<br><strong style="color:${C.navy}">${t.team}</strong></p>
+  </td></tr>
+  <tr><td style="background:${C.card};padding:18px 40px;text-align:center;border-top:1px solid #e8eaf2">
+    <p style="margin:0;font-size:12px;line-height:1.5;color:${C.mute}">${t.footer}</p>
+  </td></tr>
+</table>
+</td></tr></table>`;
+  return { subject: t.subject(pos), html };
+}
+
+const MAIL_T = {
+  nl: {
+    subject: p => `Je staat op plek #${p} — welkom bij de Founding 500`,
+    welcome: 'Welkom bij Sum-IT!',
+    intro: 'Je aanmelding is bevestigd. Dit is jouw plek in de rij:',
+    queueLabel: 'Jouw plek', ctaLabel: 'Stel je wachtwoord in &amp; open je portal',
+    ctaHint: 'E&eacute;n klik bevestigt meteen je e-mailadres. Link verlopen? Gebruik "wachtwoord vergeten" op de',
+    loginWord: 'loginpagina', portalFallback: 'Bekijk je plek in je', portalWord: 'member-portal',
+    refText: 'Dit is jouw persoonlijke link &mdash; elke vriend die via jou meedoet, telt:',
+    signoff: 'Samen naar de top,', team: 'Team Sum-IT',
+    footer: '&copy; 2026 Sum-IT &middot; Een product van Alpha Nova B.V. &middot; Je gegevens blijven in de EU (AVG).'
+  },
+  en: {
+    subject: p => `You're #${p} in the queue — welcome to the Founding 500`,
+    welcome: 'Welcome to Sum-IT!',
+    intro: 'Your signup is confirmed. Here is your spot in the queue:',
+    queueLabel: 'Your spot', ctaLabel: 'Set your password &amp; open your portal',
+    ctaHint: 'One click also confirms your email. Link expired? Use "forgot password" on the',
+    loginWord: 'login page', portalFallback: 'See your spot in your', portalWord: 'member portal',
+    refText: 'This is your personal link &mdash; every friend who joins through it counts:',
+    signoff: 'Together to the top,', team: 'Team Sum-IT',
+    footer: '&copy; 2026 Sum-IT &middot; A product of Alpha Nova B.V. &middot; Your data stays in the EU (GDPR).'
+  }
+};
+
 export const MAILS = {
-  nl: (pos, link, setup) => ({
-    subject: `Je staat op plek #${pos} — welkom bij de Founding 500`,
-    html: `<div style="font-family:sans-serif;max-width:520px"><h2>Welkom bij Sum-IT!</h2>
-<p>Je aanmelding is bevestigd. Jouw plek in de rij: <b style="font-size:22px">#${pos}</b></p>
-${setup ? `<p><a href="${setup}" style="${BTN}">Stel je wachtwoord in &amp; open je member-portal →</a><br>
-<span style="font-size:12px;color:#64748B">Eén klik: je e-mailadres is daarmee meteen bevestigd. Link verlopen? Gebruik "wachtwoord vergeten" op <a href="https://sum-it.eu/login.html">de loginpagina</a>.</span></p>` : `<p>Bekijk je plek in je <a href="https://sum-it.eu/portal.html">member-portal</a>.</p>`}
-<p>Dit is jouw persoonlijke link, elke vriend die via jou meedoet telt:</p>
-<p><a href="${link}" style="font-size:16px">${link}</a></p>
-<p>Samen naar de top,<br>Team Sum-IT</p></div>` }),
-  en: (pos, link, setup) => ({
-    subject: `You're #${pos} in the queue — welcome to the Founding 500`,
-    html: `<div style="font-family:sans-serif;max-width:520px"><h2>Welcome to Sum-IT!</h2>
-<p>Your signup is confirmed. Your spot in the queue: <b style="font-size:22px">#${pos}</b></p>
-${setup ? `<p><a href="${setup}" style="${BTN}">Set your password &amp; open your member portal →</a><br>
-<span style="font-size:12px;color:#64748B">One click: this also confirms your e-mail address. Link expired? Use "forgot password" on <a href="https://sum-it.eu/login.html">the login page</a>.</span></p>` : `<p>See your spot in your <a href="https://sum-it.eu/portal.html">member portal</a>.</p>`}
-<p>This is your personal link, every friend who joins through it counts:</p>
-<p><a href="${link}" style="font-size:16px">${link}</a></p>
-<p>Together to the top,<br>Team Sum-IT</p></div>` })
+  nl: (pos, link, setup) => welcomeMail(MAIL_T.nl, pos, link, setup),
+  en: (pos, link, setup) => welcomeMail(MAIL_T.en, pos, link, setup)
 };
 
 /* Creates the auth user (e-mail pre-confirmed) and returns a one-click
