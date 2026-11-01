@@ -114,3 +114,12 @@ Alles wat alleen op live stond (CNAME, aanmeld-API in `functions/`, Google-verif
   - De haan staat op de kerk en de molen draait nog.
 - Abhishek: "in de marketing in de farmaceutische wereld", zonder bedrijfsnamen.
 - Team-pagina: drie even grote blokken met "1 doel" in het midden. Op de homepage staat "1 doel" ook in het midden.
+
+## Ronde 5c
+- Haan van de kerk gehaald. Er staat nu een eenvoudige spits met bolletje.
+- **Prijzen: nieuwe, grote vergelijkingsgrafiek** "Sum-IT of een boekhouder":
+  - Schuifbalk voor de jaaromzet, met drie tegels: Sum-IT per jaar, gemiddelde boekhouder en "Je bespaart" (of "Boekhouder voordeliger").
+  - Groene lijn (Sum-IT: €132 + 0,5% van de omzet) en rode lijn (boekhouder: €1.200 per jaar).
+  - Het besparingsgebied is groen, het gebied waar een boekhouder goedkoper is licht rood.
+  - Omslagpunt bij €213.600, en een stippellijn voor "zonder betaallinks: €132".
+  - Rekening gecontroleerd: (1200 − 132) / 0,005 = €213.600.
