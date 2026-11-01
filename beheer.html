@@ -8,11 +8,13 @@
 <link rel="icon" type="image/png" href="sum-it-favicon.png">
 <script src="sb-config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/tokens.css">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
-:root{--indigo:#2D2D6B;--indigo-d:#232358;--ink:#0F172A;--green:#00BC7D;--green-d:#009966;--green-t:#D0FAE5;--pink:#FF2357;--amber-t:#FFF4DE;--bg:#F1F5F9;--line:#E2E8F0;--slate:#64748B;--mut-d:rgba(255,255,255,.72);--line-d:rgba(255,255,255,.14)}
+:root{--indigo:#2D2D6B;--indigo-d:#232358;--ink:#0F172A;--green:#00BC7D;--green-d:#007a55;--green-t:#D0FAE5;--pink:#FF2357;--amber-t:#FFF4DE;--bg:#F1F5F9;--line:#E2E8F0;--slate:#64748B;--mut-d:rgba(255,255,255,.72);--line-d:rgba(255,255,255,.14)}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Poppins',sans-serif;background:var(--bg);min-height:100vh;color:var(--ink);line-height:1.55;font-size:14px}
+body{font-family:var(--font-sans);background:var(--bg);min-height:100vh;color:var(--ink);line-height:1.55;font-size:14px}
 .top{display:flex;align-items:center;gap:10px;padding:14px 22px;background:linear-gradient(140deg,var(--indigo),var(--indigo-d));color:#fff;flex-wrap:wrap}
 .top img{width:32px}.top b{font-size:16px;font-weight:800}.top .sp{flex:1}
 .top .who{font-size:12px;color:var(--mut-d)}
@@ -30,7 +32,7 @@ h2{font-size:17px;font-weight:800;color:var(--indigo);margin-bottom:12px}
 .stat b{font-size:22px;font-weight:800;color:var(--indigo)}
 .rowbar{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}
 .rowbar input[type=search]{flex:1;min-width:200px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--bg);font-family:inherit;font-size:13.5px}
-.btn{background:var(--green);color:#fff;font-weight:700;font-size:13px;padding:10px 18px;border-radius:999px;border:0;cursor:pointer;font-family:inherit}
+.btn{background:var(--green);color:var(--c-on-green);font-weight:700;font-size:13px;padding:10px 18px;border-radius:999px;border:0;cursor:pointer;font-family:inherit}
 .btn.sec{background:var(--indigo)}
 .btn.warn{background:var(--pink)}
 .btn:disabled{opacity:.5}
@@ -69,6 +71,7 @@ input:focus,textarea:focus{outline:2px solid var(--green)}
 <div class="top">
   <img src="sum-it-logo-mark.svg" alt=""><b>Sum-IT beheer</b><span class="sp"></span>
   <span class="who" id="who"></span>
+  <a class="ghost" href="/admin/blogs/">Blog-CMS</a>
   <a class="ghost" href="/admin.html">Teksten-editor</a>
   <button class="ghost" onclick="logout()">Uitloggen</button>
 </div>
@@ -100,33 +103,8 @@ input:focus,textarea:focus{outline:2px solid var(--green)}
     <!-- ============ BLOG ============ -->
     <div id="tab-b" class="panel hide">
       <h2>Blogposts</h2>
-      <div class="postlist" id="postlist"></div>
-      <div class="rowbar"><button class="btn" onclick="newPost()">+ Nieuwe post</button></div>
-      <div id="editor" class="hide">
-        <div class="split">
-          <div>
-            <label>Titel</label>
-            <input type="text" id="p-title" oninput="syncSlug();preview()">
-            <label>Slug (URL, kleine letters en streepjes)</label>
-            <input type="text" id="p-slug">
-            <label>Korte omschrijving (voor Google en de blogindex)</label>
-            <input type="text" id="p-desc" maxlength="180" oninput="preview()">
-            <label>Inhoud (HTML: &lt;h2&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;b&gt;, &lt;a&gt;)</label>
-            <textarea id="p-body" oninput="preview()"></textarea>
-            <div class="hint">Simpel houden: <b>&lt;h2&gt;Kopje&lt;/h2&gt;</b> voor kopjes, <b>&lt;p&gt;Tekst&lt;/p&gt;</b> voor alinea's, <b>&lt;ul&gt;&lt;li&gt;punt&lt;/li&gt;&lt;/ul&gt;</b> voor lijstjes.</div>
-            <div class="rowbar" style="margin-top:14px">
-              <button class="btn" onclick="savePost(false)">Opslaan als concept</button>
-              <button class="btn sec" onclick="savePost(true)">Opslaan &amp; publiceren</button>
-              <button class="btn warn" id="p-del" onclick="delPost()">Verwijderen</button>
-            </div>
-            <div class="err" id="b-err"></div><div class="okmsg" id="b-ok"></div>
-          </div>
-          <div>
-            <label>Voorbeeld</label>
-            <div class="preview" id="pv"></div>
-          </div>
-        </div>
-      </div>
+      <p style="font-size:13px;color:var(--slate);margin-bottom:14px">Blogposts schrijven, publiceren en beheren gaat via het blog-CMS: overzicht met zoeken en filteren, editor met afbeeldingen, keywords en SEO-velden.</p>
+      <a class="btn" href="/admin/blogs/" style="display:inline-block;text-decoration:none">Naar het blog-CMS →</a>
     </div>
 
     <!-- ============ ADMINS ============ -->
@@ -158,7 +136,7 @@ async function boot(){
   document.getElementById('who').textContent=MYEMAIL;
   gate.classList.add('hide');
   document.getElementById('app').classList.remove('hide');
-  loadStats();loadSignups();loadPosts();loadAdmins();
+  loadStats();loadSignups();loadAdmins();
 }
 function logout(){SB.auth.signOut().then(function(){location.href='/login.html';});}
 function showTab(t){['s','b','a'].forEach(function(x){
@@ -201,64 +179,6 @@ function exportCsv(){
     return cols.map(function(c){var v=x[c];v=v==null?'':String(v);return '"'+v.replace(/"/g,'""')+'"';}).join(';');}));
   var blob=new Blob(['﻿'+lines.join('\r\n')],{type:'text/csv;charset=utf-8'});
   var a=document.createElement('a');a.download='sumit-aanmeldingen.csv';a.href=URL.createObjectURL(blob);a.click();
-}
-
-/* ---------- blog ---------- */
-var EDIT_SLUG=null;
-async function loadPosts(){
-  var r=await SB.from('blog_posts').select('slug,title,published,updated_at').order('updated_at',{ascending:false});
-  var el=document.getElementById('postlist');
-  if(r.error){el.innerHTML='<div class="err">Laden mislukt: '+esc(r.error.message)+'</div>';return;}
-  el.innerHTML=(r.data||[]).map(function(p){
-    return '<div class="postrow"><b>'+esc(p.title)+'</b><small>/blog/post.html?slug='+esc(p.slug)+'</small>'+
-      (p.published?'<span class="pill ok">live</span>':'<span class="pill pend">concept</span>')+'<span class="sp"></span>'+
-      '<a class="mini" target="_blank" href="/blog/post.html?slug='+encodeURIComponent(p.slug)+'">Bekijk</a>'+
-      '<button class="mini" onclick="editPost(\''+esc(p.slug)+'\')">Bewerk</button></div>';
-  }).join('')||'<div style="color:var(--slate);font-size:13px">Nog geen CMS-posts. De 4 lanceer-artikelen staan vast in de site en blijven gewoon bestaan.</div>';
-}
-function slugify(t){return t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,80);}
-function syncSlug(){if(!EDIT_SLUG){document.getElementById('p-slug').value=slugify(document.getElementById('p-title').value);}}
-function newPost(){EDIT_SLUG=null;
-  ['p-title','p-slug','p-desc','p-body'].forEach(function(i){document.getElementById(i).value='';});
-  document.getElementById('p-del').classList.add('hide');
-  document.getElementById('editor').classList.remove('hide');preview();}
-async function editPost(slug){
-  var r=await SB.from('blog_posts').select('*').eq('slug',slug).single();
-  if(r.error)return;
-  EDIT_SLUG=slug;
-  document.getElementById('p-title').value=r.data.title;
-  document.getElementById('p-slug').value=r.data.slug;
-  document.getElementById('p-desc').value=r.data.description;
-  document.getElementById('p-body').value=r.data.body_html;
-  document.getElementById('p-del').classList.remove('hide');
-  document.getElementById('editor').classList.remove('hide');preview();
-  window.scrollTo({top:document.getElementById('editor').offsetTop-40,behavior:'smooth'});
-}
-function preview(){
-  var t=document.getElementById('p-title').value,b=document.getElementById('p-body').value;
-  document.getElementById('pv').innerHTML='<h1 style="font-size:20px;color:var(--indigo)">'+esc(t)+'</h1>'+b;
-}
-async function savePost(pub){
-  var err=document.getElementById('b-err'),ok=document.getElementById('b-ok');err.textContent='';ok.textContent='';
-  var row={slug:document.getElementById('p-slug').value.trim(),
-           title:document.getElementById('p-title').value.trim(),
-           description:document.getElementById('p-desc').value.trim(),
-           body_html:document.getElementById('p-body').value,
-           published:pub,author:MYEMAIL};
-  if(!row.slug||!row.title){err.textContent='Titel en slug zijn verplicht.';return;}
-  if(!/^[a-z0-9-]{3,80}$/.test(row.slug)){err.textContent='Slug mag alleen kleine letters, cijfers en streepjes bevatten.';return;}
-  var r=await SB.from('blog_posts').upsert(row,{onConflict:'slug'});
-  if(r.error){err.textContent='Opslaan mislukt: '+r.error.message;return;}
-  EDIT_SLUG=row.slug;document.getElementById('p-del').classList.remove('hide');
-  ok.textContent=pub?'Opgeslagen en live! Bekijk hem via de lijst hierboven.':'Opgeslagen als concept.';
-  loadPosts();
-}
-async function delPost(){
-  if(!EDIT_SLUG)return;
-  if(!confirm('Post "'+EDIT_SLUG+'" definitief verwijderen?'))return;
-  var r=await SB.from('blog_posts').delete().eq('slug',EDIT_SLUG);
-  if(r.error){document.getElementById('b-err').textContent=r.error.message;return;}
-  EDIT_SLUG=null;document.getElementById('editor').classList.add('hide');loadPosts();
 }
 
 /* ---------- admins ---------- */
