@@ -132,3 +132,10 @@ Alles wat alleen op live stond (CNAME, aanmeld-API in `functions/`, Google-verif
 ## Ronde 5e
 - **0,5% alleen over wat binnenkomt**: de vergoeding geldt over ontvangen betalingen op facturen die via Sum-IT zijn uitgegeven, via betaallink of overboeking. Over onbetaalde facturen betaal je niets, en bij een terugbetaling of terugboeking wordt de vergoeding verrekend. Aangepast op de site en in art. 7.1 van de algemene voorwaarden.
 - **Grafiek rustig gemaakt**: de lay-out verspringt niet meer tijdens het schuiven. De omzet heeft een vaste breedte, de tegels en de uitslagtekst een vaste hoogte, en alle cijfers zijn even breed.
+
+## Beveiliging (1 nov 2026)
+- **PHP2Shell (CVE-2026-109618/109619, gepatcht 21 okt 2026):** de website gebruikt geen PHP: het zijn statische pagina's op GitHub Pages, met de aanmeldfunctie op Cloudflare Pages Functions (JavaScript). Ze is dus niet kwetsbaar. De Sum-IT-app draait op Python, ook niet geraakt.
+- **Supabase-bibliotheek vastgezet** op versie 2.117.3, met een integriteitscontrole (SRI) op 7 pagina's (login, portal, wachtwoord, beheer, admin). Eerder laadde de site altijd "de nieuwste 2.x". Werd die bij het CDN aangepast, dan draaide er zonder controle andere code op de loginpagina's.
+- **QR-bibliotheek** op /portal kreeg ook een SRI-controle.
+- Gecontroleerd: in de site staat alleen de publieke (publishable) Supabase-sleutel en geen geheime sleutels. De beheerpagina's staan op noindex. Blogteksten uit het CMS gaan door een sanitizer.
+- **Advies (buiten de website):** zorg dat Row Level Security in Supabase aan staat op alle tabellen, want de publieke sleutel geeft verder alleen wat RLS toestaat. Laat ook de mail- en hostingproviders bevestigen dat ze voor PHP2Shell gepatcht zijn, als daar PHP draait.
