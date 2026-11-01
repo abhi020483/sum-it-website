@@ -76,6 +76,20 @@
       .hero-promo{display:inline-flex;align-items:center;gap:8px;margin-top:14px;padding:8px 14px;border-radius:999px;background:rgba(0,188,125,.14);border:1px solid rgba(0,188,125,.45);color:var(--c-green-300);font-weight:600;font-size:.95rem}
       #team .avatar{width:96px;height:96px;padding:0;overflow:visible;display:block}
       #team .avatar img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+      /* v3: hero slideshow of real app screens */
+      .hs-zone{display:flex;flex-direction:column;align-items:center;gap:14px}
+      .hs-zone .hero-product-label{position:static!important;transform:none!important;margin:0 0 4px}
+      .hs-phone{position:relative;width:min(300px,74vw);aspect-ratio:9/19.5;border-radius:46px;background:#0b0d24;padding:11px;box-shadow:0 30px 80px rgba(0,0,0,.45),0 0 0 2px #2a2d5a inset}
+      .hs-phone::before{content:"";position:absolute;top:20px;left:50%;transform:translateX(-50%);width:92px;height:26px;border-radius:20px;background:#000;z-index:3}
+      .hs-img{position:absolute;inset:11px;width:calc(100% - 22px);height:calc(100% - 22px);object-fit:cover;object-position:top;border-radius:36px;opacity:0;transition:opacity .8s ease}
+      .hs-img.on{opacity:1}
+      .hs-caps{position:relative;height:24px;width:100%;text-align:center}
+      .hs-cap{position:absolute;left:0;right:0;opacity:0;transition:opacity .5s;color:rgba(255,255,255,.85);font-weight:600;font-size:.95rem}
+      .hs-cap.on{opacity:1}
+      .hs-dots{display:flex;gap:8px}
+      .hs-dot{width:8px;height:8px;border-radius:99px;border:0;padding:0;background:rgba(255,255,255,.3);cursor:pointer;transition:width .3s,background .3s}
+      .hs-dot.on{width:22px;background:var(--c-green)}
+      @media (prefers-reduced-motion:reduce){.hs-img,.hs-cap{transition:none}}
     </style>
   </head>
 
@@ -142,7 +156,7 @@
             <h1 data-i18n="hero_h1">Less faff.<br /><em>More business.</em></h1>
             <p class="sub" data-i18n="hero_sub">
               Snap a receipt, Sum-IT reads it and files it, so you don't have
-              to. Tax funds set aside, profit and expenses calculated, and soon,
+              to. Tax to set aside worked out, profit and expenses calculated, and soon,
               a trusted network of pros to connect with.
             </p>
             <a class="btn" href="https://stg.sum-it.eu/register" data-i18n="hero_cta">Create your free
@@ -163,339 +177,11 @@
             </p>
           </div>
 
-          <div class="phone-zone">
-            <div class="hero-product-label"><i></i> <span data-i18n="hpl">PRODUCT PREVIEW</span></div>
-            <div class="hero-float one">
-              <span class="hficon"><i
-                  class="fi fi-rr-arrow-up-right"
-                  style="margin-top: 5px"></i></span><span><small data-i18n="hf1">Money
-                  in</small><b>€9.660</b><span class="up" data-i18n="hf2">+12.4% this
-                  month</span></span>
-            </div>
-            <div class="hero-float two">
-              <span class="hficon"><i class="fi fi-rr-check"
-                  style="margin-top: 5px"></i></span><span><small data-i18n="hf3">VAT to set
-                  aside</small><b>€1.627</b><span class="up" data-i18n="hf4">Ready for
-                  review</span></span>
-            </div>
-            <div class="hero-float three">
-              <span class="hficon">€</span><span><small data-i18n="hf5">Cash
-                  held</small><b>€20.661</b><span class="up" data-i18n="hf6">▲ 4.2% vs last
-                  month</span></span>
-            </div>
-            <a class="hero-proof" href="#capture">
-              <strong data-i18n="hero_proof_title">See the
-                workflow</strong><span data-i18n="hero_proof_body">from receipt
-                to clearer numbers</span>
-            </a>
-            <div class="phone">
-              <div class="screen">
-                <div class="livedemo" id="livedemo">
-                  <iframe
-                    id="demoframe"
-                    title="Sum-IT live demo"
-                    scrolling="no"
-                    data-src="/demo/app.html#demo"></iframe>
-                </div>
-                <div class="demoloading" id="demoloading" data-i18n="demo_load">
-                  Live demo laden…
-                </div>
-                <button
-                  type="button"
-                  class="demoexit"
-                  id="demoexit"
-                  aria-label="Sluit demo"
-                  onclick="stopDemo()">
-                  &times;
-                </button>
-                <button
-                  type="button"
-                  class="demostart"
-                  id="demostart"
-                  onclick="startDemo()">
-                  <span class="dsi"><i
-                      class="fi fi-rr-caret-right"></i></span><span
-                    data-i18n="demo_start">Explore the product preview</span>
-                </button>
-                <div class="appbar">
-                  <span class="mk"><img src="/sum-it-logo-mark.svg"
-                      alt /></span><span class="nm">Sum-IT</span><span
-                    class="sp"></span><span class="chatpill">Chat</span><span
-                    class="rolechip" data-i18n="a_owner">OWNER</span>
-                </div>
-                <div class="view">
-                  <!-- S0 DASHBOARD (real V4.1 screen) -->
-                  <div class="scr on" id="s0">
-                    <div class="ph2" data-i18n="a_dash">Dashboard</div>
-                    <div class="psub" data-i18n="a_dashsub">
-                      Overview of your finances
-                    </div>
-                    <div class="pillrow">
-                      <span class="on" data-i18n="a_month">Monthly</span><span
-                        data-i18n="a_quart">Quarterly</span><span
-                        data-i18n="a_year">Annual</span>
-                    </div>
-                    <div class="mcards">
-                      <div class="mcard">
-                        <small><span data-i18n="a_in">MONEY IN</span><span
-                            class="ico up">↗</span></small>
-                        <div class="v in">€9.660,00</div>
-                        <div class="m" data-i18n="a_thism">This month · incl. VAT</div>
-                      </div>
-                      <div class="mcard">
-                        <small><span data-i18n="a_out">MONEY OUT</span><span
-                            class="ico dn">↘</span></small>
-                        <div class="v out">€285,00</div>
-                        <div class="m" data-i18n="a_thism2">This month · incl. VAT</div>
-                      </div>
-                    </div>
-                    <div class="wide">
-                      <div class="row">
-                        <small data-i18n="a_cash">CASH HELD</small><span
-                          class="up">▲ <span data-i18n="a_pct">4.2%</span>
-                          <span data-i18n="a_vslm">vs last month</span></span>
-                      </div>
-                      <div class="v">€20.661,00</div>
-                    </div>
-                    <div class="wide">
-                      <div class="row">
-                        <small data-i18n="a_vat">VAT, IN VS OUT</small><span
-                          class="estchip" data-i18n="a_est">ESTIMATE</span>
-                      </div>
-                      <div class="vatbar"></div>
-                      <div class="vrow">
-                        <span data-i18n="a_coll">Collected <b
-                            class="pk">€1.676,53</b></span><span
-                          data-i18n="a_paid">Paid <b class="gr">€49,46</b></span>
-                      </div>
-                      <div class="vnet">
-                        <span data-i18n="a_net">Net VAT to set
-                          aside</span><b>€1.627,07</b>
-                      </div>
-                    </div>
-                    <div class="acthead" data-i18n="a_act">ACTIONS</div>
-                    <div class="act warn">
-                      <span><span class="dot a"></span><b>4</b>&nbsp;<span
-                          data-i18n="a_drafts">drafts need
-                          review</span></span><button class="b"
-                        data-i18n="a_rev">Review</button>
-                    </div>
-                    <div class="act dang">
-                      <span><span class="dot p"></span><b>1</b>&nbsp;<span
-                          data-i18n="a_unpaid">invoice unpaid &gt; 7
-                          days</span></span><button class="b"
-                        data-i18n="a_open">Open</button>
-                    </div>
-                  </div>
-
-                  <!-- S1 PROJECTS (real V4.1 screen) -->
-                  <div class="scr" id="s1">
-                    <div
-                      style="
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                      ">
-                      <div>
-                        <div class="ph2" data-i18n="a_proj">Projects</div>
-                        <div class="psub" data-i18n="a_projsub">
-                          Budgets and tracking center
-                        </div>
-                      </div>
-                      <button class="newbtn" data-i18n="a_newp">
-                        + New Project
-                      </button>
-                    </div>
-                    <div class="pillrow">
-                      <span data-i18n="a_offers">Offers</span><span class="on"
-                        data-i18n="a_projects">Projects</span>
-                    </div>
-                    <div class="projtot">
-                      <span><span data-i18n="a_spent">TOTAL
-                          SPENT</span><b>€25.160,00</b></span><span
-                        style="text-align: right"><span
-                          data-i18n="a_budget">TOTAL
-                          BUDGET</span><b>€36.500</b></span>
-                    </div>
-                    <div class="pcard">
-                      <div class="nm">
-                        Verbouwing A'dam-West
-                        <span class="tagav"><i class="g">E</i><i
-                            class="o">A</i></span>
-                      </div>
-                      <div class="dualbar">
-                        <i class="sp1 grow1" style="width: 45%"></i><i
-                          class="sp2 grow2" style="width: 55%"></i>
-                      </div>
-                      <div class="pnums">
-                        <span class="neg">−€9.660</span><span
-                          class="pos">+€2.340</span>
-                      </div>
-                    </div>
-                    <div class="pcard">
-                      <div class="nm">
-                        Badkamer Haarlem
-                        <span class="tagav"><i class="pk">L</i><i
-                            class="bl">F</i></span>
-                      </div>
-                      <div class="dualbar">
-                        <i class="sp1 grow1" style="width: 32%"></i><i
-                          class="sp2 grow2" style="width: 68%"></i>
-                      </div>
-                      <div class="pnums">
-                        <span class="neg">−€3.020</span><span
-                          class="pos">+€980</span>
-                      </div>
-                    </div>
-                    <div class="pcard">
-                      <div class="nm">
-                        Kozijnen Zaandam
-                        <span class="tagav"><i class="g">N</i><i
-                            class="o">E</i></span>
-                      </div>
-                      <div class="dualbar">
-                        <i class="sp1 grow1" style="width: 58%"></i><i
-                          class="sp2 grow2" style="width: 42%"></i>
-                      </div>
-                      <div class="pnums">
-                        <span class="neg">−€12.480</span><span
-                          class="pos">+€1.870</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- S2 OFFERS (V4.1 screen, phase 2 -> COMING) -->
-                  <div class="scr" id="s2">
-                    <span class="soon" data-i18n="soon">COMING</span>
-                    <div
-                      style="
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                      ">
-                      <div>
-                        <div class="ph2" data-i18n="a_proj2">Projects</div>
-                        <div class="psub" data-i18n="a_projsub2">
-                          Budgets and tracking center
-                        </div>
-                      </div>
-                      <button class="newbtn" data-i18n="a_newo">
-                        + New Offer
-                      </button>
-                    </div>
-                    <div class="pillrow">
-                      <span class="on" data-i18n="a_offers2">Offers</span><span
-                        data-i18n="a_projects2">Projects</span>
-                    </div>
-                    <div class="ocard">
-                      <div class="t">
-                        <span><span class="b2b">B2B</span>Lichtinstallatie
-                          kade</span><span class="ost acc"
-                          data-i18n="a_acc">ACCEPTED</span>
-                      </div>
-                      <div class="meta">
-                        OFF-2026-010 · Haven Malmö · 28-06-2026
-                      </div>
-                      <div class="amt">€9.438,00</div>
-                      <span class="olink">✓
-                        <span data-i18n="a_linked">Linked to
-                          project</span></span>
-                    </div>
-                    <div class="ocard">
-                      <div class="t">
-                        <span><span class="b2b">B2B</span>Winteronderhoud
-                          wegen</span><span class="ost sent"
-                          data-i18n="a_sent">SENT</span>
-                      </div>
-                      <div class="meta">
-                        OFF-2026-014 · Gemeente · 02-07-2026
-                      </div>
-                      <div class="amt">€19.112,80</div>
-                      <span class="ogreen" data-i18n="a_green">Greenlight
-                        →</span>
-                    </div>
-                  </div>
-
-                  <!-- S3 COMMUNITY CONTACTS (V4.1 chat/contacts, phase 2 -> COMING) -->
-                  <div class="scr" id="s3">
-                    <span class="soon" data-i18n="soon2">COMING</span>
-                    <div class="ph2" data-i18n="a_msg">Messages &amp; Chat</div>
-                    <div class="psub" data-i18n="a_msgsub">
-                      Chat B2B agreements, accept terms, counter offer
-                    </div>
-                    <div class="pillrow">
-                      <span data-i18n="a_msgs">Messages</span><span class="on"
-                        data-i18n="a_contacts">Contacts</span>
-                    </div>
-                    <div class="ccard">
-                      <span class="cav g">L</span><span
-                        class="who"><b>Loodgieter</b><small
-                          data-i18n="a_c1">Plumbing · 2,1 km ·
-                          <em>voorbeeld</em></small></span><button class="tbtn"
-                        data-i18n="a_team1">Team up</button>
-                    </div>
-                    <div class="ccard">
-                      <span class="cav pk">E</span><span
-                        class="who"><b>Elektricien</b><small
-                          data-i18n="a_c2">Electrician · 4,8 km ·
-                          <em>voorbeeld</em></small></span><button class="tbtn"
-                        data-i18n="a_team2">Team up</button>
-                    </div>
-                    <div class="ccard">
-                      <span class="cav am">T</span><span
-                        class="who"><b>Timmerman</b><small
-                          data-i18n="a_c3">Carpentry · 6,3 km ·
-                          <em>voorbeeld</em></small></span><button class="tbtn"
-                        data-i18n="a_team3">Team up</button>
-                    </div>
-                    <div class="ccard">
-                      <span class="cav g">S</span><span
-                        class="who"><b>Schilder</b><small
-                          data-i18n="a_c4">Painting · 3,2 km ·
-                          <em>voorbeeld</em></small></span><button class="tbtn"
-                        data-i18n="a_team4">Team up</button>
-                    </div>
-                  </div>
-                </div>
-                <div class="bnav">
-                  <div class="ni on" id="nav0">
-                    <svg viewBox="0 0 24 24">
-                      <path
-                        d="M3 11l9-8 9 8v9a2 2 0 01-2 2h-4v-6h-6v6H5a2 2 0 01-2-2z" /></svg><span
-                      data-i18n="nb1">Dashboard</span>
-                  </div>
-                  <div class="ni" id="nav1">
-                    <svg viewBox="0 0 24 24">
-                      <rect x="3" y="7" width="18" height="13" rx="2" />
-                      <path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2" />
-                      <circle cx="12" cy="13" r="3.2" /></svg><span
-                      data-i18n="nb2">Scan</span>
-                  </div>
-                  <div class="ni" id="nav2">
-                    <svg viewBox="0 0 24 24">
-                      <path
-                        d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" />
-                      <path d="M14 2v6h6" /></svg><span
-                      data-i18n="nb3">Docs</span>
-                  </div>
-                  <div class="ni" id="nav3">
-                    <svg viewBox="0 0 24 24">
-                      <path
-                        d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2z" /></svg><span
-                      data-i18n="nb4">Projects</span>
-                  </div>
-                  <div class="ni" id="nav4">
-                    <svg viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="1.6" />
-                      <circle cx="5" cy="12" r="1.6" />
-                      <circle cx="19" cy="12" r="1.6" /></svg><span
-                      data-i18n="nb5">More</span>
-                  </div>
-                </div>
-                <div class="caption" id="caption"></div>
-              </div>
-            </div>
-            <div class="dots" id="dots"></div>
+          <div class="phone-zone hs-zone">
+            <div class="hero-product-label"><i></i> <span data-i18n="hpl">PRODUCTVOORBEELD</span></div>
+            <div class="hs-phone" id="hsPhone" aria-label="Schermen uit de Sum-IT app"><img class="hs-img on" src="/img/app/dashboard.jpg" alt="" width="603" height="1311" ><img class="hs-img" src="/img/app/scan.jpg" alt="" width="603" height="1311" loading="lazy"><img class="hs-img" src="/img/app/documenten.jpg" alt="" width="603" height="1311" loading="lazy"><img class="hs-img" src="/img/app/projecten.jpg" alt="" width="603" height="1311" loading="lazy"><img class="hs-img" src="/img/app/offertes.jpg" alt="" width="603" height="1311" loading="lazy"><img class="hs-img" src="/img/app/btw-aangifte.jpg" alt="" width="603" height="1311" loading="lazy"></div>
+            <div class="hs-caps" aria-live="polite"><span class="hs-cap on" data-i18n="hs0">Dashboard: geld in en uit, in één oogopslag</span><span class="hs-cap" data-i18n="hs1">Scannen: foto van je bon, klaar</span><span class="hs-cap" data-i18n="hs2">Documenten: alles netjes op één plek</span><span class="hs-cap" data-i18n="hs3">Projecten: winst per klus, live</span><span class="hs-cap" data-i18n="hs4">Offertes: van concept tot akkoord</span><span class="hs-cap" data-i18n="hs5">Btw: per rubriek voorbereid</span></div>
+            <div class="hs-dots"><button type="button" class="hs-dot on" aria-label="Scherm 1" data-i="0"></button><button type="button" class="hs-dot" aria-label="Scherm 2" data-i="1"></button><button type="button" class="hs-dot" aria-label="Scherm 3" data-i="2"></button><button type="button" class="hs-dot" aria-label="Scherm 4" data-i="3"></button><button type="button" class="hs-dot" aria-label="Scherm 5" data-i="4"></button><button type="button" class="hs-dot" aria-label="Scherm 6" data-i="5"></button></div>
           </div>
         </div>
       </section>
@@ -516,15 +202,11 @@
                 <div class="avatar col-lg-4"><img src="/img/team/ian.jpg" alt="Ian Bouman" width="96" height="96" loading="lazy" /></div>
                 <div class="col-lg-8">
                   <h3>Ian</h3>
-                  <div class="role" data-i18n="tm1r">Product &amp; NL
-                    Market</div>
+                  <div class="role" data-i18n="tm1r">CEO &amp; medeoprichter</div>
                 </div>
               </div>
 
-              <p data-i18n="tm1b">
-                Knows Dutch small business from the inside, your voice in the
-                roadmap.
-              </p>
+              <p data-i18n="tm1b">Zet de koers van Sum-IT uit: van productvisie tot de eerste klant op de bouwplaats. Vertaalt wat vakmensen elke dag meemaken naar een app die werkt.</p>
             </div>
 
             <div class="tmcard" data-number="02">
@@ -589,15 +271,15 @@
           <p class="lead" data-i18n="ov_lead">Kies een onderwerp voor alle details.</p>
           <div class="ov-grid">
             <a class="ov-card" href="/functies/bonnetjes-scannen/">
-              <span class="ov-ic"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M14 18h4l2-3h8l2 3h4a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V20a2 2 0 0 1 2-2z" stroke="#1a1d4f" stroke-width="2"/><circle cx="24" cy="25" r="4.5" stroke="#00bc7d" stroke-width="2.2"/><path d="M33 21.5h.01" stroke="#1a1d4f" stroke-width="2.4"/></svg></span>
+              <span class="ov-ic"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M14 18h4l2-3h8l2 3h4a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2V20a2 2 0 0 1 2-2z" stroke="#1a1d4f" stroke-width="2"/><circle cx="24" cy="25" r="4.5" stroke="#00bc7d" stroke-width="2.4"/></svg></span>
               <h3 data-i18n="ov1t">Bonnetjes scannen</h3>
               <p data-i18n="ov1p">Foto van je bonnetje, Sum-IT leest het en boekt het in. Inclusief btw.</p>
               <span class="ov-more" data-i18n="ov_more">Lees meer →</span>
             </a>
             <a class="ov-card" href="/functies/btw-apart-zetten/">
-              <span class="ov-ic"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M14 30c0-5.5 4.5-10 10-10s10 4.5 10 10v2H14z" stroke="#1a1d4f" stroke-width="2"/><path d="M21 20v-3h6v3" stroke="#1a1d4f" stroke-width="2"/><path d="M12 34h24" stroke="#1a1d4f" stroke-width="2"/><path d="M24 23v6M21.5 24.5h3.5a1.5 1.5 0 0 1 0 3H23" stroke="#00bc7d" stroke-width="2.2"/></svg></span>
+              <span class="ov-ic"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M17 16h14l1 3H16z" stroke="#1a1d4f" stroke-width="2"/><path d="M16 19h16v13a3 3 0 0 1-3 3H19a3 3 0 0 1-3-3z" stroke="#1a1d4f" stroke-width="2"/><path d="M28.2 23.6a4.2 4.2 0 1 0 0 6.8M20.5 25.8h5M20.5 28.2h5" stroke="#00bc7d" stroke-width="1.9"/></svg></span>
               <h3 data-i18n="ov2t">Btw apart zetten</h3>
-              <p data-i18n="ov2p">Je btw-potje vult zich terwijl je betaald wordt. Geen verrassingen bij de aangifte.</p>
+              <p data-i18n="ov2p">Sum-IT rekent uit hoeveel btw je opzij moet zetten; jij zet het zelf apart. Geen verrassingen bij de aangifte.</p>
               <span class="ov-more" data-i18n="ov_more">Lees meer →</span>
             </a>
             <a class="ov-card" href="/functies/facturen/">
@@ -607,15 +289,15 @@
               <span class="ov-more" data-i18n="ov_more">Lees meer →</span>
             </a>
             <a class="ov-card" href="/functies/projecten/">
-              <span class="ov-ic"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M13 35h22" stroke="#1a1d4f" stroke-width="2"/><path d="M16 31v-6M22 31V20M28 31v-8" stroke="#1a1d4f" stroke-width="2.4"/><path d="M15 19l6-5 5 4 8-6" stroke="#00bc7d" stroke-width="2.2"/><path d="M30 12h4v4" stroke="#00bc7d" stroke-width="2.2"/></svg></span>
+              <span class="ov-ic"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M13 35h22M16 31v-6M22 31V20M28 31v-8" stroke="#1a1d4f" stroke-width="2"/><path d="M15 19l6-5 5 4 8-6M30 12h4v4" stroke="#00bc7d" stroke-width="2.4"/></svg></span>
               <h3 data-i18n="ov4t">Winst per klus</h3>
               <p data-i18n="ov4p">Budget, kosten en uren per project. Zie live welke klus echt iets oplevert.</p>
               <span class="ov-more" data-i18n="ov_more">Lees meer →</span>
             </a>
             <a class="ov-card" href="/community/">
-              <span class="ov-ic"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><circle cx="18" cy="18" r="4" stroke="#1a1d4f" stroke-width="2"/><circle cx="30" cy="18" r="4" stroke="#1a1d4f" stroke-width="2"/><path d="M11 33c0-4 3-7 7-7s7 3 7 7" stroke="#1a1d4f" stroke-width="2"/><path d="M23 33c0-4 3-7 7-7s7 3 7 7" stroke="#00bc7d" stroke-width="2.2"/></svg></span>
-              <h3 data-i18n="ov5t">Netwerk van vakmensen</h3>
-              <p data-i18n="ov5p">Vind betrouwbare collega's via andere ondernemers en besteed werk veilig uit.</p>
+              <span class="ov-ic"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M9 18h5l5-3h4M39 18h-5l-6-3-6 4a2 2 0 0 0 3 3l3-2 6 6M9 18v10h4l8 7a2 2 0 0 0 3-1M39 18v10h-5" stroke="#1a1d4f" stroke-width="2"/><path d="M34 28l-7 7a2 2 0 0 1-3-2M30.5 31.5l-3-3M27 35l-3-3" stroke="#00bc7d" stroke-width="2.4"/></svg></span>
+              <h3 data-i18n="ov5t">Samen sterker</h3>
+              <p data-i18n="ov5p">Als zelfstandige sta je samen sterker dan alleen. Vind collega's, werk samen en help elkaar verder.</p>
               <span class="ov-more" data-i18n="ov_more">Lees meer →</span>
             </a>
             <a class="ov-card" href="/voor/boekhouders/">
@@ -949,5 +631,11 @@
     <a class="v24-mobile-cta" id="v24MobileCta" href="https://stg.sum-it.eu/register" data-i18n="hero_cta">Create your free
       profile</a>
 
+  <script>
+(function(){var imgs=document.querySelectorAll('.hs-img'),caps=document.querySelectorAll('.hs-cap'),dots=document.querySelectorAll('.hs-dot');if(!imgs.length)return;var i=0,t;
+function go(n){imgs[i].classList.remove('on');caps[i].classList.remove('on');dots[i].classList.remove('on');i=(n+imgs.length)%imgs.length;imgs[i].classList.add('on');caps[i].classList.add('on');dots[i].classList.add('on');}
+function start(){clearInterval(t);if(!matchMedia('(prefers-reduced-motion: reduce)').matches)t=setInterval(function(){go(i+1)},3500);}
+dots.forEach(function(d){d.addEventListener('click',function(){go(+d.dataset.i);start();});});start();})();
+</script>
   </body>
 </html>

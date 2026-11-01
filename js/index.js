@@ -1,6 +1,12 @@
 
 const I18N = {
     en: {
+        hs0: "Dashboard: money in and out at a glance",
+        hs1: "Scan: snap your receipt, done",
+        hs2: "Documents: everything in one place",
+        hs3: "Projects: profit per job, live",
+        hs4: "Quotes: from draft to accepted",
+        hs5: "VAT: prepared per box",
         c_av: "Terms and conditions", c_priv: "Privacy statement", c_privsec: "Privacy &amp; security", c_contact: "Contact", m_priv: "Privacy",
         m_bk: "Bookkeepers",
         ov_k: "What Sum-IT does",
@@ -10,13 +16,13 @@ const I18N = {
         ov1t: "Receipt scanning",
         ov1p: "Snap your receipt, Sum-IT reads it and files it. VAT included.",
         ov2t: "VAT set aside",
-        ov2p: "Your VAT reserve fills as you get paid. No surprises at filing time.",
+        ov2p: "Sum-IT works out how much VAT to set aside; you move it yourself. No surprises at filing time.",
         ov3t: "Invoices &amp; quotes",
         ov3p: "Professional invoices and quotes with your own logo.",
         ov4t: "Profit per job",
         ov4p: "Budget, costs and hours per project. See live which job actually pays.",
-        ov5t: "Network of pros",
-        ov5p: "Find trusted peers through other entrepreneurs and subcontract safely.",
+        ov5t: "Stronger together",
+        ov5p: "As a self-employed pro you are stronger together than alone. Find peers, work together, help each other.",
         ov6t: "For bookkeepers",
         ov6p: "Clean exports for your clients and a referral programme that rewards you.",
         promo_big: "Soon €11 a month excl. VAT. <strong>Sign up now and use it for FREE!</strong>",
@@ -55,7 +61,7 @@ const I18N = {
         foot_login: "Log in",
         hero_h1: "Less faff.<br><em>More business.</em>",
         hero_sub:
-            "Snap a receipt, Sum-IT reads it and files it, so you don't have to. Tax funds set aside, profit and expenses calculated, and soon, a trusted network of pros to connect with.",
+            "Snap a receipt, Sum-IT reads it and files it, so you don't have to. Tax to set aside worked out, profit and expenses calculated, and soon, a trusted network of pros to connect with.",
         hero_cta: "Create your free profile",
         hero_note:
             "No credit card required. Start with your email and explore Sum-IT at your own pace.",
@@ -164,7 +170,7 @@ const I18N = {
         d3c: "Net VAT to set aside",
         d3d: "VAT return (quarterly), due 31 July",
         c3_t: "No surprise tax bill",
-        c3_b: "Your VAT reserve fills as you're paid. Submitting expenses to your accountant becomes as easy as pressing a button.",
+        c3_b: "Sum-IT works out how much VAT to set aside; you move it yourself to your own account. Submitting expenses to your accountant becomes as easy as pressing a button.",
         hub_k: "Set projects. Run every job from one page",
         hub_h2: '"Which job actually made money?"',
         hub_lead:
@@ -236,10 +242,10 @@ const I18N = {
         ct_k: "Tax certainty",
         ct_h2: "Know what to set aside, before the bill lands",
         ct_lead:
-            "Your VAT reserve fills as you're paid, and Sum-IT keeps the estimate up to date. When the quarter ends, send it all to your accountant at the press of a button, or let Sum-IT guide you through filing it yourself, step by step.",
+            "Sum-IT works out how much VAT to set aside and keeps the estimate up to date; you move it yourself to your own account. When the quarter ends, send it all to your accountant at the press of a button, or let Sum-IT guide you through filing it yourself, step by step.",
         ct_c1: "VAT RETURN (QUARTERLY), DUE 31 JULY",
         ct_c2: "We keep the estimate current, set it aside already.",
-        ct_c3: "RESERVE FILLED",
+        ct_c3: "ESTIMATE UP TO DATE",
         ct_btn: "Send to your accountant →",
         ct_btn2: "Or file it yourself, guided step by step →",
         cm_chip: "THE BIG ONE: IN BUILD, FREE FOREVER",
@@ -395,8 +401,8 @@ const I18N = {
         tm_h2: "Built by people who've lived it",
         tm_lead:
             "The late invoices, the VAT anxiety, the shoebox of receipts nobody wants to sort, we know this market from the inside. That's why we built the product we wished existed.",
-        tm1r: "Product & NL Market",
-        tm1b: "Knows Dutch small business from the inside, your voice in the roadmap.",
+        tm1r: "CEO &amp; co-founder",
+        tm1b: "Sets Sum-IT's course: from product vision to the first customer on site. Turns what tradespeople face every day into an app that works.",
         tm2r: "Finance & DACH",
         tm2b: "Keeps the tax logic correct and the books compliant.",
         tm3r: "Commercial & Operations",
@@ -488,6 +494,12 @@ const I18N = {
         of_full: "All 150 places have been taken",
     },
     nl: {
+        hs0: "Dashboard: geld in en uit, in één oogopslag",
+        hs1: "Scannen: foto van je bon, klaar",
+        hs2: "Documenten: alles netjes op één plek",
+        hs3: "Projecten: winst per klus, live",
+        hs4: "Offertes: van concept tot akkoord",
+        hs5: "Btw: per rubriek voorbereid",
         c_av: "Algemene voorwaarden", c_priv: "Privacyverklaring", c_privsec: "Privacy &amp; veiligheid", c_contact: "Contact", m_priv: "Privacy",
         m_bk: "Boekhouders",
         ov_k: "Wat Sum-IT doet",
@@ -497,13 +509,13 @@ const I18N = {
         ov1t: "Bonnetjes scannen",
         ov1p: "Foto van je bonnetje, Sum-IT leest het en boekt het in. Inclusief btw.",
         ov2t: "Btw apart zetten",
-        ov2p: "Je btw-potje vult zich terwijl je betaald wordt. Geen verrassingen bij de aangifte.",
+        ov2p: "Sum-IT rekent uit hoeveel btw je opzij moet zetten; jij zet het zelf apart. Geen verrassingen bij de aangifte.",
         ov3t: "Facturen &amp; offertes",
         ov3p: "Professionele facturen en offertes met jouw eigen logo.",
         ov4t: "Winst per klus",
         ov4p: "Budget, kosten en uren per project. Zie live welke klus echt iets oplevert.",
-        ov5t: "Netwerk van vakmensen",
-        ov5p: "Vind betrouwbare collega's via andere ondernemers en besteed werk veilig uit.",
+        ov5t: "Samen sterker",
+        ov5p: "Als zelfstandige sta je samen sterker dan alleen. Vind collega's, werk samen en help elkaar verder.",
         ov6t: "Voor boekhouders",
         ov6p: "Schone export voor je klanten en een referral-programma dat je beloont.",
         promo_big: "Straks €11 per maand excl. btw. <strong>Meld je nu aan en gebruik het GRATIS!</strong>",
@@ -542,7 +554,7 @@ const I18N = {
         foot_login: "Inloggen",
         hero_h1: "Minder boekhouden.<br><em>Meer ondernemen.</em>",
         hero_sub:
-            "Foto van je bonnetje en Sum-IT leest en verwerkt 'm, zodat jij het niet hoeft te doen. Belastinggeld opzij, winst en kosten berekend, en binnenkort een vertrouwd netwerk van vakmensen om mee samen te werken.",
+            "Foto van je bonnetje en Sum-IT leest en verwerkt 'm, zodat jij het niet hoeft te doen. Wat je voor belasting opzij moet zetten, winst en kosten berekend, en binnenkort een vertrouwd netwerk van vakmensen om mee samen te werken.",
         hero_cta: "Maak je gratis profiel aan",
         hero_note:
             "Geen creditcard nodig. Begin met je e-mailadres en verken Sum-IT op je eigen tempo.",
@@ -652,7 +664,7 @@ const I18N = {
         d3c: "Netto btw opzij te zetten",
         d3d: "Btw-aangifte (kwartaal) uiterlijk 31 juli",
         c3_t: "Geen verrassende belastingaanslag!",
-        c3_b: "Je btw-reserve vult zich terwijl je betaald wordt. Bonnetjes aanleveren bij je boekhouder wordt zo makkelijk als op een knop drukken.",
+        c3_b: "Sum-IT rekent uit hoeveel btw je opzij moet zetten; jij zet het zelf apart op je eigen rekening. Bonnetjes aanleveren bij je boekhouder wordt zo makkelijk als op een knop drukken.",
         hub_k: "Maak projecten. Run elke klus vanaf één pagina",
         hub_h2: '"Welke klus verdient nou echt?"',
         hub_lead:
@@ -724,10 +736,10 @@ const I18N = {
         ct_k: "Belastingzekerheid",
         ct_h2: "Weet wat je opzij zet, vóór de aanslag valt",
         ct_lead:
-            "Je btw-reserve vult zich terwijl je betaald wordt, en Sum-IT houdt de schatting actueel. Aan het eind van het kwartaal stuur je alles met één druk op de knop naar je boekhouder, óf Sum-IT begeleidt je stap voor stap als je het zelf doet.",
+            "Sum-IT rekent uit hoeveel btw je opzij moet zetten en houdt de schatting actueel; jij zet het zelf apart op je eigen rekening. Aan het eind van het kwartaal stuur je alles met één druk op de knop naar je boekhouder, óf Sum-IT begeleidt je stap voor stap als je het zelf doet.",
         ct_c1: "BTW-AANGIFTE (KWARTAAL) UITERLIJK 31 JULI",
         ct_c2: "We houden de schatting bij, zet het alvast opzij.",
-        ct_c3: "RESERVE GEVULD",
+        ct_c3: "SCHATTING ACTUEEL",
         ct_btn: "Stuur naar boekhouder →",
         ct_btn2: "Of doe het zelf, stap voor stap begeleid →",
         cm_chip: "DE GROTE BELOFTE: IN AANBOUW, GRATIS OM MEE TE DOEN",
@@ -885,8 +897,8 @@ const I18N = {
         tm_h2: "Gebouwd door mensen die het zelf geleefd hebben",
         tm_lead:
             "De late facturen, de btw-stress, de schoenendoos vol bonnetjes die niemand wil sorteren, wij kennen deze markt van binnenuit. Daarom bouwden we het product dat we zelf hadden willen hebben.",
-        tm1r: "Product & NL Markt",
-        tm1b: "Kent de Nederlandse kleine ondernemer van binnenuit, jouw stem in de roadmap.",
+        tm1r: "CEO &amp; medeoprichter",
+        tm1b: "Zet de koers van Sum-IT uit: van productvisie tot de eerste klant op de bouwplaats. Vertaalt wat vakmensen elke dag meemaken naar een app die werkt.",
         tm2r: "Finance & DACH",
         tm2b: "Houdt de belastinglogica kloppend en de boeken compliant.",
         tm3r: "Commercieel & Operations",
@@ -1036,7 +1048,7 @@ function setLang(l) {
     if (document.getElementById("bctrade-in")) bcUpdate();
     renderOfferLeft();
     renderLatest();
-    cap.innerHTML = I18N[LANG]["cap" + cur];
+    if (cap) cap.innerHTML = I18N[LANG]["cap" + cur];
     applyRole();
     wireAllShares();
     repairMojibake(document.body);
@@ -1266,11 +1278,14 @@ function renderOfferLeft() {
     }, { passive: true });
     updateHeroMotion();
 })();
-const scrs = [...document.querySelectorAll(".scr")],
+/* v3: old hero demo carousel only runs if its markup exists */
+var scrs = [], cap = null, dotsBox = null, dots = [], cur = 0, timer;
+if (document.getElementById("dots") && document.querySelector(".scr")) {
+var scrs = [...document.querySelectorAll(".scr")],
     cap = document.getElementById("caption"),
     dotsBox = document.getElementById("dots");
-const navIds = ["nav0", "nav3", "nav3", "nav4"];
-let cur = 0,
+var navIds = ["nav0", "nav3", "nav3", "nav4"];
+var cur = 0,
     timer;
 scrs.forEach((_, i) => {
     const d = document.createElement("span");
@@ -1281,7 +1296,7 @@ scrs.forEach((_, i) => {
     };
     dotsBox.appendChild(d);
 });
-const dots = [...dotsBox.children];
+var dots = [...dotsBox.children];
 function go(i) {
     scrs[cur].classList.remove("on");
     dots[cur].classList.remove("on");
@@ -1298,6 +1313,7 @@ function restart() {
 }
 go(0);
 restart();
+}
 
 /* ---- live app demo (v27) inside the hero phone ---- */
 var demoOn = false;

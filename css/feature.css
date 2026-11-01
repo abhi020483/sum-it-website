@@ -105,3 +105,19 @@ main.fx-main .fx-hero p{color:var(--c-on-dark-muted)}
 .fx-gridphones{grid-template-columns:repeat(3,minmax(0,1fr))}
 .fx-gridphones .phone.sm{width:200px}
 .fx-old>section,.fx-old>div{max-width:none}
+
+/* v3: straight phones, icon visuals, link cards */
+.phone-tilt{transform:none!important}
+.fx-bigicon{display:grid;place-items:center;width:260px;height:260px;border-radius:48px;background:radial-gradient(circle at 30% 25%,#fff,var(--c-green-50) 70%);box-shadow:0 20px 50px rgba(17,20,58,.08)}
+.fx-bigicon svg rect{fill:transparent}
+.fx-step-ic{margin-bottom:72px}
+.fx-linkcard{display:flex;flex-direction:column;gap:10px;text-decoration:none;color:var(--c-text);transition:transform .15s,box-shadow .15s,border-color .15s}
+.fx-linkcard:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(17,20,58,.12);border-color:var(--c-green)}
+.fx-linkcard .ov-more{margin-top:auto;color:var(--c-green-700);font-weight:600;font-size:.9rem}
+.fx-chips>span{display:inline-flex;align-items:center}
+@media (max-width:640px){.fx-bigicon{width:200px;height:200px}}
+.fx-chips>span span{padding:0!important;border:0!important;background:none!important;border-radius:0!important;font-size:inherit}
+/* v3 icon QA fixes */
+.fx-later>svg{flex:none}
+.fx-bigicon svg{width:200px;height:200px}
+@media (max-width:640px){.fx-bigicon svg{width:150px;height:150px}}
