@@ -104,3 +104,13 @@ Alles wat alleen op live stond (CNAME, aanmeld-API in `functions/`, Google-verif
   - Samenvatting "Klaar." en daarna de dashboard-kaart "Alles bij. Niets te doen."
   - Zelfde kleuren, knoppen, stappenbalk en melding "Ongedaan" als in de app.
 - **Community**: op de plank van de poppetjes staat nu een dorpje als silhouet (kerk, huisjes, bomen, molen die draait), met het onderschrift "Zzp’ers houden samen de samenleving overeind." Het pensioen- en verzekeringsblok is weg.
+
+## Ronde 5b
+- Acties-demo speelt langzamer af (4 seconden per stap).
+- Community-dorpje opnieuw getekend:
+  - Geen ramen en geen bomen meer.
+  - Kleiner, en alles past op de plank.
+  - Meer variatie, zodat het een echte dorpskyline is: trapgevels, halsgevels, platte daken en een schuur.
+  - De haan staat op de kerk en de molen draait nog.
+- Abhishek: "in de marketing in de farmaceutische wereld", zonder bedrijfsnamen.
+- Team-pagina: drie even grote blokken met "1 doel" in het midden. Op de homepage staat "1 doel" ook in het midden.
