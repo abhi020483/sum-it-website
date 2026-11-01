@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Sum-IT", "item": "https://sum-it.eu/"}, {"@type": "ListItem", "position": 2, "name": "Community", "item": "https://sum-it.eu/community/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Wanneer gaat het netwerk open?", "acceptedAnswer": {"@type": "Answer", "text": "Het netwerk is in aanbouw; er is nog geen live-datum. We bouwen het stap voor stap en laten hier zien wat we maken."}}, {"@type": "Question", "name": "Worden mijn gegevens doorverkocht?", "acceptedAnswer": {"@type": "Answer", "text": "Nee. We verkopen je gegevens niet en delen ze niet met derden voor hun eigen doeleinden."}}, {"@type": "Question", "name": "Voor wie is dit?", "acceptedAnswer": {"@type": "Answer", "text": "Voor zelfstandigen en kleine ondernemers, vooral in bouw, techniek en klus, die betere klussen willen en betrouwbare collega’s zoeken om mee samen te werken."}}, {"@type": "Question", "name": "Wat kost de community?", "acceptedAnswer": {"@type": "Answer", "text": "Een profiel in het netwerk is gratis. Boekhouden kost €11 per maand excl. btw, plus 0,5% over betalingen die je automatisch via Sum-IT laat verwerken."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Wanneer gaat het netwerk open?", "acceptedAnswer": {"@type": "Answer", "text": "Het netwerk is in aanbouw; er is nog geen live-datum. We bouwen het stap voor stap en laten hier zien wat we maken."}}, {"@type": "Question", "name": "Worden mijn gegevens doorverkocht?", "acceptedAnswer": {"@type": "Answer", "text": "Nee. We verkopen je gegevens niet en delen ze niet met derden voor hun eigen doeleinden."}}, {"@type": "Question", "name": "Voor wie is dit?", "acceptedAnswer": {"@type": "Answer", "text": "Voor zelfstandigen en kleine ondernemers, vooral in bouw, techniek en klus, die betere klussen willen en betrouwbare collega’s zoeken om mee samen te werken."}}, {"@type": "Question", "name": "Wat kost de community?", "acceptedAnswer": {"@type": "Answer", "text": "Een profiel in het netwerk is gratis. Boekhouden kost €11 per maand excl. btw, plus 0,5% over de omzet die je via Sum-IT factureert."}}]}</script>
 <link rel="stylesheet" href="/css/tokens.css">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/components/header/header.css">
@@ -135,7 +135,7 @@ main .fx-bleed ul.fx-list li{padding-left:0;margin:0}
 <section class="fx-sec tint" id="kosten"><div class="fx-wrap">
 <div class="fx-head"><div class="k" data-i18n="cmf_k">Eerlijk over de kosten</div>
 <h2 data-i18n="cmf_h">0,5% voor boeken die vanzelf kloppen</h2>
-<p data-i18n="cmf_p">Laat je klanten betalen via de betaallink op je Sum-IT-factuur. Elke betaling wordt dan automatisch gekoppeld aan de juiste factuur en geboekt. Daarvoor rekenen we 0,5% van het betaalde bedrag. Gebruik je de betaallink niet, dan betaal je die 0,5% ook niet.</p></div>
+<p data-i18n="cmf_p">Over de omzet die je via Sum-IT factureert, rekenen we 0,5%. Daarvoor worden betalingen automatisch aan de juiste factuur gekoppeld en geboekt, en kloppen je boeken zonder dat je erachteraan hoeft. Draai je minder omzet, dan betaal je ook minder.</p></div>
 <div class="fx-step" style="margin-bottom:0"><div class="fx-step-txt">
 <h3 data-i18n="cmf_eh">Voorbeeld: €70.000 omzet = €350 per jaar</h3>
 <p data-i18n="cmf_ep">Een gemiddelde zelfstandige met €70.000 omzet betaalt zo €350 per jaar voor gebalanceerde boeken. Voor veel ondernemers is dat minder dan een boekhouder per jaar kost, en je krijgt er iets voor terug: elke dag inzicht in je cijfers, in plaats van één keer per jaar een rekening.</p>
@@ -146,15 +146,15 @@ main .fx-bleed ul.fx-list li{padding-left:0;margin:0}
 <div class="fee-out"><b id="cmf_v">€ 70.000</b></div>
 <input type="range" id="cmf_omzet" min="5000" max="200000" step="5000" value="70000" aria-label="Jaaromzet">
 <div class="fee-rows">
-<div><span data-i18n="cmf_r1">0,5% voor automatisch verwerkte betalingen</span><b id="cmf_fee">€ 350</b></div>
+<div><span data-i18n="cmf_r1">0,5% over je omzet</span><b id="cmf_fee">€ 350</b></div>
 <div><span data-i18n="cmf_r2">Abonnement boekhouden (12 × €11)</span><b>€ 132</b></div>
 <div class="tot"><span data-i18n="cmf_r3">Totaal per jaar, excl. btw</span><b id="cmf_tot">€ 482</b></div>
 </div>
-<p class="fee-small" data-i18n="cmf_small">Rekenvoorbeeld als al je omzet via Sum-IT-betaallinks binnenkomt. De transactiekosten van Mollie komen daar nog bij en zijn voor rekening van de gebruiker.</p>
+<p class="fee-small" data-i18n="cmf_small">Rekenvoorbeeld als je al je omzet via Sum-IT factureert. Bij betaling via een betaallink komen de transactiekosten van Mollie erbij; die zijn voor rekening van de gebruiker.</p>
 </div>
 <script>(function(){var r=document.getElementById('cmf_omzet');if(!r)return;var f=function(n){return '€ '+Math.round(n).toLocaleString('nl-NL')};function u(){var v=+r.value;document.getElementById('cmf_v').textContent=f(v);document.getElementById('cmf_fee').textContent=f(v*0.005);document.getElementById('cmf_tot').textContent=f(v*0.005+132);}r.addEventListener('input',u);u();})();</script></div></div></div></section>
 
-<section class="fx-sec"><div class="fx-head"><h2 data-i18n="cm_faqh">Veelgestelde vragen</h2></div><div class="fx-faq"><details><summary data-i18n="cm_q1">Wanneer gaat het netwerk open?</summary><p data-i18n="cm_a1">Het netwerk is in aanbouw; er is nog geen live-datum. We bouwen het stap voor stap en laten hier zien wat we maken.</p></details><details><summary data-i18n="cm_q2">Worden mijn gegevens doorverkocht?</summary><p data-i18n="cm_a2">Nee. We verkopen je gegevens niet en delen ze niet met derden voor hun eigen doeleinden.</p></details><details><summary data-i18n="cm_q3">Voor wie is dit?</summary><p data-i18n="cm_a3">Voor zelfstandigen en kleine ondernemers, vooral in bouw, techniek en klus, die betere klussen willen en betrouwbare collega’s zoeken om mee samen te werken.</p></details><details><summary data-i18n="cm_q4">Wat kost de community?</summary><p data-i18n="cm_a4">Een profiel in het netwerk is gratis. Boekhouden kost €11 per maand excl. btw, plus 0,5% over betalingen die je automatisch via Sum-IT laat verwerken.</p></details></div>
+<section class="fx-sec"><div class="fx-head"><h2 data-i18n="cm_faqh">Veelgestelde vragen</h2></div><div class="fx-faq"><details><summary data-i18n="cm_q1">Wanneer gaat het netwerk open?</summary><p data-i18n="cm_a1">Het netwerk is in aanbouw; er is nog geen live-datum. We bouwen het stap voor stap en laten hier zien wat we maken.</p></details><details><summary data-i18n="cm_q2">Worden mijn gegevens doorverkocht?</summary><p data-i18n="cm_a2">Nee. We verkopen je gegevens niet en delen ze niet met derden voor hun eigen doeleinden.</p></details><details><summary data-i18n="cm_q3">Voor wie is dit?</summary><p data-i18n="cm_a3">Voor zelfstandigen en kleine ondernemers, vooral in bouw, techniek en klus, die betere klussen willen en betrouwbare collega’s zoeken om mee samen te werken.</p></details><details><summary data-i18n="cm_q4">Wat kost de community?</summary><p data-i18n="cm_a4">Een profiel in het netwerk is gratis. Boekhouden kost €11 per maand excl. btw, plus 0,5% over de omzet die je via Sum-IT factureert.</p></details></div>
 <p class="fx-prose" style="text-align:center;margin-top:24px" data-i18n="cm_aan">Ben je aannemer? Lees hoe Sum-IT werkt op <a href="/voor/aannemers/">onze pagina voor aannemers</a>.</p></section>
 
 <section class="fx-sec" style="padding-top:0;padding-bottom:0"><div class="fx-cta">
@@ -177,7 +177,7 @@ window.PAGE_I18N={
 "cm_q3": "Voor wie is dit?",
 "cm_a3": "Voor zelfstandigen en kleine ondernemers, vooral in bouw, techniek en klus, die betere klussen willen en betrouwbare collega’s zoeken om mee samen te werken.",
 "cm_q4": "Wat kost de community?",
-"cm_a4": "Een profiel in het netwerk is gratis. Boekhouden kost €11 per maand excl. btw, plus 0,5% over betalingen die je automatisch via Sum-IT laat verwerken.",
+"cm_a4": "Een profiel in het netwerk is gratis. Boekhouden kost €11 per maand excl. btw, plus 0,5% over de omzet die je via Sum-IT factureert.",
 "cm_eye": "Community · in opbouw",
 "cm_h1": "Alleen ga je sneller. <em>Samen kom je verder.</em>",
 "cm_lead": "Als zelfstandige sta je er vaak alleen voor: de klussen, de administratie, de zorgen. Sum-IT brengt ondernemers samen, zodat je elkaar kunt vinden, versterken en verder helpen. Want samen sta je sterker dan alleen.",
@@ -208,13 +208,13 @@ window.PAGE_I18N={
 "cm_s3h": "3. Groei samen",
 "cm_s3p": "Hoe meer ondernemers meedoen, hoe sterker iedereen staat.",
 "cmf_cl": "Jouw jaaromzet",
-"cmf_r1": "0,5% voor automatisch verwerkte betalingen",
+"cmf_r1": "0,5% over je omzet",
 "cmf_r2": "Abonnement boekhouden (12 × €11)",
 "cmf_r3": "Totaal per jaar, excl. btw",
-"cmf_small": "Rekenvoorbeeld als al je omzet via Sum-IT-betaallinks binnenkomt. De transactiekosten van Mollie komen daar nog bij en zijn voor rekening van de gebruiker.",
+"cmf_small": "Rekenvoorbeeld als je al je omzet via Sum-IT factureert. Bij betaling via een betaallink komen de transactiekosten van Mollie erbij; die zijn voor rekening van de gebruiker.",
 "cmf_k": "Eerlijk over de kosten",
 "cmf_h": "0,5% voor boeken die vanzelf kloppen",
-"cmf_p": "Laat je klanten betalen via de betaallink op je Sum-IT-factuur. Elke betaling wordt dan automatisch gekoppeld aan de juiste factuur en geboekt. Daarvoor rekenen we 0,5% van het betaalde bedrag. Gebruik je de betaallink niet, dan betaal je die 0,5% ook niet.",
+"cmf_p": "Over de omzet die je via Sum-IT factureert, rekenen we 0,5%. Daarvoor worden betalingen automatisch aan de juiste factuur gekoppeld en geboekt, en kloppen je boeken zonder dat je erachteraan hoeft. Draai je minder omzet, dan betaal je ook minder.",
 "cmf_eh": "Voorbeeld: €70.000 omzet = €350 per jaar",
 "cmf_ep": "Een gemiddelde zelfstandige met €70.000 omzet betaalt zo €350 per jaar voor gebalanceerde boeken. Voor veel ondernemers is dat minder dan een boekhouder per jaar kost, en je krijgt er iets voor terug: elke dag inzicht in je cijfers, in plaats van één keer per jaar een rekening.",
 "cmf_l1": "Meer controle: je ziet zelf wat er binnenkomt",
@@ -235,7 +235,7 @@ window.PAGE_I18N={
 "cm_q3": "Who is this for?",
 "cm_a3": "For self-employed people and small businesses, especially in construction, technical trades and repair work, who want better jobs and reliable colleagues to work with.",
 "cm_q4": "What does the community cost?",
-"cm_a4": "A profile in the network is free. Bookkeeping costs €11 a month excl. VAT, plus 0.5% on payments you have processed automatically via Sum-IT.",
+"cm_a4": "A profile in the network is free. Bookkeeping costs €11 a month excl. VAT, plus 0.5% on the revenue you invoice through Sum-IT.",
 "cm_eye": "Community · being built",
 "cm_h1": "Alone you go faster. <em>Together you go further.</em>",
 "cm_lead": "As a self-employed professional you often stand alone: the jobs, the admin, the worries. Sum-IT brings entrepreneurs together, so you can find, strengthen and help each other. Because together you are stronger than alone.",
@@ -266,13 +266,13 @@ window.PAGE_I18N={
 "cm_s3h": "3. Grow together",
 "cm_s3p": "The more entrepreneurs join, the stronger everyone stands.",
 "cmf_cl": "Your annual revenue",
-"cmf_r1": "0.5% for automatically processed payments",
+"cmf_r1": "0.5% on your revenue",
 "cmf_r2": "Bookkeeping subscription (12 × €11)",
 "cmf_r3": "Total per year, excl. VAT",
-"cmf_small": "Example if all your revenue comes in via Sum-IT payment links. Mollie transaction costs come on top and are borne by the user.",
+"cmf_small": "Example if you invoice all your revenue through Sum-IT. For payments via a payment link, Mollie transaction costs come on top and are borne by the user.",
 "cmf_k": "Honest about the costs",
 "cmf_h": "0.5% for books that balance themselves",
-"cmf_p": "Let your customers pay via the payment link on your Sum-IT invoice. Every payment is then automatically matched to the right invoice and booked. For that we charge 0.5% of the amount paid. Do not use the payment link, and you do not pay the 0.5%.",
+"cmf_p": "We charge 0.5% on the revenue you invoice through Sum-IT. In return, payments are automatically matched to the right invoice and booked, so your books add up without you chasing them. Less revenue means you pay less too.",
 "cmf_eh": "Example: €70,000 revenue = €350 a year",
 "cmf_ep": "An average self-employed professional with €70,000 revenue pays €350 a year for balanced books. For many entrepreneurs that is less than a bookkeeper costs per year, and you get something back: daily insight into your numbers, instead of a bill once a year.",
 "cmf_l1": "More control: you see what comes in yourself",

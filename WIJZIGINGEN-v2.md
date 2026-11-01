@@ -123,3 +123,8 @@ Alles wat alleen op live stond (CNAME, aanmeld-API in `functions/`, Google-verif
   - Het besparingsgebied is groen, het gebied waar een boekhouder goedkoper is licht rood.
   - Omslagpunt bij €213.600, en een stippellijn voor "zonder betaallinks: €132".
   - Rekening gecontroleerd: (1200 − 132) / 0,005 = €213.600.
+
+## Ronde 5d
+- **Boekhouderlijn stijgt mee met de omzet** (indicatie, excl. btw): €500 onder €20k (KOR), €900 vanaf €20k, €1.200 vanaf €50k, €1.600 vanaf €100k en €2.000 vanaf €200k. Dat valt binnen de gangbare zzp-tarieven van €450 tot €2.500 per jaar (bron: Qonto 2026). De grafiek loopt nu tot €400k omzet. Het omslagpunt ligt bij ±€373.600: (2.000 − 132) / 0,5%.
+- **0,5% platformvergoeding** geldt nu over alle omzet die via Sum-IT wordt gefactureerd, ongeacht hoe de klant betaalt. Bij betaling via een betaallink wordt die automatisch verrekend. De site noemt de betaallink-uitzondering niet meer, en de stippellijn "zonder betaallinks: €132" is weg.
+- **Algemene voorwaarden, art. 7** herschreven: "Platformvergoeding en betaallinks". 0,5% over gefactureerde omzet excl. btw, een creditfactuur wordt naar rato verrekend, automatische verrekening bij een betaallink, anders maandelijks achteraf gefactureerd. **Beslissing voor Stefan:** de 0,5% wordt berekend over de gefactureerde omzet, niet over de ontvangen betaling.
