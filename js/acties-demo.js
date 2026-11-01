@@ -69,9 +69,9 @@
     function act(a) {
       var t = L();
       if (a === 'start') { S.v = 'step'; S.i = 0; }
-      else if (a === 'next') { S.toast = t.steps[S.i].toast; clearTimeout(S.tt); S.tt = setTimeout(function () { S.toast = ''; render(); }, 1300); if (S.i < 3) S.i++; else S.v = 'sum'; }
+      else if (a === 'next') { S.toast = t.steps[S.i].toast; clearTimeout(S.tt); S.tt = setTimeout(function () { S.toast = ''; render(); }, 2400); if (S.i < 3) S.i++; else S.v = 'sum'; }
       else if (a === 'dash') { S.v = 'dash'; S.clean = true; S.toast = ''; }
-      else if (a === 'replay') { S.v = 'dash'; S.clean = false; S.auto = true; schedule(1200); }
+      else if (a === 'replay') { S.v = 'dash'; S.clean = false; S.auto = true; schedule(2500); }
       render();
     }
     function autoStep() {
@@ -79,7 +79,7 @@
       if (S.v === 'dash' && !S.clean) act('start');
       else if (S.v === 'step') act('next');
       else if (S.v === 'sum') { act('dash'); return; }
-      schedule(S.v === 'step' ? 1900 : 1600);
+      schedule(S.v === 'step' ? 4000 : 3000);
     }
     function schedule(ms) { clearTimeout(S.t); S.t = setTimeout(autoStep, ms); }
     el.addEventListener('click', function (e) {
@@ -92,7 +92,7 @@
     render();
     var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (!reduce && 'IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); schedule(1400); } }, { threshold: .4 });
+      var io = new IntersectionObserver(function (es) { if (es[0].isIntersecting) { io.disconnect(); schedule(2500); } }, { threshold: .4 });
       io.observe(el);
     }
   }
