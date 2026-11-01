@@ -90,3 +90,17 @@ Alles wat alleen op live stond (CNAME, aanmeld-API in `functions/`, Google-verif
 3. **Verwijderen pas na download**: de fiscale bewaarplicht (7 jaar, art. 52 AWR) ligt bij de ondernemer. Daarom verwijdert Sum-IT de administratie pas als de gebruiker bevestigt dat hij een download heeft. Sum-IT bewaart alleen zijn eigen facturen aan de gebruiker 7 jaar (eigen bewaarplicht). Een AVG-verzoek mag je niet zomaar weigeren, dus laat Stefan dit toetsen. Een tussenvorm kan ook: persoonsgegevens (profiel, contact) direct wissen, en de administratie na bevestiging.
 4. **Mini-demo** is gemarkeerd als "Voorbeeld". De app kent nu: te late facturen, langer dan 30 dagen onbetaald, en concepten te controleren. Een melding "bonnetje ontbreekt" en een btw-herinnering staan erin omdat je ze vroeg. Bouw ze in de app, of laat het weten, dan haal ik ze uit de demo.
 5. Downloaden met "één knop in de app" (privacy-stap 1): graag checken of de export in de app er al is.
+
+---
+
+# Ronde 5 (1 nov 2026, avond): feedback Ian
+
+## Gedaan
+- **Team** (homepage en /team/): de kop is nu "Van ondernemers, voor ondernemers" (EN: "By entrepreneurs, for entrepreneurs").
+- **Telefoon in de kop** (Functies, alle functiepagina's, Acties, Boekhouders): kleiner en helemaal in beeld, niet meer afgesneden aan de onderkant.
+- **Acties-demo** opnieuw gebouwd naar het eigen app-prototype `sumitapp_64_2.html` (mail "reconcilltion flow", 21 aug 2026). Bewaard in ~/Sum-it-dev/_import/actie-proto/. De demo loopt zo:
+  - Dashboard-kaart "Acties" met gekleurde chips en Start.
+  - Daarna stap voor stap: Inkomsten (betaling koppelen), Geld uit (geen bon, scan), Te laat (herinnering), Belasting (btw klaarzetten).
+  - Samenvatting "Klaar." en daarna de dashboard-kaart "Alles bij. Niets te doen."
+  - Zelfde kleuren, knoppen, stappenbalk en melding "Ongedaan" als in de app.
+- **Community**: op de plank van de poppetjes staat nu een dorpje als silhouet (kerk, huisjes, bomen, molen die draait), met het onderschrift "Zzp’ers houden samen de samenleving overeind." Het pensioen- en verzekeringsblok is weg.

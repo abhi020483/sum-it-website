@@ -399,7 +399,7 @@ const I18N = {
         trmore: "Read how we protect your data →",
         trb: "All data stored exclusively in the EU · GDPR by design · encrypted in transit · audit-safe records your bookkeeper and the tax office can trust.",
         tm_k: "The team",
-        tm_h2: "Built by people who've lived it",
+        tm_h2: "By entrepreneurs, for entrepreneurs",
         tm_lead:
             "The late invoices, the VAT anxiety, the shoebox of receipts nobody wants to sort, we know this market from the inside. That's why we built the product we wished existed.",
         tm1r: "CEO &amp; co-founder",
@@ -896,7 +896,7 @@ const I18N = {
         trmore: "Lees hoe we je data beschermen →",
         trb: "Alle data uitsluitend in de EU · ontworpen volgens de AVG · versleuteld onderweg · audit-veilige administratie waar je boekhouder en de Belastingdienst op kunnen vertrouwen.",
         tm_k: "Het team",
-        tm_h2: "Gebouwd door mensen die het zelf geleefd hebben",
+        tm_h2: "Van ondernemers, voor ondernemers",
         tm_lead:
             "De late facturen, de btw-stress, de schoenendoos vol bonnetjes die niemand wil sorteren, wij kennen deze markt van binnenuit. Daarom bouwden we het product dat we zelf hadden willen hebben.",
         tm1r: "CEO &amp; medeoprichter",
