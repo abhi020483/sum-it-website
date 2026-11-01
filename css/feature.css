@@ -100,3 +100,8 @@ main.fx-main ul.fx-list li{padding-left:0;margin:0}
 main.fx-main .fx-hero h1{color:#fff;font-size:clamp(2.2rem,1.4rem + 3.2vw,3.6rem);margin:18px 0 16px}
 main.fx-main .fx-cta h2{color:#fff}
 main.fx-main .fx-hero p{color:var(--c-on-dark-muted)}
+.fx-gridphones .fx-card{border-radius:22px;transition:transform .15s,box-shadow .15s,border-color .15s;color:var(--c-text)}
+.fx-gridphones .fx-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(17,20,58,.12);border-color:var(--c-green)}
+.fx-gridphones{grid-template-columns:repeat(3,minmax(0,1fr))}
+.fx-gridphones .phone.sm{width:200px}
+.fx-old>section,.fx-old>div{max-width:none}
