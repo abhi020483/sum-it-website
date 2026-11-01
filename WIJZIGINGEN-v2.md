@@ -71,3 +71,22 @@ Alles wat alleen op live stond (CNAME, aanmeld-API in `functions/`, Google-verif
 ## Beslissingen
 - 0,5% geldt voor betalingen via de Sum-IT-betaallink (automatisch gekoppeld en geboekt), zoals in de AV. Wie de betaallink niet gebruikt, betaalt geen 0,5%. De Mollie-kosten komen erbij (staat in de kleine lettertjes).
 - "Goedkoper dan een boekhouder" staat er als "voor veel ondernemers minder dan een boekhouder per jaar kost". Zonder een concreet boekhoudersbedrag, om een misleidende vergelijking te voorkomen.
+
+---
+
+# Ronde 4 (1 nov 2026, avond): feedback Ian
+
+## Gedaan
+- **Homepage**: achtergrond uit de foto's van Ian en Sebastian gehaald (nu wit). Het privacyblok is klikbaar en leidt naar /privacy-en-veiligheid/.
+- **Team** (homepage en /team/): drie naast elkaar in de volgorde Abhishek, Ian, Sebastian, elk met een kort verhaal op basis van hun LinkedIn. Rollen: Abhishek "Medeoprichter · Commercie & groei", Ian "CEO & medeoprichter", Sebastian "CFO & medeoprichter".
+- **Functies**: groot Acties-blok op /functies/ en een eigen pagina /functies/acties/, met pictogrammen en een live mini-demo: 4 taken afvinken tot "Alles bijgewerkt". Automatisch afspelen of zelf klikken. De link "Acties-flow" in het overzicht gaat nu naar /functies/acties/.
+- **Prijzen**: de rekenhulp toont een rode lijn (gemiddelde boekhouder, €1.200 per jaar) en een groene lijn (Sum-IT, €132 + 0,5%), met het omslagpunt rond €213.600 omzet en een eerlijke uitslag ("dan is een boekhouder voordeliger"). Nieuw blok "Heb ik nog een boekhouder nodig?". Dezelfde vraag staat bovenaan de veelgestelde vragen op Prijzen en op Boekhouders.
+- **Privacy**: blok "Alles laten verwijderen? Dat kan, volledig." in drie stappen (downloaden, bewaren, wij verwijderen). De FAQ en kaart zijn aangepast, en ook artikel 11.4 van de algemene voorwaarden.
+- Mobiel: de rekenhulp op Prijzen en Community stond op telefoons in twee smalle kolommen. Dat is opgelost.
+
+## Beslissingen (graag checken)
+1. **"9 van de 10 zzp'ers"** staat er als "naar onze inschatting". Een harde bron (CBS-omzetverdeling) heb ik niet gevonden. Een cijfer zonder bron in reclame is riskant onder de regels tegen misleidende reclame. Heb je een bron, dan kan "naar onze inschatting" eraf.
+2. **€1.200 voor een boekhouder** staat er als gemiddelde ter vergelijking, met de kanttekening "jouw boekhouder kan meer of minder rekenen".
+3. **Verwijderen pas na download**: de fiscale bewaarplicht (7 jaar, art. 52 AWR) ligt bij de ondernemer. Daarom verwijdert Sum-IT de administratie pas als de gebruiker bevestigt dat hij een download heeft. Sum-IT bewaart alleen zijn eigen facturen aan de gebruiker 7 jaar (eigen bewaarplicht). Een AVG-verzoek mag je niet zomaar weigeren, dus laat Stefan dit toetsen. Een tussenvorm kan ook: persoonsgegevens (profiel, contact) direct wissen, en de administratie na bevestiging.
+4. **Mini-demo** is gemarkeerd als "Voorbeeld". De app kent nu: te late facturen, langer dan 30 dagen onbetaald, en concepten te controleren. Een melding "bonnetje ontbreekt" en een btw-herinnering staan erin omdat je ze vroeg. Bouw ze in de app, of laat het weten, dan haal ik ze uit de demo.
+5. Downloaden met "één knop in de app" (privacy-stap 1): graag checken of de export in de app er al is.

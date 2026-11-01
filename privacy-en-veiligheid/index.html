@@ -16,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&display=swap" rel="stylesheet">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Sum-IT", "item": "https://sum-it.eu/"}, {"@type": "ListItem", "position": 2, "name": "Privacy & veiligheid", "item": "https://sum-it.eu/privacy-en-veiligheid/"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Waar staan mijn gegevens?", "acceptedAnswer": {"@type": "Answer", "text": "Uitsluitend in de Europese Unie, in beveiligde AWS-datacenters. Ook back-ups, logbestanden en de verwerking van bonnetjes blijven binnen de EU."}}, {"@type": "Question", "name": "Verkopen jullie mijn gegevens of tonen jullie advertenties?", "acceptedAnswer": {"@type": "Answer", "text": "Nee. Je gegevens zijn van jou. We gebruiken ze alleen om Sum-IT te laten werken en om aan wettelijke plichten te voldoen. In de app zit geen advertentie- of marketingtracking."}}, {"@type": "Question", "name": "Kunnen medewerkers van Sum-IT mijn administratie zien?", "acceptedAnswer": {"@type": "Answer", "text": "Beheeraccounts van Sum-IT hebben via het platform geen toegang tot de bedrijfsgegevens van klanten; zulke verzoeken worden door de software geweigerd."}}, {"@type": "Question", "name": "Wat gebeurt er met de foto van mijn bonnetje?", "acceptedAnswer": {"@type": "Answer", "text": "De foto wordt versleuteld opgeslagen in de EU en binnen de EU uitgelezen. Het origineel wordt nooit aangepast, zodat je administratie controleerbaar blijft voor de Belastingdienst."}}, {"@type": "Question", "name": "Kan ik mijn gegevens meenemen of laten verwijderen?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Je kunt je gegevens exporteren. Op verzoek verwijderen we je persoonsgegevens. Financiële administratie moet volgens de wet 7 jaar bewaard blijven; die wordt pas daarna verwijderd."}}, {"@type": "Question", "name": "Wat als er toch iets misgaat?", "acceptedAnswer": {"@type": "Answer", "text": "We houden een onveranderbaar logboek bij van wijzigingen en monitoren afwijkende toegang. Bij een datalek melden we dat volgens de AVG binnen 72 uur bij de Autoriteit Persoonsgegevens en informeren we jou."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Waar staan mijn gegevens?", "acceptedAnswer": {"@type": "Answer", "text": "Uitsluitend in de Europese Unie, in beveiligde AWS-datacenters. Ook back-ups, logbestanden en de verwerking van bonnetjes blijven binnen de EU."}}, {"@type": "Question", "name": "Verkopen jullie mijn gegevens of tonen jullie advertenties?", "acceptedAnswer": {"@type": "Answer", "text": "Nee. Je gegevens zijn van jou. We gebruiken ze alleen om Sum-IT te laten werken en om aan wettelijke plichten te voldoen. In de app zit geen advertentie- of marketingtracking."}}, {"@type": "Question", "name": "Kunnen medewerkers van Sum-IT mijn administratie zien?", "acceptedAnswer": {"@type": "Answer", "text": "Beheeraccounts van Sum-IT hebben via het platform geen toegang tot de bedrijfsgegevens van klanten; zulke verzoeken worden door de software geweigerd."}}, {"@type": "Question", "name": "Wat gebeurt er met de foto van mijn bonnetje?", "acceptedAnswer": {"@type": "Answer", "text": "De foto wordt versleuteld opgeslagen in de EU en binnen de EU uitgelezen. Het origineel wordt nooit aangepast, zodat je administratie controleerbaar blijft voor de Belastingdienst."}}, {"@type": "Question", "name": "Kan ik mijn gegevens meenemen of laten verwijderen?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Je kunt je gegevens exporteren. Ja. Je kunt je gegevens altijd exporteren. Wil je alles laten verwijderen, dan verwijderen we je account en al je gegevens volledig. Daarvoor moet je eerst je administratie downloaden en zelf bewaren: als ondernemer ben je wettelijk verplicht die 7 jaar te bewaren. Zonder die download verwijderen we niet, anders kom jij in de problemen met de Belastingdienst."}}, {"@type": "Question", "name": "Wat als er toch iets misgaat?", "acceptedAnswer": {"@type": "Answer", "text": "We houden een onveranderbaar logboek bij van wijzigingen en monitoren afwijkende toegang. Bij een datalek melden we dat volgens de AVG binnen 72 uur bij de Autoriteit Persoonsgegevens en informeren we jou."}}]}</script>
 <link rel="stylesheet" href="/css/tokens.css">
 <link rel="stylesheet" href="/css/site.css">
 <link rel="stylesheet" href="/components/header/header.css">
@@ -24,6 +24,17 @@
 <link rel="stylesheet" href="/components/footer/footer.css">
 <link rel="stylesheet" href="/css/feature.css">
 <link rel="stylesheet" href="/css/feature.css">
+<style>
+.pv-del{max-width:900px;margin:40px auto 0;padding:32px;border-radius:24px;background:var(--c-surface);border:1px solid var(--c-line);box-shadow:0 18px 40px rgba(17,20,58,.06)}
+.pv-del-h{display:flex;gap:18px;align-items:flex-start}.pv-del-h>svg{flex:none}
+.pv-del h3{margin:0 0 8px;font-size:1.35rem;color:var(--c-ink)}.pv-del p{margin:0;color:var(--c-text);line-height:1.65}
+.pv-steps{list-style:none;counter-reset:s;display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:24px 0 0!important;padding:0!important}
+.pv-steps li{counter-increment:s;background:var(--c-green-50);border-radius:16px;padding:18px 18px 16px;margin:0!important;display:flex;flex-direction:column;gap:4px}
+.pv-steps li::before{content:counter(s);display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--c-green);color:#062b1f;font-weight:800;margin-bottom:6px}
+.pv-steps b{color:var(--c-ink)}.pv-steps span{color:var(--c-text);font-size:.93rem;line-height:1.5}
+.pv-del .pv-del-small{font-size:.88rem;color:var(--c-muted);margin-top:16px}
+@media (max-width:720px){.pv-steps{grid-template-columns:1fr}.pv-del{padding:22px}.pv-del-h{flex-direction:column}}
+</style>
 </head>
 <body>
 <!-- site-header:start -->
@@ -120,15 +131,16 @@
 <div class="fx-head"><div class="k" data-i18n="pv_k3">Jouw rechten</div><h2 data-i18n="pv_h3">De AVG werkt voor jou</h2><p data-i18n="pv_p3">Je hebt rechten op je eigen gegevens. Bij Sum-IT zijn die geen formaliteit.</p></div>
 <div class="fx-cards">
 <div class="fx-card"><div style="margin-bottom:14px"><svg viewBox="0 0 48 48" width="56" height="56" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M24 12v16M18 22l6 6 6-6" stroke="#1a1d4f" stroke-width="2"/><path d="M14 31v3a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-3" stroke="#00bc7d" stroke-width="2.4"/></svg></div><h3 data-i18n="pv_r1h">Meenemen</h3><p data-i18n="pv_r1p">Je kunt je gegevens exporteren, zodat je nooit vastzit aan Sum-IT.</p></div>
-<div class="fx-card"><div style="margin-bottom:14px"><svg viewBox="0 0 48 48" width="56" height="56" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M13 16h22M20 16v-3h8v3M16 16l1.5 18a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2L32 16" stroke="#1a1d4f" stroke-width="2"/><path d="M21.5 21v10M26.5 21v10" stroke="#00bc7d" stroke-width="2.4"/></svg></div><h3 data-i18n="pv_r2h">Laten verwijderen</h3><p data-i18n="pv_r2p">Op verzoek verwijderen we je persoonsgegevens. Alleen financiële stukken bewaren we zo lang de wet dat eist (7 jaar), daarna gaan ook die weg.</p></div>
+<div class="fx-card"><div style="margin-bottom:14px"><svg viewBox="0 0 48 48" width="56" height="56" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M13 16h22M20 16v-3h8v3M16 16l1.5 18a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2L32 16" stroke="#1a1d4f" stroke-width="2"/><path d="M21.5 21v10M26.5 21v10" stroke="#00bc7d" stroke-width="2.4"/></svg></div><h3 data-i18n="pv_r2h">Laten verwijderen</h3><p data-i18n="pv_r2p">Wil je weg? Dan verwijderen we je account en al je gegevens volledig. Eén voorwaarde: download eerst zelf je administratie, want jij moet die 7 jaar bewaren.</p></div>
 <div class="fx-card"><div style="margin-bottom:14px"><svg viewBox="0 0 48 48" width="56" height="56" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M24 12l10 4v7c0 6.5-4.2 11.4-10 13-5.8-1.6-10-6.5-10-13v-7z" stroke="#1a1d4f" stroke-width="2"/><path d="M19.5 24l3 3 6-6" stroke="#00bc7d" stroke-width="2.4"/></svg></div><h3 data-i18n="pv_r3h">Eerlijk bij problemen</h3><p data-i18n="pv_r3p">Bij een datalek melden we dat binnen 72 uur bij de Autoriteit Persoonsgegevens en informeren we jou, zoals de AVG voorschrijft.</p></div>
 </div>
+<div class="pv-del"><div class="pv-del-h"><svg viewBox="0 0 48 48" width="56" height="56" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M13 16h22M20 16v-3h8v3M16 16l1.5 18a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2L32 16" stroke="#1a1d4f" stroke-width="2"/><path d="M21.5 21v10M26.5 21v10" stroke="#00bc7d" stroke-width="2.4"/></svg><div><h3 data-i18n="pvd_h">Alles laten verwijderen? Dat kan, volledig.</h3><p data-i18n="pvd_p">We bewaren niets “voor de zekerheid”. Wel zorgen we dat jij niet in de problemen komt: als ondernemer ben je wettelijk verplicht je administratie 7 jaar te bewaren (fiscale bewaarplicht). Die plicht ligt bij jou, niet bij ons. Daarom gaat het zo:</p></div></div><ol class="pv-steps"><li><b data-i18n="pvd_s1h">Download je administratie</b><span data-i18n="pvd_s1p">Met één knop in de app: facturen, bonnetjes en overzichten.</span></li><li><b data-i18n="pvd_s2h">Bewaar hem veilig</b><span data-i18n="pvd_s2p">Op je computer of in je eigen cloud. Je bevestigt dat je hem hebt.</span></li><li><b data-i18n="pvd_s3h">Wij verwijderen alles</b><span data-i18n="pvd_s3p">Je account en al je gegevens, ook uit onze systemen.</span></li></ol><p class="pv-del-small" data-i18n="pvd_small">Zonder download verwijderen we je administratie niet, want dan zou jij niet meer aan de wet kunnen voldoen. Alleen de facturen die Sum-IT zelf aan jou heeft gestuurd, bewaren we 7 jaar: die bewaarplicht geldt ook voor ons.</p></div>
 <div class="fx-note" style="max-width:820px;margin:36px auto 0" data-i18n="pv_basis"><b>Waarom we je gegevens mogen gebruiken:</b> om de dienst te leveren die je afneemt (je administratie) en om te voldoen aan de belastingwet (art. 6 lid 1 b en c AVG). Voor iets anders, zoals marketing of analyses, vragen we eerst apart je toestemming.</div>
 </section>
 
 <section class="fx-sec tint"><div class="fx-wrap">
 <div class="fx-head"><h2 data-i18n="pv_faqh">Veelgestelde vragen</h2></div>
-<div class="fx-faq"><details><summary data-i18n="pv_q1">Waar staan mijn gegevens?</summary><p data-i18n="pv_a1">Uitsluitend in de Europese Unie, in beveiligde AWS-datacenters. Ook back-ups, logbestanden en de verwerking van bonnetjes blijven binnen de EU.</p></details><details><summary data-i18n="pv_q2">Verkopen jullie mijn gegevens of tonen jullie advertenties?</summary><p data-i18n="pv_a2">Nee. Je gegevens zijn van jou. We gebruiken ze alleen om Sum-IT te laten werken en om aan wettelijke plichten te voldoen. In de app zit geen advertentie- of marketingtracking.</p></details><details><summary data-i18n="pv_q3">Kunnen medewerkers van Sum-IT mijn administratie zien?</summary><p data-i18n="pv_a3">Beheeraccounts van Sum-IT hebben via het platform geen toegang tot de bedrijfsgegevens van klanten; zulke verzoeken worden door de software geweigerd.</p></details><details><summary data-i18n="pv_q4">Wat gebeurt er met de foto van mijn bonnetje?</summary><p data-i18n="pv_a4">De foto wordt versleuteld opgeslagen in de EU en binnen de EU uitgelezen. Het origineel wordt nooit aangepast, zodat je administratie controleerbaar blijft voor de Belastingdienst.</p></details><details><summary data-i18n="pv_q5">Kan ik mijn gegevens meenemen of laten verwijderen?</summary><p data-i18n="pv_a5">Ja. Je kunt je gegevens exporteren. Op verzoek verwijderen we je persoonsgegevens. Financiële administratie moet volgens de wet 7 jaar bewaard blijven; die wordt pas daarna verwijderd.</p></details><details><summary data-i18n="pv_q6">Wat als er toch iets misgaat?</summary><p data-i18n="pv_a6">We houden een onveranderbaar logboek bij van wijzigingen en monitoren afwijkende toegang. Bij een datalek melden we dat volgens de AVG binnen 72 uur bij de Autoriteit Persoonsgegevens en informeren we jou.</p></details></div>
+<div class="fx-faq"><details><summary data-i18n="pv_q1">Waar staan mijn gegevens?</summary><p data-i18n="pv_a1">Uitsluitend in de Europese Unie, in beveiligde AWS-datacenters. Ook back-ups, logbestanden en de verwerking van bonnetjes blijven binnen de EU.</p></details><details><summary data-i18n="pv_q2">Verkopen jullie mijn gegevens of tonen jullie advertenties?</summary><p data-i18n="pv_a2">Nee. Je gegevens zijn van jou. We gebruiken ze alleen om Sum-IT te laten werken en om aan wettelijke plichten te voldoen. In de app zit geen advertentie- of marketingtracking.</p></details><details><summary data-i18n="pv_q3">Kunnen medewerkers van Sum-IT mijn administratie zien?</summary><p data-i18n="pv_a3">Beheeraccounts van Sum-IT hebben via het platform geen toegang tot de bedrijfsgegevens van klanten; zulke verzoeken worden door de software geweigerd.</p></details><details><summary data-i18n="pv_q4">Wat gebeurt er met de foto van mijn bonnetje?</summary><p data-i18n="pv_a4">De foto wordt versleuteld opgeslagen in de EU en binnen de EU uitgelezen. Het origineel wordt nooit aangepast, zodat je administratie controleerbaar blijft voor de Belastingdienst.</p></details><details><summary data-i18n="pv_q5">Kan ik mijn gegevens meenemen of laten verwijderen?</summary><p data-i18n="pv_a5">Ja. Je kunt je gegevens altijd exporteren. Wil je alles laten verwijderen, dan verwijderen we je account en al je gegevens volledig. Daarvoor moet je eerst je administratie downloaden en zelf bewaren: als ondernemer ben je wettelijk verplicht die 7 jaar te bewaren. Zonder die download verwijderen we niet, anders kom jij in de problemen met de Belastingdienst.</p></details><details><summary data-i18n="pv_q6">Wat als er toch iets misgaat?</summary><p data-i18n="pv_a6">We houden een onveranderbaar logboek bij van wijzigingen en monitoren afwijkende toegang. Bij een datalek melden we dat volgens de AVG binnen 72 uur bij de Autoriteit Persoonsgegevens en informeren we jou.</p></details></div>
 <p class="fx-prose" style="text-align:center;margin-top:28px" data-i18n="pv_more">Alle details staan in onze <a href="/privacy.html">privacyverklaring</a> en <a href="/algemene-voorwaarden/">algemene voorwaarden</a>. Vragen? Mail <a href="mailto:hallo@sum-it.eu">hallo@sum-it.eu</a>.</p>
 </div></section>
 
@@ -156,7 +168,7 @@ window.PAGE_I18N={
 "pv_q4": "Wat gebeurt er met de foto van mijn bonnetje?",
 "pv_a4": "De foto wordt versleuteld opgeslagen in de EU en binnen de EU uitgelezen. Het origineel wordt nooit aangepast, zodat je administratie controleerbaar blijft voor de Belastingdienst.",
 "pv_q5": "Kan ik mijn gegevens meenemen of laten verwijderen?",
-"pv_a5": "Ja. Je kunt je gegevens exporteren. Op verzoek verwijderen we je persoonsgegevens. Financiële administratie moet volgens de wet 7 jaar bewaard blijven; die wordt pas daarna verwijderd.",
+"pv_a5": "Ja. Je kunt je gegevens altijd exporteren. Wil je alles laten verwijderen, dan verwijderen we je account en al je gegevens volledig. Daarvoor moet je eerst je administratie downloaden en zelf bewaren: als ondernemer ben je wettelijk verplicht die 7 jaar te bewaren. Zonder die download verwijderen we niet, anders kom jij in de problemen met de Belastingdienst.",
 "pv_q6": "Wat als er toch iets misgaat?",
 "pv_a6": "We houden een onveranderbaar logboek bij van wijzigingen en monitoren afwijkende toegang. Bij een datalek melden we dat volgens de AVG binnen 72 uur bij de Autoriteit Persoonsgegevens en informeren we jou.",
 "pv_crumb": "Privacy &amp; veiligheid",
@@ -192,14 +204,23 @@ window.PAGE_I18N={
 "pv_r1h": "Meenemen",
 "pv_r1p": "Je kunt je gegevens exporteren, zodat je nooit vastzit aan Sum-IT.",
 "pv_r2h": "Laten verwijderen",
-"pv_r2p": "Op verzoek verwijderen we je persoonsgegevens. Alleen financiële stukken bewaren we zo lang de wet dat eist (7 jaar), daarna gaan ook die weg.",
+"pv_r2p": "Wil je weg? Dan verwijderen we je account en al je gegevens volledig. Eén voorwaarde: download eerst zelf je administratie, want jij moet die 7 jaar bewaren.",
 "pv_r3h": "Eerlijk bij problemen",
 "pv_r3p": "Bij een datalek melden we dat binnen 72 uur bij de Autoriteit Persoonsgegevens en informeren we jou, zoals de AVG voorschrijft.",
 "pv_basis": "<b>Waarom we je gegevens mogen gebruiken:</b> om de dienst te leveren die je afneemt (je administratie) en om te voldoen aan de belastingwet (art. 6 lid 1 b en c AVG). Voor iets anders, zoals marketing of analyses, vragen we eerst apart je toestemming.",
 "pv_faqh": "Veelgestelde vragen",
 "pv_more": "Alle details staan in onze <a href=\"/privacy.html\">privacyverklaring</a> en <a href=\"/algemene-voorwaarden/\">algemene voorwaarden</a>. Vragen? Mail <a href=\"mailto:hallo@sum-it.eu\">hallo@sum-it.eu</a>.",
 "pv_ctah": "Veilig beginnen met je administratie?",
-"pv_ctap": "Maak een gratis profiel aan. Je gegevens blijven in Europa."
+"pv_ctap": "Maak een gratis profiel aan. Je gegevens blijven in Europa.",
+"pvd_h": "Alles laten verwijderen? Dat kan, volledig.",
+"pvd_p": "We bewaren niets “voor de zekerheid”. Wel zorgen we dat jij niet in de problemen komt: als ondernemer ben je wettelijk verplicht je administratie 7 jaar te bewaren (fiscale bewaarplicht). Die plicht ligt bij jou, niet bij ons. Daarom gaat het zo:",
+"pvd_s1h": "Download je administratie",
+"pvd_s1p": "Met één knop in de app: facturen, bonnetjes en overzichten.",
+"pvd_s2h": "Bewaar hem veilig",
+"pvd_s2p": "Op je computer of in je eigen cloud. Je bevestigt dat je hem hebt.",
+"pvd_s3h": "Wij verwijderen alles",
+"pvd_s3p": "Je account en al je gegevens, ook uit onze systemen.",
+"pvd_small": "Zonder download verwijderen we je administratie niet, want dan zou jij niet meer aan de wet kunnen voldoen. Alleen de facturen die Sum-IT zelf aan jou heeft gestuurd, bewaren we 7 jaar: die bewaarplicht geldt ook voor ons."
 },
 "en": {
 "pv_q1": "Where is my data stored?",
@@ -211,7 +232,7 @@ window.PAGE_I18N={
 "pv_q4": "What happens to my receipt photo?",
 "pv_a4": "The photo is stored encrypted in the EU and read within the EU. The original is never altered, so your records stay audit-proof for the tax office.",
 "pv_q5": "Can I export or delete my data?",
-"pv_a5": "Yes. You can export your data. On request we delete your personal data. Financial records must by law be kept for 7 years and are deleted after that.",
+"pv_a5": "Yes. You can always export your data. If you want everything deleted, we delete your account and all your data completely. To do so, you first download your records and keep them yourself: as an entrepreneur you are legally required to keep them for 7 years. Without that download we do not delete, otherwise you would get into trouble with the tax office.",
 "pv_q6": "What if something goes wrong?",
 "pv_a6": "We keep an immutable change log and monitor unusual access. In case of a data breach we report it to the Dutch Data Protection Authority within 72 hours as the GDPR requires, and inform you.",
 "pv_crumb": "Privacy &amp; security",
@@ -247,14 +268,23 @@ window.PAGE_I18N={
 "pv_r1h": "Take it with you",
 "pv_r1p": "You can export your data, so you are never locked in to Sum-IT.",
 "pv_r2h": "Have it deleted",
-"pv_r2p": "On request we delete your personal data. Only financial records are kept as long as the law requires (7 years), then they go too.",
+"pv_r2p": "Want to leave? Then we delete your account and all your data completely. One condition: first download your records yourself, because you must keep them for 7 years.",
 "pv_r3h": "Honest when things go wrong",
 "pv_r3p": "In case of a data breach we report it to the Dutch Data Protection Authority within 72 hours and inform you, as the GDPR requires.",
 "pv_basis": "<b>Why we may use your data:</b> to deliver the service you use (your bookkeeping) and to comply with tax law (GDPR art. 6(1)(b) and (c)). For anything else, such as marketing or analytics, we ask your separate consent first.",
 "pv_faqh": "Frequently asked questions",
 "pv_more": "All details are in our <a href=\"/privacy.html\">privacy statement</a> and <a href=\"/algemene-voorwaarden/\">terms and conditions</a>. Questions? Email <a href=\"mailto:hallo@sum-it.eu\">hallo@sum-it.eu</a>.",
 "pv_ctah": "Ready to start your books safely?",
-"pv_ctap": "Create a free profile. Your data stays in Europe."
+"pv_ctap": "Create a free profile. Your data stays in Europe.",
+"pvd_h": "Want everything deleted? You can, completely.",
+"pvd_p": "We keep nothing “just in case”. But we make sure you do not get into trouble: as an entrepreneur you are legally required to keep your records for 7 years (tax retention duty). That duty is yours, not ours. So this is how it works:",
+"pvd_s1h": "Download your records",
+"pvd_s1p": "With one button in the app: invoices, receipts and overviews.",
+"pvd_s2h": "Keep them safe",
+"pvd_s2p": "On your computer or in your own cloud. You confirm that you have them.",
+"pvd_s3h": "We delete everything",
+"pvd_s3p": "Your account and all your data, from our systems too.",
+"pvd_small": "Without a download we do not delete your records, because then you could no longer comply with the law. We only keep the invoices Sum-IT itself sent you for 7 years: that retention duty applies to us too."
 }
 };
 </script>
