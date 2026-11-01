@@ -9,6 +9,7 @@
 window.SITE_CFG = {
   API_BASE: 'https://sum-it-app.pages.dev',
   PORTAL_URL: '/portal.html',
+  APP_REGISTER_URL: 'https://stg.sum-it.eu/register',  // 'Gratis profiel aanmaken' gaat hierheen (echte app-registratie)
   socials: {
     linkedin: 'https://www.linkedin.com/company/sum-it-eu/',
     instagram: 'https://www.instagram.com/sumit.eu/',
