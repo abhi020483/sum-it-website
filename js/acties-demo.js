@@ -8,7 +8,7 @@
       st: ['gekoppeld', 'betaald', 'herinnering'], demo: 'Voorbeeld',
       steps: [
         { b: 'Inkomsten', tag: ['g', 'Betaling ontvangen'], amt: '+ € 1.450,00', cls: 'in', who: 'Fam. de Vries', desc: '28 okt · Factuur 2026-014', q: 'Hoort bij factuur 2026-014', why: 'Bedrag en kenmerk kloppen', main: ['sf-green', 'Ja, boek'], soft: ['Andere', 'Geen factuur'], toast: 'Geboekt · 2026-014' },
-        { b: 'Geld uit', tag: ['a', 'Geen bon'], amt: '– € 86,40', cls: '', who: 'Bouwmaat Breda', desc: '24 okt · Pinbetaling', q: 'Geen passende bon gevonden', main: ['sf-dark', 'Scan bon'], soft: ['Geen bon', 'Privé'], toast: 'Bon toegevoegd' },
+        { b: 'Geld uit', tag: ['a', 'Geen bon'], amt: '– € 86,40', cls: '', who: 'Bouwmaat Rijswijk', desc: '24 okt · Pinbetaling', q: 'Geen passende bon gevonden', main: ['sf-dark', 'Scan bon'], soft: ['Geen bon', 'Privé'], toast: 'Bon toegevoegd' },
         { b: 'Te laat', tag: ['r', '12 dagen te laat'], amt: '€ 1.210,00', cls: '', who: 'Bakker Verbouw', desc: '2026-011 · 3 okt', q: 'Nog niet betaald', main: ['sf-orange', 'Herinnering'], soft: ['Betaald', '7 dagen'], toast: 'Verstuurd · 2026-011' },
         { b: 'Belasting', tag: ['p', 'Btw Q4 · 30 dagen'], amt: '€ 1.240,00', cls: '', who: 'opzij te zetten', desc: 'Jij zet het geld zelf apart', main: ['sf-purple', 'Klaarzetten · € 1.240,00'], soft: ['Later'], toast: 'Klaargezet · € 1.240,00' }
       ] },
@@ -18,7 +18,7 @@
       st: ['matched', 'paid', 'reminder'], demo: 'Example',
       steps: [
         { b: 'Income', tag: ['g', 'Payment received'], amt: '+ €1,450.00', cls: 'in', who: 'De Vries family', desc: '28 Oct · Invoice 2026-014', q: 'Belongs to invoice 2026-014', why: 'Amount and reference match', main: ['sf-green', 'Yes, book it'], soft: ['Other', 'Not an invoice'], toast: 'Booked · 2026-014' },
-        { b: 'Money out', tag: ['a', 'No receipt'], amt: '– €86.40', cls: '', who: 'Bouwmaat Breda', desc: '24 Oct · Card payment', q: 'No matching receipt found', main: ['sf-dark', 'Scan receipt'], soft: ['No receipt', 'Private'], toast: 'Receipt added' },
+        { b: 'Money out', tag: ['a', 'No receipt'], amt: '– €86.40', cls: '', who: 'Bouwmaat Rijswijk', desc: '24 Oct · Card payment', q: 'No matching receipt found', main: ['sf-dark', 'Scan receipt'], soft: ['No receipt', 'Private'], toast: 'Receipt added' },
         { b: 'Overdue', tag: ['r', '12 days late'], amt: '€1,210.00', cls: '', who: 'Bakker Verbouw', desc: '2026-011 · 3 Oct', q: 'Not paid yet', main: ['sf-orange', 'Reminder'], soft: ['Paid', '7 days'], toast: 'Sent · 2026-011' },
         { b: 'Tax', tag: ['p', 'VAT Q4 · 30 days'], amt: '€1,240.00', cls: '', who: 'to set aside', desc: 'You move the money yourself', main: ['sf-purple', 'Prepare · €1,240.00'], soft: ['Later'], toast: 'Prepared · €1,240.00' }
       ] }
