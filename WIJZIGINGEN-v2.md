@@ -165,3 +165,12 @@ Alles wat alleen op live stond (CNAME, aanmeld-API in `functions/`, Google-verif
 - **Nieuwe pagina /cookies/** (cookieverklaring), met in elke footer de links "Cookies" en "Cookie-instellingen".
 - **Beslissing:** een cookiemelding is nu wettelijk niet verplicht, want er zijn geen niet-functionele cookies. Hij staat er toch, op verzoek van Ian, en is klaar voor toekomstige statistieken. Hij zegt eerlijk dat er nu niets gevolgd wordt.
 - **Privacyverklaring:** Plausible is eruit gehaald, want het draaide niet (keuze Ian). Er is een nieuw artikel 8 "Cookies" met een verwijzing naar /cookies/.
+
+## Ronde 7 (2 nov 2026)
+- **Homepage**: het teamblok staat nu helemaal onderaan, met korte bio's. De kaarten en "Lees meer over het team →" linken naar /team/, waar de volledige verhalen staan.
+- **Eerste 3 maanden gratis** staat nu overal waar de prijs genoemd wordt:
+  - pagina's: homepage (hero, prijsblok, aanmeldformulier), Prijzen (promobalk, groene badge op de kaart, lijstje, rekenhulp), Functies, functiepagina's, Voor zzp/aannemers/boekhouders, Over ons, Team, vergelijkingspagina's
+  - de oude actietekst "Meld je nu aan en gebruik het GRATIS" is vervangen
+  - "Geen instapprijs die later duurder wordt" is vervangen door "Na de 3 gratis maanden betaal je gewoon €11 per maand"
+- **AV art. 6.3**: "Eerste 3 maanden gratis" na activering. Het einde van de gratis periode wordt minimaal 30 dagen vooraf aangekondigd in de app.
+- **Beslissing**: de 0,5% platformvergoeding (art. 7) blijft gelden tijdens de gratis maanden, alleen het abonnement is gratis. Moet de 0,5% ook vervallen, dan pas ik art. 6.3 en de teksten aan.
