@@ -5,10 +5,10 @@ const I18N = {
         lead_sub: "Leave your details. You get an info email right away, and Ian may give you a quick call.",
         lead_l_name: "Name", lead_l_tel: "Phone number", lead_l_mail: "Email address",
         lead_ph_name: "Your name", lead_ph_tel: "Phone number", lead_ph_mail: "Email address",
-        lead_btn: "Send me more info", lead_sending: "Sending...",
+        lead_btn: "Send me more info first", lead_sending: "Sending...",
         lead_optin: "Also send me 2 reminders (1 per month).",
         lead_fine: "You get an info email right away. With the box ticked, max. 2 reminders, then you are automatically off the mailing list. <a href=\"/privacy.html\">Privacy</a>",
-        lead_ok: "Done! Check your email.",
+        lead_ok: "Done! Check your email.", lead_go: "Done! Taking you to sign up...",
         lead_err_name: "Please fill in your name.", lead_err_tel: "Please enter a valid phone number (at least 10 digits).", lead_err_mail: "Please enter a valid email address.",
         lead_err: "That did not work. Try again in a moment.",
         hs0: "Dashboard: money in and out at a glance",
@@ -514,10 +514,10 @@ const I18N = {
         lead_sub: "Laat je gegevens achter. Je krijgt meteen een mail met meer informatie en Ian belt je mogelijk even.",
         lead_l_name: "Naam", lead_l_tel: "Telefoonnummer", lead_l_mail: "E-mailadres",
         lead_ph_name: "Je naam", lead_ph_tel: "Telefoonnummer", lead_ph_mail: "E-mailadres",
-        lead_btn: "Stuur me meer info", lead_sending: "Even geduld...",
+        lead_btn: "Stuur me eerst meer info", lead_sending: "Even geduld...",
         lead_optin: "Stuur me ook 2 herinneringen (1 per maand).",
         lead_fine: "Je krijgt meteen een mail met info. Met vinkje nog max. 2 herinneringen, daarna sta je automatisch niet meer op de maillijst. <a href=\"/privacy.html\">Privacy</a>",
-        lead_ok: "Gelukt! Check je mail.",
+        lead_ok: "Gelukt! Check je mail.", lead_go: "Gelukt! We sturen je door naar aanmelden...",
         lead_err_name: "Vul je naam in.", lead_err_tel: "Vul een geldig telefoonnummer in (minimaal 10 cijfers).", lead_err_mail: "Vul een geldig e-mailadres in.",
         lead_err: "Dat lukte niet. Probeer het zo nog eens.",
         hs0: "Dashboard: geld in en uit, in één oogopslag",
@@ -2001,18 +2001,32 @@ document
             });
     });
 
-/* ---- Hero lead form ---- */
+/* ---- Lead form in the green offer block ----
+   Two buttons, same fields:
+   - "Maak gratis je profiel aan": save lead (info mail) then go to register.
+   - "Stuur me eerst meer info": save lead, show thanks. */
 (function () {
     var form = document.getElementById("lead-form");
     if (!form) return;
-    var btn = document.getElementById("lead-btn"),
+    var REGISTER_URL = "https://stg.sum-it.eu/register";
+    var btnP = document.getElementById("lead-btn"),
+        btnI = document.getElementById("lead-btn-info"),
         err = document.getElementById("lead-err"),
         ok = document.getElementById("lead-ok");
+    var choice = "profiel";
+    btnP.addEventListener("click", function () { choice = "profiel"; });
+    btnI.addEventListener("click", function () { choice = "info"; });
     function t(k) { return (I18N[LANG] && I18N[LANG][k]) || ""; }
     function bad(id, on) { document.getElementById(id).classList.toggle("bad", !!on); }
+    function busy(on) {
+        btnP.disabled = btnI.disabled = on;
+        var b = choice === "info" ? btnI : btnP;
+        b.textContent = on ? t("lead_sending") : t(choice === "info" ? "lead_btn" : "of_cta");
+    }
     form.addEventListener("submit", function (e) {
         e.preventDefault();
-        if (btn.disabled) return;
+        if (btnP.disabled) return;
+        if (e.submitter && e.submitter.value) choice = e.submitter.value;
         var naam = document.getElementById("lead-naam").value.trim(),
             tel = document.getElementById("lead-tel").value.trim(),
             email = document.getElementById("lead-email").value.trim();
@@ -2035,37 +2049,44 @@ document
             telefoon: tel,
             rol: "ondernemer",
             taal: LANG,
-            source: "homepage-lead",
+            source: choice === "info" ? "homepage-lead" : "homepage-profiel",
             website: document.getElementById("lead-hp").value || "",
             mailing_optin: remind,
             herinneringen: remind,
         };
         var base = window.API_BASE || (window.SITE_CFG && SITE_CFG.API_BASE) || "";
-        btn.disabled = true;
-        btn.textContent = t("lead_sending");
-        fetch(base + "/api/signup", {
+        busy(true);
+        var req = fetch(base + "/api/signup", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(payload),
+            keepalive: true,
         })
             .then(function (r) {
                 return r.json().catch(function () { return null; }).then(function (j) {
                     return r.ok && j && j.ok === true ? "ok" : "error";
                 });
             })
-            .catch(function () { return "error"; })
-            .then(function (res) {
-                btn.disabled = false;
-                btn.textContent = t("lead_btn");
-                if (res === "ok") {
-                    form.reset();
-                    ok.textContent = t("lead_ok");
-                    ok.hidden = false;
-                } else {
-                    err.textContent = t("lead_err");
-                    err.hidden = false;
-                }
-            });
+            .catch(function () { return "error"; });
+        if (choice === "profiel") {
+            // Never block sign-up on our own lead API: go on after max 4 s.
+            var went = false;
+            var go = function () { if (went) return; went = true; window.location.href = REGISTER_URL; };
+            req.then(function () { ok.textContent = t("lead_go"); ok.hidden = false; setTimeout(go, 400); });
+            setTimeout(go, 4000);
+            return;
+        }
+        req.then(function (res) {
+            busy(false);
+            if (res === "ok") {
+                form.reset();
+                ok.textContent = t("lead_ok");
+                ok.hidden = false;
+            } else {
+                err.textContent = t("lead_err");
+                err.hidden = false;
+            }
+        });
     });
 })();
 // ---- Live content overrides (edited in admin.html, stored in Supabase) ----

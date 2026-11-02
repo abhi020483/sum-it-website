@@ -1,7 +1,7 @@
 /* POST /api/signup — Cloudflare Pages Function.
    Body: {naam,email,rol,bedrijfstype,boekhouder,taal,source,ref,website,
           telefoon,plaats,stad,vestiging, herinneringen | mailing_optin | consent}
-   - source 'homepage-lead': naam + email + telefoon all required (else 400 invalid)
+   - source 'homepage-lead' / 'homepage-profiel': naam + email + telefoon all required (else 400 invalid)
    - mailing_optin (v5) = opted in to reminder mails; see wantsMailings() below
    - honeypot 'website' filled  -> silently OK
    - disposable e-mail domains  -> silently OK
@@ -83,7 +83,7 @@ export async function onRequestPost({ request, env }) {
   const mailingOptin = wantsMailings(d);
   if (!naam || !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) return json2({ ok: false, error: 'invalid' }, 400);
   // Homepage lead form: phone number is required (at least 6 digits).
-  if (source === 'homepage-lead' && (!telefoon || telefoon.replace(/\D/g, '').length < 6)) {
+  if ((source === 'homepage-lead' || source === 'homepage-profiel') && (!telefoon || telefoon.replace(/\D/g, '').length < 6)) {
     return json2({ ok: false, error: 'invalid' }, 400);
   }
   if (DISPOSABLE.includes(email.split('@')[1])) return ok;

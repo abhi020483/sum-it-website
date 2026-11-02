@@ -154,30 +154,6 @@
               <span class="badge" data-i18n="hb1">Privacy voorop</span><span
                 class="badge" data-i18n="hb2">Data opgeslagen in de EU</span><span class="badge" data-i18n="hb3">Rekent met Nederlandse btw</span>
             </div>
-            <section class="leadbar" id="leadbar" aria-labelledby="lead-h">
-            <div class="lead-intro">
-              <h2 id="lead-h" data-i18n="lead_h">Liever eerst even bellen?</h2>
-            </div>
-            <form id="lead-form" class="lead-form" novalidate>
-              <div class="lead-row">
-                <label class="sr-only" for="lead-naam" data-i18n="lead_l_name">Naam</label>
-                <input type="text" id="lead-naam" name="naam" autocomplete="name" required maxlength="120" data-i18n-ph="lead_ph_name" placeholder="Je naam" />
-                <label class="sr-only" for="lead-tel" data-i18n="lead_l_tel">Telefoonnummer</label>
-                <input type="tel" id="lead-tel" name="telefoon" autocomplete="tel" inputmode="tel" required maxlength="40" data-i18n-ph="lead_ph_tel" placeholder="Telefoonnummer" />
-                <label class="sr-only" for="lead-email" data-i18n="lead_l_mail">E-mailadres</label>
-                <input type="email" id="lead-email" name="email" autocomplete="email" required maxlength="160" data-i18n-ph="lead_ph_mail" placeholder="E-mailadres" />
-                <button type="submit" class="btn" id="lead-btn" data-i18n="lead_btn">Stuur me meer info</button>
-              </div>
-              <input type="text" name="website" id="lead-hp" value="" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0" />
-              <label class="lead-optin" for="lead-remind">
-                <input type="checkbox" id="lead-remind" name="herinneringen" value="ja" />
-                <span data-i18n="lead_optin">Stuur me ook 2 herinneringen (1 per maand).</span>
-              </label>
-              <p class="lead-err" id="lead-err" role="alert" hidden></p>
-              <p class="lead-ok" id="lead-ok" role="status" hidden></p>
-              <p class="lead-fine" data-i18n="lead_fine">Je krijgt meteen een mail met info. Met vinkje nog max. 2 herinneringen, daarna sta je automatisch niet meer op de maillijst. <a href="/privacy.html">Privacy</a></p>
-            </form>
-          </section>
             <p class="hero-audience" data-i18n="hero_audience">Voor vakmensen en kleine teams.</p>
           </div>
 
@@ -255,7 +231,28 @@
               <span class="ochip" data-i18n="of_c4">✓ Geen creditcard nodig</span>
               <span class="ochip" data-i18n="of_c5">✓ Elke maand opzegbaar</span>
             </div>
-            <a class="mega" href="https://stg.sum-it.eu/register" data-i18n="of_cta">Maak gratis je profiel aan →</a>
+            <form id="lead-form" class="offer-form" novalidate>
+              <div class="of-fields">
+                <label class="sr-only" for="lead-naam" data-i18n="lead_l_name">Naam</label>
+                <input type="text" id="lead-naam" name="naam" autocomplete="name" required maxlength="120" data-i18n-ph="lead_ph_name" placeholder="Je naam" />
+                <label class="sr-only" for="lead-tel" data-i18n="lead_l_tel">Telefoonnummer</label>
+                <input type="tel" id="lead-tel" name="telefoon" autocomplete="tel" inputmode="tel" required maxlength="40" data-i18n-ph="lead_ph_tel" placeholder="Telefoonnummer" />
+                <label class="sr-only" for="lead-email" data-i18n="lead_l_mail">E-mailadres</label>
+                <input type="email" id="lead-email" name="email" autocomplete="email" required maxlength="160" data-i18n-ph="lead_ph_mail" placeholder="E-mailadres" />
+              </div>
+              <input type="text" name="website" id="lead-hp" value="" autocomplete="off" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0" />
+              <div class="of-btns">
+                <button type="submit" class="mega" id="lead-btn" value="profiel" data-i18n="of_cta">Maak gratis je profiel aan →</button>
+                <button type="submit" class="of-info" id="lead-btn-info" value="info" data-i18n="lead_btn">Stuur me eerst meer info</button>
+              </div>
+              <label class="lead-optin" for="lead-remind">
+                <input type="checkbox" id="lead-remind" name="herinneringen" value="ja" />
+                <span data-i18n="lead_optin">Stuur me ook 2 herinneringen (1 per maand).</span>
+              </label>
+              <p class="lead-err" id="lead-err" role="alert" hidden></p>
+              <p class="lead-ok" id="lead-ok" role="status" hidden></p>
+              <p class="lead-fine" data-i18n="lead_fine">Je krijgt meteen een mail met info. Met vinkje nog max. 2 herinneringen, daarna sta je automatisch niet meer op de maillijst. <a href="/privacy.html">Privacy</a></p>
+            </form>
             <a class="more-price" href="/prijzen/"
               data-i18n="fl_more_pricing">Meer over prijzen →</a>
           </div>
