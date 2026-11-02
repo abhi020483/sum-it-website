@@ -139,3 +139,29 @@ Alles wat alleen op live stond (CNAME, aanmeld-API in `functions/`, Google-verif
 - **QR-bibliotheek** op /portal kreeg ook een SRI-controle.
 - Gecontroleerd: in de site staat alleen de publieke (publishable) Supabase-sleutel en geen geheime sleutels. De beheerpagina's staan op noindex. Blogteksten uit het CMS gaan door een sanitizer.
 - **Advies (buiten de website):** zorg dat Row Level Security in Supabase aan staat op alle tabellen, want de publieke sleutel geeft verder alleen wat RLS toestaat. Laat ook de mail- en hostingproviders bevestigen dat ze voor PHP2Shell gepatcht zijn, als daar PHP draait.
+
+---
+
+# Ronde 6 (2 nov 2026): projectbeheer en cookies
+
+## Projectbeheer (/functies/projecten/)
+- Nieuw blok "Van offerte tot eindafrekening, in één project", met een demo van de stappen offerte → project → bonnetjes → betalingen → eindfactuur → winst. Daarna 5 stappen. "Mensen toevoegen" staat als **Binnenkort**, omdat de app het nog niet kan.
+- Echte app-screenshots van het demoproject "Dakkapel De Vries" (fictief, Timmerwerk Eikenhof). Het project bevat:
+  - verschillende soorten uitgaven: hout, dakbeschot, goot, steigerhuur, afvalcontainer, dakraam, onderaannemer dakdekker
+  - een geaccepteerde offerte
+  - twee termijnfacturen, waarvan één betaald
+
+## Cookies en privacy
+- **Onderzoek:**
+  - De site plaatst geen tracking- of marketingcookies.
+  - In de browser staat alleen functionele opslag: taalkeuze, cookiekeuze, inlogsessie (Supabase) en het e-mailadres tijdens een wachtwoordherstel. Daarvoor is geen toestemming nodig (art. 11.7a Tw).
+  - Plausible stond in de code als koppeling, maar wordt nooit geladen.
+- **Opgelost:** lettertypes (DM Sans, Poppins), iconen (Flaticon) en de bibliotheken voor login en QR (supabase-js, qrcodejs) staan nu op de eigen server. Bezoekers maken dus geen verbinding meer met Google Fonts, Flaticon, jsDelivr of cdnjs. Ongebruikte lettertypes zijn van de homepage gehaald.
+- **Cookiemelding** (js/consent.js) op alle publieke pagina's:
+  - knoppen "Alleen noodzakelijk", "Instellingen" en "Alles accepteren", even prominent
+  - categorieën Statistieken en Marketing staan standaard uit en zijn gemarkeerd als "nu niet in gebruik"
+  - de keuze geldt 12 maanden
+  - scripts die toestemming nodig hebben, laden pas na een opt-in (`type="text/plain" data-consent="stats"`)
+- **Nieuwe pagina /cookies/** (cookieverklaring), met in elke footer de links "Cookies" en "Cookie-instellingen".
+- **Beslissing:** een cookiemelding is nu wettelijk niet verplicht, want er zijn geen niet-functionele cookies. Hij staat er toch, op verzoek van Ian, en is klaar voor toekomstige statistieken. Hij zegt eerlijk dat er nu niets gevolgd wordt.
+- **Let op:** de privacyverklaring noemt Plausible als statistiekdienst, maar Plausible draait niet. Kies: Plausible echt aanzetten (cookieloos, mag zonder toestemming), of de tekst aanpassen.

@@ -14,10 +14,8 @@
 window.SB_URL  = 'https://kncruytvvqyrwxhgostc.supabase.co';        // e.g. https://abcdxyz.supabase.co
 window.SB_ANON = 'sb_publishable_Okc2mW8gDttU9a6mjv56Fw_4k_mM7hN';   // the "anon / public" key
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js" integrity="sha384-BWcjm9OdFth9TbhCxZPdm+gAOUMAzQy9nmTs12ioXdCcbVnJaPMn+fMUoQCLt60R" crossorigin="anonymous"></script>
+<script src="/vendor/supabase-2.117.3.js"></script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/tokens.css">
 <style>
 :root{--indigo:#2D2D6B;--indigo-d:#232358;--ink:#0F172A;--green:#00BC7D;--green-d:#007a55;--bg:#F1F5F9;--line:#E2E8F0;--slate:#64748B;--mut-d:rgba(255,255,255,.72);--line-d:rgba(255,255,255,.14)}
@@ -45,6 +43,7 @@ input:focus{outline:2px solid var(--green)}
 .foot a{color:#fff}
 </style>
 <link rel="stylesheet" href="/components/footer/footer.css">
+<link rel="stylesheet" href="/fonts/fonts.css">
 </head>
 <body>
 <div class="top">
@@ -127,5 +126,6 @@ function rememberEmail(){
 // already logged in? route straight away
 if(SB){SB.auth.getSession().then(function(s){if(s.data&&s.data.session)routeUser();});}
 </script>
+<script src="/js/consent.js" defer></script>
 </body>
 </html>

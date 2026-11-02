@@ -1,8 +1,6 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Sum-IT</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box}
 
@@ -105,7 +103,8 @@ body{margin:0;font-family:Poppins,sans-serif;background:#0F1643;min-height:100vh
 .gbtn:focus-visible,.gback:focus-visible{outline:3px solid #fff;outline-offset:2px}
 .gback{background:none;border:0;font-family:inherit;font-size:13px;font-weight:700;
   color:rgba(255,255,255,.86);cursor:pointer;min-height:44px}
-</style></head><body>
+</style><link rel="stylesheet" href="/fonts/fonts.css">
+</head><body>
 <div id="device">
 <div id="gate">
   <div class="gbrand">
@@ -210,4 +209,5 @@ window.addEventListener('message',function(e){
   else if(e.data==='sumit-open-community')openApp('community');
   else if(e.data==='sumit-open-books')openApp('books');
 });
-</script></body></html>
+</script><script src="/js/consent.js" defer></script>
+</body></html>

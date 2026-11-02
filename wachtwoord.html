@@ -7,9 +7,7 @@
 <title>Sum-IT · Wachtwoord instellen</title>
 <link rel="icon" type="image/png" href="sum-it-favicon.png">
 <script src="sb-config.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js" integrity="sha384-BWcjm9OdFth9TbhCxZPdm+gAOUMAzQy9nmTs12ioXdCcbVnJaPMn+fMUoQCLt60R" crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&display=swap" rel="stylesheet">
+<script src="/vendor/supabase-2.117.3.js"></script>
 <link rel="stylesheet" href="/css/tokens.css">
 <style>
 :root{--indigo:#2D2D6B;--indigo-d:#232358;--ink:#0F172A;--green:#00BC7D;--green-d:#007a55;--bg:#F1F5F9;--line:#E2E8F0;--slate:#64748B;--mut-d:rgba(255,255,255,.72);--line-d:rgba(255,255,255,.14)}
@@ -35,6 +33,7 @@ input:focus{outline:2px solid var(--green)}
 .alt{font-size:13px;color:var(--slate);margin-top:16px;text-align:center}
 .alt a{color:var(--green-d);font-weight:700;text-decoration:none}
 </style>
+<link rel="stylesheet" href="/fonts/fonts.css">
 </head>
 <body>
 <div class="top">
@@ -155,5 +154,6 @@ async function resend(){
 }
 boot();
 </script>
+<script src="/js/consent.js" defer></script>
 </body>
 </html>

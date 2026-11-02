@@ -8,10 +8,8 @@
 <link rel="icon" type="image/png" href="sum-it-favicon.png">
 <script src="config.js"></script>
 <script src="sb-config.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.117.3/dist/umd/supabase.js" integrity="sha384-BWcjm9OdFth9TbhCxZPdm+gAOUMAzQy9nmTs12ioXdCcbVnJaPMn+fMUoQCLt60R" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" integrity="sha384-3zSEDfvllQohrq0PHL1fOXJuC/jSOO34H46t6UQfobFOmxE5BpjjaIJY5F2/bMnU" crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400..800&display=swap" rel="stylesheet">
+<script src="/vendor/supabase-2.117.3.js"></script>
+<script src="/vendor/qrcode-1.0.0.min.js"></script>
 <link rel="stylesheet" href="/css/tokens.css">
 <style>
 :root{--indigo:#2D2D6B;--indigo-d:#232358;--ink:#0F172A;--green:#00BC7D;--green-d:#007a55;--green-t:#D0FAE5;
@@ -67,6 +65,7 @@ input:focus,select:focus{outline:2px solid var(--green)}
 .foot a{color:var(--mut-d)}
 </style>
 <link rel="stylesheet" href="/components/footer/footer.css">
+<link rel="stylesheet" href="/fonts/fonts.css">
 </head>
 <body>
 <div class="top">
@@ -246,5 +245,6 @@ function initialLang(){
   SB.auth.getSession().then(function(s){if(s.data.session)openDash(s.data.session.user);});
 })();
 </script>
+<script src="/js/consent.js" defer></script>
 </body>
 </html>
