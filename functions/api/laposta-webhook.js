@@ -42,6 +42,16 @@ export async function onRequestPost({ request, env }) {
         method: 'POST', headers: sbHeaders(env), body: JSON.stringify({ p_email: email.toLowerCase() })
       });
             const rows = r.ok ? await r.json().catch(() => null) : null; const row = Array.isArray(rows) ? rows[0] : rows; // queue_pos, ref_code, taal
+      // REVIEW FIX (v5): reminder mails only go to people who confirmed their
+      // e-mail address via double opt-in. Only in DOUBLE_OPTIN mode does this
+      // 'subscribed' event mean "clicked the confirmation link"; in single opt-in
+      // mode Laposta may fire it straight after the API add, so it proves nothing.
+      if (r.ok && env.DOUBLE_OPTIN === '1') {
+        await fetch(`${env.SUPABASE_URL}/rest/v1/signups?email=eq.${encodeURIComponent(email.toLowerCase())}&optin_confirmed_at=is.null`, {
+          method: 'PATCH', headers: sbHeaders(env, { Prefer: 'return=minimal' }),
+          body: JSON.stringify({ optin_confirmed_at: new Date().toISOString() })
+        }).catch(() => {});
+      }
       if (row && row.queue_pos) {
         const link = 'https://sum-it.eu/?ref=' + row.ref_code;
         // 2) welcome mail (Brevo) — only if it wasn't sent at signup time already

@@ -20,6 +20,8 @@
 --   If you can prove consent for a group (e.g. they ticked the mailing box),
 --   switch them on by hand, for example:
 --     update public.signups set mailing_optin = true where email in ('a@b.nl', ...);
+--   Reminders also require optin_confirmed_at (double opt-in confirmed); existing
+--   rows keep NULL there, so they get no reminders either.
 --   Rows that were already 'unsubscribed' get mailing_stopped_at = now() below,
 --   so the Worker also removes them from the Laposta list.
 -- ============================================================
@@ -30,6 +32,10 @@ alter table public.signups add column if not exists reminders_sent     integer n
 alter table public.signups add column if not exists last_mail_at       timestamptz;  -- last mail we sent (welcome or reminder)
 alter table public.signups add column if not exists mailing_stopped_at timestamptz;  -- set => never mail again (row + e-mail are kept)
 alter table public.signups add column if not exists laposta_removed_at timestamptz;  -- set once the member is deleted from Laposta
+-- REVIEW FIX: moment the e-mail address was confirmed via DOUBLE opt-in (Laposta
+-- confirmation link; set by /api/laposta-webhook only when DOUBLE_OPTIN=1).
+-- Reminder mails require it. Single opt-in sign-ups keep NULL = no reminders.
+alter table public.signups add column if not exists optin_confirmed_at timestamptz;
 
 do $$ begin
   if not exists (select 1 from pg_constraint where conname = 'signups_reminders_sent_nonneg') then
@@ -46,7 +52,8 @@ update public.signups
 -- Reminder query: only the (small) set of people still in the reminder flow.
 create index if not exists signups_reminders_due_idx
   on public.signups (id)
-  where mailing_optin and mailing_stopped_at is null and status = 'confirmed';
+  where mailing_optin and mailing_stopped_at is null and status = 'confirmed'
+    and optin_confirmed_at is not null;
 -- Cleanup query: stopped/unsubscribed people not yet removed from Laposta.
 create index if not exists signups_laposta_cleanup_idx
   on public.signups (id)

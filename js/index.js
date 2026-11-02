@@ -2019,7 +2019,7 @@ document
         var digits = tel.replace(/\D/g, "").length;
         var msg = "";
         var nameBad = naam.length < 2,
-            telBad = !/^[+\d][\d\s().-]*$/.test(tel) || digits < 10 || digits > 15,
+            telBad = !/^[+(\d][\d\s().-]*$/.test(tel) || digits < 10 || digits > 15,
             mailBad = !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
         bad("lead-naam", nameBad); bad("lead-tel", telBad); bad("lead-email", mailBad);
         if (nameBad) msg = t("lead_err_name");

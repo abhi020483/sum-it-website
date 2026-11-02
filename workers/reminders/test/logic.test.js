@@ -10,7 +10,8 @@ const at = days => new Date(T0.getTime() + days * DAY);
 const base = (o = {}) => ({
   id: 1, email: 'jan@example.nl', naam: 'Jan de Vries', taal: 'nl', status: 'confirmed',
   mailing_optin: true, reminders_sent: 0, last_mail_at: T0.toISOString(),
-  welcomed_at: T0.toISOString(), created_at: T0.toISOString(), mailing_stopped_at: null, ...o
+  welcomed_at: T0.toISOString(), created_at: T0.toISOString(), mailing_stopped_at: null,
+  optin_confirmed_at: T0.toISOString(), ...o
 });
 
 test('config: 2 reminders, 30 days apart (the decided values)', () => {
@@ -123,4 +124,25 @@ test('mail template: NL + EN, first name, free months, button, unsubscribe, coun
   assert.match(x.text, /^Hoi/);
   assert.equal(firstName(''), '');
   assert.match(reminderMail({ ...args, taal: 'nl', naam: '' }).text, /^Hoi,/);
+});
+
+// ---- REVIEW tests (independent reviewer, 2 nov 2026) ----
+test('REVIEW: opted in + confirmed but NO double opt-in (single opt-in) -> never a reminder', () => {
+  for (const d of [30, 60, 400]) assert.deepEqual(nextAction(base({ optin_confirmed_at: null }), at(d)), { type: 'none', reason: 'no double opt-in' });
+  assert.match(decodeURIComponent(dueQuery(at(30))), /optin_confirmed_at=not\.is\.null/);
+});
+
+test('REVIEW: simulate 1 year of daily runs -> exactly 2 reminders, on day 30 and day 60, then stopped', () => {
+  let row = base({ last_mail_at: '2026-01-10T15:42:00Z' });   // welcome mail in the afternoon
+  const runAt = d => new Date(Date.UTC(2026, 0, 10 + d, 8, 17)); // cron 08:17 UTC every day
+  const sends = [];
+  for (let d = 0; d <= 365; d++) {
+    const now = runAt(d), act = nextAction(row, now);
+    if (act.type === 'send') { sends.push({ d, n: act.reminderNo, last: act.isLast }); row = { ...row, ...patchAfterSend(row, act, now) }; }
+    else if (act.type === 'stop') row = { ...row, mailing_stopped_at: now.toISOString() };
+  }
+  // welcome 15:42 -> day 30 08:17 is 29.7 days -> first reminder on day 31 (never early)
+  assert.deepEqual(sends, [{ d: 31, n: 1, last: false }, { d: 61, n: 2, last: true }]);
+  assert.ok(row.mailing_stopped_at);
+  assert.equal(row.reminders_sent, 2);
 });

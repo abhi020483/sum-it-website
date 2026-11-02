@@ -16,9 +16,11 @@ const ENV = {
 // 3 fake rows: A due for reminder 1, B due for reminder 2 (last), C stopped earlier but still in Laposta
 const ROWS = {
   A: { id: 11, email: 'a@example.nl', naam: 'Anna Bakker', taal: 'nl', status: 'confirmed', mailing_optin: true,
-       reminders_sent: 0, last_mail_at: ago(31), welcomed_at: ago(31), created_at: ago(31), mailing_stopped_at: null, laposta_removed_at: null },
+       reminders_sent: 0, last_mail_at: ago(31), welcomed_at: ago(31), created_at: ago(31), mailing_stopped_at: null, laposta_removed_at: null,
+       optin_confirmed_at: ago(31) },
   B: { id: 12, email: 'b@example.com', naam: 'Ben', taal: 'en', status: 'confirmed', mailing_optin: true,
-       reminders_sent: 1, last_mail_at: ago(30), welcomed_at: ago(60), created_at: ago(60), mailing_stopped_at: null, laposta_removed_at: null },
+       reminders_sent: 1, last_mail_at: ago(30), welcomed_at: ago(60), created_at: ago(60), mailing_stopped_at: null, laposta_removed_at: null,
+       optin_confirmed_at: ago(60) },
   C: { id: 13, email: 'c@example.nl' }
 };
 
@@ -155,4 +157,28 @@ test('REMINDER_COUNT 0 (emergency stop) -> no mails, nobody stopped or removed',
     assert.equal(s.sent, 0);
     assert.equal(calls.length, 0);
   } finally { CONFIG.REMINDER_COUNT = saved; }
+});
+
+test('REVIEW: a row without double opt-in is never mailed, even if the DB returned it', async () => {
+  const saved = ROWS.B.optin_confirmed_at; ROWS.B.optin_confirmed_at = null;
+  try {
+    const s = await runReminders(ENV, { now: NOW, log: quiet });
+    assert.equal(s.sent, 1);
+    assert.ok(!calls.some(c => c.url.includes('brevo') && c.body.includes('b@example.com')));
+  } finally { ROWS.B.optin_confirmed_at = saved; }
+});
+
+test('REVIEW: Brevo payload shape + no secrets in logs', async () => {
+  const logs = [];
+  await runReminders(ENV, { now: NOW, log: (...a) => logs.push(a.join(' ')) });
+  const m = JSON.parse(calls.find(c => c.url.includes('brevo')).body);
+  assert.deepEqual(m.sender, { name: 'Ian van Sum-IT', email: 'ian.bouman@sum-it.eu' });
+  assert.equal(m.replyTo.email, 'ian.bouman@sum-it.eu');
+  assert.equal(m.to[0].email, 'a@example.nl');
+  for (const k of ['subject', 'htmlContent', 'textContent']) assert.ok(m[k] && m[k].length > 5, k);
+  assert.match(m.headers['List-Unsubscribe'], /^<https:\/\/api\.test\/api\/afmelden\?e=a%40example\.nl&t=[\w-]{43}>/);
+  assert.equal(m.headers['List-Unsubscribe-Post'], 'List-Unsubscribe=One-Click');
+  assert.match(m.textContent, /herinnering 1 van 2/);
+  assert.doesNotMatch(m.htmlContent + m.textContent, /€\s?11/);
+  for (const l of logs) for (const sec of ['svc', 'brevo', 's3cret', 'lp']) assert.ok(!l.includes('"' + sec) && !l.includes(' ' + sec + ' '), l);
 });

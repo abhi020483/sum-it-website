@@ -26,6 +26,9 @@ export function nextAction(row, now, cfg = CONFIG) {
   if (sent >= cfg.REMINDER_COUNT) return { type: 'stop', reason: 'all reminders already sent' };
   if (row.mailing_optin !== true) return { type: 'none', reason: 'no opt-in' };
   if (row.status !== 'confirmed') return { type: 'none', reason: 'not confirmed' };
+  // REVIEW FIX: only people who confirmed their address via double opt-in
+  // (set by the Laposta webhook in DOUBLE_OPTIN mode). Single opt-in = no reminders.
+  if (!row.optin_confirmed_at) return { type: 'none', reason: 'no double opt-in' };
   const anchor = anchorOf(row);
   if (!anchor) return { type: 'none', reason: 'no start date' };
   if (now.getTime() - anchor.getTime() < cfg.REMINDER_INTERVAL_DAYS * DAY_MS) {
@@ -42,7 +45,7 @@ export function patchAfterSend(row, action, now) {
   return p;
 }
 
-const SELECT = 'id,email,naam,taal,status,mailing_optin,reminders_sent,last_mail_at,welcomed_at,created_at,mailing_stopped_at,laposta_removed_at';
+const SELECT = 'id,email,naam,taal,status,mailing_optin,optin_confirmed_at,reminders_sent,last_mail_at,welcomed_at,created_at,mailing_stopped_at,laposta_removed_at';
 
 /* Supabase REST (PostgREST) query for rows that are due. The or=() filter is
    exactly coalesce(last_mail_at, welcomed_at, created_at) <= cutoff.
@@ -53,7 +56,7 @@ export function dueQuery(now, cfg = CONFIG) {
   const or = `(last_mail_at.lte.${q},and(last_mail_at.is.null,welcomed_at.lte.${q}),` +
              `and(last_mail_at.is.null,welcomed_at.is.null,created_at.lte.${q}))`;
   return `/rest/v1/signups?select=${SELECT}` +
-    `&mailing_optin=is.true&status=eq.confirmed&mailing_stopped_at=is.null` +
+    `&mailing_optin=is.true&optin_confirmed_at=not.is.null&status=eq.confirmed&mailing_stopped_at=is.null` +
     `&reminders_sent=lt.${cfg.REMINDER_COUNT}&or=${encodeURIComponent(or)}` +
     `&order=id.asc&limit=${cfg.BATCH_LIMIT}`;
 }

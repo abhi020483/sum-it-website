@@ -6,6 +6,7 @@ Een klein programmaatje dat **elke dag om 08:17 UTC** (09:17 of 10:17 Nederlands
 
 1. Het zoekt mensen die:
    - **zelf hebben aangevinkt** dat ze mails willen (`mailing_optin` = ja),
+   - hun e-mailadres hebben **bevestigd via dubbele opt-in** (`optin_confirmed_at` gevuld; dat gebeurt alleen als `DOUBLE_OPTIN=1` in het Pages-project staat en de Laposta-lijst dubbele opt-in gebruikt). **Zolang de site op enkele opt-in draait, gaan er dus géén herinneringen uit.**
    - zich niet hebben afgemeld,
    - en wiens laatste mail van ons **30 dagen of langer** geleden is.
 2. Die mensen krijgen een herinneringsmail van "Ian" (via Brevo). Antwoorden komen bij ian.bouman@sum-it.eu.
@@ -72,7 +73,7 @@ Je ziet dan hoeveel mensen een mail **zouden** krijgen (`planned`). Er wordt nie
 **Echte run met de hand** (verstuurt wél mails, alleen naar wie aan de beurt is):
 zelfde adres zonder `&dry=1`.
 
-**Mail zelf bekijken:** zet in Supabase bij je eigen testaanmelding `mailing_optin` op true en `last_mail_at` op een datum van meer dan 30 dagen geleden, en doe een echte run.
+**Mail zelf bekijken:** zet in Supabase bij je eigen testaanmelding `mailing_optin` op true, `optin_confirmed_at` op een datum en `last_mail_at` op een datum van meer dan 30 dagen geleden, en doe een echte run.
 
 **Logboek:** Cloudflare dashboard → Workers → sum-it-reminders → Logs. Zoek op `SEND_FAILED`, `DB_UPDATE_FAILED` of `LAPOSTA_REMOVE_FAILED`.
 

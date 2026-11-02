@@ -11,7 +11,8 @@
       (this is the retry for any Laposta failure in step 1 or in /api/afmelden)
 
    Safety:
-   - never mails status 'unsubscribed', mailing_stopped_at set, or no opt-in
+   - never mails status 'unsubscribed', mailing_stopped_at set, no opt-in, or no
+     double opt-in confirmation (optin_confirmed_at)
      (checked in the database query AND again in logic.js)
    - row update uses a precondition (reminders_sent = old value), so a second
      run cannot count the same mail twice

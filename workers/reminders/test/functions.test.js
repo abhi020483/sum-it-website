@@ -68,9 +68,9 @@ test('existing founding form: mailing_optin box -> opt-in; unticked -> none; pho
   assert.equal(inserted().mailing_optin, false);
 });
 
-test('existing balie form (mandatory consent box, not sent) -> opt-in', async () => {
+test('existing balie form (mandatory consent box, not sent) -> NO reminder opt-in (REVIEW FIX)', async () => {
   await signup(post({ naam: 'B', email: 'b1@example.nl', telefoon: '', source: 'balie-tu-breda' }));
-  assert.equal(inserted().mailing_optin, true);
+  assert.equal(inserted().mailing_optin, false);
 });
 
 test('welcome mail sent -> last_mail_at recorded', async () => {
@@ -135,4 +135,41 @@ test('Laposta webhook: deleted -> stop_mailing (status kept); unsubscribed -> un
   calls = [];
   await webhook(hook([{ type: 'member', event: 'deactivated', data: { email: 'f@example.nl' } }])); // unknown reason -> safe side
   assert.ok(calls.some(c => c.url.endsWith('/rpc/unsubscribe_signup')));
+});
+
+// ---- REVIEW tests: exact payloads captured from the browser (Playwright, 2 nov 2026) ----
+test('REVIEW: browser payloads from the homepage lead form are accepted by signup.js', async () => {
+  const A = {"naam":"Piet van Dijk","email":"Piet@Voorbeeld.NL","telefoon":"(070) 123 45 67","rol":"ondernemer","taal":"nl","source":"homepage-lead","website":"","mailing_optin":false,"herinneringen":false};
+  const B = {"naam":"Sara O'Neill","email":"sara@example.co.uk","telefoon":"+44 20 7946 0958","rol":"ondernemer","taal":"en","source":"homepage-lead","website":"","mailing_optin":true,"herinneringen":true};
+  let r = await signup(post(A));
+  assert.deepEqual(await r.json(), { ok: true });
+  assert.deepEqual([inserted().email, inserted().mailing_optin, inserted().telefoon, inserted().taal], ['piet@voorbeeld.nl', false, '(070) 123 45 67', 'nl']);
+  assert.ok(calls.some(c => c.url.includes('brevo') && c.body.includes('piet@voorbeeld.nl') && c.body.includes('htmlContent')), 'welcome mail right away');
+  calls = [];
+  r = await signup(post(B));
+  assert.deepEqual(await r.json(), { ok: true });
+  assert.deepEqual([inserted().mailing_optin, inserted().taal], [true, 'en']);
+});
+
+test('REVIEW: browser payloads from founding form and aanmelden.html still accepted', async () => {
+  const F = {"naam":"Founding Tester","email":"founder@example.nl","rol":"ondernemer","bedrijfstype":"Loodgieter","boekhouder":"nee","taal":"nl","source":"site-founding500-v22","ref":"","website":"","mailing_optin":false};
+  const Bal = {"naam":"Balie Tester","email":"balie@example.nl","telefoon":"","plaats":"","rol":"ondernemer","bedrijfstype":"","boekhouder":"","taal":"nl","source":"balie-test-1","stad":"","vestiging":"test-1","ref":"","website":""};
+  for (const p of [F, Bal]) {
+    calls = [];
+    const r = await signup(post(p));
+    assert.equal(r.status, 200); assert.deepEqual(await r.json(), { ok: true });
+    assert.equal(inserted().mailing_optin, false);
+  }
+});
+
+test('REVIEW: webhook sets optin_confirmed_at only in DOUBLE_OPTIN mode', async () => {
+  const sub = env => ({ request: new Request('https://api.test/api/laposta-webhook?secret=s3cret', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ data: [{ type: 'member', event: 'subscribed', data: { email: 'G@example.nl' } }] }) }), env });
+  await webhook(sub(ENV));
+  assert.ok(!calls.some(c => c.method === 'PATCH' && String(c.body).includes('optin_confirmed_at')));
+  calls = [];
+  await webhook(sub({ ...ENV, DOUBLE_OPTIN: '1' }));
+  const p = calls.find(c => c.method === 'PATCH' && String(c.body).includes('optin_confirmed_at'));
+  assert.ok(p && p.url.includes('email=eq.g%40example.nl') && p.url.includes('optin_confirmed_at=is.null'));
 });

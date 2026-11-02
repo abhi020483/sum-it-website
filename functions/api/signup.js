@@ -52,13 +52,14 @@ function sbHeaders(env, extra = {}) {
    - homepage lead form:   herinneringen: true
    - founding form (index.js): mailing_optin: true (separate, never pre-ticked box)
    - any form:             consent: true
-   - balie form (aanmelden.html, source 'balie-*'): its only checkbox reads
-     "Ja, houd me per e-mail op de hoogte" and the form refuses to submit
-     without it, but it does not send the value -> DECISION: treat 'balie-*'
-     as opted in. Better: let that form send consent:true explicitly. */
+   - balie form (aanmelden.html, source 'balie-*'): NOT opted in.
+     REVIEW FIX: its checkbox is mandatory (the form refuses to submit without
+     it), so it is not a free choice and does not count as opt-in for reminder
+     mails (AVG art. 7(4)). If that form ever gets a separate, optional
+     reminder box, let it send herinneringen:true. */
 function isTrue(v) { return v === true || v === 'true' || v === 'ja' || v === 1 || v === '1'; }
-function wantsMailings(d, source) {
-  return isTrue(d.herinneringen) || isTrue(d.mailing_optin) || isTrue(d.consent) || /^balie-/.test(source);
+function wantsMailings(d) {
+  return isTrue(d.herinneringen) || isTrue(d.mailing_optin) || isTrue(d.consent);
 }
 
 export async function onRequestPost({ request, env }) {
@@ -79,7 +80,7 @@ export async function onRequestPost({ request, env }) {
   const stad      = String(d.stad || '').trim().slice(0, 80) || null;     // campaign city (e.g. breda)
   const vestiging = String(d.vestiging || '').replace(/[^a-z0-9-]/gi, '').slice(0, 40) || null;
   const source = String(d.source || 'site').slice(0, 60);
-  const mailingOptin = wantsMailings(d, source);
+  const mailingOptin = wantsMailings(d);
   if (!naam || !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) return json2({ ok: false, error: 'invalid' }, 400);
   // Homepage lead form: phone number is required (at least 6 digits).
   if (source === 'homepage-lead' && (!telefoon || telefoon.replace(/\D/g, '').length < 6)) {
