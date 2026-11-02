@@ -1,5 +1,11 @@
 User-agent: *
 Allow: /
 Disallow: /admin.html
+Disallow: /admin/
+Disallow: /beheer.html
+Disallow: /portal.html
+Disallow: /login.html
+Disallow: /wachtwoord.html
+Disallow: /components/header/header.html
 
 Sitemap: https://sum-it.eu/sitemap.xml

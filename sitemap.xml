@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://sum-it.eu/</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://sum-it.eu/</loc><lastmod>2026-11-02</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://sum-it.eu/blog/</loc><lastmod>2026-07-25</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sum-it.eu/tools/belastingpotje-calculator.html</loc><lastmod>2026-07-25</lastmod><priority>0.7</priority></url>
-  <url><loc>https://sum-it.eu/tools/uurtarief-calculator.html</loc><lastmod>2026-07-25</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sum-it.eu/tools/belastingpotje-calculator.html</loc><lastmod>2026-11-02</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sum-it.eu/tools/uurtarief-calculator.html</loc><lastmod>2026-11-02</lastmod><priority>0.7</priority></url>
   <url><loc>https://sum-it.eu/blog/bonnetjes-administratie-zzp.html</loc><lastmod>2026-07-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://sum-it.eu/blog/btw-voor-vakmensen.html</loc><lastmod>2026-07-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://sum-it.eu/blog/winst-per-klus-berekenen.html</loc><lastmod>2026-07-25</lastmod><priority>0.6</priority></url>
@@ -36,9 +36,9 @@
   <url><loc>https://sum-it.eu/blog/zakelijke-kosten-of-prive.html</loc><lastmod>2026-07-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://sum-it.eu/blog/zakelijke-rekening-zzp.html</loc><lastmod>2026-07-25</lastmod><priority>0.6</priority></url>
   <url><loc>https://sum-it.eu/blog/zzper-inhuren-als-zzper.html</loc><lastmod>2026-07-25</lastmod><priority>0.6</priority></url>
-  <url><loc>https://sum-it.eu/bonnetjes-scannen.html</loc><lastmod>2026-08-01</lastmod><priority>0.7</priority></url>
-  <url><loc>https://sum-it.eu/moneybird-alternatief.html</loc><lastmod>2026-08-01</lastmod><priority>0.7</priority></url>
-  <url><loc>https://sum-it.eu/e-boekhouden-alternatief.html</loc><lastmod>2026-08-01</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sum-it.eu/bonnetjes-scannen.html</loc><lastmod>2026-11-02</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sum-it.eu/moneybird-alternatief.html</loc><lastmod>2026-11-02</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sum-it.eu/e-boekhouden-alternatief.html</loc><lastmod>2026-11-02</lastmod><priority>0.7</priority></url>
   <url><loc>https://sum-it.eu/blog/aanbetaling-vragen-klant-zzp.html</loc><lastmod>2026-08-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://sum-it.eu/blog/balans-winst-verliesrekening-zzp.html</loc><lastmod>2026-08-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://sum-it.eu/blog/betalingsherinnering-aanmaning-zzp.html</loc><lastmod>2026-08-01</lastmod><priority>0.6</priority></url>
@@ -89,23 +89,23 @@
   <url><loc>https://sum-it.eu/blog/winstmarge-per-project-verhogen.html</loc><lastmod>2026-08-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://sum-it.eu/blog/zzp-samenwerken-in-collectief.html</loc><lastmod>2026-08-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://sum-it.eu/blog/zzp-starten-naast-loondienst.html</loc><lastmod>2026-08-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://sum-it.eu/community/</loc><lastmod>2026-08-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://sum-it.eu/prijzen/</loc><lastmod>2026-08-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://sum-it.eu/over-ons/</loc><lastmod>2026-08-12</lastmod><priority>0.7</priority></url>
-  <url><loc>https://sum-it.eu/voor/zzp/</loc><lastmod>2026-08-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://sum-it.eu/voor/aannemers/</loc><lastmod>2026-08-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://sum-it.eu/voor/boekhouders/</loc><lastmod>2026-08-12</lastmod><priority>0.8</priority></url>
-  <url><loc>https://sum-it.eu/functies/</loc><lastmod>2026-10-11</lastmod><priority>0.7</priority></url>
-  <url><loc>https://sum-it.eu/team/</loc><lastmod>2026-10-11</lastmod><priority>0.5</priority></url>
-  <url><loc>https://sum-it.eu/functies/bonnetjes-scannen/</loc><lastmod>2026-08-12</lastmod><priority>0.7</priority></url>
-  <url><loc>https://sum-it.eu/functies/btw-apart-zetten/</loc><lastmod>2026-08-12</lastmod><priority>0.7</priority></url>
-  <url><loc>https://sum-it.eu/functies/projecten/</loc><lastmod>2026-08-12</lastmod><priority>0.7</priority></url>
-  <url><loc>https://sum-it.eu/functies/acties/</loc><lastmod>2026-08-12</lastmod><priority>0.7</priority></url>
-  <url><loc>https://sum-it.eu/functies/facturen/</loc><lastmod>2026-09-26</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sum-it.eu/community/</loc><lastmod>2026-11-02</lastmod><priority>0.6</priority></url>
+  <url><loc>https://sum-it.eu/prijzen/</loc><lastmod>2026-11-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://sum-it.eu/over-ons/</loc><lastmod>2026-11-02</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sum-it.eu/voor/zzp/</loc><lastmod>2026-11-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://sum-it.eu/voor/aannemers/</loc><lastmod>2026-11-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://sum-it.eu/voor/boekhouders/</loc><lastmod>2026-11-02</lastmod><priority>0.8</priority></url>
+  <url><loc>https://sum-it.eu/functies/</loc><lastmod>2026-11-02</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sum-it.eu/team/</loc><lastmod>2026-11-02</lastmod><priority>0.5</priority></url>
+  <url><loc>https://sum-it.eu/functies/bonnetjes-scannen/</loc><lastmod>2026-11-02</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sum-it.eu/functies/btw-apart-zetten/</loc><lastmod>2026-11-02</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sum-it.eu/functies/projecten/</loc><lastmod>2026-11-02</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sum-it.eu/functies/acties/</loc><lastmod>2026-11-02</lastmod><priority>0.7</priority></url>
+  <url><loc>https://sum-it.eu/functies/facturen/</loc><lastmod>2026-11-02</lastmod><priority>0.7</priority></url>
   <url><loc>https://sum-it.eu/privacy.html</loc><lastmod>2026-11-02</lastmod><priority>0.3</priority></url>
-  <url><loc>https://sum-it.eu/privacy-en-veiligheid/</loc><lastmod>2026-11-01</lastmod></url>
-  <url><loc>https://sum-it.eu/algemene-voorwaarden/</loc><lastmod>2026-11-01</lastmod></url>
-  <url><loc>https://sum-it.eu/contact/</loc><lastmod>2026-11-01</lastmod></url>
+  <url><loc>https://sum-it.eu/privacy-en-veiligheid/</loc><lastmod>2026-11-02</lastmod></url>
+  <url><loc>https://sum-it.eu/algemene-voorwaarden/</loc><lastmod>2026-11-02</lastmod></url>
+  <url><loc>https://sum-it.eu/contact/</loc><lastmod>2026-11-02</lastmod></url>
   <url><loc>https://sum-it.eu/cookies/</loc><lastmod>2026-11-02</lastmod><priority>0.3</priority></url>
   <url><loc>https://sum-it.eu/account-verwijderen/</loc><lastmod>2026-11-02</lastmod></url>
   <url><loc>https://sum-it.eu/werken-bij/</loc><lastmod>2026-11-02</lastmod></url>
