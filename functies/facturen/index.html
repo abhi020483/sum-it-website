@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Facturen en offertes maken met je eigen logo | Sum-IT</title>
+<meta name="description" content="Maak offertes en facturen met je eigen logo, doorlopende factuurnummers en de verplichte gegevens. Meerdere ontwerpen en eigen kleur: binnenkort.">
+<link rel="canonical" href="https://sum-it.eu/functies/facturen/">
+<link rel="icon" href="/sum-it-favicon.png">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:title" content="Facturen en offertes maken met je eigen logo">
+<meta property="og:description" content="Maak offertes en facturen met je eigen logo, doorlopende factuurnummers en de verplichte gegevens. Meerdere ontwerpen en eigen kleur: binnenkort.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sum-it.eu/functies/facturen/">
+<meta property="og:image" content="https://sum-it.eu/og-image.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Sum-IT", "item": "https://sum-it.eu/"}, {"@type": "ListItem", "position": 2, "name": "Facturen & offertes", "item": "https://sum-it.eu/functies/facturen/"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Voldoen de facturen aan de Nederlandse factuureisen?", "acceptedAnswer": {"@type": "Answer", "text": "Sum-IT vraagt de verplichte gegevens uit en geeft elke factuur een doorlopend nummer. Een factuur wordt pas definitief als de verplichte velden zijn ingevuld."}}, {"@type": "Question", "name": "Kan ik een verstuurde factuur nog aanpassen?", "acceptedAnswer": {"@type": "Answer", "text": "Nee, dat mag volgens de regels niet. Je maakt in Sum-IT met één tik een creditfactuur en stuurt daarna een nieuwe factuur."}}, {"@type": "Question", "name": "Kan ik mijn eigen logo gebruiken?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Upload je logo in je organisatieprofiel; het komt dan op al je offertes en facturen."}}, {"@type": "Question", "name": "Wanneer komen de extra ontwerpen en kleuren?", "acceptedAnswer": {"@type": "Answer", "text": "Daar werken we aan. Maak een gratis profiel aan, dan hoor je het als eerste."}}]}</script>
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/components/header/header.css">
+<script src="/components/header/header.js" defer></script>
+<link rel="stylesheet" href="/components/footer/footer.css">
+<link rel="stylesheet" href="/css/feature.css">
+<link rel="stylesheet" href="/css/feature.css">
+<link rel="stylesheet" href="/fonts/fonts.css">
+</head>
+<body>
+<!-- site-header:start -->
+<header id="site-header" class="site-header">
+  <a class="skip-link" href="#main">Naar de inhoud</a>
+  <div class="header-wrap">
+    <div class="nav">
+      <a class="logo" href="/" aria-label="Sum-IT home"><span class="mark"><img src="/sum-it-logo-mark.svg" alt="" width="32" height="32" /></span><span class="logo-text">Sum-IT</span></a>
+      <nav class="menu" aria-label="Hoofdmenu">
+        <a href="/functies/" data-nav="features" data-i18n="m_feat">Functies</a>
+        <a href="/community/" data-nav="community" data-i18n="m_comm">Community</a>
+        <a href="/prijzen/" data-nav="pricing" data-i18n="m_price">Prijzen</a>
+        <a href="/voor/boekhouders/" data-nav="bookkeepers" data-i18n="m_bk">Boekhouders</a>
+        <a href="/privacy-en-veiligheid/" data-nav="privacy" data-i18n="m_priv">Privacy</a>
+        <a href="/team/" data-nav="team" data-i18n="m_team">Team</a>
+        <a href="/blog/" data-nav="blog" data-i18n="m_blog">Blog</a>
+      </nav>
+      <div class="right">
+        <div class="langs" role="group" aria-label="Taal / Language">
+          <button type="button" id="lang-en" lang="en" aria-pressed="false" onclick="setLang('en')">EN</button>
+          <button type="button" id="lang-nl" lang="nl" aria-pressed="true" class="on" onclick="setLang('nl')">NL</button>
+        </div>
+        <a class="navlogin" href="/login.html" data-i18n="nav_login">Inloggen</a>
+        <a class="btn small" href="https://stg.sum-it.eu/register" data-i18n="nav_cta">Gratis profiel aanmaken</a>
+        <button type="button" class="burger" id="burger" aria-label="Menu" aria-controls="mobmenu" aria-expanded="false" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobmenu" id="mobmenu">
+      <nav aria-label="Mobiel menu">
+        <a href="/functies/" data-nav="features" data-i18n="m_feat">Functies</a>
+        <a href="/functies/facturen/" data-nav="invoicing" data-i18n="m_inv">Facturen</a>
+        <a href="/functies/projecten/" data-nav="projects" data-i18n="m_proj">Projecten</a>
+        <a href="/community/" data-nav="community" data-i18n="m_comm">Community</a>
+        <a href="/prijzen/" data-nav="pricing" data-i18n="m_price">Prijzen</a>
+        <a href="/voor/boekhouders/" data-nav="bookkeepers" data-i18n="m_bk">Boekhouders</a>
+        <a href="/privacy-en-veiligheid/" data-nav="privacy" data-i18n="m_priv">Privacy</a>
+        <a href="/team/" data-nav="team" data-i18n="m_team">Team</a>
+        <a href="/blog/" data-nav="blog" data-i18n="m_blog">Blog</a>
+      </nav>
+      <div class="mobmenu-actions">
+        <a class="btn ghost" href="/login.html" data-i18n="nav_login">Inloggen</a>
+        <a class="btn" href="https://stg.sum-it.eu/register" data-i18n="nav_cta">Gratis profiel aanmaken</a>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- site-header:end -->
+<main id="main" class="fx-main">
+<section class="fx-hero"><div class="fx-in"><div>
+<div class="fx-crumb"><a href="/" data-i18n="c_home">Home</a> · <a href="/functies/" data-i18n="c_feat">Functies</a> · <span data-i18n="fa_crumb">Facturen &amp; offertes</span></div>
+<span class="fx-eyebrow" data-i18n="fa_eye">Functie · Facturen &amp; offertes</span>
+<h1 data-i18n="fa_h1">Facturen en offertes <em>met jouw logo</em>.</h1>
+<p class="fx-lead" data-i18n="fa_lead">Maak in een paar tikken een offerte, zet hem om in een factuur en houd bij wat er betaald is. Altijd met de verplichte gegevens, een doorlopend factuurnummer en jouw eigen logo.</p>
+<div class="fx-ctas"><a class="fx-btn" href="https://stg.sum-it.eu/register" data-i18n="nav_cta">Gratis profiel aanmaken</a><a class="fx-btn ghost" href="#hoe" data-i18n="fa_how">Zo werkt het ↓</a></div>
+<div class="fx-chips"><span><svg viewBox="8 8 32 32" width="18" height="18" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-4px;margin-right:6px"><path d="M16 12h16v24l-3-2-2.7 2-2.6-2-2.7 2-2.7-2-2.3 2z" stroke="currentColor" stroke-width="2"/><path d="M20 18h8M20 22h8" stroke="currentColor" stroke-width="2"/><path d="M20 27h5" stroke="#00bc7d" stroke-width="2.4"/></svg><span data-i18n="fa_c1">Eigen logo op elk document</span></span><span><svg viewBox="8 8 32 32" width="18" height="18" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-4px;margin-right:6px"><path d="M12 36h8v-6h8v-6h8v-6" stroke="currentColor" stroke-width="2"/><path d="M32 18V10l5 2-5 2" stroke="#00bc7d" stroke-width="2.4"/></svg><span data-i18n="fa_c2">Doorlopende factuurnummers</span></span><span><svg viewBox="8 8 32 32" width="18" height="18" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:-4px;margin-right:6px"><path d="M24 10c5 3 7.5 9 6 16l-2 4h-8l-2-4c-1.5-7 1-13 6-16z" stroke="currentColor" stroke-width="2"/><path d="M18.5 23.5L14 28v4l5-2.5M29.5 23.5L34 28v4l-5-2.5" stroke="currentColor" stroke-width="2"/><circle cx="24" cy="19.5" r="2.5" stroke="currentColor" stroke-width="2"/><path d="M21.5 33.5c0 2 1 3.5 2.5 5 1.5-1.5 2.5-3 2.5-5" stroke="#00bc7d" stroke-width="2.4"/></svg><span data-i18n="fa_c3">Meer ontwerpen: binnenkort</span></span></div>
+</div><div class="fx-phone-wrap"><div class="phone "><img src="/img/app/factuur-detail.jpg" alt="Factuurdetail in de Sum-IT app" loading="lazy" width="603" height="1311"></div></div></div></section><section class="fx-sec" id="hoe"><div class="fx-head"><div class="k" data-i18n="fa_k">Zo werkt het</div><h2 data-i18n="fa_h2">Van offerte tot betaalde factuur</h2></div><div class="fx-step"><div class="fx-step-txt"><span class="fx-num">1</span><h3 data-i18n="fa1_h">Maak en verstuur een offerte</h3><p data-i18n="fa1_p">Zet je werk en materiaal in een offerte, kies je klant en verstuur hem. Je ziet direct de status: concept, verzonden of geaccepteerd.</p><ul class="fx-list"><li data-i18n="fa1_l0">Klant kiezen of direct aanmaken</li><li data-i18n="fa1_l1">Geldigheidsduur instellen</li><li data-i18n="fa1_l2">Geaccepteerd? Zet hem om in een factuur</li></ul></div><div class="fx-step-vis"><div class="phone "><img src="/img/app/offertes.jpg" alt="Offertes met status in de Sum-IT app" loading="lazy" width="603" height="1311"></div></div></div><div class="fx-step rev fx-step-ic"><div class="fx-step-txt"><span class="fx-num">2</span><h3 data-i18n="fa2_h">Factureer en volg de betaling</h3><p data-i18n="fa2_p">Facturen krijgen automatisch een doorlopend nummer en alle verplichte gegevens. In je overzicht zie je wat open staat en wat betaald is. Een verstuurde factuur pas je niet meer aan; corrigeren gaat met een creditfactuur, zoals de wet vraagt.</p><ul class="fx-list"><li data-i18n="fa2_l0">Open en betaald in één overzicht</li><li data-i18n="fa2_l1">Betalingsgeschiedenis per factuur</li><li data-i18n="fa2_l2">Creditfactuur met één tik</li></ul></div><div class="fx-step-vis"><div class="fx-bigicon"><svg viewBox="0 0 48 48" width="160" height="160" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M16 12h16v24l-3-2-2.7 2-2.6-2-2.7 2-2.7-2-2.3 2z" stroke="#1a1d4f" stroke-width="2"/><path d="M20 18h8M20 22h8" stroke="#1a1d4f" stroke-width="2"/><path d="M20 27h5" stroke="#00bc7d" stroke-width="2.4"/></svg></div></div></div><div class="fx-step fx-step-ic"><div class="fx-step-txt"><span class="fx-num">3</span><h3 data-i18n="fa3_h">Jouw logo, jouw uitstraling</h3><p data-i18n="fa3_p">Upload je logo één keer in je organisatieprofiel. Het staat daarna automatisch op al je offertes en facturen, naast je bedrijfsgegevens.</p><ul class="fx-list"><li data-i18n="fa3_l0">Logo uploaden in het organisatieprofiel</li><li data-i18n="fa3_l1">Bedrijfsnaam, adres en btw-nummer automatisch</li><li data-i18n="fa3_l2">Eén strak, professioneel ontwerp</li></ul></div><div class="fx-step-vis"><div class="fx-bigicon"><svg viewBox="0 0 48 48" width="160" height="160" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M15 13h15a3 3 0 0 1 3 3v19H18a3 3 0 0 1-3-3z" stroke="#1a1d4f" stroke-width="2"/><path d="M15 32a3 3 0 0 1 3-3h15" stroke="#1a1d4f" stroke-width="2"/><path d="M20 21l3 3 5-6" stroke="#00bc7d" stroke-width="2.4"/></svg></div></div></div></section><section class="fx-sec tint"><div class="fx-wrap">
+<div class="fx-head"><div class="k" data-i18n="fa_dk">Goed om te weten</div><h2 data-i18n="fa_dh">Offerte of factuur: wat is het verschil?</h2><p data-i18n="fa_dp">Ze lijken op elkaar, maar ze doen iets heel anders. Sum-IT houdt ze daarom ook duidelijk uit elkaar.</p></div>
+<div class="fx-compare">
+<div class="fx-card"><h3 data-i18n="fa_o_h">Offerte</h3><ul class="fx-list">
+<li data-i18n="fa_o1">Een voorstel: wat je gaat doen en wat het kost</li>
+<li data-i18n="fa_o2">Geldig tot een datum die jij kiest</li>
+<li data-i18n="fa_o3">Je klant kan akkoord geven of afwijzen</li>
+<li data-i18n="fa_o4">Telt nog niet mee voor je btw</li>
+<li data-i18n="fa_o5">Nummer als OFF-2026-001</li></ul></div>
+<div class="fx-card"><h3 data-i18n="fa_f_h">Factuur</h3><ul class="fx-list">
+<li data-i18n="fa_f1">Een betaalverzoek voor geleverd werk</li>
+<li data-i18n="fa_f2">Moet voldoen aan de wettelijke factuureisen</li>
+<li data-i18n="fa_f3">Doorlopend factuurnummer, automatisch</li>
+<li data-i18n="fa_f4">Telt mee in je btw-aangifte</li>
+<li data-i18n="fa_f5">Na versturen niet meer aan te passen, wel te crediteren</li></ul></div>
+</div></div></section>
+
+<section class="fx-sec">
+<div class="fx-head"><span class="fx-soon" data-i18n="fa_soon">Binnenkort</span><h2 style="margin-top:14px" data-i18n="fa_sh">Kies straks je eigen ontwerp en kleur</h2>
+<p data-i18n="fa_sp">Nu maak je facturen en offertes in één professioneel ontwerp, met jouw logo. Binnenkort kies je uit meerdere ontwerpen en stel je je eigen accentkleur in, zodat elk document er helemaal uitziet als jouw bedrijf.</p></div>
+<div class="fx-cards">
+<div class="fx-card"><span class="fx-soon" data-i18n="fa_s1b">Binnenkort</span><h3 style="margin-top:10px" data-i18n="fa_s1h">Meerdere ontwerpen</h3><p data-i18n="fa_s1p">Van zakelijk tot modern: kies de stijl die bij je bedrijf past.</p></div>
+<div class="fx-card"><span class="fx-soon" data-i18n="fa_s2b">Binnenkort</span><h3 style="margin-top:10px" data-i18n="fa_s2h">Eigen accentkleur</h3><p data-i18n="fa_s2p">Kies één kleur en al je offertes en facturen volgen die.</p></div>
+<div class="fx-card"><span class="fx-soon" style="background:var(--c-green-50);color:var(--c-green-700)" data-i18n="fa_s3b">Nu beschikbaar</span><h3 style="margin-top:10px" data-i18n="fa_s3h">Eigen logo</h3><p data-i18n="fa_s3p">Upload je logo en het staat op elk document.</p></div>
+</div></section><section class="fx-sec tint"><div class="fx-wrap"><div class="fx-head"><h2 data-i18n="fa_faqh">Veelgestelde vragen</h2></div><div class="fx-faq"><details><summary data-i18n="fa_q1">Voldoen de facturen aan de Nederlandse factuureisen?</summary><p data-i18n="fa_a1">Sum-IT vraagt de verplichte gegevens uit en geeft elke factuur een doorlopend nummer. Een factuur wordt pas definitief als de verplichte velden zijn ingevuld.</p></details><details><summary data-i18n="fa_q2">Kan ik een verstuurde factuur nog aanpassen?</summary><p data-i18n="fa_a2">Nee, dat mag volgens de regels niet. Je maakt in Sum-IT met één tik een creditfactuur en stuurt daarna een nieuwe factuur.</p></details><details><summary data-i18n="fa_q3">Kan ik mijn eigen logo gebruiken?</summary><p data-i18n="fa_a3">Ja. Upload je logo in je organisatieprofiel; het komt dan op al je offertes en facturen.</p></details><details><summary data-i18n="fa_q4">Wanneer komen de extra ontwerpen en kleuren?</summary><p data-i18n="fa_a4">Daar werken we aan. Maak een gratis profiel aan, dan hoor je het als eerste.</p></details></div></div></section><section class="fx-sec" style="padding-bottom:0;padding-top:24px"><div class="fx-cta"><h2 data-i18n="fa_ctah">Probeer het zelf, gratis</h2><p data-i18n="fa_ctap">Maak een gratis profiel aan. Geen creditcard nodig.</p><a class="fx-btn" href="https://stg.sum-it.eu/register" data-i18n="nav_cta">Gratis profiel aanmaken</a><div class="fx-related"><a href="/functies/projecten/" data-i18n="fa_r0">Winst per klus</a><a href="/functies/btw-apart-zetten/" data-i18n="fa_r1">Btw apart zetten</a><a href="/prijzen/" data-i18n="fa_r2">Prijzen</a></div></div></section>
+</main>
+<footer>
+<span data-i18n="c_foot">Sum-IT is een product van Alpha Nova B.V. · Alle data in de EU</span> ·
+<a href="/blog/" data-i18n="c_blog">Blog</a> ·
+<a href="/privacy.html" data-i18n="c_priv">Privacyverklaring</a> ·
+<a href="/">sum-it.eu</a>
+<div class="legal-line" style="flex-basis:100%;width:100%;margin-top:10px;font-size:.82rem;opacity:.85;line-height:1.7">Alpha Nova B.V. · KvK 42199339 · Maasdijk 14, 4284 VA Rijswijk · <a href="mailto:hallo@sum-it.eu">hallo@sum-it.eu</a><br><a href="/algemene-voorwaarden/" data-i18n="c_av">Algemene voorwaarden</a> · <a href="/privacy.html" data-i18n="c_priv">Privacyverklaring</a> · <a href="/privacy-en-veiligheid/" data-i18n="c_privsec">Privacy &amp; veiligheid</a> · <a href="/cookies/" data-i18n="c_cookies">Cookies</a> · <a href="#" data-cookie-settings data-i18n="c_cookieset">Cookie-instellingen</a> · <a href="/contact/" data-i18n="c_contact">Contact</a></div><!-- site-socials:start --><div class="site-socials"><a href="https://www.linkedin.com/company/sum-it-eu/" target="_blank" rel="noopener" title="LinkedIn" aria-label="Sum-IT · LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21H9z"/></svg></a><a href="https://www.instagram.com/sumit.eu/" target="_blank" rel="noopener" title="Instagram" aria-label="Sum-IT · Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm6.4-8.4a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/></svg></a><a href="https://x.com/SumITEurope" target="_blank" rel="noopener" title="X" aria-label="Sum-IT · X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L1.5 2H8l4.4 5.8zm-1.1 18h1.7L7 3.7H5.2z"/></svg></a></div><!-- site-socials:end --></footer>
+<script>
+window.PAGE_I18N={
+"nl": {
+"fa_crumb": "Facturen &amp; offertes",
+"fa_eye": "Functie · Facturen &amp; offertes",
+"fa_h1": "Facturen en offertes <em>met jouw logo</em>.",
+"fa_lead": "Maak in een paar tikken een offerte, zet hem om in een factuur en houd bij wat er betaald is. Altijd met de verplichte gegevens, een doorlopend factuurnummer en jouw eigen logo.",
+"fa_how": "Zo werkt het ↓",
+"fa_c1": "Eigen logo op elk document",
+"fa_c2": "Doorlopende factuurnummers",
+"fa_c3": "Meer ontwerpen: binnenkort",
+"fa_k": "Zo werkt het",
+"fa_h2": "Van offerte tot betaalde factuur",
+"fa1_l0": "Klant kiezen of direct aanmaken",
+"fa1_l1": "Geldigheidsduur instellen",
+"fa1_l2": "Geaccepteerd? Zet hem om in een factuur",
+"fa1_h": "Maak en verstuur een offerte",
+"fa1_p": "Zet je werk en materiaal in een offerte, kies je klant en verstuur hem. Je ziet direct de status: concept, verzonden of geaccepteerd.",
+"fa2_l0": "Open en betaald in één overzicht",
+"fa2_l1": "Betalingsgeschiedenis per factuur",
+"fa2_l2": "Creditfactuur met één tik",
+"fa2_h": "Factureer en volg de betaling",
+"fa2_p": "Facturen krijgen automatisch een doorlopend nummer en alle verplichte gegevens. In je overzicht zie je wat open staat en wat betaald is. Een verstuurde factuur pas je niet meer aan; corrigeren gaat met een creditfactuur, zoals de wet vraagt.",
+"fa3_l0": "Logo uploaden in het organisatieprofiel",
+"fa3_l1": "Bedrijfsnaam, adres en btw-nummer automatisch",
+"fa3_l2": "Eén strak, professioneel ontwerp",
+"fa3_h": "Jouw logo, jouw uitstraling",
+"fa3_p": "Upload je logo één keer in je organisatieprofiel. Het staat daarna automatisch op al je offertes en facturen, naast je bedrijfsgegevens.",
+"fa_dk": "Goed om te weten",
+"fa_dh": "Offerte of factuur: wat is het verschil?",
+"fa_dp": "Ze lijken op elkaar, maar ze doen iets heel anders. Sum-IT houdt ze daarom ook duidelijk uit elkaar.",
+"fa_o_h": "Offerte",
+"fa_o1": "Een voorstel: wat je gaat doen en wat het kost",
+"fa_o2": "Geldig tot een datum die jij kiest",
+"fa_o3": "Je klant kan akkoord geven of afwijzen",
+"fa_o4": "Telt nog niet mee voor je btw",
+"fa_o5": "Nummer als OFF-2026-001",
+"fa_f_h": "Factuur",
+"fa_f1": "Een betaalverzoek voor geleverd werk",
+"fa_f2": "Moet voldoen aan de wettelijke factuureisen",
+"fa_f3": "Doorlopend factuurnummer, automatisch",
+"fa_f4": "Telt mee in je btw-aangifte",
+"fa_f5": "Na versturen niet meer aan te passen, wel te crediteren",
+"fa_soon": "Binnenkort",
+"fa_sh": "Kies straks je eigen ontwerp en kleur",
+"fa_sp": "Nu maak je facturen en offertes in één professioneel ontwerp, met jouw logo. Binnenkort kies je uit meerdere ontwerpen en stel je je eigen accentkleur in, zodat elk document er helemaal uitziet als jouw bedrijf.",
+"fa_s1b": "Binnenkort",
+"fa_s1h": "Meerdere ontwerpen",
+"fa_s1p": "Van zakelijk tot modern: kies de stijl die bij je bedrijf past.",
+"fa_s2b": "Binnenkort",
+"fa_s2h": "Eigen accentkleur",
+"fa_s2p": "Kies één kleur en al je offertes en facturen volgen die.",
+"fa_s3b": "Nu beschikbaar",
+"fa_s3h": "Eigen logo",
+"fa_s3p": "Upload je logo en het staat op elk document.",
+"fa_q1": "Voldoen de facturen aan de Nederlandse factuureisen?",
+"fa_a1": "Sum-IT vraagt de verplichte gegevens uit en geeft elke factuur een doorlopend nummer. Een factuur wordt pas definitief als de verplichte velden zijn ingevuld.",
+"fa_q2": "Kan ik een verstuurde factuur nog aanpassen?",
+"fa_a2": "Nee, dat mag volgens de regels niet. Je maakt in Sum-IT met één tik een creditfactuur en stuurt daarna een nieuwe factuur.",
+"fa_q3": "Kan ik mijn eigen logo gebruiken?",
+"fa_a3": "Ja. Upload je logo in je organisatieprofiel; het komt dan op al je offertes en facturen.",
+"fa_q4": "Wanneer komen de extra ontwerpen en kleuren?",
+"fa_a4": "Daar werken we aan. Maak een gratis profiel aan, dan hoor je het als eerste.",
+"fa_faqh": "Veelgestelde vragen",
+"fa_r0": "Winst per klus",
+"fa_r1": "Btw apart zetten",
+"fa_r2": "Prijzen",
+"fa_ctah": "Probeer het zelf, gratis",
+"fa_ctap": "Maak een gratis profiel aan. Geen creditcard nodig."
+},
+"en": {
+"fa_crumb": "Invoices &amp; quotes",
+"fa_eye": "Feature · Invoices &amp; quotes",
+"fa_h1": "Invoices and quotes <em>with your logo</em>.",
+"fa_lead": "Create a quote in a few taps, turn it into an invoice and track what has been paid. Always with the required details, a sequential invoice number and your own logo.",
+"fa_how": "How it works ↓",
+"fa_c1": "Your logo on every document",
+"fa_c2": "Sequential invoice numbers",
+"fa_c3": "More designs: coming soon",
+"fa_k": "How it works",
+"fa_h2": "From quote to paid invoice",
+"fa1_l0": "Pick a customer or create one on the spot",
+"fa1_l1": "Set a validity period",
+"fa1_l2": "Accepted? Turn it into an invoice",
+"fa1_h": "Create and send a quote",
+"fa1_p": "Put your labour and materials in a quote, pick your customer and send it. You see the status instantly: draft, sent or accepted.",
+"fa2_l0": "Open and paid in one overview",
+"fa2_l1": "Payment history per invoice",
+"fa2_l2": "Credit note in one tap",
+"fa2_h": "Invoice and track payment",
+"fa2_p": "Invoices automatically get a sequential number and all required details. Your overview shows what is open and what is paid. A sent invoice is never edited; corrections are made with a credit note, as the law requires.",
+"fa3_l0": "Upload your logo in the organisation profile",
+"fa3_l1": "Company name, address and VAT number automatically",
+"fa3_l2": "One clean, professional design",
+"fa3_h": "Your logo, your look",
+"fa3_p": "Upload your logo once in your organisation profile. It then appears automatically on all your quotes and invoices, next to your company details.",
+"fa_dk": "Good to know",
+"fa_dh": "Quote or invoice: what is the difference?",
+"fa_dp": "They look alike, but they do very different things. That is why Sum-IT keeps them clearly apart.",
+"fa_o_h": "Quote",
+"fa_o1": "A proposal: what you will do and what it costs",
+"fa_o2": "Valid until a date you choose",
+"fa_o3": "Your customer can accept or decline",
+"fa_o4": "Does not count towards your VAT yet",
+"fa_o5": "Numbered like OFF-2026-001",
+"fa_f_h": "Invoice",
+"fa_f1": "A payment request for work delivered",
+"fa_f2": "Must meet the legal invoice requirements",
+"fa_f3": "Sequential invoice number, automatically",
+"fa_f4": "Counts towards your VAT return",
+"fa_f5": "Cannot be edited once sent, but can be credited",
+"fa_soon": "Coming soon",
+"fa_sh": "Soon: choose your own design and colour",
+"fa_sp": "Today you create invoices and quotes in one professional design, with your logo. Soon you can choose from several designs and set your own accent colour, so every document looks entirely like your business.",
+"fa_s1b": "Soon",
+"fa_s1h": "Multiple designs",
+"fa_s1p": "From business to modern: choose the style that suits your company.",
+"fa_s2b": "Soon",
+"fa_s2h": "Your own accent colour",
+"fa_s2p": "Pick one colour and all your quotes and invoices follow it.",
+"fa_s3b": "Available now",
+"fa_s3h": "Your own logo",
+"fa_s3p": "Upload your logo and it appears on every document.",
+"fa_q1": "Do the invoices meet Dutch invoice requirements?",
+"fa_a1": "Sum-IT asks for the required details and gives every invoice a sequential number. An invoice is only finalised once the required fields are filled in.",
+"fa_q2": "Can I edit an invoice after sending?",
+"fa_a2": "No, the rules do not allow that. In Sum-IT you create a credit note in one tap and then send a new invoice.",
+"fa_q3": "Can I use my own logo?",
+"fa_a3": "Yes. Upload your logo in your organisation profile; it then appears on all your quotes and invoices.",
+"fa_q4": "When do the extra designs and colours arrive?",
+"fa_a4": "We are working on it. Create a free profile and you will be the first to know.",
+"fa_faqh": "Frequently asked questions",
+"fa_r0": "Profit per job",
+"fa_r1": "VAT set aside",
+"fa_r2": "Pricing",
+"fa_ctah": "Try it yourself, for free",
+"fa_ctap": "Create a free profile. No credit card needed."
+}
+};
+</script>
+<script src="/i18n.js" defer></script>
+<script src="/js/consent.js" defer></script>
+</body>
+</html>
