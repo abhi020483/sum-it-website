@@ -7,7 +7,7 @@ const I18N = {
         hs3: "Projects: profit per job, live",
         hs4: "Quotes: from draft to accepted",
         hs5: "VAT: prepared per box",
-        c_av: "Terms and conditions", c_priv: "Privacy statement", c_privsec: "Privacy &amp; security", c_cookies: "Cookies", c_cookieset: "Cookie settings", c_contact: "Contact", m_priv: "Privacy",
+        c_av: "Terms and conditions", c_priv: "Privacy statement", c_privsec: "Privacy &amp; security", c_cookies: "Cookies", c_cookieset: "Cookie settings", c_delacc: "Delete account", c_contact: "Contact", m_priv: "Privacy",
         m_bk: "Bookkeepers",
         ov_k: "What Sum-IT does",
         ov_h2: "You're on site. Sum-IT does your admin.",
@@ -70,7 +70,7 @@ const I18N = {
         hero_proof_title: "See the workflow",
         hero_proof_body: "from receipt to clearer numbers",
         hb1: "Privacy first",
-        hb2: "Data stays in the EU",
+        hb2: "Data stored in the EU",
         hb3: "Works with Dutch VAT",
         a_dash: "Dashboard",
         a_dashsub: "Overview of your finances",
@@ -397,7 +397,7 @@ const I18N = {
         bk_r3: "Shoeboxes of crumpled receipts",
         trh: "Your data is safe",
         trmore: "Read how we protect your data →",
-        trb: "Everything stays in the EU. Built to the privacy law (GDPR) and well secured. Records your bookkeeper and the tax office can rely on.",
+        trb: "Everything is stored in the EU. Built to the privacy law (GDPR) and well secured. Records your bookkeeper and the tax office can rely on.",
         tm_k: "The team",
         tm_h2: "By entrepreneurs, for entrepreneurs",
         tm_lead:
@@ -452,7 +452,7 @@ const I18N = {
         f_no: "No, I do it myself",
         f_btn: "Create my free profile",
         f_priv:
-            "You'll get a welcome email right away with your profile and your personal link. Your data stays in the EU. <a href='/privacy.html'>Read our privacy statement</a>.",
+            "You'll get a welcome email right away with your profile and your personal link. Your data is stored in the EU. <a href='/privacy.html'>Read our privacy statement</a>.",
         t_pos: "you're in the queue (demo)",
         t_body:
             "Check your inbox for our confirmation email, then share your personal link with your crew:",
@@ -506,7 +506,7 @@ const I18N = {
         hs3: "Projecten: winst per klus, live",
         hs4: "Offertes: van concept tot akkoord",
         hs5: "Btw: per rubriek voorbereid",
-        c_av: "Algemene voorwaarden", c_priv: "Privacyverklaring", c_privsec: "Privacy &amp; veiligheid", c_cookies: "Cookies", c_cookieset: "Cookie-instellingen", c_contact: "Contact", m_priv: "Privacy",
+        c_av: "Algemene voorwaarden", c_priv: "Privacyverklaring", c_privsec: "Privacy &amp; veiligheid", c_cookies: "Cookies", c_cookieset: "Cookie-instellingen", c_delacc: "Account verwijderen", c_contact: "Contact", m_priv: "Privacy",
         m_bk: "Boekhouders",
         ov_k: "Wat Sum-IT doet",
         ov_h2: "Jij staat op de bouwplaats. Sum-IT doet je administratie.",
@@ -569,7 +569,7 @@ const I18N = {
         hero_proof_title: "Bekijk de workflow",
         hero_proof_body: "van bonnetje naar helder overzicht",
         hb1: "Privacy voorop",
-        hb2: "Data blijft in de EU",
+        hb2: "Data opgeslagen in de EU",
         hb3: "Rekent met Nederlandse btw",
         a_dash: "Dashboard",
         a_dashsub: "Overzicht van je financiën",
@@ -899,7 +899,7 @@ const I18N = {
         bk_r3: "Schoenendozen vol bonnetjes",
         trh: "Je gegevens zijn veilig",
         trmore: "Lees hoe we je data beschermen →",
-        trb: "Alles blijft in de EU. Gebouwd volgens de privacywet (AVG) en goed beveiligd. Een administratie waar je boekhouder én de Belastingdienst op kunnen bouwen.",
+        trb: "Alles wordt opgeslagen in de EU. Gebouwd volgens de privacywet (AVG) en goed beveiligd. Een administratie waar je boekhouder én de Belastingdienst op kunnen bouwen.",
         tm_k: "Het team",
         tm_h2: "Van ondernemers, voor ondernemers",
         tm_lead:
@@ -955,7 +955,7 @@ const I18N = {
         f_no: "Nee, ik doe het zelf",
         f_btn: "Maak mijn gratis profiel aan",
         f_priv:
-            "Je krijgt meteen een welkomstmail met je profiel en je persoonlijke link. Je gegevens blijven in de EU. <a href='/privacy.html'>Lees onze privacyverklaring</a>.",
+            "Je krijgt meteen een welkomstmail met je profiel en je persoonlijke link. Je gegevens worden opgeslagen in de EU. <a href='/privacy.html'>Lees onze privacyverklaring</a>.",
         t_pos: "je staat in de rij (demo)",
         t_body:
             "Check je inbox voor onze bevestigingsmail en deel daarna je persoonlijke link met je crew:",
