@@ -174,3 +174,24 @@ Alles wat alleen op live stond (CNAME, aanmeld-API in `functions/`, Google-verif
   - "Geen instapprijs die later duurder wordt" is vervangen door "Na de 3 gratis maanden betaal je gewoon €11 per maand"
 - **AV art. 6.3**: "Eerste 3 maanden gratis" na activering. Het einde van de gratis periode wordt minimaal 30 dagen vooraf aangekondigd in de app.
 - **Beslissing**: de 0,5% platformvergoeding (art. 7) blijft gelden tijdens de gratis maanden, alleen het abonnement is gratis. Moet de 0,5% ook vervallen, dan pas ik art. 6.3 en de teksten aan.
+
+## Ronde 8 (2 nov 2026): teksten van Kyselka (documenten 01 en 02, menselijk herschreven)
+- **Overgenomen** (waar het onderdeel nog bestaat):
+  - Homepage hero: aankondiging, intro, knop, kleine tekst, badges en "Voor vakmensen en kleine teams"
+  - het label "Zo werkt het"
+  - het overzichtsblok ("Jij staat op de bouwplaats. Sum-IT doet je administratie." en 3 kaarten)
+  - het prijsblok: kop, tekst en lijstje; het bovenlabel, "Jij stuurt de roadmap" en "Fair use" zijn weggehaald, zoals zij vroeg
+  - privacyblok, blogkop, team-intro en Sebastians korte bio
+  - het aanmeldformulier: label, tekst, lijstje (visitekaartje en "directe lijn" weg), opt-in en kleine tekst
+  - Functies: kop "Jij staat op de bouw. Sum-IT doet de papieren.", intro, 3 kaarten, slotblok en paginatitel
+  - het slotblok "Begin gratis. De rest komt wanneer jij wil." op Prijzen, Team en Functies
+  - Projecten: het volledige artikel onder "Meer weten" (korter, 2 min lezen), met FAQ, slotblok en paginatitel
+- **Aangepast bij het overnemen:**
+  - "zet je btw apart" is "rekent uit hoeveel btw je apart zet" geworden (Sum-IT zet zelf geen geld apart)
+  - "eerste 150: drie maanden gratis" is "de eerste 3 maanden gratis" geworden
+  - de prijs staat erbij "excl. btw"
+- **Niet overgenomen** (dat onderdeel staat niet meer op de site of past niet meer):
+  - het probleemblok, de factuurontwerpen (de site belooft nu 1 ontwerp + logo), het projectenblok op de homepage, het belastingblok, het netwerk/de kaart, "ploeg uitnodigen", de visitekaartjesmaker, referral en de boekhoudersblok op de homepage
+  - de facturenpagina (32 ontwerpen past niet bij "1 ontwerp + eigen logo")
+  - de teamkop "Wij weten hoe het is" (Ian koos "Van ondernemers, voor ondernemers")
+  - de bio "Kent de Nederlandse kleine ondernemer…" (die past bij geen van de drie founders)
