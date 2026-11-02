@@ -7,7 +7,7 @@ const I18N = {
         lead_ph_name: "Your name", lead_ph_tel: "Phone number", lead_ph_mail: "Email address",
         lead_btn: "Send me more info first", lead_sending: "Sending...",
         lead_optin: "Also send me 2 reminders (1 per month).",
-        lead_fine: "We never share your details with third parties. <a href=\"/privacy.html#formulier\">Privacy</a>",
+        lead_fine: "You get an info email and max. 2 reminders. We never share your details with third parties. <a href=\"/privacy.html#formulier\">Privacy</a>",
         lead_ok: "Done! Check your email.", lead_go: "Done! Taking you to sign up...",
         lead_err_name: "Please fill in your name.", lead_err_tel: "Please enter a valid phone number (at least 10 digits).", lead_err_mail: "Please enter a valid email address.",
         lead_err: "That did not work. Try again in a moment.",
@@ -516,7 +516,7 @@ const I18N = {
         lead_ph_name: "Je naam", lead_ph_tel: "Telefoonnummer", lead_ph_mail: "E-mailadres",
         lead_btn: "Stuur me eerst meer info", lead_sending: "Even geduld...",
         lead_optin: "Stuur me ook 2 herinneringen (1 per maand).",
-        lead_fine: "We delen je gegevens nooit met derden. <a href=\"/privacy.html#formulier\">Privacy</a>",
+        lead_fine: "Je krijgt een infomail en max. 2 herinneringen. We delen je gegevens nooit met derden. <a href=\"/privacy.html#formulier\">Privacy</a>",
         lead_ok: "Gelukt! Check je mail.", lead_go: "Gelukt! We sturen je door naar aanmelden...",
         lead_err_name: "Vul je naam in.", lead_err_tel: "Vul een geldig telefoonnummer in (minimaal 10 cijfers).", lead_err_mail: "Vul een geldig e-mailadres in.",
         lead_err: "Dat lukte niet. Probeer het zo nog eens.",
@@ -2042,7 +2042,7 @@ document
         ok.hidden = true;
         if (msg) { err.textContent = msg; err.hidden = false; return; }
         err.hidden = true;
-        var remind = document.getElementById("lead-remind").checked;
+        var remind = true; // reminders always on; stated above the buttons (Ian, 2 nov)
         var payload = {
             naam: naam,
             email: email,

@@ -9177,12 +9177,12 @@ html {
 
 /* ---- Onboarding form = the green block (#pricing) ----
    Fields left, buttons right, one small footer line. */
-#pricing .offer2.onb{padding:30px 34px;text-align:left;max-width:860px;margin-left:auto;margin-right:auto;border-radius:24px}
+#pricing .offer2.onb{padding:30px 34px;text-align:left;max-width:none;border-radius:24px}
 .onb-form{position:relative}
 .onb-head{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin:0 0 16px}
 #pricing .offer2.onb h2{margin:0;font-size:clamp(22px,2.4vw,28px);line-height:1.2}
 .onb-promo{display:inline-block;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);font-size:.85rem;color:#fff}
-.onb-grid{display:grid;grid-template-columns:1fr 240px;gap:14px;align-items:center}
+.onb-grid{display:grid;grid-template-columns:1fr 280px;gap:14px;align-items:center}
 .onb-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .onb-fields input{width:100%;box-sizing:border-box;height:42px;padding:0 14px;border-radius:12px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.96);color:#11143a;font:inherit;font-size:.92rem;margin:0}
 .onb-fields input[type=email]{grid-column:1/-1}
