@@ -56,6 +56,7 @@ export async function onRequestPost({ request, env }) {
   const naam = String(d.naam || '').trim().slice(0, 120);
   const rol = d.rol === 'boekhouder' ? 'boekhouder' : 'ondernemer';
   const taal = d.taal === 'en' ? 'en' : 'nl';
+  const optin = d.mailing_optin === true; // separate, never pre-ticked mailing consent
   // Counter-signup extras (Breda balie-actie). Stored so Ian can call back.
   const telefoon  = String(d.telefoon || '').replace(/[^\d+\s()-]/g, '').trim().slice(0, 40) || null;
   const plaats    = String(d.plaats || '').trim().slice(0, 80) || null;   // vakman's own town -> city
@@ -148,7 +149,7 @@ export async function onRequestPost({ request, env }) {
       const rows = cr.ok ? await cr.json().catch(() => null) : null;
       const row = Array.isArray(rows) ? rows[0] : rows;
       if (row && row.queue_pos && await markWelcomed(env, email)) {
-        await sendWelcome(env, email, row.queue_pos, row.ref_code, row.taal);
+        await sendWelcome(env, email, { naam, refCode: row.ref_code, taal: row.taal || taal, optin });
       }
     } catch { /* webhook remains as fallback */ }
   }

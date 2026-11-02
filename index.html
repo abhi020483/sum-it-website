@@ -334,6 +334,8 @@
                   autocomplete="email"
                   placeholder="you@business.nl"
                   data-i18n-ph="f_mail_ph" />
+                <label for="telefoon" data-i18n="f_tel">Phone number (optional)</label>
+                <input type="tel" id="telefoon" name="telefoon" autocomplete="tel" inputmode="tel" placeholder="06 12345678" />
                 <div id="biz-fields">
                   <label for="type" data-i18n="f_type">What kind of business do
                     you run?</label>
@@ -369,7 +371,8 @@
                   type="hidden"
                   name="source"
                   value="site-founding500-v8" />
-                <input type="hidden" name="ref" id="reffield" value />
+                <label for="reffield" data-i18n="f_ref">Got a share code from a friend? (optional)</label>
+                <input type="text" name="ref" id="reffield" value autocomplete="off" maxlength="6" style="text-transform:uppercase;letter-spacing:.12em" placeholder="ABC123" />
                 <label class="optin" for="mailing-optin">
                   <input type="checkbox" id="mailing-optin" name="mailing_optin" value="ja" />
                   <span data-i18n="f_optin">Send me news about Sum-IT now and then (at most once a month). Unsubscribe any time.</span>
@@ -383,60 +386,15 @@
                   Create my free profile
                 </button>
                 <p class="form-err" id="form-err" role="alert" hidden></p>
-                <p class="fineprint" data-i18n="f_priv">You'll get a welcome email right away with your profile and your personal link. Your data is stored in the EU. <a href='/privacy.html'>Read our privacy statement</a>.</a>.
+                <p class="fineprint" data-i18n="f_priv">You'll get a welcome email right away with your profile and your personal link. Your data is stored in the EU. <a href='/privacy.html'>Read our privacy statement</a>.
                 </p>
               </form>
             </div>
             <div class="thanks" id="thanks-state">
               <div class="qpos" style="justify-content: center">
-                <b>✓</b><span data-i18n="t_pos">you're in the queue
-                  (demo)</span>
+                <b>✓</b><span data-i18n="t_pos">you're signed up</span>
               </div>
-              <p
-                style="
-                  text-align: center;
-                  color: var(--slate);
-                  font-size: 13.5px;
-                  margin: 8px 0 4px;
-                "
-                data-i18n="t_body">
-                Check your inbox for our confirmation email, then share your
-                personal link with your crew:
-              </p>
-              <div class="linkbox">
-                <input
-                  readonly
-                  value="sum-it.eu/?ref=DEMO42"
-                  id="reflink2" /><button onclick="copyRef2(this)"
-                  data-i18n="t_copy">
-                  Copy
-                </button>
-              </div>
-              <p
-                style="text-align: center; font-size: 12.5px; margin-top: 10px">
-                <a
-                  href="/portal.html"
-                  style="color: var(--green-d); font-weight: 700"
-                  data-i18n="t_portal">Open your member portal →</a>
-              </p>
-              <div class="socrow">
-                <a class="soc" id="sh-wa" title="WhatsApp" target="_blank"><svg
-                    viewBox="0 0 24 24">
-                    <path
-                      d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5 14.2c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.7 1.8.8 1.9c.1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1l.9-1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.4 0 .1 0 .7-.2 1.1z" /></svg></a>
-                <a class="soc" id="sh-li" title="LinkedIn" target="_blank"><svg
-                    viewBox="0 0 24 24">
-                    <path
-                      d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21H9z" /></svg></a>
-                <a class="soc" id="sh-x" title="X" target="_blank"><svg
-                    viewBox="0 0 24 24">
-                    <path
-                      d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L1.5 2H8l4.4 5.8zm-1.1 18h1.7L7 3.7H5.2z" /></svg></a>
-                <a class="soc" id="sh-mail" title="E-mail" href="mailto:?subject=Sum-IT&amp;body=https%3A%2F%2Fsum-it.eu%2F"><svg
-                    viewBox="0 0 24 24">
-                    <path
-                      d="M2 4h20v16H2zm2 2v.5l8 5.3 8-5.3V6zm16 12V9l-8 5.3L4 9v9z" /></svg></a>
-              </div>
+              <p style="text-align: center; color: var(--slate); font-size: 14px; margin: 10px 0 4px" data-i18n="t_body">Check your inbox. Your personal share code is in there: share it and you both get an extra month free.</p>
             </div>
           </div>
         </div>

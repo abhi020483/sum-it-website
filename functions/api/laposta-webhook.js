@@ -46,7 +46,8 @@ export async function onRequestPost({ request, env }) {
         const link = 'https://sum-it.eu/?ref=' + row.ref_code;
         // 2) welcome mail (Brevo) — only if it wasn't sent at signup time already
         if (await markWelcomed(env, email)) {
-          await sendWelcome(env, email, row.queue_pos, row.ref_code, row.taal);
+          const cf = (m.custom_fields || {});
+          await sendWelcome(env, email, { naam: cf.naam || '', refCode: row.ref_code, taal: row.taal, optin: String(cf.mailing || '') === 'ja' });
         }
         // 3) write position + link back to Laposta custom fields
         if (env.LAPOSTA_API_KEY && env.LAPOSTA_LIST_ID) {

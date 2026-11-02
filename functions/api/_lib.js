@@ -1,3 +1,4 @@
+import { MAIL_TPL } from './_mail.js';
 /* Shared helpers for the Pages Functions: welcome mail + once-only guard.
    Env: SUPABASE_URL, SUPABASE_SERVICE_KEY, BREVO_API_KEY, MAIL_FROM
    Optional: ADMIN_NOTIFY_EMAIL (comma-separated; default admin.alpha.nova@gmail.com) */
@@ -43,84 +44,6 @@ export function sbHeaders(env, extra = {}) {
            'Content-Type': 'application/json', ...extra };
 }
 
-// ---- Branded welcome email (email-safe: tables + inline styles) ----
-const MAIL_LOGO = 'https://sum-it.eu/sum-it-logo-h-white.png';
-const C = { green: '#00BC7D', navy: '#1b1b4a', ink: '#3a3a55', mute: '#8a8ca0',
-            mint: '#e9fbf3', mintB: '#bff0dc', card: '#f4f5f9' };
-
-function welcomeMail(t, pos, link, setup) {
-  const cta = setup
-    ? `<tr><td style="padding:2px 40px 0">
-         <a href="${setup}" style="display:inline-block;background:${C.green};color:#ffffff;text-decoration:none;font-weight:bold;font-size:16px;padding:15px 32px;border-radius:999px">${t.ctaLabel} &rarr;</a>
-         <p style="margin:14px 0 0;font-size:13px;line-height:1.55;color:${C.mute}">${t.ctaHint} <a href="https://sum-it.eu/login.html" style="color:${C.green};text-decoration:underline">${t.loginWord}</a>.</p>
-       </td></tr>`
-    : `<tr><td style="padding:2px 40px 0"><p style="margin:0;font-size:15px;line-height:1.55;color:${C.ink}">${t.portalFallback} <a href="https://sum-it.eu/portal.html" style="color:${C.green};font-weight:bold;text-decoration:none">${t.portalWord}</a>.</p></td></tr>`;
-  const html = `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#eef0f5;margin:0;padding:24px 12px;font-family:Arial,Helvetica,sans-serif">
-<tr><td align="center">
-<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;background:#ffffff;border-radius:16px;overflow:hidden">
-  <tr><td style="background:${C.navy};padding:26px 32px;text-align:center">
-    <img src="${MAIL_LOGO}" alt="Sum-IT" width="168" style="display:block;margin:0 auto;height:auto;border:0;max-width:168px">
-  </td></tr>
-  <tr><td style="padding:36px 40px 0">
-    <h1 style="margin:0 0 10px;font-size:26px;line-height:1.2;color:${C.navy};font-weight:800">${t.welcome}</h1>
-    <p style="margin:0 0 22px;font-size:16px;line-height:1.55;color:${C.ink}">${t.intro}</p>
-  </td></tr>
-  <tr><td style="padding:0 40px 24px">
-    <table role="presentation" cellpadding="0" cellspacing="0"><tr>
-      <td style="background:${C.mint};border:1px solid ${C.mintB};border-radius:12px;padding:14px 26px;text-align:center">
-        <div style="font-size:12px;color:#0a8f5f;text-transform:uppercase;letter-spacing:.1em;font-weight:bold">${t.queueLabel}</div>
-        <div style="font-size:38px;color:${C.navy};font-weight:800;line-height:1.15">#${pos}</div>
-      </td></tr></table>
-  </td></tr>
-  ${cta}
-  <tr><td style="padding:26px 40px 0">
-    <p style="margin:0 0 10px;font-size:15px;line-height:1.5;color:${C.ink}">${t.refText}</p>
-    <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr>
-      <td style="background:${C.card};border-radius:10px;padding:14px 18px">
-        <a href="${link}" style="color:${C.green};text-decoration:none;font-weight:bold;font-size:15px;word-break:break-all">${link}</a>
-      </td></tr></table>
-  </td></tr>
-  <tr><td style="padding:28px 40px 34px">
-    <p style="margin:0;font-size:16px;line-height:1.5;color:${C.ink}">${t.signoff}<br><strong style="color:${C.navy}">${t.team}</strong></p>
-  </td></tr>
-  <tr><td style="background:${C.card};padding:18px 40px;text-align:center;border-top:1px solid #e8eaf2">
-    <p style="margin:0;font-size:12px;line-height:1.5;color:${C.mute}">${t.footer}</p>
-  </td></tr>
-</table>
-</td></tr></table>`;
-  return { subject: t.subject(pos), html };
-}
-
-const MAIL_T = {
-  nl: {
-    subject: p => `Je staat op plek #${p} — welkom bij de Founding 500`,
-    welcome: 'Welkom bij Sum-IT!',
-    intro: 'Je aanmelding is bevestigd. Dit is jouw plek in de rij:',
-    queueLabel: 'Jouw plek', ctaLabel: 'Stel je wachtwoord in &amp; open je portal',
-    ctaHint: 'E&eacute;n klik bevestigt meteen je e-mailadres. Link verlopen? Gebruik "wachtwoord vergeten" op de',
-    loginWord: 'loginpagina', portalFallback: 'Bekijk je plek in je', portalWord: 'member-portal',
-    refText: 'Dit is jouw persoonlijke link &mdash; elke vriend die via jou meedoet, telt:',
-    signoff: 'Samen naar de top,', team: 'Team Sum-IT',
-    footer: '&copy; 2026 Sum-IT &middot; Een product van Alpha Nova B.V. &middot; Je gegevens blijven in de EU (AVG).'
-  },
-  en: {
-    subject: p => `You're #${p} in the queue — welcome to the Founding 500`,
-    welcome: 'Welcome to Sum-IT!',
-    intro: 'Your signup is confirmed. Here is your spot in the queue:',
-    queueLabel: 'Your spot', ctaLabel: 'Set your password &amp; open your portal',
-    ctaHint: 'One click also confirms your email. Link expired? Use "forgot password" on the',
-    loginWord: 'login page', portalFallback: 'See your spot in your', portalWord: 'member portal',
-    refText: 'This is your personal link &mdash; every friend who joins through it counts:',
-    signoff: 'Together to the top,', team: 'Team Sum-IT',
-    footer: '&copy; 2026 Sum-IT &middot; A product of Alpha Nova B.V. &middot; Your data stays in the EU (GDPR).'
-  }
-};
-
-export const MAILS = {
-  nl: (pos, link, setup) => welcomeMail(MAIL_T.nl, pos, link, setup),
-  en: (pos, link, setup) => welcomeMail(MAIL_T.en, pos, link, setup)
-};
-
 /* Creates the auth user (e-mail pre-confirmed) and returns a one-click
    set-password link for the welcome mail. Null on any failure. */
 export async function createPortalLink(env, email) {
@@ -154,18 +77,26 @@ export async function markWelcomed(env, email) {
   } catch { return false; }
 }
 
-/* Sends the welcome mail via Brevo (no-op without key). */
-export async function sendWelcome(env, email, pos, refCode, taal) {
-  if (!env.BREVO_API_KEY || !pos) return;
-  const offset = Number(env.DISPLAY_OFFSET ?? 143);
-  const link = 'https://sum-it.eu/?ref=' + refCode;
-  const setup = await createPortalLink(env, email);
-  const m = (MAILS[taal] || MAILS.nl)(pos + offset, link, setup);
+/* Sends the welcome mail via Brevo (no-op without key).
+   opts: { naam, refCode, taal, optin }. optin = the visitor ticked the separate mailing box:
+   then the full sales mail, otherwise a short confirmation. No queue number is shown. */
+export async function sendWelcome(env, email, opts = {}) {
+  if (!env.BREVO_API_KEY || !opts.refCode) return;
+  const lang = opts.taal === 'en' ? 'en' : 'nl';
+  const tpl = MAIL_TPL[lang];
+  const esc = v => String(v || '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const first = String(opts.naam || '').trim().split(/\s+/)[0] || (lang === 'en' ? 'there' : 'ondernemer');
+  const link = 'https://sum-it.eu/?ref=' + opts.refCode;
+  const wa = 'https://wa.me/?text=' + encodeURIComponent(tpl.wa.replace('{CODE}', opts.refCode).replace('{LINK}', link));
+  const unsub = 'mailto:hallo@sum-it.eu?subject=' + encodeURIComponent(lang === 'en' ? 'Unsubscribe' : 'Afmelden');
+  const html = (opts.optin ? tpl.full : tpl.short)
+    .split('{{NAAM}}').join(esc(first)).split('{{CODE}}').join(esc(opts.refCode))
+    .split('{{REFLINK}}').join(link).split('{{WA}}').join(esc(wa)).split('{{UNSUB}}').join(esc(unsub));
   const from = env.MAIL_FROM || 'Sum-IT <hallo@sum-it.eu>';
   const fm = from.match(/^(.*)<(.+)>$/) || [null, 'Sum-IT', from];
   await fetch('https://api.brevo.com/v3/smtp/email', {
     method: 'POST',
     headers: { 'api-key': env.BREVO_API_KEY, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ sender: { name: fm[1].trim(), email: fm[2].trim() }, to: [{ email }], subject: m.subject, htmlContent: m.html })
+    body: JSON.stringify({ sender: { name: fm[1].trim(), email: fm[2].trim() }, to: [{ email }], subject: tpl.subject, htmlContent: html })
   }).catch(() => {});
 }
