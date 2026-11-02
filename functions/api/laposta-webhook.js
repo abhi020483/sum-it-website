@@ -6,7 +6,7 @@
      2. welcome e-mail via Brevo (position + personal link + portal) if key present
      3. pushes queue_pos + ref_link back into the Laposta member's custom fields
    Env: SUPABASE_URL, SUPABASE_SERVICE_KEY, WEBHOOK_SECRET,
-        BREVO_API_KEY (optional), MAIL_FROM (e.g. "Sum-IT <hallo@sum-it.eu>"),
+        BREVO_API_KEY (optional), MAIL_FROM (e.g. "Sum-IT <ian.bouman@sum-it.eu>"),
         LAPOSTA_API_KEY, LAPOSTA_LIST_ID */
 
 import { sbHeaders, markWelcomed, sendWelcome } from './_lib.js';

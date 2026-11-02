@@ -25,7 +25,7 @@ export async function notifyAdmin(env, s) {
 <p style="color:#64748B;margin:0 0 14px">A new profile was just created on sum-it.eu.</p>
 <table style="font-size:14px;border-collapse:collapse">${rows}</table>
 <p style="margin-top:16px"><a href="https://sum-it.eu/beheer.html">Open the admin dashboard →</a></p></div>`;
-  const from = env.MAIL_FROM || 'Sum-IT <hallo@sum-it.eu>';
+  const from = env.MAIL_FROM || 'Sum-IT <ian.bouman@sum-it.eu>';
   const fm = from.match(/^(.*)<(.+)>$/) || [null, 'Sum-IT', from];
   const body = {
     sender: { name: fm[1].trim(), email: fm[2].trim() }, to,
@@ -88,15 +88,15 @@ export async function sendWelcome(env, email, opts = {}) {
   const first = String(opts.naam || '').trim().split(/\s+/)[0] || (lang === 'en' ? 'there' : 'ondernemer');
   const link = 'https://sum-it.eu/?ref=' + opts.refCode;
   const wa = 'https://wa.me/?text=' + encodeURIComponent(tpl.wa.replace('{CODE}', opts.refCode).replace('{LINK}', link));
-  const unsub = 'mailto:hallo@sum-it.eu?subject=' + encodeURIComponent(lang === 'en' ? 'Unsubscribe' : 'Afmelden');
+  const unsub = 'mailto:ian.bouman@sum-it.eu?subject=' + encodeURIComponent(lang === 'en' ? 'Unsubscribe' : 'Afmelden');
   const html = (opts.optin ? tpl.full : tpl.short)
     .split('{{NAAM}}').join(esc(first)).split('{{CODE}}').join(esc(opts.refCode))
     .split('{{REFLINK}}').join(link).split('{{WA}}').join(esc(wa)).split('{{UNSUB}}').join(esc(unsub));
-  const from = env.MAIL_FROM || 'Sum-IT <hallo@sum-it.eu>';
+  const from = env.MAIL_FROM || 'Sum-IT <ian.bouman@sum-it.eu>';
   const fm = from.match(/^(.*)<(.+)>$/) || [null, 'Sum-IT', from];
   await fetch('https://api.brevo.com/v3/smtp/email', {
     method: 'POST',
     headers: { 'api-key': env.BREVO_API_KEY, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ sender: { name: fm[1].trim(), email: fm[2].trim() }, to: [{ email }], subject: tpl.subject, htmlContent: html })
+    body: JSON.stringify({ sender: { name: fm[1].trim(), email: fm[2].trim() }, replyTo: { email: 'ian.bouman@sum-it.eu', name: 'Ian van Sum-IT' }, to: [{ email }], subject: tpl.subject, htmlContent: html })
   }).catch(() => {});
 }
