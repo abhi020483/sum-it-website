@@ -378,7 +378,7 @@ const I18N = {
         rf_boost:
             "Share it on WhatsApp, LinkedIn or at the wholesaler, <b>every friend who joins through your link counts</b>.",
         of_k: "Join our network of trusted pros",
-        of_h2: "Create your Sum-IT profile now",
+        of_h2: "Create your <span class=\"nowrap\">Sum-IT</span> profile now",
         of_then: "Bookkeeping too? €11 a month excl. VAT. Everything included.",
         of_c1: "✓ Everything included",
         of_c2: "✓ Visible in the community right away",
@@ -890,7 +890,7 @@ const I18N = {
         rf_boost:
             "Deel 'm op WhatsApp, LinkedIn of gewoon bij de groothandel, <b>elke vriend die via jouw link meedoet, telt</b>.",
         of_k: "Gratis profiel",
-        of_h2: "Maak nu je profiel aan bij Sum-IT",
+        of_h2: "Maak nu je profiel aan bij <span class=\"nowrap\">Sum-IT</span>",
         of_then: "Ook je boekhouding erbij? €11 per maand excl. btw. Alles inbegrepen.",
         of_c1: "✓ Alles inbegrepen",
         of_c2: "✓ Meteen zichtbaar in de community",
