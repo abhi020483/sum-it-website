@@ -24,7 +24,7 @@ export async function notifyAdmin(env, s) {
 <p style="color:#64748B;margin:0 0 14px">A new profile was just created on sum-it.eu.</p>
 <table style="font-size:14px;border-collapse:collapse">${rows}</table>
 <p style="margin-top:16px"><a href="https://sum-it.eu/beheer.html">Open the admin dashboard →</a></p></div>`;
-  const from = env.MAIL_FROM || 'Sum-IT <hallo@sum-it.eu>';
+  const from = env.MAIL_FROM || 'Sum-IT <ian.bouman@sum-it.eu>';
   const fm = from.match(/^(.*)<(.+)>$/) || [null, 'Sum-IT', from];
   const body = {
     sender: { name: fm[1].trim(), email: fm[2].trim() }, to,
@@ -161,11 +161,11 @@ export async function sendWelcome(env, email, pos, refCode, taal) {
   const link = 'https://sum-it.eu/?ref=' + refCode;
   const setup = await createPortalLink(env, email);
   const m = (MAILS[taal] || MAILS.nl)(pos + offset, link, setup);
-  const from = env.MAIL_FROM || 'Sum-IT <hallo@sum-it.eu>';
+  const from = env.MAIL_FROM || 'Sum-IT <ian.bouman@sum-it.eu>';
   const fm = from.match(/^(.*)<(.+)>$/) || [null, 'Sum-IT', from];
   await fetch('https://api.brevo.com/v3/smtp/email', {
     method: 'POST',
     headers: { 'api-key': env.BREVO_API_KEY, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ sender: { name: fm[1].trim(), email: fm[2].trim() }, to: [{ email }], subject: m.subject, htmlContent: m.html })
+    body: JSON.stringify({ sender: { name: fm[1].trim(), email: fm[2].trim() }, replyTo: { email: 'ian.bouman@sum-it.eu', name: 'Ian van Sum-IT' }, to: [{ email }], subject: m.subject, htmlContent: m.html })
   }).catch(() => {});
 }

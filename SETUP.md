@@ -36,7 +36,7 @@ Nothing here requires writing code. Where a value is created, paste it in the pl
    - `WEBHOOK_SECRET` — any random string (same as in the Laposta webhook URL)
    - `LAPOSTA_API_KEY`, `LAPOSTA_LIST_ID` — from step 2.3
    - `BREVO_API_KEY` — step 4 (may be empty at first; welcome mail is skipped, all else works)
-   - `MAIL_FROM` — e.g. `Sum-IT <hallo@sum-it.eu>`
+   - `MAIL_FROM` — e.g. `Sum-IT <ian.bouman@sum-it.eu>`
    - `DISPLAY_OFFSET` — `143`
 3. Deploy. Test on the `*.pages.dev` preview URL: signup → Laposta confirm mail → click → webhook → portal shows position.
 4. DNS switch (the conscious moment): domain sum-it.eu → Cloudflare Pages custom domain, remove GitHub Pages. Old site stays in git history; rollback = point DNS back.
