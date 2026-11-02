@@ -9175,23 +9175,31 @@ html {
   color: var(--indigo);
 }
 
-/* ---- Lead form inside the green offer block (#pricing) ---- */
-.offer-form{position:relative;max-width:640px;margin:0 auto}
-.of-fields{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 16px}
-.of-fields input{width:100%;box-sizing:border-box;height:46px;padding:0 16px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.95);color:#11143a;font:inherit;font-size:.95rem}
-.of-fields input:focus{outline:3px solid rgba(255,255,255,.55);outline-offset:1px}
-.of-fields input.bad{border-color:#ffb4a8;box-shadow:0 0 0 2px #ff8a75}
-.of-btns{display:flex;flex-direction:column;align-items:center;gap:10px}
-.offer-form button.mega{display:inline-block;border:0;cursor:pointer;background:#fff;color:var(--green-d);font:inherit;font-size:17px;font-weight:800;padding:16px 36px;border-radius:999px;box-shadow:0 18px 50px rgba(0,0,0,.3);transition:transform .15s,box-shadow .15s}
-.offer-form button.mega:hover{transform:translateY(-2px);box-shadow:0 24px 60px rgba(0,0,0,.38)}
-.of-info{border:0;background:none;color:#fff;font:inherit;font-size:.95rem;font-weight:600;text-decoration:underline;text-underline-offset:3px;cursor:pointer;padding:4px 8px;opacity:.92}
-.of-info:hover{opacity:1}
-.offer-form button:disabled{opacity:.6;cursor:wait}
-.offer-form .lead-optin{display:inline-flex;align-items:center;gap:8px;margin:14px 0 0;font-size:.8rem;color:rgba(255,255,255,.85);cursor:pointer}
-.offer-form .lead-optin input{width:15px;height:15px;margin:0;accent-color:#fff}
-.offer-form .lead-fine{margin:6px auto 0;max-width:520px;font-size:.72rem;line-height:1.4;color:rgba(255,255,255,.7)}
-.offer-form .lead-fine a{color:inherit;text-decoration:underline}
-.offer-form .lead-err{margin:10px 0 0;color:#fff;background:rgba(180,30,20,.45);border-radius:10px;padding:6px 10px;font-size:.85rem;display:inline-block}
-.offer-form .lead-ok{margin:10px 0 0;color:#fff;font-weight:700;font-size:.95rem}
-@media (max-width:640px){.of-fields{grid-template-columns:1fr}.offer-form button.mega{width:100%}}
-.offer-form [hidden]{display:none!important}
+/* ---- Onboarding form = the green block (#pricing) ----
+   Fields left, buttons right, one small footer line. */
+#pricing .offer2.onb{padding:30px 34px;text-align:left;max-width:860px;margin-left:auto;margin-right:auto;border-radius:24px}
+.onb-form{position:relative}
+.onb-head{display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;margin:0 0 16px}
+#pricing .offer2.onb h2{margin:0;font-size:clamp(22px,2.4vw,28px);line-height:1.2}
+.onb-promo{display:inline-block;padding:5px 12px;border-radius:999px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);font-size:.85rem;color:#fff}
+.onb-grid{display:grid;grid-template-columns:1fr 240px;gap:14px;align-items:center}
+.onb-fields{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.onb-fields input{width:100%;box-sizing:border-box;height:42px;padding:0 14px;border-radius:12px;border:1px solid rgba(255,255,255,.35);background:rgba(255,255,255,.96);color:#11143a;font:inherit;font-size:.92rem;margin:0}
+.onb-fields input[type=email]{grid-column:1/-1}
+.onb-fields input:focus{outline:3px solid rgba(255,255,255,.55);outline-offset:1px}
+.onb-fields input.bad{border-color:#ffb4a8;box-shadow:0 0 0 2px #ff8a75}
+.onb-btns{display:flex;flex-direction:column;gap:8px}
+.onb-main{height:42px;border:0;border-radius:12px;background:#fff;color:var(--green-d);font:inherit;font-size:.95rem;font-weight:800;cursor:pointer;box-shadow:0 10px 26px rgba(0,0,0,.22);transition:transform .15s}
+.onb-main:hover{transform:translateY(-1px)}
+.onb-info{height:42px;border:1px solid rgba(255,255,255,.55);border-radius:12px;background:transparent;color:#fff;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}
+.onb-info:hover{background:rgba(255,255,255,.1)}
+.onb-form button:disabled{opacity:.6;cursor:wait}
+.onb-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px 16px;margin-top:12px}
+.onb-form .lead-optin{display:inline-flex;align-items:center;gap:8px;margin:0;font-size:.8rem;color:rgba(255,255,255,.88);cursor:pointer}
+.onb-form .lead-optin input{width:15px;height:15px;margin:0;accent-color:#fff}
+.onb-form .lead-fine{font-size:.75rem;color:rgba(255,255,255,.75)}
+.onb-form .lead-fine a{color:#fff;text-decoration:underline}
+.onb-form .lead-err{margin:10px 0 0;color:#fff;background:rgba(180,30,20,.45);border-radius:10px;padding:6px 10px;font-size:.85rem;display:inline-block}
+.onb-form .lead-ok{margin:10px 0 0;color:#fff;font-weight:700;font-size:.95rem}
+.onb-form [hidden]{display:none!important}
+@media (max-width:700px){#pricing .offer2.onb{padding:22px 18px}.onb-grid{grid-template-columns:1fr}.onb-fields{grid-template-columns:1fr}}
