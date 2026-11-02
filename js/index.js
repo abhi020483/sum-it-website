@@ -457,7 +457,7 @@ const I18N = {
             "You'll get a confirmation email right away with your personal share code. Your data is stored in the EU. <a href='/privacy.html'>Read our privacy statement</a>.",
         t_pos: "you're signed up",
         t_body:
-            "Check your inbox. Your personal share code is in there: share it and you both get an extra month free.",
+            "Check your inbox. Your personal share code is in there: share it and earn extra free months.",
         t_copy: "Copy",
         t_portal: "Open your member portal →",
         m_portal: "Member portal",
@@ -962,7 +962,7 @@ const I18N = {
             "Je krijgt meteen een bevestiging met je persoonlijke deelcode. Je gegevens worden opgeslagen in de EU. <a href='/privacy.html'>Lees onze privacyverklaring</a>.",
         t_pos: "je bent aangemeld",
         t_body:
-            "Check je inbox. Daar staat je persoonlijke deelcode: deel hem en jullie krijgen allebei een maand extra gratis.",
+            "Check je inbox. Daar staat je persoonlijke deelcode: deel hem en verdien extra gratis maanden.",
         t_copy: "Kopieer",
         t_portal: "Open je member-portal →",
         m_portal: "Member-portal",
