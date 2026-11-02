@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sum-IT · Even onderhoud</title>
+<meta name="description" content="Sum-IT is even in onderhoud. We zijn zo terug.">
+<link rel="icon" href="/sum-it-favicon.png">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+:root{--navy:#1a1d4f;--navy2:#0f1238;--green:#00bc7d}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font-family:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:radial-gradient(900px 500px at 80% 0%,rgba(0,188,125,.18),transparent 60%),linear-gradient(160deg,var(--navy2),var(--navy) 60%,#23286a);color:#fff;display:grid;place-items:center;padding:24px}
+.box{max-width:560px;text-align:center}
+.logo{width:64px;height:64px;margin:0 auto 22px;display:block}
+h1{font-size:clamp(1.9rem,1.3rem + 2.4vw,2.8rem);line-height:1.15;margin:0 0 14px;letter-spacing:-.02em}
+h1 em{font-style:normal;color:var(--green)}
+p{color:rgba(255,255,255,.82);font-size:1.08rem;line-height:1.65;margin:0 0 10px}
+.en{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);font-size:.98rem}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+a.btn{display:inline-block;padding:13px 20px;border-radius:12px;font-weight:700;text-decoration:none}
+a.p{background:var(--green);color:#062b1f}
+a.s{border:1px solid rgba(255,255,255,.3);color:#fff}
+.dots{display:inline-flex;gap:6px;margin-bottom:18px}
+.dots i{width:9px;height:9px;border-radius:50%;background:var(--green);animation:b 1.2s infinite ease-in-out}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes b{0%,80%,100%{opacity:.25;transform:scale(.8)}40%{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.dots i{animation:none;opacity:.8}}
+</style>
+</head>
+<body>
+<main class="box">
+<img class="logo" src="/sum-it-logo-mark.svg" alt="Sum-IT">
+<div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+<h1>We zijn even <em>aan het verbouwen</em>.</h1>
+<p>De website van Sum-IT is tijdelijk offline voor onderhoud. We zijn zo weer terug.</p>
+<p>Heb je al een account? Inloggen werkt gewoon. Vragen? Mail ons op <a href="mailto:hallo@sum-it.eu" style="color:#5ce3b4">hallo@sum-it.eu</a>.</p>
+<div class="btns"><a class="btn p" href="/login.html">Inloggen</a><a class="btn s" href="mailto:hallo@sum-it.eu">Mail ons</a></div>
+<p class="en"><b>We'll be right back.</b> The Sum-IT website is temporarily down for maintenance. Existing users can still log in.</p>
+</main>
+</body>
+</html>
