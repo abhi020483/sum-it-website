@@ -1,6 +1,16 @@
 
 const I18N = {
     en: {
+        lead_h: "Rather talk first?",
+        lead_sub: "Leave your details. You get an info email right away, and Ian may give you a quick call.",
+        lead_l_name: "Name", lead_l_tel: "Phone number", lead_l_mail: "Email address",
+        lead_ph_name: "Your name", lead_ph_tel: "Phone number", lead_ph_mail: "Email address",
+        lead_btn: "Send me more info", lead_sending: "Sending...",
+        lead_optin: "Send me 2 more reminders by email afterwards (one per month).",
+        lead_fine: "You get an email with more information right away. Tick the box and we will send you 2 more reminders, one month apart. After that we automatically take you off the mailing list. You can unsubscribe at any time with one click. See the <a href=\"/privacy.html\">privacy statement</a>.",
+        lead_ok: "Done! Check your email.",
+        lead_err_name: "Please fill in your name.", lead_err_tel: "Please enter a valid phone number (at least 10 digits).", lead_err_mail: "Please enter a valid email address.",
+        lead_err: "That did not work. Try again in a moment.",
         hs0: "Dashboard: money in and out at a glance",
         hs1: "Scan: snap your receipt, done",
         hs2: "Documents: everything in one place",
@@ -500,6 +510,16 @@ const I18N = {
         of_full: "All 150 places have been taken",
     },
     nl: {
+        lead_h: "Liever eerst even bellen?",
+        lead_sub: "Laat je gegevens achter. Je krijgt meteen een mail met meer informatie en Ian belt je mogelijk even.",
+        lead_l_name: "Naam", lead_l_tel: "Telefoonnummer", lead_l_mail: "E-mailadres",
+        lead_ph_name: "Je naam", lead_ph_tel: "Telefoonnummer", lead_ph_mail: "E-mailadres",
+        lead_btn: "Stuur me meer info", lead_sending: "Even geduld...",
+        lead_optin: "Stuur me daarna nog 2 herinneringen per mail (één per maand).",
+        lead_fine: "Je krijgt meteen een mail met meer informatie. Vink je het vakje aan, dan sturen we je nog 2 herinneringen, met een maand ertussen. Daarna halen we je automatisch van de maillijst. Afmelden kan altijd met één klik. Zie de <a href=\"/privacy.html\">privacyverklaring</a>.",
+        lead_ok: "Gelukt! Check je mail.",
+        lead_err_name: "Vul je naam in.", lead_err_tel: "Vul een geldig telefoonnummer in (minimaal 10 cijfers).", lead_err_mail: "Vul een geldig e-mailadres in.",
+        lead_err: "Dat lukte niet. Probeer het zo nog eens.",
         hs0: "Dashboard: geld in en uit, in één oogopslag",
         hs1: "Scannen: foto van je bon, klaar",
         hs2: "Documenten: alles netjes op één plek",
@@ -1980,6 +2000,74 @@ document
                 }
             });
     });
+
+/* ---- Hero lead form ---- */
+(function () {
+    var form = document.getElementById("lead-form");
+    if (!form) return;
+    var btn = document.getElementById("lead-btn"),
+        err = document.getElementById("lead-err"),
+        ok = document.getElementById("lead-ok");
+    function t(k) { return (I18N[LANG] && I18N[LANG][k]) || ""; }
+    function bad(id, on) { document.getElementById(id).classList.toggle("bad", !!on); }
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (btn.disabled) return;
+        var naam = document.getElementById("lead-naam").value.trim(),
+            tel = document.getElementById("lead-tel").value.trim(),
+            email = document.getElementById("lead-email").value.trim();
+        var digits = tel.replace(/\D/g, "").length;
+        var msg = "";
+        var nameBad = naam.length < 2,
+            telBad = !/^[+\d][\d\s().-]*$/.test(tel) || digits < 10 || digits > 15,
+            mailBad = !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email);
+        bad("lead-naam", nameBad); bad("lead-tel", telBad); bad("lead-email", mailBad);
+        if (nameBad) msg = t("lead_err_name");
+        else if (telBad) msg = t("lead_err_tel");
+        else if (mailBad) msg = t("lead_err_mail");
+        ok.hidden = true;
+        if (msg) { err.textContent = msg; err.hidden = false; return; }
+        err.hidden = true;
+        var remind = document.getElementById("lead-remind").checked;
+        var payload = {
+            naam: naam,
+            email: email,
+            telefoon: tel,
+            rol: "ondernemer",
+            taal: LANG,
+            source: "homepage-lead",
+            website: document.getElementById("lead-hp").value || "",
+            mailing_optin: remind,
+            herinneringen: remind,
+        };
+        var base = window.API_BASE || (window.SITE_CFG && SITE_CFG.API_BASE) || "";
+        btn.disabled = true;
+        btn.textContent = t("lead_sending");
+        fetch(base + "/api/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+        })
+            .then(function (r) {
+                return r.json().catch(function () { return null; }).then(function (j) {
+                    return r.ok && j && j.ok === true ? "ok" : "error";
+                });
+            })
+            .catch(function () { return "error"; })
+            .then(function (res) {
+                btn.disabled = false;
+                btn.textContent = t("lead_btn");
+                if (res === "ok") {
+                    form.reset();
+                    ok.textContent = t("lead_ok");
+                    ok.hidden = false;
+                } else {
+                    err.textContent = t("lead_err");
+                    err.hidden = false;
+                }
+            });
+    });
+})();
 // ---- Live content overrides (edited in admin.html, stored in Supabase) ----
 if (window.SB_URL && String(window.SB_URL).indexOf("http") === 0) {
     fetch(
