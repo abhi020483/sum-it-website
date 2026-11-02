@@ -63,7 +63,12 @@ export async function onRequestPost({ request, env }) {
         }
       }
     } else if (type === 'deactivated' || type === 'unsubscribed') {
-      await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/unsubscribe_signup`, {
+      // v5: a deletion (e.g. by the reminder Worker after the last reminder) only
+      // stops mailings; a real unsubscribe also sets status 'unsubscribed'.
+      // Both set mailing_stopped_at, so nobody gets mailed either way.
+      const action = String((ev.info && ev.info.action) || m.state || '').toLowerCase();
+      const fn = action === 'deleted' ? 'stop_mailing' : 'unsubscribe_signup';
+      await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/${fn}`, {
         method: 'POST', headers: sbHeaders(env), body: JSON.stringify({ p_email: email.toLowerCase() })
       }).catch(() => {});
     }

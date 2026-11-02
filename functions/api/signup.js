@@ -1,5 +1,8 @@
 /* POST /api/signup — Cloudflare Pages Function.
-   Body: {naam,email,rol,bedrijfstype,boekhouder,taal,source,ref,website}
+   Body: {naam,email,rol,bedrijfstype,boekhouder,taal,source,ref,website,
+          telefoon,plaats,stad,vestiging, herinneringen | mailing_optin | consent}
+   - source 'homepage-lead': naam + email + telefoon all required (else 400 invalid)
+   - mailing_optin (v5) = opted in to reminder mails; see wantsMailings() below
    - honeypot 'website' filled  -> silently OK
    - disposable e-mail domains  -> silently OK
    - rate limit: max 5/hour/IP (checked in Supabase)
@@ -44,6 +47,20 @@ function sbHeaders(env, extra = {}) {
            'Content-Type': 'application/json', ...extra };
 }
 
+/* Opt-in for reminder mails (Dutch law: e-mail marketing needs opt-in).
+   Accepted signals, from the forms that exist today:
+   - homepage lead form:   herinneringen: true
+   - founding form (index.js): mailing_optin: true (separate, never pre-ticked box)
+   - any form:             consent: true
+   - balie form (aanmelden.html, source 'balie-*'): its only checkbox reads
+     "Ja, houd me per e-mail op de hoogte" and the form refuses to submit
+     without it, but it does not send the value -> DECISION: treat 'balie-*'
+     as opted in. Better: let that form send consent:true explicitly. */
+function isTrue(v) { return v === true || v === 'true' || v === 'ja' || v === 1 || v === '1'; }
+function wantsMailings(d, source) {
+  return isTrue(d.herinneringen) || isTrue(d.mailing_optin) || isTrue(d.consent) || /^balie-/.test(source);
+}
+
 export async function onRequestPost({ request, env }) {
   const cors = corsHeaders(request);
   const json2 = (data, status = 200) => json(data, status, cors);
@@ -61,7 +78,13 @@ export async function onRequestPost({ request, env }) {
   const plaats    = String(d.plaats || '').trim().slice(0, 80) || null;   // vakman's own town -> city
   const stad      = String(d.stad || '').trim().slice(0, 80) || null;     // campaign city (e.g. breda)
   const vestiging = String(d.vestiging || '').replace(/[^a-z0-9-]/gi, '').slice(0, 40) || null;
+  const source = String(d.source || 'site').slice(0, 60);
+  const mailingOptin = wantsMailings(d, source);
   if (!naam || !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) return json2({ ok: false, error: 'invalid' }, 400);
+  // Homepage lead form: phone number is required (at least 6 digits).
+  if (source === 'homepage-lead' && (!telefoon || telefoon.replace(/\D/g, '').length < 6)) {
+    return json2({ ok: false, error: 'invalid' }, 400);
+  }
   if (DISPOSABLE.includes(email.split('@')[1])) return ok;
 
   // rate limit per IP (5/hour)
@@ -95,8 +118,9 @@ export async function onRequestPost({ request, env }) {
         email, naam, rol, taal,
         bedrijfstype: rol === 'ondernemer' ? String(d.bedrijfstype || '').slice(0, 60) : null,
         boekhouder: rol === 'ondernemer' ? (d.boekhouder === 'ja' ? 'ja' : d.boekhouder === 'nee' ? 'nee' : null) : null,
-        source: String(d.source || 'site').slice(0, 60),
+        source,
         telefoon, stad, vestiging, city: plaats,
+        mailing_optin: mailingOptin,
         ref_code: code, referred_by: referredBy, ip_hash: ipHash
       })
     });
@@ -114,8 +138,8 @@ export async function onRequestPost({ request, env }) {
       email, naam, rol, taal,
       bedrijfstype: rol === 'ondernemer' ? String(d.bedrijfstype || '') : '',
       boekhouder: rol === 'ondernemer' ? String(d.boekhouder || '') : '',
-      telefoon, stad, city: plaats, source: String(d.source || 'site'),
-      ref_code: myCode, referred_by: referredBy
+      telefoon, stad, city: plaats, source,
+      ref_code: myCode, referred_by: referredBy, mailing_optin: mailingOptin
     });
   } catch { /* notification is best-effort; the signup already succeeded */ }
 

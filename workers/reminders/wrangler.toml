@@ -1,0 +1,24 @@
+# Sum-IT reminder mails — standalone Cloudflare Worker (NOT part of Pages).
+# Deploy from this folder:  npx wrangler deploy
+# Secrets (set once, never put them in this file):
+#   npx wrangler secret put SUPABASE_SERVICE_KEY
+#   npx wrangler secret put BREVO_API_KEY
+#   npx wrangler secret put WEBHOOK_SECRET      (same value as the Pages project)
+#   npx wrangler secret put LAPOSTA_API_KEY
+name = "sum-it-reminders"
+main = "index.js"
+compatibility_date = "2024-09-23"
+workers_dev = true
+
+[triggers]
+# Every day at 08:17 UTC (09:17 / 10:17 Dutch time).
+crons = ["17 8 * * *"]
+
+[vars]
+SUPABASE_URL = ""          # e.g. https://xxxx.supabase.co (same as the Pages project)
+LAPOSTA_LIST_ID = ""       # same as the Pages project
+MAIL_FROM = "Ian van Sum-IT <ian.bouman@sum-it.eu>"
+API_BASE = "https://sum-it-app.pages.dev"   # where /api/afmelden lives
+
+[observability]
+enabled = true

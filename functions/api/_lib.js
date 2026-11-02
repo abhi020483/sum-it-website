@@ -1,5 +1,7 @@
-/* Shared helpers for the Pages Functions: welcome mail + once-only guard.
-   Env: SUPABASE_URL, SUPABASE_SERVICE_KEY, BREVO_API_KEY, MAIL_FROM
+/* Shared helpers for the Pages Functions: welcome mail + once-only guard,
+   reminder bookkeeping (last_mail_at), one-click unsubscribe token, Laposta removal.
+   Env: SUPABASE_URL, SUPABASE_SERVICE_KEY, BREVO_API_KEY, MAIL_FROM,
+        WEBHOOK_SECRET (unsubscribe token), LAPOSTA_API_KEY, LAPOSTA_LIST_ID
    Optional: ADMIN_NOTIFY_EMAIL (comma-separated; default admin.alpha.nova@gmail.com) */
 
 /* Emails the internal team the moment a new signup is stored. Fire-and-forget:
@@ -17,7 +19,8 @@ export async function notifyAdmin(env, s) {
     ['Role', roleLabel], ['Name', s.naam], ['Email', s.email],
     ['Company type', s.bedrijfstype], ['Works with bookkeeper', s.boekhouder],
     ['Phone', s.telefoon], ['City', s.city || s.stad], ['Language', s.taal],
-    ['Source', s.source], ['Referral code', s.ref_code], ['Referred by', s.referred_by]
+    ['Source', s.source], ['Reminder mails (opt-in)', s.mailing_optin == null ? '' : (s.mailing_optin ? 'yes' : 'no')],
+    ['Referral code', s.ref_code], ['Referred by', s.referred_by]
   ].map(([k, v]) => `<tr><td style="padding:4px 14px 4px 0;color:#64748B">${k}</td><td style="padding:4px 0"><b>${esc(v)}</b></td></tr>`).join('');
   const html = `<div style="font-family:sans-serif;max-width:540px">
 <h2 style="margin:0 0 6px">New Sum-IT signup — ${roleLabel}</h2>
@@ -163,9 +166,54 @@ export async function sendWelcome(env, email, pos, refCode, taal) {
   const m = (MAILS[taal] || MAILS.nl)(pos + offset, link, setup);
   const from = env.MAIL_FROM || 'Sum-IT <ian.bouman@sum-it.eu>';
   const fm = from.match(/^(.*)<(.+)>$/) || [null, 'Sum-IT', from];
-  await fetch('https://api.brevo.com/v3/smtp/email', {
+  const r = await fetch('https://api.brevo.com/v3/smtp/email', {
     method: 'POST',
     headers: { 'api-key': env.BREVO_API_KEY, 'Content-Type': 'application/json' },
     body: JSON.stringify({ sender: { name: fm[1].trim(), email: fm[2].trim() }, replyTo: { email: 'ian.bouman@sum-it.eu', name: 'Ian van Sum-IT' }, to: [{ email }], subject: m.subject, htmlContent: m.html })
-  }).catch(() => {});
+  }).catch(() => null);
+  // Reminder clock (v5): the first reminder is counted from this moment.
+  // If the mail failed, last_mail_at stays empty and the reminder Worker
+  // falls back to welcomed_at, then created_at.
+  if (r && r.ok) await markMailed(env, email);
+}
+
+/* Records "we just mailed this person" (v5 column last_mail_at). Best-effort. */
+export async function markMailed(env, email) {
+  try {
+    await fetch(`${env.SUPABASE_URL}/rest/v1/signups?email=eq.${encodeURIComponent(email.toLowerCase())}`, {
+      method: 'PATCH', headers: sbHeaders(env, { Prefer: 'return=minimal' }),
+      body: JSON.stringify({ last_mail_at: new Date().toISOString() })
+    });
+  } catch { /* the Worker falls back to welcomed_at */ }
+}
+
+// ---- One-click unsubscribe (v5) ----
+// Token = HMAC-SHA256(WEBHOOK_SECRET, 'afmelden:v1:' + lowercase e-mail), base64url.
+// MUST stay identical to workers/reminders/token.js (a test checks this).
+export async function unsubToken(secret, email) {
+  const key = await crypto.subtle.importKey('raw', new TextEncoder().encode(secret),
+    { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
+  const sig = await crypto.subtle.sign('HMAC', key,
+    new TextEncoder().encode('afmelden:v1:' + String(email).trim().toLowerCase()));
+  let bin = ''; for (const b of new Uint8Array(sig)) bin += String.fromCharCode(b);
+  return btoa(bin).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+}
+
+/* Deletes the member from the Laposta list (no more list mails). The row and
+   e-mail stay in Supabase. On success sets laposta_removed_at; on failure the
+   reminder Worker retries on its next daily run. Returns true when removed. */
+export async function lapostaRemove(env, email) {
+  if (!env.LAPOSTA_API_KEY || !env.LAPOSTA_LIST_ID) return false;
+  try {
+    const r = await fetch('https://api.laposta.nl/v2/member/' + encodeURIComponent(email) +
+      '?list_id=' + encodeURIComponent(env.LAPOSTA_LIST_ID), {
+      method: 'DELETE', headers: { Authorization: 'Basic ' + btoa(env.LAPOSTA_API_KEY + ':') }
+    });
+    if (!r.ok && r.status !== 404) return false; // 404 = not on the list = already gone
+    await fetch(`${env.SUPABASE_URL}/rest/v1/signups?email=eq.${encodeURIComponent(email.toLowerCase())}`, {
+      method: 'PATCH', headers: sbHeaders(env, { Prefer: 'return=minimal' }),
+      body: JSON.stringify({ laposta_removed_at: new Date().toISOString() })
+    });
+    return true;
+  } catch { return false; }
 }

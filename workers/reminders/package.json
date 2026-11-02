@@ -1,0 +1,10 @@
+{
+  "name": "sum-it-reminders",
+  "private": true,
+  "type": "module",
+  "description": "Daily Cloudflare Worker that sends the Sum-IT reminder mails",
+  "scripts": {
+    "test": "node --test",
+    "deploy": "npx wrangler deploy"
+  }
+}
