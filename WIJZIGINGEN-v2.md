@@ -164,4 +164,4 @@ Alles wat alleen op live stond (CNAME, aanmeld-API in `functions/`, Google-verif
   - scripts die toestemming nodig hebben, laden pas na een opt-in (`type="text/plain" data-consent="stats"`)
 - **Nieuwe pagina /cookies/** (cookieverklaring), met in elke footer de links "Cookies" en "Cookie-instellingen".
 - **Beslissing:** een cookiemelding is nu wettelijk niet verplicht, want er zijn geen niet-functionele cookies. Hij staat er toch, op verzoek van Ian, en is klaar voor toekomstige statistieken. Hij zegt eerlijk dat er nu niets gevolgd wordt.
-- **Let op:** de privacyverklaring noemt Plausible als statistiekdienst, maar Plausible draait niet. Kies: Plausible echt aanzetten (cookieloos, mag zonder toestemming), of de tekst aanpassen.
+- **Privacyverklaring:** Plausible is eruit gehaald, want het draaide niet (keuze Ian). Er is een nieuw artikel 8 "Cookies" met een verwijzing naar /cookies/.
