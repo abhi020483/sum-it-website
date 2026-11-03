@@ -8921,8 +8921,10 @@ footer .flogo img {
 }
 
 /* Product-led motion layer: decorative only, with reduced-motion support. */
+/* SEO/speed (3 nov 2026): no fade-in on the hero text. It started only after
+   js/index.js loaded, which pushed Largest Contentful Paint (the H1) back ~2 s on mobile. */
 .hero.motion-ready .hero-copy {
-  animation: saas-copy-in .8s cubic-bezier(.2, .8, .2, 1) both;
+  animation: none;
 }
 
 .hero.motion-ready .phone-zone {

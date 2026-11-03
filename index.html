@@ -20,19 +20,23 @@
     <meta property="og:url" content="https://sum-it.eu/" />
     <meta property="og:title" content="Sum-IT: Minder boekhouden. Meer ondernemen." />
     <meta property="og:locale" content="nl_NL" />
+    <link rel="preload" href="/fonts/dm-sans-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
     <link rel="stylesheet" href="/css/tokens.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="components/header/header.css" />
-    <link rel="stylesheet" href="/components/invoice/invoice.css" />
-    <link rel="stylesheet" href="/components/invoice/gallery.css" />
+    <!-- Invoice gallery styles are for a section far below the fold: load without blocking first paint. -->
+    <link rel="stylesheet" href="/components/invoice/invoice.css" media="print" onload="this.media='all'" />
+    <link rel="stylesheet" href="/components/invoice/gallery.css" media="print" onload="this.media='all'" />
+    <noscript><link rel="stylesheet" href="/components/invoice/invoice.css" /><link rel="stylesheet" href="/components/invoice/gallery.css" /></noscript>
     <!-- Fonts used by the invoice designs; loaded without blocking the page. -->
     <meta
       property="og:description"
       content="Foto van je bonnetje en Sum-IT leest en verwerkt 'm, zodat jij het niet hoeft te doen. Maak je gratis profiel aan: in het netwerk staan kost niets." />
     <meta property="og:image" content="https://sum-it.eu/og-image.png" />
-    <script src="config.js"></script>
-    <script src="/js/trades.js"></script>
-    <script src="/sb-config.js"></script>
+    <script src="config.js" defer></script>
+    <script src="/js/trades.js" defer></script>
+    <script src="/sb-config.js" defer></script>
     <script src="js/index.js" defer></script>
     <script src="components/header/header.js" defer></script>
     <script src="/components/invoice/calc.js" defer></script>
@@ -82,7 +86,6 @@
       .hs-dot.on{width:22px;background:var(--c-green)}
       @media (prefers-reduced-motion:reduce){.hs-img,.hs-cap{transition:none}}
     </style>
-  <link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/css/icons-fi.css">
 </head>
 
@@ -159,7 +162,7 @@
 
           <div class="phone-zone hs-zone">
             <div class="hero-product-label"><i></i> <span data-i18n="hpl">ZO WERKT HET</span></div>
-            <div class="hs-phone" id="hsPhone" aria-label="Schermen uit de Sum-IT app"><img class="hs-img on" src="/img/app/dashboard.jpg" alt="Dashboard van de Sum-IT app: geld in en uit in één oogopslag" width="603" height="1311" ><img class="hs-img" src="/img/app/scan.jpg" alt="Bonnetje scannen in de Sum-IT app" width="603" height="1311" loading="lazy"><img class="hs-img" src="/img/app/documenten.jpg" alt="Documentenoverzicht in de Sum-IT app" width="603" height="1311" loading="lazy"><img class="hs-img" src="/img/app/projecten.jpg" alt="Projectoverzicht in de Sum-IT app met winst per klus" width="603" height="1311" loading="lazy"><img class="hs-img" src="/img/app/offertes.jpg" alt="Offerte maken in de Sum-IT app" width="603" height="1311" loading="lazy"><img class="hs-img" src="/img/app/btw-aangifte.jpg" alt="Btw-overzicht per rubriek in de Sum-IT app" width="603" height="1311" loading="lazy"></div>
+            <div class="hs-phone" id="hsPhone" aria-label="Schermen uit de Sum-IT-app"><img class="hs-img on" src="/img/app/dashboard.jpg" alt="Dashboard van de Sum-IT app: geld in en uit in één oogopslag" width="603" height="1311" ><img class="hs-img" src="/img/app/scan.jpg" alt="Bonnetje scannen in de Sum-IT-app" width="603" height="1311" loading="lazy"><img class="hs-img" src="/img/app/documenten.jpg" alt="Documentenoverzicht in de Sum-IT-app" width="603" height="1311" loading="lazy"><img class="hs-img" src="/img/app/projecten.jpg" alt="Projectoverzicht in de Sum-IT-app met winst per klus" width="603" height="1311" loading="lazy"><img class="hs-img" src="/img/app/offertes.jpg" alt="Offerte maken in de Sum-IT-app" width="603" height="1311" loading="lazy"><img class="hs-img" src="/img/app/btw-aangifte.jpg" alt="Btw-overzicht per rubriek in de Sum-IT-app" width="603" height="1311" loading="lazy"></div>
             <div class="hs-caps" aria-live="polite"><span class="hs-cap on" data-i18n="hs0">Dashboard: geld in en uit, in één oogopslag</span><span class="hs-cap" data-i18n="hs1">Scannen: foto van je bon, klaar</span><span class="hs-cap" data-i18n="hs2">Documenten: alles netjes op één plek</span><span class="hs-cap" data-i18n="hs3">Projecten: winst per klus, live</span><span class="hs-cap" data-i18n="hs4">Offertes: van concept tot akkoord</span><span class="hs-cap" data-i18n="hs5">Btw: per rubriek voorbereid</span></div>
             <div class="hs-dots"><button type="button" class="hs-dot on" aria-label="Scherm 1" data-i="0"></button><button type="button" class="hs-dot" aria-label="Scherm 2" data-i="1"></button><button type="button" class="hs-dot" aria-label="Scherm 3" data-i="2"></button><button type="button" class="hs-dot" aria-label="Scherm 4" data-i="3"></button><button type="button" class="hs-dot" aria-label="Scherm 5" data-i="4"></button><button type="button" class="hs-dot" aria-label="Scherm 6" data-i="5"></button></div>
           </div>
@@ -206,7 +209,7 @@
             <a class="ov-card" href="/voor/boekhouders/">
               <span class="ov-ic"><svg viewBox="0 0 48 48" width="48" height="48" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="48" height="48" rx="14" fill="#e6f8f1"/><path d="M15 13h15a3 3 0 0 1 3 3v19H18a3 3 0 0 1-3-3z" stroke="#1a1d4f" stroke-width="2"/><path d="M15 32a3 3 0 0 1 3-3h15" stroke="#1a1d4f" stroke-width="2"/><path d="M20 21l3 3 5-6" stroke="#00bc7d" stroke-width="2.4"/></svg></span>
               <h3 data-i18n="ov6t">Voor boekhouders</h3>
-              <p data-i18n="ov6p">Schone export voor je klanten en een referral-programma dat je beloont.</p>
+              <p data-i18n="ov6p">Schone export voor je klanten en een doorverwijsprogramma dat je beloont.</p>
               <span class="ov-more" data-i18n="ov_more">Lees meer →</span>
             </a>
           </div>
@@ -403,7 +406,7 @@
                   font-size: 13.5px;
                   margin: 8px 0 4px;
                 "
-                data-i18n="t_body">Check je inbox voor onze bevestigingsmail en deel daarna je persoonlijke link met je crew:</p>
+                data-i18n="t_body">Kijk in je inbox voor onze bevestigingsmail en deel daarna je persoonlijke link met je crew:</p>
               <div class="linkbox">
                 <input
                   readonly
@@ -416,7 +419,7 @@
                 <a
                   href="/portal.html"
                   style="color: var(--green-d); font-weight: 700"
-                  data-i18n="t_portal">Open je member-portal →</a>
+                  data-i18n="t_portal">Open je ledenportaal →</a>
               </p>
               <div class="socrow">
                 <a class="soc" id="sh-wa" title="WhatsApp" target="_blank"><svg
@@ -532,7 +535,7 @@
         <a href="#pricing" data-i18n="m_price">Prijzen</a> ·
         <a href="#team" data-i18n="m_team">Team</a> ·
         <a href="https://stg.sum-it.eu/register" data-i18n="m_join">Gratis profiel aanmaken</a> ·
-        <a href="/portal.html" data-i18n="m_portal">Member-portal</a>
+        <a href="/portal.html" data-i18n="m_portal">Ledenportaal</a>
       </div>
       <div class="flinks">
         <a href="/prijzen/" data-i18n="fl_prijzen">Prijzen</a> ·

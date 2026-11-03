@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Winst per klus berekenen: gratis calculator · Sum-IT</title>
+<meta name="description" content="Bereken in één minuut wat een klus echt oplevert: winst, uurloon en marge na materiaal en kosten, plus hoeveel btw je apart zet. Gratis tool voor zzp&#x27;ers.">
+<link rel="canonical" href="https://sum-it.eu/tools/winst-per-klus-calculator.html">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta property="og:site_name" content="Sum-IT">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:title" content="Winst per klus berekenen: gratis calculator · Sum-IT">
+<meta property="og:description" content="Bereken in één minuut wat een klus echt oplevert: winst, uurloon en marge na materiaal en kosten, plus hoeveel btw je apart zet. Gratis tool voor zzp&#x27;ers.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sum-it.eu/tools/winst-per-klus-calculator.html">
+<meta property="og:image" content="https://sum-it.eu/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Winst per klus berekenen: gratis calculator · Sum-IT">
+<meta name="twitter:description" content="Bereken in één minuut wat een klus echt oplevert: winst, uurloon en marge na materiaal en kosten, plus hoeveel btw je apart zet. Gratis tool voor zzp&#x27;ers.">
+<meta name="twitter:image" content="https://sum-it.eu/og-image.png">
+<link rel="icon" href="/sum-it-favicon.png">
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "WebApplication", "name": "Winst per klus calculator", "applicationCategory": "FinanceApplication", "operatingSystem": "Web", "inLanguage": "nl", "offers": {"@type": "Offer", "price": "0", "priceCurrency": "EUR"}, "url": "https://sum-it.eu/tools/winst-per-klus-calculator.html", "publisher": {"@type": "Organization", "name": "Sum-IT", "url": "https://sum-it.eu/"}}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://sum-it.eu/"}, {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://sum-it.eu/blog/"}, {"@type": "ListItem", "position": 3, "name": "Winst per klus calculator", "item": "https://sum-it.eu/tools/winst-per-klus-calculator.html"}]}, {"@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Hoe bereken ik de winst per klus?", "acceptedAnswer": {"@type": "Answer", "text": "Trek van het factuurbedrag zonder btw alle kosten af die bij die klus horen: materiaal, huur van gereedschap, transport en inhuur. Wat overblijft is je winst voor belasting. Deel die door je gewerkte uren en je ziet je echte uurloon."}}, {"@type": "Question", "name": "Hoort btw bij mijn winst?", "acceptedAnswer": {"@type": "Answer", "text": "Nee. De btw op je factuur draag je af aan de Belastingdienst. Reken daarom altijd met het bedrag zonder btw en zet de btw meteen apart."}}, {"@type": "Question", "name": "Wat is een goede marge per klus?", "acceptedAnswer": {"@type": "Answer", "text": "Dat verschilt per vak. Kijk vooral of je echte uurloon hoger is dan het uurtarief dat je nodig hebt. Is het lager, dan werk je deze klus feitelijk onder je tarief."}}, {"@type": "Question", "name": "Is dit bedrag mijn netto inkomen?", "acceptedAnswer": {"@type": "Answer", "text": "Nee. Over je winst betaal je nog inkomstenbelasting en Zvw-bijdrage. Met de belastingpotje-calculator zie je hoeveel je daarvoor opzij zet."}}]}]}</script>
+<link rel="stylesheet" href="/css/tokens.css">
+<link rel="stylesheet" href="/css/site.css">
+<link rel="stylesheet" href="/components/header/header.css">
+<script src="/components/header/header.js" defer></script>
+<link rel="stylesheet" href="/components/footer/footer.css">
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>.tool .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:560px){.tool .row2{grid-template-columns:1fr}}.tool select{width:100%;padding:10px;border-radius:10px;border:1px solid var(--line,#dfe3ee);font:inherit}.res .bad{color:#FFB4A8}</style>
+</head>
+<body>
+<!-- site-header:start -->
+<header id="site-header" class="site-header">
+  <a class="skip-link" href="#main">Naar de inhoud</a>
+  <div class="header-wrap">
+    <div class="nav">
+      <a class="logo" href="/" aria-label="Sum-IT home"><span class="mark"><img src="/sum-it-logo-mark.svg" alt="" width="32" height="32" /></span><span class="logo-text">Sum-IT</span></a>
+      <nav class="menu" aria-label="Hoofdmenu">
+        <a href="/functies/" data-nav="features" data-i18n="m_feat">Functies</a>
+        <a href="/community/" data-nav="community" data-i18n="m_comm">Community</a>
+        <a href="/prijzen/" data-nav="pricing" data-i18n="m_price">Prijzen</a>
+        <a href="/voor/boekhouders/" data-nav="bookkeepers" data-i18n="m_bk">Boekhouders</a>
+        <a href="/privacy-en-veiligheid/" data-nav="privacy" data-i18n="m_priv">Privacy</a>
+        <a href="/team/" data-nav="team" data-i18n="m_team">Team</a>
+        <a href="/blog/" data-nav="blog" data-i18n="m_blog">Blog</a>
+      </nav>
+      <div class="right">
+        <div class="langs" role="group" aria-label="Taal / Language">
+          <button type="button" id="lang-en" lang="en" aria-pressed="false" onclick="setLang('en')">EN</button>
+          <button type="button" id="lang-nl" lang="nl" aria-pressed="true" class="on" onclick="setLang('nl')">NL</button>
+        </div>
+        <a class="navlogin" href="/login.html" data-i18n="nav_login">Inloggen</a>
+        <a class="btn small" href="https://stg.sum-it.eu/register" data-i18n="nav_cta">Gratis profiel aanmaken</a>
+        <button type="button" class="burger" id="burger" aria-label="Menu" aria-controls="mobmenu" aria-expanded="false" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+    <div class="mobmenu" id="mobmenu">
+      <nav aria-label="Mobiel menu">
+        <a href="/functies/" data-nav="features" data-i18n="m_feat">Functies</a>
+        <a href="/functies/facturen/" data-nav="invoicing" data-i18n="m_inv">Facturen</a>
+        <a href="/functies/projecten/" data-nav="projects" data-i18n="m_proj">Projecten</a>
+        <a href="/community/" data-nav="community" data-i18n="m_comm">Community</a>
+        <a href="/prijzen/" data-nav="pricing" data-i18n="m_price">Prijzen</a>
+        <a href="/voor/boekhouders/" data-nav="bookkeepers" data-i18n="m_bk">Boekhouders</a>
+        <a href="/privacy-en-veiligheid/" data-nav="privacy" data-i18n="m_priv">Privacy</a>
+        <a href="/team/" data-nav="team" data-i18n="m_team">Team</a>
+        <a href="/blog/" data-nav="blog" data-i18n="m_blog">Blog</a>
+      </nav>
+      <div class="mobmenu-actions">
+        <a class="btn ghost" href="/login.html" data-i18n="nav_login">Inloggen</a>
+        <a class="btn" href="https://stg.sum-it.eu/register" data-i18n="nav_cta">Gratis profiel aanmaken</a>
+      </div>
+    </div>
+  </div>
+</header>
+<!-- site-header:end -->
+<main id="main">
+<div class="crumb"><a href="/" data-i18n="c_home">Home</a> · <a href="/blog/">Blog</a> · <span>Winst per klus calculator</span></div>
+<h1>Winst per klus berekenen</h1>
+<p class="lead">Vul in wat je factureert en wat de klus kost. Je ziet direct je winst, je echte uurloon en hoeveel btw je apart zet. Zo weet je per klus of hij de moeite waard was.</p>
+<div class="tool">
+<label for="bedrag">Factuurbedrag zonder btw (€)</label>
+<input type="number" id="bedrag" value="2500" min="0" step="50" inputmode="decimal">
+<div class="row2">
+<div><label for="materiaal">Materiaal (€, zonder btw)</label><input type="number" id="materiaal" value="800" min="0" step="10" inputmode="decimal"></div>
+<div><label for="kosten">Overige kosten: huur, transport, inhuur (€)</label><input type="number" id="kosten" value="150" min="0" step="10" inputmode="decimal"></div>
+</div>
+<div class="row2">
+<div><label for="uren">Gewerkte uren (incl. reistijd en offerte)</label><input type="number" id="uren" value="24" min="0" step="0.5" inputmode="decimal"></div>
+<div><label for="doel">Uurtarief dat je nodig hebt (€)</label><input type="number" id="doel" value="55" min="0" step="1" inputmode="decimal"></div>
+</div>
+<label for="btw">Btw op de factuur</label>
+<select id="btw"><option value="0.21" selected>21% (standaard)</option><option value="0.09">9% (bijv. schilder- of stukadoorswerk aan woningen ouder dan 2 jaar)</option><option value="0">Btw verlegd of vrijgesteld (0%)</option></select>
+<div class="res">
+<div>Winst op deze klus:</div><div class="big" id="winst">—</div><div id="verdict" style="font-weight:700"></div>
+<table>
+<tr><td>Echt uurloon (winst ÷ uren)</td><td id="uurloon">—</td></tr>
+<tr><td>Marge (winst ÷ factuurbedrag)</td><td id="marge">—</td></tr>
+<tr><td>Btw apart zetten</td><td id="btwbedrag">—</td></tr>
+<tr><td>Factuurbedrag inclusief btw</td><td id="incl">—</td></tr>
+</table>
+<div class="note" style="color:#AEB4DF">Dit is winst vóór inkomstenbelasting en Zvw. Hoeveel je daarvoor reserveert, zie je met de <a href="/tools/belastingpotje-calculator.html" style="color:#fff">belastingpotje-calculator</a>.</div>
+</div>
+</div>
+<h2>Hoe rekent deze tool?</h2>
+<p>Winst = factuurbedrag zonder btw − materiaal − overige kosten. Je echte uurloon is die winst gedeeld door álle uren die je aan de klus kwijt was, dus ook reistijd, inkopen en het maken van de offerte. Ligt dat uurloon onder het tarief dat je nodig hebt, dan heeft de klus je geld gekost. Het tarief dat je nodig hebt reken je uit met de <a href="/tools/uurtarief-calculator.html">uurtarief-calculator</a>. Meer uitleg: <a href="/blog/winst-per-klus-berekenen.html">winst per klus berekenen</a> en <a href="/blog/winstmarge-per-project-verhogen.html">je winstmarge per project verhogen</a>.</p>
+<h2>Veelgestelde vragen</h2>
+<h3>Hoe bereken ik de winst per klus?</h3>
+<p>Trek van het factuurbedrag zonder btw alle kosten af die bij die klus horen: materiaal, huur van gereedschap, transport en inhuur. Wat overblijft is je winst voor belasting. Deel die door je gewerkte uren en je ziet je echte uurloon.</p>
+<h3>Hoort btw bij mijn winst?</h3>
+<p>Nee. De btw op je factuur draag je af aan de Belastingdienst. Reken daarom altijd met het bedrag zonder btw en zet de btw meteen apart.</p>
+<h3>Wat is een goede marge per klus?</h3>
+<p>Dat verschilt per vak. Kijk vooral of je echte uurloon hoger is dan het uurtarief dat je nodig hebt. Is het lager, dan werk je deze klus feitelijk onder je tarief.</p>
+<h3>Is dit bedrag mijn netto inkomen?</h3>
+<p>Nee. Over je winst betaal je nog inkomstenbelasting en Zvw-bijdrage. Met de belastingpotje-calculator zie je hoeveel je daarvoor opzij zet.</p>
+<div class="ctabox"><h3>Elke klus automatisch bijhouden?</h3><span>In Sum-IT koppel je elk bonnetje aan een klus. Je ziet dan zonder rekenwerk wat elke klus oplevert en hoeveel btw je apart zet. Je profiel in het netwerk is gratis.</span><br><a href="https://stg.sum-it.eu/register" data-i18n="tb_cta2">Maak je gratis profiel aan</a></div>
+</main>
+<footer><span data-i18n="c_foot">Sum-IT is een product van Alpha Nova B.V. · Opslag in de EU</span> · <a href="/blog/">Blog</a> · <a href="/">sum-it.eu</a> · <a href="/privacy.html" data-i18n="c_priv">Privacyverklaring</a><div class="legal-line" style="flex-basis:100%;width:100%;margin-top:10px;font-size:.82rem;opacity:.85;line-height:1.7">Alpha Nova B.V. · KvK 42199339 · btw NL870145496B01 · Maasdijk 14, 4284 VA Rijswijk · <a href="mailto:ian.bouman@sum-it.eu">ian.bouman@sum-it.eu</a><br><a href="/algemene-voorwaarden/" data-i18n="c_av">Algemene voorwaarden</a> · <a href="/privacy.html" data-i18n="c_priv">Privacyverklaring</a> · <a href="/privacy-en-veiligheid/" data-i18n="c_privsec">Privacy &amp; veiligheid</a> · <a href="/cookies/" data-i18n="c_cookies">Cookies</a> · <a href="#" data-cookie-settings data-i18n="c_cookieset">Cookie-instellingen</a> · <a href="/account-verwijderen/" data-i18n="c_delacc">Account verwijderen</a> · <a href="/werken-bij/" data-i18n="c_jobs">Werken bij</a> · <a href="/contact/" data-i18n="c_contact">Contact</a></div><!-- site-socials:start --><div class="site-socials"><a href="https://www.linkedin.com/company/sum-it-eu/" target="_blank" rel="noopener" title="LinkedIn" aria-label="Sum-IT · LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.1c.5-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.5c0-1.3 0-3-1.9-3s-2.2 1.4-2.2 2.9V21H9z"/></svg></a><a href="https://www.instagram.com/sumit.eu/" target="_blank" rel="noopener" title="Instagram" aria-label="Sum-IT · Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.6 0 4.8.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8s0-3.6.1-4.8C2.4 4 4 2.4 7.2 2.3c1.2-.1 1.6-.1 4.8-.1zM12 7a5 5 0 100 10 5 5 0 000-10zm0 8.2a3.2 3.2 0 110-6.4 3.2 3.2 0 010 6.4zm6.4-8.4a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/></svg></a><a href="https://x.com/SumITEurope" target="_blank" rel="noopener" title="X" aria-label="Sum-IT · X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-6.8 7.8L23.2 22h-6.3l-4.9-6.4L6.4 22H3.3l7.3-8.3L1.5 2H8l4.4 5.8zm-1.1 18h1.7L7 3.7H5.2z"/></svg></a></div><!-- site-socials:end --></footer>
+<script>
+const F=n=>(n<0?'−':'')+'€'+Math.abs(Math.round(n)).toLocaleString('nl-NL');
+const v=id=>Math.max(0,parseFloat(String(document.getElementById(id).value).replace(',','.'))||0);
+function upd(){const b=v('bedrag'),w=b-v('materiaal')-v('kosten'),u=v('uren'),d=v('doel'),r=parseFloat(document.getElementById('btw').value);
+document.getElementById('winst').textContent=F(w);
+const ul=u>0?w/u:0;document.getElementById('uurloon').textContent=u>0?F(ul)+' per uur':'—';
+document.getElementById('marge').textContent=b>0?Math.round(w/b*100)+'%':'—';
+document.getElementById('btwbedrag').textContent=F(b*r);document.getElementById('incl').textContent=F(b*(1+r));
+const vd=document.getElementById('verdict');
+if(u>0&&d>0){const diff=ul-d;vd.textContent=diff>=0?'Boven je tarief: '+F(diff)+' per uur extra':'Onder je tarief: '+F(-diff)+' per uur te weinig';vd.className=diff>=0?'':'bad';}else{vd.textContent='';}}
+['bedrag','materiaal','kosten','uren','doel'].forEach(id=>document.getElementById(id).addEventListener('input',upd));document.getElementById('btw').addEventListener('change',upd);upd();
+</script>
+<script src="/i18n.js" defer></script>
+<script src="/js/consent.js" defer></script>
+</body>
+</html>
