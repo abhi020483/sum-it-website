@@ -407,7 +407,7 @@ const I18N = {
         bk_r3: "Shoeboxes of crumpled receipts",
         trh: "Your data is safe",
         trmore: "Read how we protect your data →",
-        trb: "Everything is stored in the EU. Built to the privacy law (GDPR) and well secured. Records your bookkeeper and the tax office can rely on.",
+        trb: "Everything is stored in the EU. Built to the privacy law (GDPR) and well secured.",
         tm_k: "The team",
         tm_h2: "By entrepreneurs, for entrepreneurs",
         tm_lead:
@@ -919,7 +919,7 @@ const I18N = {
         bk_r3: "Schoenendozen vol bonnetjes",
         trh: "Je gegevens zijn veilig",
         trmore: "Lees hoe we je data beschermen →",
-        trb: "Alles wordt opgeslagen in de EU. Gebouwd volgens de privacywet (AVG) en goed beveiligd. Een administratie waar je boekhouder én de Belastingdienst op kunnen bouwen.",
+        trb: "Alles wordt opgeslagen in de EU. Gebouwd volgens de privacywet (AVG) en goed beveiligd.",
         tm_k: "Het team",
         tm_h2: "Van ondernemers, voor ondernemers",
         tm_lead:
