@@ -7,5 +7,6 @@ Disallow: /portal.html
 Disallow: /login.html
 Disallow: /wachtwoord.html
 Disallow: /components/header/header.html
+Disallow: /api/
 
 Sitemap: https://sum-it.eu/sitemap.xml
