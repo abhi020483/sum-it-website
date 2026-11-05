@@ -199,7 +199,10 @@ export async function onRequestPost({ request, env, waitUntil }) {
       });
       const rows = cr.ok ? await cr.json().catch(() => null) : null;
       const row = Array.isArray(rows) ? rows[0] : rows;
-      if (row && row.queue_pos && await markWelcomed(env, email)) {
+      // No automatic welcome mail by default: Ian mails new sign-ups personally from his
+      // own mailbox. Set env WELCOME_MAIL=1 to switch the Brevo welcome mail back on.
+      // The row is still confirmed and gets its queue_pos either way.
+      if (env.WELCOME_MAIL === '1' && row && row.queue_pos && await markWelcomed(env, email)) {
         await sendWelcome(env, email, row.queue_pos, row.ref_code, row.taal);
       }
     } catch { /* webhook remains as fallback */ }
