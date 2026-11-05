@@ -10,7 +10,12 @@
    - creates the Laposta member (list double opt-in sends the confirm mail)
    - emails the internal team a new-signup notification (see notifyAdmin)
    Env: SUPABASE_URL, SUPABASE_SERVICE_KEY, IP_SALT, LAPOSTA_API_KEY, LAPOSTA_LIST_ID
-   Optional: BREVO_API_KEY, MAIL_FROM, ADMIN_NOTIFY_EMAIL (for the admin notification) */
+   Optional: BREVO_API_KEY, MAIL_FROM, ADMIN_NOTIFY_EMAIL (for the admin notification)
+   Meta (B5): META_CAPI_TOKEN (secret), META_PIXEL_ID (default 2902586496782863),
+   META_TEST_EVENT_CODE (only while testing; remove for real traffic), META_API_VERSION (default v24.0).
+   - stores utm_source/medium/campaign/content/term with each new sign-up (supabase-setup-v6.sql)
+   - sends a server-side Lead (Conversions API) for NEW entrepreneur sign-ups, only when
+     the visitor accepted "Marketing" cookies; same event_id as the browser Pixel -> deduplicated */
 
 import { markWelcomed, sendWelcome, notifyAdmin } from './_lib.js';
 
@@ -62,7 +67,7 @@ function wantsMailings(d) {
   return isTrue(d.herinneringen) || isTrue(d.mailing_optin) || isTrue(d.consent);
 }
 
-export async function onRequestPost({ request, env }) {
+export async function onRequestPost({ request, env, waitUntil }) {
   const cors = corsHeaders(request);
   const json2 = (data, status = 200) => json(data, status, cors);
   let d; try { d = await request.json(); } catch { return json2({ ok: false }, 400); }
@@ -108,6 +113,14 @@ export async function onRequestPost({ request, env }) {
     if (rows.length) referredBy = ref;
   }
 
+  // UTM tags from the ad (B5), stored with the sign-up
+  const utm = {};
+  for (const k of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']) {
+    const v = String(d[k] || '').trim().slice(0, 150);
+    if (v) utm[k] = v;
+  }
+  let utmOff = false;
+
   // insert with unique ref_code (retry on collision), ignore duplicate e-mail
   let myCode = null;
   for (let i = 0; i < 3 && !myCode; i++) {
@@ -122,9 +135,16 @@ export async function onRequestPost({ request, env }) {
         source,
         telefoon, stad, vestiging, city: plaats,
         mailing_optin: mailingOptin,
-        ref_code: code, referred_by: referredBy, ip_hash: ipHash
+        ref_code: code, referred_by: referredBy, ip_hash: ipHash,
+        ...(utmOff ? {} : utm)
       })
     });
+    if (res.status === 400 && !utmOff && Object.keys(utm).length) {
+      // utm_* columns not added yet (supabase-setup-v6.sql): never lose a sign-up over it
+      const t = await res.text().catch(() => '');
+      if (/utm_|PGRST204|column/i.test(t)) { utmOff = true; i--; continue; }
+      return json2({ ok: false }, 500);
+    }
     if (res.status === 409) continue;           // ref_code collision -> retry
     if (!res.ok) return json2({ ok: false }, 500);
     const rows = await res.json().catch(() => []);
@@ -132,6 +152,13 @@ export async function onRequestPost({ request, env }) {
     myCode = code;
   }
   if (!myCode) return json2({ ok: false }, 500);
+
+  // Meta Conversions API: server-side Lead for new entrepreneur sign-ups (B5).
+  if (rol === 'ondernemer' && isTrue(d.marketing_consent) && env.META_CAPI_TOKEN) {
+    const p = sendMetaLead(env, { d, email, naam, telefoon, ip, ua: request.headers.get('user-agent') || '' })
+      .catch(() => {});
+    if (typeof waitUntil === 'function') waitUntil(p); else await p;
+  }
 
   // Notify the internal team of the new signup (fire-and-forget; never blocks).
   try {
@@ -178,4 +205,47 @@ export async function onRequestPost({ request, env }) {
     } catch { /* webhook remains as fallback */ }
   }
   return ok;
+}
+
+/* ---- Meta Conversions API (B5) ----
+   Personal data is SHA-256 hashed before it leaves our server, as Meta requires.
+   Only called with the visitor's marketing consent (see onRequestPost). */
+function nlPhone(t) {
+  let p = String(t || '').replace(/\D/g, '');
+  if (p.startsWith('00')) p = p.slice(2);
+  else if (p.startsWith('0')) p = '31' + p.slice(1);
+  return p.length >= 9 ? p : '';
+}
+async function sendMetaLead(env, { d, email, naam, telefoon, ip, ua }) {
+  const pixel = env.META_PIXEL_ID || '2902586496782863';
+  const eventId = String(d.event_id || '').slice(0, 100);
+  if (!eventId) return;
+  const parts = naam.toLowerCase().split(/\s+/).filter(Boolean);
+  const user = {
+    em: [await sha256(email)],
+    country: [await sha256('nl')],
+    client_ip_address: ip !== '0.0.0.0' ? ip : undefined,
+    client_user_agent: ua || undefined,
+    fbp: String(d.fbp || '').slice(0, 200) || undefined,
+    fbc: String(d.fbc || '').slice(0, 300) || undefined
+  };
+  const ph = nlPhone(telefoon);
+  if (ph) user.ph = [await sha256(ph)];
+  if (parts[0]) user.fn = [await sha256(parts[0])];
+  if (parts.length > 1) user.ln = [await sha256(parts[parts.length - 1])];
+  const src = String(d.event_source_url || '');
+  const body = {
+    data: [{
+      event_name: 'Lead',
+      event_time: Math.floor(Date.now() / 1000),
+      event_id: eventId,
+      action_source: 'website',
+      event_source_url: /^https:\/\/(www\.)?sum-it\.eu(\/|$)/.test(src) ? src.slice(0, 500) : 'https://sum-it.eu/',
+      user_data: user
+    }]
+  };
+  if (env.META_TEST_EVENT_CODE) body.test_event_code = env.META_TEST_EVENT_CODE;
+  await fetch(`https://graph.facebook.com/${env.META_API_VERSION || 'v24.0'}/${pixel}/events?access_token=${encodeURIComponent(env.META_CAPI_TOKEN)}`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+  });
 }
