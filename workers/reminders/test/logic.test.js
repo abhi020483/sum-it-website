@@ -104,13 +104,13 @@ test('database query matches the rules', () => {
 });
 
 test('mail template: NL + EN, first name, free months, button, unsubscribe, counter', () => {
-  const args = { naam: 'Jan de Vries', reminderNo: 1, total: 2, unsubscribeUrl: 'https://x/api/afmelden?e=a&t=b', registerUrl: 'https://stg.sum-it.eu/register' };
+  const args = { naam: 'Jan de Vries', reminderNo: 1, total: 2, unsubscribeUrl: 'https://x/api/afmelden?e=a&t=b', registerUrl: '/#pricing' };
   const nl = reminderMail({ ...args, taal: 'nl' });
   assert.match(nl.text, /^Hoi Jan,/);
   assert.match(nl.text, /De eerste 3 maanden zijn gratis\./);
   assert.match(nl.text, /Groet,\nIan/);
   assert.match(nl.text, /Dit is herinnering 1 van 2\./);
-  assert.ok(nl.html.includes('https://stg.sum-it.eu/register'));
+  assert.ok(nl.html.includes('/#pricing'));
   assert.ok(nl.html.includes('https://x/api/afmelden?e=a&amp;t=b'));
   const last = reminderMail({ ...args, taal: 'nl', reminderNo: 2 });
   assert.match(last.text, /Dit is herinnering 2 van 2\. Hierna mailen we je niet meer\./);

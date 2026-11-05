@@ -9,25 +9,25 @@
   var TX = {
     nl: {
       title: 'Cookies en privacy',
-      body: 'Sum-IT gebruikt alleen wat nodig is om de site te laten werken, zoals je taalkeuze en inloggen. Daar is geen toestemming voor nodig. Statistieken en marketing staan uit, tenzij jij ze aanzet.',
+      body: 'Sum-IT gebruikt alleen wat nodig is om de site te laten werken, zoals je taalkeuze en inloggen. Daar is geen toestemming voor nodig. Marketing (Meta Pixel) staat uit, tenzij jij die aanzet.',
       more: 'Lees de cookieverklaring', only: 'Alleen noodzakelijk', settings: 'Instellingen', all: 'Alles accepteren',
       mTitle: 'Cookie-instellingen', save: 'Keuze opslaan', close: 'Sluiten', always: 'Altijd aan', notInUse: 'nu niet in gebruik',
       cats: [['need', 'Noodzakelijk', 'Je taalkeuze, inloggen en het onthouden van deze keuze. Zonder deze opslag werkt de site niet goed.'],
              ['stats', 'Statistieken', 'Anoniem meten hoe de site gebruikt wordt, zodat we hem kunnen verbeteren.'],
-             ['marketing', 'Marketing', 'Advertenties en het meten van campagnes buiten deze site.']]
+             ['marketing', 'Marketing', 'Meta Pixel (Facebook/Instagram): meten welke advertenties tot aanmeldingen leiden en doelgroepen maken. Alleen als jij dit aanzet.']]
     },
     en: {
       title: 'Cookies and privacy',
-      body: 'Sum-IT only uses what is needed to make the site work, such as your language choice and logging in. That needs no consent. Statistics and marketing are off unless you switch them on.',
+      body: 'Sum-IT only uses what is needed to make the site work, such as your language choice and logging in. That needs no consent. Marketing (Meta Pixel) is off unless you switch it on.',
       more: 'Read the cookie statement', only: 'Necessary only', settings: 'Settings', all: 'Accept all',
       mTitle: 'Cookie settings', save: 'Save choice', close: 'Close', always: 'Always on', notInUse: 'not in use now',
       cats: [['need', 'Necessary', 'Your language choice, logging in and remembering this choice. Without this storage the site does not work properly.'],
              ['stats', 'Statistics', 'Measuring anonymously how the site is used, so we can improve it.'],
-             ['marketing', 'Marketing', 'Advertising and measuring campaigns outside this site.']]
+             ['marketing', 'Marketing', 'Meta Pixel (Facebook/Instagram): measuring which ads lead to sign-ups and building audiences. Only if you switch this on.']]
     }
   };
   // categories that actually load something today; others are shown as "not in use now"
-  var ACTIVE = { stats: false, marketing: false };
+  var ACTIVE = { stats: false, marketing: true };
   var listeners = [];
 
   function lang() { return (document.documentElement.lang || 'nl').slice(0, 2) === 'en' ? 'en' : 'nl'; }
@@ -46,7 +46,13 @@
   }
   var state = read();
   function has(cat) { return cat === 'need' || !!(state && state[cat]); }
+  function loadMeta() {
+    if (!has('marketing') || window.__sumitMetaLoaded) return;
+    window.__sumitMetaLoaded = true;
+    var n = document.createElement('script'); n.src = '/js/meta.js'; n.defer = true; document.head.appendChild(n);
+  }
   function apply() {
+    loadMeta();
     [].forEach.call(document.querySelectorAll('script[type="text/plain"][data-consent]'), function (s) {
       if (!has(s.getAttribute('data-consent')) || s.getAttribute('data-done')) return;
       var n = document.createElement('script');

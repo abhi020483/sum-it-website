@@ -9,7 +9,9 @@
 window.SITE_CFG = {
   API_BASE: 'https://sum-it-app.pages.dev',
   PORTAL_URL: '/portal.html',
-  APP_REGISTER_URL: 'https://stg.sum-it.eu/register',  // 'Gratis profiel aanmaken' gaat hierheen (echte app-registratie)
+  APP_REGISTER_URL: '/#pricing',  // 'Gratis profiel aanmaken' -> aanmeldformulier op de homepage (besluit 5 nov 2026)
+  THANKS_URL: '/aanmelden-gelukt.html',  // bedankpagina na een geslaagde aanmelding
+  META_PIXEL_ID: '2902586496782863',  // Meta dataset 'Sum-IT Website'; laadt alleen na 'Marketing' toestemming
   socials: {
     linkedin: 'https://www.linkedin.com/company/sum-it-eu/',
     instagram: 'https://www.instagram.com/sumit.eu/',

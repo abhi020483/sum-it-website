@@ -11,7 +11,7 @@ export const CONFIG = {
   // Max. reminder mails per daily run (keeps Brevo/Laposta usage small).
   BATCH_LIMIT: 50,
   // The "create your account" button in the mail (same as APP_REGISTER_URL in config.js).
-  APP_REGISTER_URL: 'https://stg.sum-it.eu/register',
+  APP_REGISTER_URL: 'https://sum-it.eu/#pricing',
   // Replies go straight to Ian.
   REPLY_TO: 'ian.bouman@sum-it.eu',
   REPLY_TO_NAME: 'Ian van Sum-IT',

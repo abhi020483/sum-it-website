@@ -1942,6 +1942,35 @@ if (rp) document.getElementById("reffield").value = rp;
     } catch (e) { }
     setLang(s === "en" ? "en" : "nl");
 })();
+/* ---- Meta attribution for sign-ups (B5) ----
+   One event_id per submit, shared by the browser Lead (Pixel) and the server Lead
+   (Conversions API) so Meta counts it once. UTMs are stored with every sign-up.
+   Meta cookies (_fbp/_fbc) are only sent when the visitor accepted "Marketing". */
+function sumitAttribution() {
+    var mk = !!(window.sumitConsent && sumitConsent.has("marketing"));
+    var eid = (window.crypto && crypto.randomUUID) ? crypto.randomUUID()
+        : "ev-" + Date.now() + "-" + Math.random().toString(36).slice(2, 10);
+    var a = { event_id: eid, marketing_consent: mk, event_source_url: location.href.split("#")[0] };
+    var u = {};
+    try { u = JSON.parse(sessionStorage.getItem("sumit_utm") || "{}") || {}; } catch (e) { }
+    var q = new URLSearchParams(location.search);
+    ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"].forEach(function (k) {
+        var v = q.get(k) || u[k]; if (v) a[k] = String(v).slice(0, 150);
+    });
+    if (mk) {
+        var ck = function (n) { var m = document.cookie.match(new RegExp("(?:^|; )" + n + "=([^;]*)")); return m ? decodeURIComponent(m[1]) : ""; };
+        var fbclid = q.get("fbclid");
+        a.fbp = ck("_fbp");
+        a.fbc = ck("_fbc") || (fbclid ? "fb.1." + Date.now() + "." + fbclid : "");
+    }
+    return a;
+}
+/* After a confirmed sign-up: browser Lead (entrepreneurs only), then the thank-you page. */
+function sumitSignedUp(attr, rol) {
+    if (rol === "ondernemer" && window.sumitMeta) sumitMeta.lead(attr.event_id);
+    var url = (window.SITE_CFG && SITE_CFG.THANKS_URL) || "/aanmelden-gelukt.html";
+    setTimeout(function () { window.location.href = url; }, 400);
+}
 document
     .getElementById("waitlist-form")
     .addEventListener("submit", function (e) {
@@ -1970,6 +1999,8 @@ document
             /* Optional, separate consent for mailings (never pre-ticked). */
             mailing_optin: document.getElementById("mailing-optin").checked,
         };
+        var attr = sumitAttribution();
+        Object.keys(attr).forEach(function (k) { payload[k] = attr[k]; });
         var base = (window.SITE_CFG && SITE_CFG.API_BASE) || "";
         fetch(base + "/api/signup", {
             method: "POST",
@@ -1991,8 +2022,8 @@ document
                 btn.disabled = false;
                 applyRole(); /* restores the button label */
                 if (result === "ok") {
-                    document.getElementById("form-state").style.display = "none";
-                    document.getElementById("thanks-state").style.display = "block";
+                    btn.disabled = true;
+                    sumitSignedUp(attr, payload.rol);
                     return;
                 }
                 /* Form values stay as typed so the visitor can simply retry. */
@@ -2004,13 +2035,11 @@ document
     });
 
 /* ---- Lead form in the green offer block ----
-   Two buttons, same fields:
-   - "Maak gratis je profiel aan": save lead (info mail) then go to register.
-   - "Stuur me eerst meer info": save lead, show thanks. */
+   Two buttons, same fields. Both save the lead (info mail) and, once the API
+   confirms, go to the thank-you page (5 nov 2026: no app/staging registration yet). */
 (function () {
     var form = document.getElementById("lead-form");
     if (!form) return;
-    var REGISTER_URL = "https://stg.sum-it.eu/register";
     var btnP = document.getElementById("lead-btn"),
         btnI = document.getElementById("lead-btn-info"),
         err = document.getElementById("lead-err"),
@@ -2056,6 +2085,8 @@ document
             mailing_optin: remind,
             herinneringen: remind,
         };
+        var attr = sumitAttribution();
+        Object.keys(attr).forEach(function (k) { payload[k] = attr[k]; });
         var base = window.API_BASE || (window.SITE_CFG && SITE_CFG.API_BASE) || "";
         busy(true);
         var req = fetch(base + "/api/signup", {
@@ -2070,20 +2101,13 @@ document
                 });
             })
             .catch(function () { return "error"; });
-        if (choice === "profiel") {
-            // Never block sign-up on our own lead API: go on after max 4 s.
-            var went = false;
-            var go = function () { if (went) return; went = true; window.location.href = REGISTER_URL; };
-            req.then(function () { ok.textContent = t("lead_go"); ok.hidden = false; setTimeout(go, 400); });
-            setTimeout(go, 4000);
-            return;
-        }
         req.then(function (res) {
             busy(false);
             if (res === "ok") {
-                form.reset();
+                btnP.disabled = btnI.disabled = true;
                 ok.textContent = t("lead_ok");
                 ok.hidden = false;
+                sumitSignedUp(attr, "ondernemer");
             } else {
                 err.textContent = t("lead_err");
                 err.hidden = false;
