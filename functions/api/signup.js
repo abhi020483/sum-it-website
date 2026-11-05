@@ -1,11 +1,23 @@
 /* POST /api/signup — Cloudflare Pages Function.
-   Body: {naam,email,rol,bedrijfstype,boekhouder,taal,source,ref,website}
+   Body: {naam,email,rol,bedrijfstype,boekhouder,taal,source,ref,website,
+          telefoon,plaats,stad,vestiging, herinneringen | mailing_optin | consent}
+   - source 'homepage-lead' / 'homepage-profiel': naam + email + telefoon all required (else 400 invalid)
+   - mailing_optin (v5) = opted in to reminder mails; see wantsMailings() below
    - honeypot 'website' filled  -> silently OK
    - disposable e-mail domains  -> silently OK
    - rate limit: max 5/hour/IP (checked in Supabase)
    - inserts signup (status 'pending') with a unique ref_code
    - creates the Laposta member (list double opt-in sends the confirm mail)
-   Env: SUPABASE_URL, SUPABASE_SERVICE_KEY, IP_SALT, LAPOSTA_API_KEY, LAPOSTA_LIST_ID */
+   - emails the internal team a new-signup notification (see notifyAdmin)
+   Env: SUPABASE_URL, SUPABASE_SERVICE_KEY, IP_SALT, LAPOSTA_API_KEY, LAPOSTA_LIST_ID
+   Optional: BREVO_API_KEY, MAIL_FROM, ADMIN_NOTIFY_EMAIL (for the admin notification)
+   Meta (B5): META_CAPI_TOKEN (secret), META_PIXEL_ID (default 2902586496782863),
+   META_TEST_EVENT_CODE (only while testing; remove for real traffic), META_API_VERSION (default v24.0).
+   - stores utm_source/medium/campaign/content/term with each new sign-up (supabase-setup-v6.sql)
+   - sends a server-side Lead (Conversions API) for NEW entrepreneur sign-ups, only when
+     the visitor accepted "Marketing" cookies; same event_id as the browser Pixel -> deduplicated */
+
+import { markWelcomed, sendWelcome, notifyAdmin } from './_lib.js';
 
 const DISPOSABLE = ['mailinator.com','guerrillamail.com','10minutemail.com','yopmail.com','temp-mail.org','trashmail.com','sharklasers.com'];
 const ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
@@ -40,7 +52,22 @@ function sbHeaders(env, extra = {}) {
            'Content-Type': 'application/json', ...extra };
 }
 
-export async function onRequestPost({ request, env }) {
+/* Opt-in for reminder mails (Dutch law: e-mail marketing needs opt-in).
+   Accepted signals, from the forms that exist today:
+   - homepage lead form:   herinneringen: true
+   - founding form (index.js): mailing_optin: true (separate, never pre-ticked box)
+   - any form:             consent: true
+   - balie form (aanmelden.html, source 'balie-*'): NOT opted in.
+     REVIEW FIX: its checkbox is mandatory (the form refuses to submit without
+     it), so it is not a free choice and does not count as opt-in for reminder
+     mails (AVG art. 7(4)). If that form ever gets a separate, optional
+     reminder box, let it send herinneringen:true. */
+function isTrue(v) { return v === true || v === 'true' || v === 'ja' || v === 1 || v === '1'; }
+function wantsMailings(d) {
+  return isTrue(d.herinneringen) || isTrue(d.mailing_optin) || isTrue(d.consent);
+}
+
+export async function onRequestPost({ request, env, waitUntil }) {
   const cors = corsHeaders(request);
   const json2 = (data, status = 200) => json(data, status, cors);
   let d; try { d = await request.json(); } catch { return json2({ ok: false }, 400); }
@@ -52,7 +79,18 @@ export async function onRequestPost({ request, env }) {
   const naam = String(d.naam || '').trim().slice(0, 120);
   const rol = d.rol === 'boekhouder' ? 'boekhouder' : 'ondernemer';
   const taal = d.taal === 'en' ? 'en' : 'nl';
+  // Counter-signup extras (Breda balie-actie). Stored so Ian can call back.
+  const telefoon  = String(d.telefoon || '').replace(/[^\d+\s()-]/g, '').trim().slice(0, 40) || null;
+  const plaats    = String(d.plaats || '').trim().slice(0, 80) || null;   // vakman's own town -> city
+  const stad      = String(d.stad || '').trim().slice(0, 80) || null;     // campaign city (e.g. breda)
+  const vestiging = String(d.vestiging || '').replace(/[^a-z0-9-]/gi, '').slice(0, 40) || null;
+  const source = String(d.source || 'site').slice(0, 60);
+  const mailingOptin = wantsMailings(d);
   if (!naam || !/^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/.test(email)) return json2({ ok: false, error: 'invalid' }, 400);
+  // Homepage lead form: phone number is required (at least 6 digits).
+  if ((source === 'homepage-lead' || source === 'homepage-profiel') && (!telefoon || telefoon.replace(/\D/g, '').length < 6)) {
+    return json2({ ok: false, error: 'invalid' }, 400);
+  }
   if (DISPOSABLE.includes(email.split('@')[1])) return ok;
 
   // rate limit per IP (5/hour)
@@ -75,6 +113,14 @@ export async function onRequestPost({ request, env }) {
     if (rows.length) referredBy = ref;
   }
 
+  // UTM tags from the ad (B5), stored with the sign-up
+  const utm = {};
+  for (const k of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term']) {
+    const v = String(d[k] || '').trim().slice(0, 150);
+    if (v) utm[k] = v;
+  }
+  let utmOff = false;
+
   // insert with unique ref_code (retry on collision), ignore duplicate e-mail
   let myCode = null;
   for (let i = 0; i < 3 && !myCode; i++) {
@@ -86,10 +132,19 @@ export async function onRequestPost({ request, env }) {
         email, naam, rol, taal,
         bedrijfstype: rol === 'ondernemer' ? String(d.bedrijfstype || '').slice(0, 60) : null,
         boekhouder: rol === 'ondernemer' ? (d.boekhouder === 'ja' ? 'ja' : d.boekhouder === 'nee' ? 'nee' : null) : null,
-        source: String(d.source || 'site').slice(0, 60),
-        ref_code: code, referred_by: referredBy, ip_hash: ipHash
+        source,
+        telefoon, stad, vestiging, city: plaats,
+        mailing_optin: mailingOptin,
+        ref_code: code, referred_by: referredBy, ip_hash: ipHash,
+        ...(utmOff ? {} : utm)
       })
     });
+    if (res.status === 400 && !utmOff && Object.keys(utm).length) {
+      // utm_* columns not added yet (supabase-setup-v6.sql): never lose a sign-up over it
+      const t = await res.text().catch(() => '');
+      if (/utm_|PGRST204|column/i.test(t)) { utmOff = true; i--; continue; }
+      return json2({ ok: false }, 500);
+    }
     if (res.status === 409) continue;           // ref_code collision -> retry
     if (!res.ok) return json2({ ok: false }, 500);
     const rows = await res.json().catch(() => []);
@@ -97,6 +152,24 @@ export async function onRequestPost({ request, env }) {
     myCode = code;
   }
   if (!myCode) return json2({ ok: false }, 500);
+
+  // Meta Conversions API: server-side Lead for new entrepreneur sign-ups (B5).
+  if (rol === 'ondernemer' && isTrue(d.marketing_consent) && env.META_CAPI_TOKEN) {
+    const p = sendMetaLead(env, { d, email, naam, telefoon, ip, ua: request.headers.get('user-agent') || '' })
+      .catch(() => {});
+    if (typeof waitUntil === 'function') waitUntil(p); else await p;
+  }
+
+  // Notify the internal team of the new signup (fire-and-forget; never blocks).
+  try {
+    await notifyAdmin(env, {
+      email, naam, rol, taal,
+      bedrijfstype: rol === 'ondernemer' ? String(d.bedrijfstype || '') : '',
+      boekhouder: rol === 'ondernemer' ? String(d.boekhouder || '') : '',
+      telefoon, stad, city: plaats, source,
+      ref_code: myCode, referred_by: referredBy, mailing_optin: mailingOptin
+    });
+  } catch { /* notification is best-effort; the signup already succeeded */ }
 
   // Laposta member (double opt-in mail comes from the list settings)
   if (env.LAPOSTA_API_KEY && env.LAPOSTA_LIST_ID) {
@@ -116,5 +189,63 @@ export async function onRequestPost({ request, env }) {
       });
     } catch { /* signup stays 'pending'; SETUP.md covers re-sync */ }
   }
+  // Single opt-in (Laposta double opt-in requires a paid plan): confirm immediately,
+  // assign the queue position and send the welcome mail. Set env DOUBLE_OPTIN=1 once
+  // the Laposta list uses double opt-in — the laposta-webhook then takes over.
+  if (env.DOUBLE_OPTIN !== '1') {
+    try {
+      const cr = await fetch(`${env.SUPABASE_URL}/rest/v1/rpc/confirm_signup`, {
+        method: 'POST', headers: sbHeaders(env), body: JSON.stringify({ p_email: email })
+      });
+      const rows = cr.ok ? await cr.json().catch(() => null) : null;
+      const row = Array.isArray(rows) ? rows[0] : rows;
+      if (row && row.queue_pos && await markWelcomed(env, email)) {
+        await sendWelcome(env, email, row.queue_pos, row.ref_code, row.taal);
+      }
+    } catch { /* webhook remains as fallback */ }
+  }
   return ok;
+}
+
+/* ---- Meta Conversions API (B5) ----
+   Personal data is SHA-256 hashed before it leaves our server, as Meta requires.
+   Only called with the visitor's marketing consent (see onRequestPost). */
+function nlPhone(t) {
+  let p = String(t || '').replace(/\D/g, '');
+  if (p.startsWith('00')) p = p.slice(2);
+  else if (p.startsWith('0')) p = '31' + p.slice(1);
+  return p.length >= 9 ? p : '';
+}
+async function sendMetaLead(env, { d, email, naam, telefoon, ip, ua }) {
+  const pixel = env.META_PIXEL_ID || '2902586496782863';
+  const eventId = String(d.event_id || '').slice(0, 100);
+  if (!eventId) return;
+  const parts = naam.toLowerCase().split(/\s+/).filter(Boolean);
+  const user = {
+    em: [await sha256(email)],
+    country: [await sha256('nl')],
+    client_ip_address: ip !== '0.0.0.0' ? ip : undefined,
+    client_user_agent: ua || undefined,
+    fbp: String(d.fbp || '').slice(0, 200) || undefined,
+    fbc: String(d.fbc || '').slice(0, 300) || undefined
+  };
+  const ph = nlPhone(telefoon);
+  if (ph) user.ph = [await sha256(ph)];
+  if (parts[0]) user.fn = [await sha256(parts[0])];
+  if (parts.length > 1) user.ln = [await sha256(parts[parts.length - 1])];
+  const src = String(d.event_source_url || '');
+  const body = {
+    data: [{
+      event_name: 'Lead',
+      event_time: Math.floor(Date.now() / 1000),
+      event_id: eventId,
+      action_source: 'website',
+      event_source_url: /^https:\/\/(www\.)?sum-it\.eu(\/|$)/.test(src) ? src.slice(0, 500) : 'https://sum-it.eu/',
+      user_data: user
+    }]
+  };
+  if (env.META_TEST_EVENT_CODE) body.test_event_code = env.META_TEST_EVENT_CODE;
+  await fetch(`https://graph.facebook.com/${env.META_API_VERSION || 'v24.0'}/${pixel}/events?access_token=${encodeURIComponent(env.META_CAPI_TOKEN)}`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body)
+  });
 }
