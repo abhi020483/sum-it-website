@@ -3,7 +3,7 @@
   <head>
     <script>/* Supabase password-reset links that land on the homepage (dashboard-sent resets use the Site URL)
        carry the token in the URL hash; hand them to the password page before anything else runs. */
-      (function(){try{var h=location.hash||'';if(/type=recovery/.test(h)||/error=/.test(h)){location.replace('/wachtwoord.html'+h);}}catch(e){}})();</script>
+      (function(){try{var h=location.hash||'';if(/access_token=/.test(h)||/type=(recovery|magiclink)/.test(h)||/error=/.test(h)){location.replace('/wachtwoord.html'+h);}}catch(e){}})();</script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="facebook-domain-verification" content="p7erpwa86bptavgmof8thnqvmj3j8f" />
