@@ -5,7 +5,7 @@
    - mailing_optin (v5) = opted in to reminder mails; see wantsMailings() below
    - honeypot 'website' filled  -> silently OK
    - disposable e-mail domains  -> silently OK
-   - rate limit: max 5/hour/IP (checked in Supabase)
+   - rate limit: max 5/hour/IP (checked in Supabase), 100/hour for source 'kvk-*' (event stand)
    - inserts signup (status 'pending') with a unique ref_code
    - creates the Laposta member (list double opt-in sends the confirm mail)
    - emails the internal team a new-signup notification (see notifyAdmin)
@@ -93,7 +93,10 @@ export async function onRequestPost({ request, env, waitUntil }) {
   }
   if (DISPOSABLE.includes(email.split('@')[1])) return ok;
 
-  // rate limit per IP (5/hour)
+  // rate limit per IP (5/hour). Event pages (source 'kvk-*', e.g. the KVK
+  // Ondernemersdagen stand) get 100/hour: the team's phones and the venue wifi
+  // share one IP, and over the normal limit sign-ups are dropped silently.
+  const rateLimit = source.startsWith('kvk-') ? 100 : 5;
   const ip = request.headers.get('cf-connecting-ip') || '0.0.0.0';
   const ipHash = await sha256(ip + (env.IP_SALT || 'sumit'));
   const since = new Date(Date.now() - 3600e3).toISOString();
@@ -101,7 +104,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
     const rl = await fetch(`${env.SUPABASE_URL}/rest/v1/signups?ip_hash=eq.${ipHash}&created_at=gt.${since}&select=id`,
       { headers: sbHeaders(env, { Prefer: 'count=exact' , Range: '0-0'}) });
     const total = Number((rl.headers.get('content-range') || '/0').split('/')[1] || 0);
-    if (total >= 5) return ok;
+    if (total >= rateLimit) return ok;
   } catch { /* if the check fails, continue — availability over strictness */ }
 
   // validate referrer code exists (ignore if not)

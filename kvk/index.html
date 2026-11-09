@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sum-IT op de KVK Ondernemersdagen</title>
+<meta name="description" content="Meld je aan voor Sum-IT, de alles-in-één app voor vakmensen. Live op 1 december.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="/sum-it-favicon.png">
+<link rel="preload" href="/fonts/dm-sans-latin-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+:root{
+  --bg:#f5f3ee; --surface:#ffffff; --ink:#232358; --text:#1c1c3a; --muted:#6b6a7f; --line:#dedbd3;
+  --navy:#232358; --navy-2:#2d2d6b; --on-navy:#ffffff;
+  --green:#00bc7d; --green-ink:#ffffff; --green-text:#00865a;
+  --orange:#f99c00; --orange-ink:#232358;
+  --ok:#00865a; --warn:#a85f00; --bad:#b3261e; --soft:#eeece6;
+  --font:"DM Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --font-head:"Poppins","DM Sans",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14142e; --surface:#1d1d40; --ink:#ffffff; --text:#e9e8f4; --muted:#a9a8c4; --line:#34345e;
+  --navy:#1b1b45; --navy-2:#2d2d6b; --on-navy:#ffffff;
+  --green:#00bc7d; --green-ink:#08261b; --green-text:#3fd89e;
+  --orange:#f99c00; --orange-ink:#232358;
+  --ok:#3fd89e; --warn:#f5b94a; --bad:#f08a80; --soft:#26264d; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#14142e; --surface:#1d1d40; --ink:#ffffff; --text:#e9e8f4; --muted:#a9a8c4; --line:#34345e;
+  --navy:#1b1b45; --navy-2:#2d2d6b; --on-navy:#ffffff;
+  --green:#00bc7d; --green-ink:#08261b; --green-text:#3fd89e;
+  --orange:#f99c00; --orange-ink:#232358;
+  --ok:#3fd89e; --warn:#f5b94a; --bad:#f08a80; --soft:#26264d; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--text);font:15px/1.5 var(--font)}
+.band{background:var(--navy);color:var(--on-navy);background-image:radial-gradient(circle at 110% -10%,var(--navy-2) 0 38%,transparent 38.2%),radial-gradient(circle at 110% -10%,transparent 0 48%,rgba(255,255,255,.05) 48.2% 48.6%,transparent 48.8% 58%,rgba(255,255,255,.05) 58.2% 58.6%,transparent 58.8%)}
+.band-in,.wrap{max-width:560px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.band-in{padding-block:18px 22px;display:grid;gap:18px}
+.wrap{padding-block:20px 48px;display:grid;gap:18px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:52px;height:auto;display:block}
+.word{font:700 24px/1 var(--font-head);letter-spacing:-.01em}
+.word small{display:block;font:500 11px/1.4 var(--font);letter-spacing:.14em;text-transform:uppercase;opacity:.75;margin-top:4px}
+.lang{display:flex;border:1px solid rgba(255,255,255,.3);border-radius:999px;overflow:hidden}
+.lang button{border:0;background:transparent;color:var(--on-navy);opacity:.75;font:600 12px var(--font);padding:6px 12px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--green);color:#fff;opacity:1}
+.tally{display:grid;gap:10px}
+.tally-top{display:flex;justify-content:space-between;align-items:flex-end;gap:8px;flex-wrap:wrap}
+.count{font:700 46px/1 var(--font-head);font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.count span{font-size:20px;opacity:.6;font-weight:600}
+.tally-label{font-size:11px;text-transform:uppercase;letter-spacing:.14em;color:var(--green);font-weight:600;margin-bottom:4px}
+.bar{height:8px;border-radius:4px;background:rgba(255,255,255,.14);overflow:hidden}
+.bar i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,#1e2a6b,#00bc7d 55%,#7dc242);transition:width .4s}
+.status{font-size:12px;opacity:.8;display:flex;align-items:center;gap:6px}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--orange)}
+.status[data-t="live"]::before{background:var(--green)}
+form,.done,.list{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px 16px}
+form{display:grid;gap:14px}
+.eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--green-text);font-weight:600;margin:0}
+h2{font:700 21px/1.2 var(--font-head);margin:0;color:var(--ink);letter-spacing:-.01em;text-wrap:balance}
+.field{display:grid;gap:5px}
+label,.lbl{font-weight:600;font-size:13.5px;color:var(--ink)}
+.opt{font-weight:400;color:var(--muted)}
+input[type=text],input[type=email],input[type=tel],select,textarea{width:100%;font:16px var(--font);color:var(--text);background:var(--bg);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px}
+textarea{min-height:64px;resize:vertical}
+input:focus,select:focus,textarea:focus,button:focus-visible{outline:3px solid color-mix(in srgb,var(--green) 45%,transparent);outline-offset:1px;border-color:var(--green)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:440px){.row{grid-template-columns:1fr}}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chips input{position:absolute;opacity:0;pointer-events:none}
+.chips label{border:1.5px solid var(--line);border-radius:999px;padding:7px 14px;cursor:pointer;font-weight:500;background:var(--bg);color:var(--text)}
+.chips input:checked+label{background:var(--ink);border-color:var(--ink);color:var(--surface)}
+.chips input:focus-visible+label{outline:3px solid var(--green)}
+.consent{display:flex;gap:10px;align-items:flex-start;background:var(--soft);border-radius:10px;padding:12px}
+.consent input{width:22px;height:22px;flex:none;margin:1px 0 0;accent-color:var(--green)}
+.consent label{font-weight:500;font-size:13.5px;color:var(--text)}
+.hint{font-size:13.5px;color:var(--muted);margin:0}
+.badge{justify-self:start;background:var(--orange);color:var(--orange-ink);font-weight:600;font-size:12.5px;border-radius:8px;padding:5px 10px}
+.err{color:var(--bad);font-size:13px;font-weight:600}
+.dupe{color:var(--warn);font-size:13px;font-weight:600}
+.btn{border:0;border-radius:12px;font:600 17px var(--font-head);padding:14px;cursor:pointer;background:var(--green);color:var(--green-ink)}
+.btn:hover{filter:brightness(1.05)}
+.btn:disabled{opacity:.55;cursor:default}
+.btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);font-size:13.5px;padding:8px 14px}
+.done{text-align:center;display:grid;gap:10px;justify-items:center}
+.tick{width:56px;height:56px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:28px}
+.list{display:grid;gap:10px}
+.list-head{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+ul{list-style:none;margin:0;padding:0;display:grid}
+li{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:10px 0;border-top:1px solid var(--line)}
+li:first-child{border-top:0}
+.who{font-weight:600;min-width:0;overflow-wrap:anywhere;color:var(--ink)}
+.meta{grid-column:1/-1;font-size:12.5px;color:var(--muted);overflow-wrap:anywhere}
+.time{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;border-radius:6px;padding:1px 7px;background:var(--soft);color:var(--green-text);margin-right:4px}
+.pending{color:var(--warn)}
+.del{background:none;border:0;color:var(--bad);font:600 12.5px var(--font);cursor:pointer;padding:0}
+.empty{color:var(--muted);font-size:13.5px;padding:6px 0;display:block}
+.notice{font-size:13.5px;color:var(--warn);background:var(--soft);border-radius:10px;padding:10px 12px}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+
+.band-in{padding-block:max(18px,env(safe-area-inset-top,0px)) 26px}
+.hero h1{font:700 26px/1.2 var(--font-head);margin:6px 0 0;letter-spacing:-.01em;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--green)}
+.hero p{margin:6px 0 0;opacity:.8;font-size:14px}
+.radio-row{display:flex;gap:8px;flex-wrap:wrap}
+.hp{position:absolute;left:-9999px;opacity:0}
+.fine{font-size:12.5px;color:var(--muted);margin:0}
+.fine a,.done a{color:var(--green-text)}
+footer{font-size:12px;color:var(--muted);text-align:center;padding-bottom:max(24px,env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+footer a{color:inherit}
+</style>
+</head>
+<body>
+<div class="band"><div class="band-in">
+  <header>
+    <a class="brand" href="/" style="color:inherit;text-decoration:none;flex-direction:column;align-items:flex-start;gap:6px"><img id="logo" src="/sum-it-logo-h-white-nl.png" alt="Sum-IT" width="151" height="30" style="width:151px;height:auto"><span class="word"><small style="margin:0">KVK Ondernemersdagen</small></span></a>
+    <div class="lang" role="group" aria-label="Taal / Language">
+      <button type="button" id="lang-nl" aria-pressed="true">NL</button>
+      <button type="button" id="lang-en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+  <div class="hero">
+    <h1><span data-t="h1a">Minder boekhouden.</span> <em data-t="h1b">Meer ondernemen.</em></h1>
+    <p data-t="sub">De alles-in-één app voor vakmensen. Live op 1 december.</p>
+  </div>
+</div></div>
+
+<main class="wrap">
+  <form id="form" novalidate>
+    <h2 data-t="title">Kom op de wachtlijst</h2>
+    <p class="hint" data-t="lead">Je profiel in het netwerk is altijd gratis. Zodra Sum-IT live gaat, hoor je het als eerste.</p>
+    <div class="field">
+      <span class="lbl" data-t="role">Ik meld me aan als</span>
+      <div class="chips">
+        <input type="radio" name="rol" id="rol-ond" value="ondernemer" checked><label for="rol-ond" data-t="ond">Ondernemer</label>
+        <input type="radio" name="rol" id="rol-bk" value="boekhouder"><label for="rol-bk" data-t="bk">Boekhouder</label>
+      </div>
+    </div>
+    <div class="field">
+      <label for="naam" data-t="name">Naam</label>
+      <input type="text" id="naam" autocomplete="name" required>
+    </div>
+    <div class="field">
+      <label for="email" data-t="email">E-mailadres</label>
+      <input type="email" id="email" autocomplete="email" inputmode="email" required>
+    </div>
+    <div class="field">
+      <label for="telefoon"><span data-t="phone">Telefoonnummer</span> <span class="opt" data-t="optional">(optioneel)</span></label>
+      <input type="tel" id="telefoon" autocomplete="tel" inputmode="tel">
+    </div>
+    <div class="field" id="trade-field">
+      <label for="type" data-t="trade">Wat voor bedrijf heb je?</label>
+      <select id="type"><option value="" data-t="pick">Kies je vak</option><option value="Anders" data-trades-after data-t="other">Anders</option></select>
+    </div>
+    <div class="field" id="bk-field">
+      <span class="lbl" data-t="bkq">Werk je met een boekhouder?</span>
+      <div class="chips">
+        <input type="radio" name="boekhouder" id="bk-ja" value="ja"><label for="bk-ja" data-t="yes">Ja</label>
+        <input type="radio" name="boekhouder" id="bk-nee" value="nee"><label for="bk-nee" data-t="no">Nee, ik doe het zelf</label>
+      </div>
+    </div>
+    <input type="text" class="hp" id="hp-website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="consent">
+      <input type="checkbox" id="mailing-optin">
+      <label for="mailing-optin" data-t="optin">Stuur me af en toe nieuws over Sum-IT (hooguit één keer per maand). Afmelden kan altijd.</label>
+    </div>
+    <p class="fine" data-t-html="priv">Je krijgt een welkomstmail over je aanmelding. Je gegevens worden opgeslagen in de EU en nooit gedeeld met derden. <a href="/privacy.html#formulier">Lees onze privacyverklaring</a>.</p>
+    <div class="err" id="err" role="alert" hidden></div>
+    <button class="btn" type="submit" id="submit" data-t="submit">Zet me op de wachtlijst</button>
+  </form>
+
+  <section class="done" id="done" hidden aria-live="polite">
+    <div class="tick" aria-hidden="true">✓</div>
+    <h2 data-t="thanks">Je staat erop!</h2>
+    <p class="hint" id="done-sub" data-t="thanksSub">Check je mail voor de bevestiging. Op 1 december gaat Sum-IT live.</p>
+    <button class="btn" type="button" id="next" data-t="next">Nieuwe aanmelding</button>
+  </section>
+</main>
+<footer>Sum-IT is een product van Alpha Nova B.V. · KvK 42199339 · <a href="/privacy.html" data-t="privacy">Privacy</a></footer>
+
+<script src="/config.js"></script>
+<script src="/js/trades.js"></script>
+<script>
+(function(){
+"use strict";
+var SOURCE="kvk-ondernemersdagen-2026";
+var API=(window.SITE_CFG&&SITE_CFG.API_BASE)||"";
+var T={
+ nl:{eyebrow:"Samen naar de top",h1a:"Minder boekhouden.",h1b:"Meer ondernemen.",sub:"De alles-in-één app voor vakmensen. Live op 1 december.",
+  title:"Kom op de wachtlijst",lead:"Je profiel in het netwerk is altijd gratis. Zodra Sum-IT live gaat, hoor je het als eerste.",
+  role:"Ik meld me aan als",ond:"Ondernemer",bk:"Boekhouder",name:"Naam",email:"E-mailadres",phone:"Telefoonnummer",optional:"(optioneel)",
+  trade:"Wat voor bedrijf heb je?",pick:"Kies je vak",other:"Anders",bkq:"Werk je met een boekhouder?",yes:"Ja",no:"Nee, ik doe het zelf",
+  optin:"Stuur me af en toe nieuws over Sum-IT (hooguit één keer per maand). Afmelden kan altijd.",
+  priv:'Je krijgt een welkomstmail over je aanmelding. Je gegevens worden opgeslagen in de EU en nooit gedeeld met derden. <a href="/privacy.html#formulier">Lees onze privacyverklaring</a>.',
+  submit:"Zet me op de wachtlijst",sending:"Bezig met opslaan…",thanks:"Je staat erop!",thanksSub:"Check je mail voor de bevestiging. Op 1 december gaat Sum-IT live.",
+  queued:"Opgeslagen op dit toestel. Je aanmelding wordt verstuurd zodra er weer internet is.",next:"Nieuwe aanmelding",privacy:"Privacy",
+  errName:"Vul je naam in.",errMail:"Vul een geldig e-mailadres in.",errTrade:"Kies wat voor bedrijf je hebt.",errInvalid:"Controleer je naam en e-mailadres en probeer het opnieuw.",errSave:"Je aanmelding is niet opgeslagen. Je gegevens staan er nog, probeer het zo nog eens."},
+ en:{eyebrow:"Together to the top",h1a:"Less bookkeeping.",h1b:"More business.",sub:"The all-in-one app for tradespeople. Live on 1 December.",
+  title:"Join the waitlist",lead:"Your network profile is always free. You'll be the first to know when Sum-IT goes live.",
+  role:"I'm signing up as",ond:"Business owner",bk:"Bookkeeper",name:"Name",email:"Email address",phone:"Phone number",optional:"(optional)",
+  trade:"What kind of business do you have?",pick:"Choose your trade",other:"Other",bkq:"Do you work with a bookkeeper?",yes:"Yes",no:"No, I do it myself",
+  optin:"Send me occasional news about Sum-IT (at most once a month). You can unsubscribe at any time.",
+  priv:'You\'ll get a welcome email about your sign-up. Your data is stored in the EU and never shared with third parties. <a href="/privacy.html#formulier">Read our privacy statement</a>.',
+  submit:"Join the waitlist",sending:"Saving…",thanks:"You're on the list!",thanksSub:"Check your inbox for the confirmation. Sum-IT goes live on 1 December.",
+  queued:"Saved on this device. Your sign-up will be sent once the internet is back.",next:"New sign-up",privacy:"Privacy",
+  errName:"Enter your name.",errMail:"Enter a valid email address.",errTrade:"Choose what kind of business you have.",errInvalid:"Please check your name and email address and try again.",errSave:"Your sign-up wasn't saved. Your details are still here, please try again in a moment."}
+};
+var $=function(id){return document.getElementById(id)};
+var ls={get:function(k){try{return localStorage.getItem(k)}catch(e){return null}},set:function(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+var lang=ls.get("kvk-lang")||((navigator.language||"nl").toLowerCase().indexOf("nl")===0?"nl":"en");
+if(lang!=="en")lang="nl";
+function t(k){return T[lang][k]}
+function apply(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-t]").forEach(function(el){var v=T[lang][el.getAttribute("data-t")];if(v)el.textContent=v});
+  document.querySelectorAll("[data-t-html]").forEach(function(el){el.innerHTML=T[lang][el.getAttribute("data-t-html")]});
+  $("lang-nl").setAttribute("aria-pressed",lang==="nl");$("lang-en").setAttribute("aria-pressed",lang==="en");
+  $("logo").src=lang==="nl"?"/sum-it-logo-h-white-nl.png":"/sum-it-logo-h-white.png";
+  if(window.SumitTrades)SumitTrades.fill($("type"),lang);
+}
+$("lang-nl").onclick=function(){lang="nl";ls.set("kvk-lang",lang);apply()};
+$("lang-en").onclick=function(){lang="en";ls.set("kvk-lang",lang);apply()};
+function role(){return document.querySelector('input[name="rol"]:checked').value}
+function applyRole(){var o=role()==="ondernemer";$("trade-field").hidden=!o;$("bk-field").hidden=!o}
+document.querySelectorAll('input[name="rol"]').forEach(function(r){r.addEventListener("change",applyRole)});
+
+/* Sign-ups that could not be sent (no signal at the venue) wait here and retry. */
+var queue=[];try{queue=JSON.parse(ls.get("kvk-queue")||"[]")}catch(e){queue=[]}
+function saveQ(){ls.set("kvk-queue",JSON.stringify(queue))}
+function post(p){
+  return fetch(API+"/api/signup",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(p),keepalive:true})
+   .then(function(r){return r.json().catch(function(){return null}).then(function(j){return r.ok&&j&&j.ok===true?"ok":(r.status===400?"invalid":"error")})},function(){return "offline"});
+}
+var flushing=false;
+function flush(){
+  if(flushing||!queue.length||navigator.onLine===false)return;
+  flushing=true;var p=queue[0];
+  post(p).then(function(res){
+    if(res==="ok"||res==="invalid"){queue.shift();saveQ()}
+    flushing=false;if(res==="ok"||res==="invalid")flush();
+  });
+}
+window.addEventListener("online",flush);setInterval(flush,20000);flush();
+
+$("form").addEventListener("submit",function(e){
+  e.preventDefault();
+  var err=$("err");err.hidden=true;
+  var naam=$("naam").value.trim(),email=$("email").value.trim(),r=role();
+  var msg=naam.length<2?t("errName"):!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)?t("errMail"):(r==="ondernemer"&&!$("type").value)?t("errTrade"):"";
+  if(msg){err.textContent=msg;err.hidden=false;return}
+  var p={naam:naam,email:email,telefoon:$("telefoon").value.trim(),rol:r,
+    bedrijfstype:r==="ondernemer"?$("type").value:"",
+    boekhouder:r==="ondernemer"?((document.querySelector('input[name="boekhouder"]:checked')||{}).value||""):"",
+    taal:lang,source:SOURCE,ref:"",website:$("hp-website").value||"",
+    mailing_optin:$("mailing-optin").checked,utm_source:"kvk",utm_medium:"event",utm_campaign:"ondernemersdagen-2026",
+    event_id:(window.crypto&&crypto.randomUUID)?crypto.randomUUID():"ev-"+Date.now()+"-"+Math.random().toString(36).slice(2,10),
+    marketing_consent:false,event_source_url:location.href.split("#")[0]};
+  var btn=$("submit");btn.disabled=true;btn.textContent=t("sending");
+  post(p).then(function(res){
+    btn.disabled=false;btn.textContent=t("submit");
+    if(res==="invalid"){err.textContent=t("errInvalid");err.hidden=false;return}
+    if(res==="error"){err.textContent=t("errSave");err.hidden=false;return}
+    var queued=res==="offline";
+    if(queued){queue.push(p);saveQ()}
+    $("form").reset();applyRole();
+    $("done-sub").textContent=queued?t("queued"):t("thanksSub");
+    $("done-sub").setAttribute("data-t",queued?"queued":"thanksSub");
+    $("form").hidden=true;$("done").hidden=false;$("next").focus();
+  });
+});
+$("next").onclick=function(){$("done").hidden=true;$("form").hidden=false;$("naam").focus()};
+apply();applyRole();
+})();
+</script>
+</body>
+</html>
